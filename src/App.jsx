@@ -83,6 +83,53 @@ function App() {
         </div>
       </section>
 
+      {/* Education Section */}
+      <section id="education" className="w-full max-w-4xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4 bg-[#181824] rounded-2xl shadow-lg border border-[#232336] relative mt-4">
+        {/* Background */}
+        <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
+          <div className="w-full h-full bg-gradient-to-br from-[#232336] via-[#181824] to-[#101014] opacity-90" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-32 bg-yellow-400/10 blur-2xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-1/3 h-24 bg-yellow-400/10 blur-2xl rounded-full" />
+        </div>
+        <div className="relative z-10">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-yellow-400 text-center mb-10 tracking-wide">Education</h2>
+          <div className="relative flex flex-col md:flex-row gap-8 md:gap-0">
+            {/* Content */}
+            <div className="flex-1 flex flex-col gap-16 md:gap-24">
+              {/* High School */}
+              <div className="flex flex-col md:flex-row md:items-center gap-4">
+                <div className="md:w-1/2 text-right md:pr-8">
+                  <span className="font-bold text-lg md:text-xl text-white">High School</span>
+                  <div className="text-gray-400 text-sm md:text-base mt-1">2016 – 2022</div>
+                  <div className="font-semibold text-base md:text-lg text-yellow-300 mt-1">Thammasat Klongluang Wittayakom School</div>
+                  <div className="text-gray-400 text-sm md:text-base mt-1">Science-Math Program</div>
+                </div>
+                <div className="hidden md:block w-0.5 h-24 bg-gray-600 mx-4 rounded-full relative">
+                  <span className="absolute left-1/2 -translate-x-1/2 top-0 w-3 h-3 bg-yellow-400 rounded-full" />
+                </div>
+                <div className="md:w-1/2" />
+              </div>
+              {/* University */}
+              <div className="flex flex-col md:flex-row md:items-center gap-4">
+                <div className="md:w-1/2" />
+                <div className="hidden md:block w-0.5 h-24 bg-gray-600 mx-4 rounded-full relative">
+                  <span className="absolute left-1/2 -translate-x-1/2 top-0 w-3 h-3 bg-yellow-400 rounded-full" />
+                </div>
+                <div className="md:w-1/2 text-left md:pl-8">
+                  <span className="font-bold text-lg md:text-xl text-white">University</span>
+                  <div className="text-gray-400 text-sm md:text-base mt-1">2022 – Present</div>
+                  <div className="font-semibold text-base md:text-lg text-yellow-300 mt-1">Bangkok University</div>
+                  <div className="text-gray-400 text-sm md:text-base mt-1">Bachelor of Science in Computer Science</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* เพิ่มช่องว่างระหว่าง Education กับ Skills */}
+      <div className="h-8 sm:h-12 md:h-16" />
+
       {/* Skills Section */}
       <section id="skills" className="scroll-mt-32 w-full max-w-4xl mx-auto bg-[#181824] rounded-2xl shadow-lg p-4 sm:p-8 md:p-10 mt-4 flex flex-col items-center border border-[#232336]">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-yellow-400 text-center mb-8 md:mb-10">Skills</h2>
