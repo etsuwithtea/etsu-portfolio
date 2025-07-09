@@ -1,42 +1,89 @@
+body {
+  background: #f8fafc;
+  font-family: 'Segoe UI', 'Prompt', Arial, sans-serif;
+  margin: 0;
+  color: #222;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2.5rem 2rem 1.5rem 2rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 2rem auto;
+}
+
+.portfolio-header {
   text-align: center;
+  margin-bottom: 2rem;
+}
+.profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #e0e7ef;
+  margin-bottom: 1rem;
+  background: #f1f5f9;
+}
+.subtitle {
+  color: #64748b;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.about-section, .projects-section, .contact-section {
+  margin-bottom: 2rem;
+  text-align: left;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.about-section h2, .projects-section h2, .contact-section h2 {
+  color: #2563eb;
+  margin-bottom: 0.5rem;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.projects-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.project-card {
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 1rem;
+  flex: 1 1 200px;
+  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.project-card h3 {
+  margin-top: 0;
+}
+.project-card a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+.project-card a:hover {
+  text-decoration: underline;
+}
+.contact-section ul {
+  list-style: none;
+  padding: 0;
+}
+.contact-section li {
+  margin-bottom: 0.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.portfolio-footer {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-top: 2rem;
 }
