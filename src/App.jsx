@@ -91,12 +91,11 @@ function App() {
           <div className="flex-1 flex flex-col items-center border-b md:border-b-0 md:border-r border-[#232336] pb-8 md:pb-0 md:pr-8">
             <h3 className="text-2xl font-bold text-white mb-2">Languages</h3>
             <p className="text-gray-400 text-base mb-4 text-center">I enjoy programming so much that I can do it all day without getting bored</p>
-            <ul className="text-lg font-semibold text-blue-200 space-y-1 text-center">
+            <ul className="text-lg font-semibold text-blue-200 space-y-1 text-center ">
               <li>Python</li>
               <li>C#</li>
               <li>Java</li>
               <li>HTML, CSS, JavaScript</li>
-              <li>MongoDB</li>
             </ul>
           </div>
           {/* Tools */}
