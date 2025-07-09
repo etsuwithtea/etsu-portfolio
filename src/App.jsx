@@ -276,7 +276,7 @@ function App() {
               <img
                 src={modalImg}
                 alt={modalAlt}
-                className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824] border-4 border-yellow-400"
+                className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824]"
                 style={{boxShadow: '0 8px 32px 0 rgba(0,0,0,0.5)'}}
               />
               <div className="mt-4 text-center text-white text-base font-semibold max-w-lg w-full truncate">{modalAlt}</div>
