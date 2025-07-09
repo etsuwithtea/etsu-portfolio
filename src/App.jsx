@@ -42,7 +42,7 @@ function App() {
         {/* Left: Main Profile Image (Color) */}
         <div className="flex-1 flex justify-center md:justify-end md:pr-4">
           <div className="relative">
-            <img src={mainProfile} alt="Profile" className="w-80 h-96 md:w-[22rem] md:h-[28rem] object-cover rounded-2xl border-4 border-yellow-400 shadow-2xl bg-[#232336] transition-all duration-300" />
+            <img src={mainProfile} alt="Profile" className="w-96 h-96 md:w-[28rem] md:h-[28rem] object-cover rounded-full border-4 border-yellow-400 shadow-2xl bg-[#232336] transition-all duration-300" style={{objectPosition: 'center 20%'}} />
             <div className="absolute -top-8 -left-8 w-20 h-20 bg-yellow-400 rounded-full z-0 opacity-90" />
           </div>
         </div>
