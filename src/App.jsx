@@ -1,5 +1,5 @@
 import './index.css';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 // Importing images and assets
 import mainProfile from './assets/mainprofile.jpg';
@@ -160,14 +160,14 @@ const PROJECTS = [
     title: 'BeyondHana',
     images: [
       { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
-      { src: beyondhana_1, alt: 'BeyondHana Main Menu' },
-      { src: beyondhana_2, alt: 'BeyondHana Gameplay' },
-      { src: beyondhana_3, alt: 'BeyondHana Story Scene' },
-      { src: beyondhana_4, alt: 'BeyondHana Character Select' },
-      { src: beyondhana_5, alt: 'BeyondHana Dialogue' },
-      { src: beyondhana_6, alt: 'BeyondHana Choices' },
-      { src: beyondhana_7, alt: 'BeyondHana Ending' },
-      { src: beyondhana_8, alt: 'BeyondHana Credits' },
+      { src: beyondhana_1, alt: 'BeyondHana Title' },
+      { src: beyondhana_2, alt: 'BeyondHana Main Menu' },
+      { src: beyondhana_3, alt: 'BeyondHana Start Game' },
+      { src: beyondhana_4, alt: 'BeyondHana Load Game' },
+      { src: beyondhana_5, alt: 'BeyondHana Setting' },
+      { src: beyondhana_6, alt: 'BeyondHana Story' },
+      { src: beyondhana_7, alt: 'BeyondHana Choice' },
+      { src: beyondhana_8, alt: 'BeyondHana Ending' },
     ],
     desc: 'Visual Novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
     role: 'Role : Main Developer & UX/UI Designer ',
@@ -190,6 +190,36 @@ const CERTIFICATES = [
     link: '', // No verify link
   },
 ];
+
+// Image optimization utility
+const optimizeImage = (src, width, height) => {
+  if (typeof src === 'string' && src.startsWith('http')) {
+    return src; // External images, return as-is
+  }
+  return src; // Local images handled by Vite
+};
+
+// Lazy loading utility hook
+const useLazyLoading = () => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  
+  const setRef = useCallback((node) => {
+    if (node) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsIntersecting(true);
+            observer.disconnect();
+          }
+        },
+        { rootMargin: '50px' }
+      );
+      observer.observe(node);
+    }
+  }, []);
+  
+  return [isIntersecting, setRef];
+};
 
 function App() {
   // Modal state for certificate popup
@@ -250,7 +280,16 @@ function App() {
         {/* Left: Main Profile Image (Color) */}
         <div className="flex-1 flex justify-center md:justify-end md:pr-4 mb-8 md:mb-0">
           <div className="relative">
-            <img src={mainProfile} alt="Profile" className="w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-cover rounded-full border-4 border-yellow-400 shadow-2xl bg-[#181824] transition-all duration-300" style={{objectPosition: 'center 20%'}} />
+            <img 
+              src={mainProfile} 
+              alt="Profile" 
+              width="448" 
+              height="448" 
+              loading="eager"
+              fetchPriority="high"
+              className="w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-cover rounded-full border-4 border-yellow-400 shadow-2xl bg-[#181824] transition-all duration-300" 
+              style={{objectPosition: 'center 20%'}} 
+            />
             <div className="absolute -top-6 -left-6 sm:-top-8 sm:-left-8 w-12 h-12 sm:w-20 sm:h-20 bg-yellow-400 rounded-full z-0 opacity-90" />
           </div>
         </div>
@@ -401,7 +440,10 @@ function App() {
                   <img
                     src={c.image}
                     alt={c.title}
+                    width="320"
+                    height="240"
                     loading="lazy"
+                    decoding="async"
                     className="rounded-lg shadow-md max-w-xs w-full object-contain group-hover:scale-105 transition-transform duration-200 cursor-zoom-in border-2 border-yellow-400/30"
                   />
                 </button>
@@ -443,6 +485,7 @@ function App() {
                 src={modalImg}
                 alt={modalAlt}
                 loading="lazy"
+                decoding="async"
                 className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824] border-2 border-yellow-400/30"
                 style={{boxShadow: '0 8px 32px 0 rgba(0,0,0,0.5)'}}
               />

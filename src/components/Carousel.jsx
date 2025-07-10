@@ -62,6 +62,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
               src={images[idx].src}
               alt={images[idx].alt || ''}
               loading="lazy"
+              decoding="async"
               className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-lg shadow-md select-none"}
               draggable="false"
               style={{cursor: 'zoom-in'}}
@@ -125,6 +126,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
                 src={images[idx].src}
                 alt={images[idx].alt || ''}
                 loading="lazy"
+                decoding="async"
                 className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824]"
                 style={{boxShadow: '0 8px 32px 0 rgba(0,0,0,0.5)'}}
               />
