@@ -46,6 +46,18 @@ import eat_rai_dee_project9_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee
 // Importing the Carousel component
 import Carousel from './components/Carousel.jsx';
 
+// Importing BeyondHana project images
+import beyondhana_1 from './assets/beyondhana/beyondhana_1.png';
+import beyondhana_2 from './assets/beyondhana/beyondhana_2.png';
+import beyondhana_3 from './assets/beyondhana/beyondhana_3.png';
+import beyondhana_4 from './assets/beyondhana/beyondhana_4.png';
+import beyondhana_5 from './assets/beyondhana/beyondhana_5.png';
+import beyondhana_6 from './assets/beyondhana/beyondhana_6.png';
+import beyondhana_7 from './assets/beyondhana/beyondhana_7.png';
+import beyondhana_8 from './assets/beyondhana/beyondhana_8.png';
+
+// Importing video for BeyondHana project
+import beyondhana_video from './assets/beyondhana/beyondhana_video.mp4';
 
 // portfolio website images
 import portfolio_1 from './assets/portfolio_web/portfolio_web_1.png';
@@ -127,6 +139,41 @@ const PROJECTS = [
     role: 'Role : Developer (with GitHub Copilot assistance)',
     isPrototype: false,
   },
+  {
+    title: 'CupCraft Café Management System',
+    images: [
+      { src: 'https://github.com/user-attachments/assets/2263413f-0b04-4a32-84e0-6c72a25aca11', alt: 'CupCraft Admin Login Page' },
+      { src: 'https://github.com/user-attachments/assets/cc2d3545-e14c-4bc9-8ffd-1d79fbb20be3', alt: 'CupCraft Order & Inventory Management' },
+      { src: 'https://github.com/user-attachments/assets/1d9230e7-f2f1-402f-adff-ecec866d6772', alt: 'CupCraft Order Details' },
+      { src: 'https://github.com/user-attachments/assets/febcd33d-f679-40a7-8650-06ed1a4f7cfb', alt: 'CupCraft Receipt Print' },
+      { src: 'https://github.com/user-attachments/assets/c1370c22-081a-4e22-b970-25d0b7b30c6c', alt: 'CupCraft Dashboard Analytics' },
+      { src: 'https://github.com/user-attachments/assets/7b524ed4-e0f5-4a80-a829-185020b7cc1c', alt: 'CupCraft Sales Records' },
+    ],
+    link: 'https://beconet.github.io/CUPCRAFT_PROJECT/login_page.html',
+    desc: 'Front-end café management system for order, sales, and analytics. Features admin login, order/inventory management, dashboard analytics, and sales records.',
+    role: 'Role : UX/UI Designer',
+    github: 'https://github.com/Beconet/CUPCRAFT_PROJECT',
+    isPrototype: false,
+
+  },
+  {
+    title: 'BeyondHana',
+    images: [
+      { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
+      { src: beyondhana_1, alt: 'BeyondHana Main Menu' },
+      { src: beyondhana_2, alt: 'BeyondHana Gameplay' },
+      { src: beyondhana_3, alt: 'BeyondHana Story Scene' },
+      { src: beyondhana_4, alt: 'BeyondHana Character Select' },
+      { src: beyondhana_5, alt: 'BeyondHana Dialogue' },
+      { src: beyondhana_6, alt: 'BeyondHana Choices' },
+      { src: beyondhana_7, alt: 'BeyondHana Ending' },
+      { src: beyondhana_8, alt: 'BeyondHana Credits' },
+    ],
+    desc: 'Visual Novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
+    role: 'Role : Main Developer & UX/UI Designer ',
+    github: 'https://github.com/etsuwithtea/BeyondHana',
+    isPrototype: false,
+  },
 ];
 
 const CERTIFICATES = [
@@ -170,8 +217,6 @@ function App() {
     document.body.style.overflow = '';
   };
 
-
-  // Helper: ปิด modal certificate ถ้ามีการเปิด modal อื่น (เช่น modal ใน Carousel)
   const handleAnyModalOpen = () => {
     if (modalOpen) closeModal();
   };
@@ -184,7 +229,6 @@ function App() {
           <span className="font-bold text-2xl tracking-tight text-white select-none">ETSU<span className="text-yellow-400">.</span></span>
         </div>
         <ul className="flex flex-wrap gap-4 sm:gap-8 text-gray-200 text-base font-medium">
-          <li><a href="#" className="hover:text-yellow-300 focus:text-yellow-400 transition">Home</a></li>
           <li><a href="#about" className="hover:text-yellow-300 focus:text-yellow-400 transition">About</a></li>
           <li><a href="#skills" className="hover:text-yellow-300 focus:text-yellow-400 transition">Skills</a></li>
           <li><a href="#certificate" className="hover:text-yellow-300 focus:text-yellow-400 transition">Certificate</a></li>
@@ -357,6 +401,7 @@ function App() {
                   <img
                     src={c.image}
                     alt={c.title}
+                    loading="lazy"
                     className="rounded-lg shadow-md max-w-xs w-full object-contain group-hover:scale-105 transition-transform duration-200 cursor-zoom-in border-2 border-yellow-400/30"
                   />
                 </button>
@@ -397,6 +442,7 @@ function App() {
               <img
                 src={modalImg}
                 alt={modalAlt}
+                loading="lazy"
                 className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824] border-2 border-yellow-400/30"
                 style={{boxShadow: '0 8px 32px 0 rgba(0,0,0,0.5)'}}
               />
@@ -439,10 +485,17 @@ function App() {
                     <span className="font-semibold text-white text-lg mb-1">{p.title}</span>
                     <span className="text-gray-400 text-sm mb-1">{p.desc}</span>
                     <span className="text-xs text-white font-medium mb-1">{p.role}</span>
-                    <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium mt-1 hover:underline hover:text-yellow-300 focus:text-yellow-400 transition">View Figma Prototype →</a>
+                    {/* Show Figma link if available and not CupCraft or BeyondHana */}
+                    {p.title !== 'CupCraft Café Management System' && p.title !== 'BeyondHana' && (
+                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium mt-1 hover:underline hover:text-yellow-300 focus:text-yellow-400 transition">View Figma Prototype →</a>
+                    )}
                     {/* Show website link for ETSU Portfolio Website project */}
                     {p.title === 'ETSU Portfolio Website' && (
                       <a href="https://etsuwithtea.github.io/etsu-portfolio/" target="_blank" rel="noopener noreferrer" className="text-green-400 text-sm font-medium mt-1 hover:underline hover:text-green-300 focus:text-green-400 transition">View Website →</a>
+                    )}
+                    {/* Show website link for CupCraft project */}
+                    {p.title === 'CupCraft Café Management System' && (
+                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-green-400 text-sm font-medium mt-1 hover:underline hover:text-green-300 focus:text-green-400 transition">View Website →</a>
                     )}
                     {p.github && (
                       <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-blue-400 text-sm font-medium mt-1 hover:underline hover:text-blue-300 focus:text-blue-400 transition">View Source Code (GitHub) →</a>
@@ -547,7 +600,7 @@ function App() {
         aria-label="Back to Top"
       >
         Back to Top
-        <span className="inline-block w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-yellow-400 flex items-center justify-center bg-[#181824]">
+        <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-yellow-400 flex items-center justify-center bg-[#181824]">
           <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 13V7M10 7L6 11M10 7L14 11" stroke="#FFD600" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
