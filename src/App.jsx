@@ -1,37 +1,131 @@
 import './index.css';
+import { useState } from 'react';
 
+// Importing images and assets
 import mainProfile from './assets/mainprofile.jpg';
 
-import certificateCoursera from './assets/certificate_coursera.png';
-import certificateCybersecurity from './assets/certificate-cybersecurity.png';
+// Importing certificates
+import certificateCoursera from './assets/certificates/certificate_coursera.png';
+import certificateCybersecurity from './assets/certificates/certificate-cybersecurity.png';
 
-import { useState } from 'react';
+// ecommerce project images
+import ecom_project1 from './assets/ecommerce/prototype_cloth_e_commerce_1.png';
+import ecom_project2 from './assets/ecommerce/prototype_cloth_e_commerce_2.png';
+import ecom_project3 from './assets/ecommerce/prototype_cloth_e_commerce_3.png';
+import ecom_project4 from './assets/ecommerce/prototype_cloth_e_commerce_4.png';
+import ecom_project5 from './assets/ecommerce/prototype_cloth_e_commerce_5.png';
+import ecom_project6 from './assets/ecommerce/prototype_cloth_e_commerce_6.png';
+import ecom_project7 from './assets/ecommerce/prototype_cloth_e_commerce_7.png';
+
+// eat rai dee project images
+import eat_rai_dee_project1 from './assets/eat_rai_dee/eat_rai_dee_1.png';
+import eat_rai_dee_project2 from './assets/eat_rai_dee/eat_rai_dee_2.png';
+import eat_rai_dee_project3 from './assets/eat_rai_dee/eat_rai_dee_3.png';
+import eat_rai_dee_project4 from './assets/eat_rai_dee/eat_rai_dee_4.png';
+import eat_rai_dee_project5 from './assets/eat_rai_dee/eat_rai_dee_5.png';
+import eat_rai_dee_project6 from './assets/eat_rai_dee/eat_rai_dee_6.png';
+import eat_rai_dee_project7 from './assets/eat_rai_dee/eat_rai_dee_7.png';
+import eat_rai_dee_project8 from './assets/eat_rai_dee/eat_rai_dee_8.png';
+import eat_rai_dee_project9 from './assets/eat_rai_dee/eat_rai_dee_9.png';
+import eat_rai_dee_project10 from './assets/eat_rai_dee/eat_rai_dee_10.png';
+
+// Importing video for Eat Rai Dee project
+import eat_rai_dee_video from './assets/eat_rai_dee/eat_rai_dee_video.mp4';
+
+// Importing mobile versions of Eat Rai Dee project images
+import eat_rai_dee_project1_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_1_mobile.png';
+import eat_rai_dee_project2_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_2_mobile.png';
+import eat_rai_dee_project3_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_3_mobile.png';
+import eat_rai_dee_project4_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_4_mobile.png';
+import eat_rai_dee_project5_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_5_mobile.png';
+import eat_rai_dee_project6_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_6_mobile.png';
+import eat_rai_dee_project7_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_7_mobile.png';
+import eat_rai_dee_project8_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_8_mobile.png';
+import eat_rai_dee_project9_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_9_mobile.png';
+
+// Importing the Carousel component
+import Carousel from './components/Carousel.jsx';
+
+
+// portfolio website images
+import portfolio_1 from './assets/portfolio_web/portfolio_web_1.png';
+import portfolio_2 from './assets/portfolio_web/portfolio_web_2.png';
+import portfolio_3 from './assets/portfolio_web/portfolio_web_3.png';
+import portfolio_4 from './assets/portfolio_web/portfolio_web_4.png';
 
 const SOCIALS = [
   { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/etsuwithtea/' },
   { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/etsuwithtea' },
   { name: 'GitHub', icon: 'github', url: 'https://github.com/etsuwithtea' },
 ];
-
-
-import ecom_project1 from './assets/prototype_cloth_e_commerce_1.png';
-import ecom_project2 from './assets/prototype_cloth_e_commerce_2.png';
-import ecom_project3 from './assets/prototype_cloth_e_commerce_3.png';
-import ecom_project4 from './assets/prototype_cloth_e_commerce_4.png';
-import ecom_project5 from './assets/prototype_cloth_e_commerce_5.png';
-import ecom_project6 from './assets/prototype_cloth_e_commerce_6.png';
-import ecom_project7 from './assets/prototype_cloth_e_commerce_7.png';
-
-import Carousel from './components/Carousel.jsx';
-
 const PROJECTS = [
   {
     title: 'Cloth E-Commerce',
-    images: [ecom_project1, ecom_project2, ecom_project3, ecom_project4, ecom_project5, ecom_project6, ecom_project7],
+    images: [
+      { src: ecom_project1, alt: 'Picture 1' },
+      { src: ecom_project2, alt: 'Picture 2' },
+      { src: ecom_project3, alt: 'Picture 3' },
+      { src: ecom_project4, alt: 'Picture 4' },
+      { src: ecom_project5, alt: 'Picture 5' },
+      { src: ecom_project6, alt: 'Picture 6' },
+      { src: ecom_project7, alt: 'Picture 7' },
+    ],
     link: 'https://www.figma.com/proto/F0KR84V7gLRwX2bZKg8XA1/Cloth--E-Commerce?node-id=37-3&p=f&t=knOFLvcgd9f9wzZp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=37%3A3',
     desc: 'My first UX/UI project — an e-commerce app prototype designed in Figma while learning the basics of user-centered design.',
     role: 'Role : UX/UI Designer',
     isPrototype: true,
+  },
+  {
+    title: 'Eat Rai Dee',
+    images: [
+      { type: 'video', src: eat_rai_dee_video, alt: 'Promo Video' },
+      { src: eat_rai_dee_project1, alt: 'Picture 1' },
+      { src: eat_rai_dee_project2, alt: 'Picture 2' },
+      { src: eat_rai_dee_project3, alt: 'Picture 3' },
+      { src: eat_rai_dee_project4, alt: 'Picture 4' },
+      { src: eat_rai_dee_project5, alt: 'Picture 5' },
+      { src: eat_rai_dee_project6, alt: 'Picture 6' },
+      { src: eat_rai_dee_project7, alt: 'Picture 7' },
+      { src: eat_rai_dee_project8, alt: 'Picture 8' },
+      { src: eat_rai_dee_project9, alt: 'Picture 9' },
+      { src: eat_rai_dee_project10, alt: 'Picture 10' },
+    ],
+    link: 'https://www.figma.com/proto/sPzqtp8LxBSMteANT87PAQ/Eat-%E0%B9%84%E0%B8%A3-%E0%B8%94%E0%B8%B5?node-id=205-2034&t=ilVwoi93Evp4Nvz4-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=205%3A2034&show-proto-sidebar=1',
+    github: 'https://github.com/Jabiby7561/Eatraidee',
+    desc: 'Eat Rai Dee is a UX/UI and development project aimed at helping users decide what to eat when they have no idea. Designed in Figma and developed in Java using Apache NetBeans, this was my first project where I learned and applied Object-Oriented Programming (OOP). The application randomly suggests food options and displays the result on a kiosk screen. I was responsible for both the user interface design and the core programming logic.',
+    role: 'Role : UX/UI Designer & Main Developer (Java, Apache NetBeans)',
+    isPrototype: true,
+  },
+  {
+    title: 'Eat Rai Dee (Mobile)',
+    images: [
+      { src: eat_rai_dee_project1_mobile, alt: 'Picture 1' },
+      { src: eat_rai_dee_project2_mobile, alt: 'Picture 2' },
+      { src: eat_rai_dee_project3_mobile, alt: 'Picture 3' },
+      { src: eat_rai_dee_project4_mobile, alt: 'Picture 4' },
+      { src: eat_rai_dee_project5_mobile, alt: 'Picture 5' },
+      { src: eat_rai_dee_project6_mobile, alt: 'Picture 6' },
+      { src: eat_rai_dee_project7_mobile, alt: 'Picture 7' },
+      { src: eat_rai_dee_project8_mobile, alt: 'Picture 8' },
+      { src: eat_rai_dee_project9_mobile, alt: 'Picture 9' },
+    ],
+    link: 'https://www.figma.com/proto/sPzqtp8LxBSMteANT87PAQ/Eat-%E0%B9%84%E0%B8%A3-%E0%B8%94%E0%B8%B5?node-id=1-819&p=f&t=QaQyWpbEImXOp4x4-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A228&show-proto-sidebar=1',
+    desc: 'Eat Rai Dee (Mobile) is a Figma prototype for a mobile app version of the Eat Rai Dee project. This version focuses on a modern, user-friendly mobile experience for helping users decide what to eat. The design emphasizes intuitive navigation, playful visuals, and quick interactions tailored for mobile users. (Prototype only, no source code)',
+    role: 'Role : UX/UI Designer',
+    isPrototype: true,
+  },
+  {
+    title: 'ETSU Portfolio Website',
+    images: [
+      { src: portfolio_1, alt: 'Picture 1' },
+      { src: portfolio_2, alt: 'Picture 2' },
+      { src: portfolio_3, alt: 'Picture 3' },
+      { src: portfolio_4, alt: 'Picture 4' },
+    ],
+    link: 'https://etsuwithtea.github.io/etsu-portfolio/',
+    desc: 'Personal portfolio website built with React + Vite, styled with Tailwind CSS, and hosted on GitHub Pages. Designed and developed to showcase my projects, skills, and certificates in a modern, responsive layout.',
+    role: 'Role : Developer (with GitHub Copilot assistance)',
+    isPrototype: false,
   },
 ];
 
@@ -56,9 +150,16 @@ function App() {
   const [modalImg, setModalImg] = useState(null);
   const [modalAlt, setModalAlt] = useState('');
 
-  const openModal = (img, alt) => {
+  // openModal: set alt text for modal only (show 'Promo Video' for video, otherwise show 'Picture X' if index is known)
+  const openModal = (img, alt, type, idx) => {
+    let displayAlt = alt;
+    if (type === 'video') {
+      displayAlt = 'Promo Video';
+    } else if (typeof idx === 'number') {
+      displayAlt = `Picture ${idx + 1}`;
+    }
     setModalImg(img);
-    setModalAlt(alt);
+    setModalAlt(displayAlt);
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -69,19 +170,25 @@ function App() {
     document.body.style.overflow = '';
   };
 
+
+  // Helper: ปิด modal certificate ถ้ามีการเปิด modal อื่น (เช่น modal ใน Carousel)
+  const handleAnyModalOpen = () => {
+    if (modalOpen) closeModal();
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a0a0f] via-[#181824] to-[#101014] text-gray-100 font-sans flex flex-col items-center">
+    <div className="min-h-screen bg-gradient-to-br from-[#101014] via-[#181824] to-[#232336] text-gray-100 font-sans flex flex-col items-center">
       {/* Navbar */}
-      <nav className="w-full max-w-6xl mx-auto flex flex-wrap items-center justify-between px-4 sm:px-6 py-4 sm:py-5 bg-[#181824]/90 backdrop-blur-md sticky top-0 z-50 rounded-b-2xl border-b border-[#232336] shadow-lg">
+      <nav className="w-full max-w-6xl mx-auto flex flex-wrap items-center justify-between px-4 sm:px-6 py-4 sm:py-5 bg-[#181824]/95 backdrop-blur-md sticky top-0 z-50 rounded-b-2xl border-b border-yellow-400/30 shadow-lg">
         <div className="flex items-center gap-2">
           <span className="font-bold text-2xl tracking-tight text-white select-none">ETSU<span className="text-yellow-400">.</span></span>
         </div>
         <ul className="flex flex-wrap gap-4 sm:gap-8 text-gray-200 text-base font-medium">
-          <li><a href="#" className="hover:text-yellow-400 transition">Home</a></li>
-          <li><a href="#about" className="hover:text-yellow-400 transition">About</a></li>
-          <li><a href="#skills" className="hover:text-yellow-400 transition">Skills</a></li>
-          <li><a href="#certificate" className="hover:text-yellow-400 transition">Certificate</a></li>
-          <li><a href="#project" className="hover:text-yellow-400 transition" onClick={e => {
+          <li><a href="#" className="hover:text-yellow-300 focus:text-yellow-400 transition">Home</a></li>
+          <li><a href="#about" className="hover:text-yellow-300 focus:text-yellow-400 transition">About</a></li>
+          <li><a href="#skills" className="hover:text-yellow-300 focus:text-yellow-400 transition">Skills</a></li>
+          <li><a href="#certificate" className="hover:text-yellow-300 focus:text-yellow-400 transition">Certificate</a></li>
+          <li><a href="#project" className="hover:text-yellow-300 focus:text-yellow-400 transition" onClick={e => {
             e.preventDefault();
             const el = document.getElementById('project');
             if (el) {
@@ -90,7 +197,7 @@ function App() {
               window.scrollTo({ top: y, behavior: 'smooth' });
             }
           }}>Project</a></li>
-          <li><a href="#contact" className="hover:text-yellow-400 transition">Contact</a></li>
+          <li><a href="#contact" className="hover:text-yellow-300 focus:text-yellow-400 transition">Contact</a></li>
         </ul>
       </nav>
 
@@ -99,7 +206,7 @@ function App() {
         {/* Left: Main Profile Image (Color) */}
         <div className="flex-1 flex justify-center md:justify-end md:pr-4 mb-8 md:mb-0">
           <div className="relative">
-            <img src={mainProfile} alt="Profile" className="w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-cover rounded-full border-4 border-yellow-400 shadow-2xl bg-[#232336] transition-all duration-300" style={{objectPosition: 'center 20%'}} />
+            <img src={mainProfile} alt="Profile" className="w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] object-cover rounded-full border-4 border-yellow-400 shadow-2xl bg-[#181824] transition-all duration-300" style={{objectPosition: 'center 20%'}} />
             <div className="absolute -top-6 -left-6 sm:-top-8 sm:-left-8 w-12 h-12 sm:w-20 sm:h-20 bg-yellow-400 rounded-full z-0 opacity-90" />
           </div>
         </div>
@@ -134,14 +241,14 @@ function App() {
             ))}
           </div>
           <div className="flex gap-4">
-            <a href="#contact" className="px-6 py-3 rounded-full bg-yellow-400 text-[#181824] font-semibold shadow hover:bg-yellow-300 transition">Contact</a>
-            <a href="#portfolio" className="px-6 py-3 rounded-full border border-yellow-400 text-yellow-400 font-semibold hover:bg-yellow-400 hover:text-[#181824] transition">Portfolio</a>
+            <a href="#contact" className="px-6 py-3 rounded-full bg-yellow-400 text-[#181824] font-semibold shadow hover:bg-yellow-300 hover:text-[#181824] focus:ring-2 focus:ring-yellow-400 transition">Contact</a>
+            <a href="#portfolio" className="px-6 py-3 rounded-full border-2 border-yellow-400 text-yellow-400 font-semibold hover:bg-yellow-400 hover:text-[#181824] focus:ring-2 focus:ring-yellow-400 transition">Portfolio</a>
           </div>
         </div>
       </section>
 
       {/* Education Section */}
-      <section id="education" className="w-full max-w-4xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4 bg-[#181824] rounded-2xl shadow-lg border border-[#232336] relative mt-4">
+      <section id="education" className="w-full max-w-4xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4 bg-[#181824] rounded-2xl shadow-lg border-2 border-yellow-400/20 relative mt-4">
         {/* Background */}
         <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
           <div className="w-full h-full bg-gradient-to-br from-[#232336] via-[#181824] to-[#101014] opacity-90" />
@@ -176,7 +283,7 @@ function App() {
                   <span className="font-bold text-lg md:text-xl text-white">University</span>
                   <div className="text-gray-400 text-sm md:text-base mt-1">2022 – Present</div>
                   <div className="font-semibold text-base md:text-lg text-yellow-300 mt-1">Bangkok University</div>
-                  <div className="text-gray-400 text-sm md:text-base mt-1">Bachelor of Science in Computer Science</div>
+                  <div className="text-gray-400 text-sm md:text-base mt-1">School of Information Technology and Innovation - Computer Science</div>
                 </div>
               </div>
             </div>
@@ -188,7 +295,13 @@ function App() {
       <div className="h-8 sm:h-12 md:h-16" />
 
       {/* Skills Section */}
-      <section id="skills" className="scroll-mt-32 w-full max-w-4xl mx-auto bg-[#181824] rounded-2xl shadow-lg p-4 sm:p-8 md:p-10 mt-4 flex flex-col items-center border border-[#232336]">
+      <section id="skills" className="scroll-mt-32 w-full max-w-4xl mx-auto bg-[#181824] rounded-2xl shadow-lg p-4 sm:p-8 md:p-10 mt-4 flex flex-col items-center border-2 border-yellow-400/20 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
+          <div className="w-full h-full bg-gradient-to-br from-[#232336] via-[#181824] to-[#101014] opacity-90" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-32 bg-yellow-400/10 blur-2xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-1/3 h-24 bg-yellow-400/10 blur-2xl rounded-full" />
+        </div>
+        <div className="relative z-10 w-full flex flex-col items-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-yellow-400 text-center mb-8 md:mb-10">Skills</h2>
         <div className="w-full flex flex-col md:flex-row gap-6 md:gap-0">
           {/* Tech Stacks */}
@@ -216,16 +329,23 @@ function App() {
             </ul>
           </div>
         </div>
+        </div>
       </section>
 
 
       {/* Certificate Section */}
-      <section id="certificate" className="w-full max-w-3xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4">
+      <section id="certificate" className="w-full max-w-4xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4">
         <h2 className="text-center text-xl sm:text-2xl font-bold text-yellow-400 mb-8 md:mb-10">Certificate</h2>
-        <div className="flex flex-col items-center gap-8">
+        <div className="flex flex-col md:flex-row items-center md:items-stretch gap-8 w-full">
           {CERTIFICATES.map((c, i) => (
-            <div key={c.title} className="bg-[#232336] rounded-2xl shadow-lg p-4 sm:p-8 flex flex-col md:flex-row items-center border border-[#232336] hover:border-yellow-400 transition w-full">
-              <div className="flex-shrink-0 w-full md:w-1/2 flex justify-center mb-4 md:mb-0">
+            <div key={c.title} className="bg-[#181824] rounded-2xl shadow-lg p-4 sm:p-8 flex flex-col md:flex-col items-center border-2 border-yellow-400/20 hover:border-yellow-400/80 transition w-full md:w-1/2 max-w-full relative overflow-hidden">
+              <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
+                <div className="w-full h-full bg-gradient-to-br from-[#232336] via-[#181824] to-[#101014] opacity-90" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-32 bg-yellow-400/10 blur-2xl rounded-full" />
+                <div className="absolute bottom-0 right-0 w-1/3 h-24 bg-yellow-400/10 blur-2xl rounded-full" />
+              </div>
+              <div className="relative z-10 w-full flex flex-col items-center">
+              <div className="flex-shrink-0 w-full flex justify-center mb-4">
                 {/* Popup trigger: click image to open modal */}
                 <button
                   type="button"
@@ -237,18 +357,19 @@ function App() {
                   <img
                     src={c.image}
                     alt={c.title}
-                    className="rounded-lg shadow-md max-w-xs w-full object-contain group-hover:scale-105 transition-transform duration-200 cursor-zoom-in"
+                    className="rounded-lg shadow-md max-w-xs w-full object-contain group-hover:scale-105 transition-transform duration-200 cursor-zoom-in border-2 border-yellow-400/30"
                   />
                 </button>
               </div>
-              <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left md:pl-8">
+              <div className="flex-1 flex flex-col items-center md:items-center text-center md:text-center md:pl-0">
                 <span className="text-lg font-semibold text-white mb-2">{c.title}</span>
                 <span className="text-gray-400 text-sm mb-2">{c.desc}</span>
                 {c.link ? (
-                  <a href={c.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium hover:underline">Verify Certificate</a>
+                  <a href={c.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium hover:underline hover:text-yellow-300 focus:text-yellow-400 transition">Verify Certificate</a>
                 ) : (
                   <span className="text-gray-500 text-sm font-medium italic select-none">No verification link</span>
                 )}
+              </div>
               </div>
             </div>
           ))}
@@ -256,7 +377,7 @@ function App() {
         {/* Modal Popup for certificate image */}
         {modalOpen && (
           <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm animate-fadein"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fadein"
             onClick={closeModal}
             aria-modal="true"
             role="dialog"
@@ -267,7 +388,7 @@ function App() {
             >
               <button
                 onClick={closeModal}
-                className="absolute top-2 right-2 bg-[#232336] text-gray-200 hover:text-yellow-400 rounded-full p-2 shadow-lg focus:outline-none z-10"
+                className="absolute top-2 right-2 bg-[#232336] text-gray-200 hover:text-yellow-400 focus:text-yellow-300 rounded-full p-2 shadow-lg focus:outline-none z-10 border-2 border-yellow-400/30"
                 aria-label="Close"
                 type="button"
               >
@@ -276,7 +397,7 @@ function App() {
               <img
                 src={modalImg}
                 alt={modalAlt}
-                className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824]"
+                className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824] border-2 border-yellow-400/30"
                 style={{boxShadow: '0 8px 32px 0 rgba(0,0,0,0.5)'}}
               />
               <div className="mt-4 text-center text-white text-base font-semibold max-w-lg w-full truncate">{modalAlt}</div>
@@ -285,23 +406,53 @@ function App() {
         )}
       </section>
 
-      {/* Project Section with Carousel */}
-      <section id="project" className="w-full max-w-6xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4">
-        <h2 className="text-center text-xl sm:text-2xl font-bold text-yellow-400 mb-8 md:mb-10">Project</h2>
-        {PROJECTS.map((p, i) => (
-          <div key={i} className="bg-[#232336] rounded-2xl shadow-lg p-6 flex flex-col md:flex-row items-center border border-[#232336] hover:border-yellow-400 transition mb-8">
-            <div className="flex-1 flex justify-center items-center mb-6 md:mb-0">
-              {/* Let images keep their natural aspect ratio and size, max out at container */}
-              <Carousel images={p.images} link={p.link} title={p.title} imgClassName="max-h-[420px] w-auto max-w-full object-contain" />
-            </div>
-            <div className="flex-1 flex flex-col items-start md:pl-8">
-              <span className="font-semibold text-white text-lg mb-1">{p.title}</span>
-              <span className="text-gray-400 text-sm mb-1">{p.desc}</span>
-              <span className="text-xs text-white font-medium mb-1">{p.role} · Prototype</span>
-              <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium mt-1 hover:underline">View Figma Prototype →</a>
-            </div>
+      {/* Project Section with Carousel and Video (if available) */}
+      <section id="project" className="w-full flex justify-center py-10 sm:py-14 md:py-16 px-2 sm:px-4">
+        <div className="w-full max-w-6xl flex flex-col items-center">
+          <h2 className="text-center text-xl sm:text-2xl font-bold text-yellow-400 mb-8 md:mb-10">Project</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full justify-items-center">
+            {PROJECTS.map((p, i) => (
+              <div
+                key={i}
+                className="bg-[#181824] rounded-2xl shadow-lg flex flex-col items-center justify-center border-2 border-yellow-400/20 hover:border-yellow-400/80 transition w-full max-w-xl relative overflow-hidden py-8 px-6 h-full min-h-[520px] mt-16"
+              >
+                <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
+                  <div className="w-full h-full bg-gradient-to-br from-[#232336] via-[#181824] to-[#101014] opacity-90" />
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-32 bg-yellow-400/10 blur-2xl rounded-full" />
+                  <div className="absolute bottom-0 right-0 w-1/3 h-24 bg-yellow-400/10 blur-2xl rounded-full" />
+                </div>
+                <div className="relative z-10 w-full flex flex-col items-center h-full">
+                  <div className="flex flex-col items-center justify-center gap-4 mb-6 w-full">
+                    <Carousel
+                      images={p.images}
+                      link={p.link}
+                      title={p.title}
+                      imgClassName="max-h-[420px] w-auto max-w-full object-contain"
+                      onAnyModalOpen={handleAnyModalOpen}
+                      onImageClick={(imgObj, idx) => {
+                        // ส่ง alt เดิม (ถ้ามี) ไปที่ modal เหมือนก่อนแก้
+                        openModal(imgObj.src, imgObj.alt, imgObj.type, idx);
+                      }}
+                    />
+                  </div>
+                  <div className="flex flex-col items-center text-center w-full">
+                    <span className="font-semibold text-white text-lg mb-1">{p.title}</span>
+                    <span className="text-gray-400 text-sm mb-1">{p.desc}</span>
+                    <span className="text-xs text-white font-medium mb-1">{p.role}</span>
+                    <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium mt-1 hover:underline hover:text-yellow-300 focus:text-yellow-400 transition">View Figma Prototype →</a>
+                    {/* Show website link for ETSU Portfolio Website project */}
+                    {p.title === 'ETSU Portfolio Website' && (
+                      <a href="https://etsuwithtea.github.io/etsu-portfolio/" target="_blank" rel="noopener noreferrer" className="text-green-400 text-sm font-medium mt-1 hover:underline hover:text-green-300 focus:text-green-400 transition">View Website →</a>
+                    )}
+                    {p.github && (
+                      <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-blue-400 text-sm font-medium mt-1 hover:underline hover:text-blue-300 focus:text-blue-400 transition">View Source Code (GitHub) →</a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </section>
 
 
@@ -313,7 +464,13 @@ function App() {
           <span className="inline-block w-16 h-1 bg-yellow-400 rounded-full mb-2" />
           <span className="text-lg text-white font-semibold tracking-wide">Get in Touch</span>
         </div>
-        <div className="bg-[#232336] rounded-2xl shadow-lg p-6 sm:p-8 md:p-10 border border-[#232336] flex flex-col gap-6">
+        <div className="bg-[#181824] rounded-2xl shadow-lg p-6 sm:p-8 md:p-10 border-2 border-yellow-400/20 flex flex-col gap-6 relative overflow-hidden">
+          <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
+            <div className="w-full h-full bg-gradient-to-br from-[#232336] via-[#181824] to-[#101014] opacity-90" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-32 bg-yellow-400/10 blur-2xl rounded-full" />
+            <div className="absolute bottom-0 right-0 w-1/3 h-24 bg-yellow-400/10 blur-2xl rounded-full" />
+          </div>
+          <div className="relative z-10 w-full flex flex-col gap-6">
           <div className="flex items-center gap-4">
             <svg className="text-yellow-400" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
             <div>
@@ -362,15 +519,16 @@ function App() {
               <div className="text-gray-300">navapan.suth@bumail.net</div>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="w-full bg-[#181824] border-t border-[#232336] py-6 sm:py-8 mt-8">
+      <footer className="w-full bg-[#181824] border-t-2 border-yellow-400/20 py-6 sm:py-8 mt-8">
         <div className="max-w-4xl mx-auto flex flex-col items-center px-2 sm:px-4">
           <div className="flex gap-4 mb-2">
             {SOCIALS.map(s => (
-              <a key={s.name} href={s.url} className="text-gray-400 hover:text-yellow-400 text-2xl transition" aria-label={s.name} target="_blank" rel="noopener noreferrer">
+              <a key={s.name} href={s.url} className="text-gray-400 hover:text-yellow-400 focus:text-yellow-300 text-2xl transition" aria-label={s.name} target="_blank" rel="noopener noreferrer">
                 <span className="sr-only">{s.name}</span>
                 {s.icon === 'instagram' && <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17" cy="7" r="1.5"/></svg>}
                 {s.icon === 'facebook' && <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>}
@@ -385,7 +543,7 @@ function App() {
       {/* Back to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 flex items-center gap-2 px-4 py-2 sm:px-5 rounded-full border-2 border-[#232336] bg-[#181824] text-gray-200 font-semibold shadow hover:bg-[#232336] hover:text-yellow-400 transition-all z-50 text-sm sm:text-base"
+        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 flex items-center gap-2 px-4 py-2 sm:px-5 rounded-full border-2 border-yellow-400/30 bg-[#181824] text-gray-200 font-semibold shadow hover:bg-[#232336] hover:text-yellow-400 focus:ring-2 focus:ring-yellow-400 transition-all z-50 text-sm sm:text-base"
         aria-label="Back to Top"
       >
         Back to Top
