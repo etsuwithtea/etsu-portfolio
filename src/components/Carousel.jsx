@@ -92,7 +92,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
       {/* Modal Popup for full image or video (rendered with portal) */}
       {modalOpen && createPortal(
         <div
-          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/70 backdrop-blur-sm animate-fadein"
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-transparent animate-fadein"
           onClick={closeModal}
           aria-modal="true"
           role="dialog"
