@@ -72,6 +72,13 @@ import xo_2 from './assets/xo_game/xo_2.png';
 import xo_3 from './assets/xo_game/xo_3.png';
 import xo_4 from './assets/xo_game/xo_4.png';
 
+// importing ihaveticket images
+import ihaveticket_1 from './assets/ihaveticket/ihaveticket_1.png';
+import ihaveticket_2 from './assets/ihaveticket/ihaveticket_2.png';
+import ihaveticket_3 from './assets/ihaveticket/ihaveticket_3.png';
+import ihaveticket_4 from './assets/ihaveticket/ihaveticket_4.png';
+import ihaveticket_5 from './assets/ihaveticket/ihaveticket_5.png';
+
 const SOCIALS = [
   { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/etsuwithtea/' },
   { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/etsuwithtea' },
@@ -94,6 +101,20 @@ const PROJECTS = [
     desc: 'My first UX/UI project — an e-commerce app prototype designed in Figma while learning the basics of user-centered design.',
     role: 'Role : UX/UI Designer',
     isPrototype: true,
+  },
+  {
+    title: 'GUI-based Python Project: "I Have Tickets"',
+    images: [
+      { src: ihaveticket_1, alt: 'I Have Tickets - Main Screen' },
+      { src: ihaveticket_2, alt: 'I Have Tickets - Ticket List' },
+      { src: ihaveticket_3, alt: 'I Have Tickets - Add Ticket' },
+      { src: ihaveticket_4, alt: 'I Have Tickets - Edit Ticket' },
+      { src: ihaveticket_5, alt: 'I Have Tickets - Delete Ticket' },
+    ],
+    desc: 'โปรเจกต์ Python GUI ที่สร้างด้วยไลบรารี customtkinter ทำตอนปี 1 ไม่มีการดึง API มีแต่หน้าแสดงผลและตรรกะในแอปทั้งหมด ฉันเป็น Main Developer ของโปรเจกต์นี้',
+    role: 'Role : Main Developer (Python, customtkinter)',
+    github: 'https://github.com/etsuwithtea/ihavetickets',
+    isPrototype: false,
   },
   {
     title: 'Eat Rai Dee',
@@ -193,6 +214,19 @@ const PROJECTS = [
     desc: 'Interactive XO (Tic Tac Toe) game with multiple board sizes (3x3, 4x4, 5x5) and language switching feature. Built with Vite + React + Tailwind CSS for a smooth and responsive gaming experience.',
     role: 'Role : Developer',
     github: 'https://github.com/etsuwithtea/xo_game',
+    isPrototype: false,
+  },
+  {
+    title: 'GUI-based Python Project: "I Have Tickets"',
+    images: [
+      { src: ihaveticket_1, alt: 'I Have Tickets - Main Screen' },
+      { src: ihaveticket_2, alt: 'I Have Tickets - Ticket List' },
+      { src: ihaveticket_3, alt: 'I Have Tickets - Add Ticket' },
+      { src: ihaveticket_4, alt: 'I Have Tickets - Edit Ticket' },
+      { src: ihaveticket_5, alt: 'I Have Tickets - Delete Ticket' },
+    ],
+    desc: 'A Python GUI project built with the customtkinter library. Created in my first year as a student, this project features a simple ticket management interface with no API integration—just local UI and logic. All screens and interactions are handled within the app.',
+    role: 'Role : Main Developer (Python, customtkinter)',
     isPrototype: false,
   },
 ];
