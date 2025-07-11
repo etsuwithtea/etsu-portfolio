@@ -634,12 +634,13 @@ function App() {
       {/* Modal Popup for certificate image (rendered with portal) */}
       {modalOpen && createPortal(
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-fadeIn"
+          onClick={closeModal}
           aria-modal="true"
           role="dialog"
         >
           <div
-            className="relative max-w-2xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fadeInUp pointer-events-auto"
+            className="relative max-w-2xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fadeInUp"
             onClick={e => e.stopPropagation()}
           >
             <button
