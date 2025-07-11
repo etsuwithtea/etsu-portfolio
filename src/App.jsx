@@ -782,7 +782,7 @@ function App() {
             ))}
           </div>
         </div>
-        <div className="text-center text-xs text-gray-500 mt-4 sm:mt-6">ETSU 2024. All rights reserved.</div>
+        <div className="text-center text-xs text-gray-500 mt-4 sm:mt-6">ETSU 2025. All rights reserved.</div>
       </footer>
 
       {/* Back to Top Button */}
