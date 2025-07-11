@@ -66,11 +66,18 @@ import portfolio_2 from './assets/portfolio_web/portfolio_web_2.png';
 import portfolio_3 from './assets/portfolio_web/portfolio_web_3.png';
 import portfolio_4 from './assets/portfolio_web/portfolio_web_4.png';
 
+// Importing xo game images
+import xo_1 from './assets/xo_game/xo_1.png';
+import xo_2 from './assets/xo_game/xo_2.png';
+import xo_3 from './assets/xo_game/xo_3.png';
+import xo_4 from './assets/xo_game/xo_4.png';
+
 const SOCIALS = [
   { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/etsuwithtea/' },
   { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/etsuwithtea' },
   { name: 'GitHub', icon: 'github', url: 'https://github.com/etsuwithtea' },
 ];
+
 const PROJECTS = [
   {
     title: 'Cloth E-Commerce',
@@ -173,6 +180,19 @@ const PROJECTS = [
     desc: 'Visual Novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
     role: 'Role : Main Developer & UX/UI Designer ',
     github: 'https://github.com/etsuwithtea/BeyondHana',
+    isPrototype: false,
+  },
+  {
+    title: 'mini project xo game (tic tac toe)',
+    images: [
+      { src: xo_1, alt: 'XO Game 3x3 Board' },
+      { src: xo_2, alt: 'XO Game 4x4 Board' },
+      { src: xo_3, alt: 'XO Game 5x5 Board' },
+      { src: xo_4, alt: 'XO Game Thai Interface' },
+    ],
+    desc: 'Interactive XO (Tic Tac Toe) game with multiple board sizes (3x3, 4x4, 5x5) and language switching feature. Built with Vite + React + Tailwind CSS for a smooth and responsive gaming experience.',
+    role: 'Role : Developer',
+    github: 'https://github.com/etsuwithtea/xo_game',
     isPrototype: false,
   },
 ];
@@ -441,7 +461,7 @@ function App() {
           </div>
           <div className={`flex gap-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-900' : 'opacity-0'}`}>
             <a href="#contact" className="px-6 py-3 rounded-full bg-yellow-400 text-[#181824] font-semibold shadow hover:bg-yellow-300 hover:text-[#181824] focus:ring-2 focus:ring-yellow-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg">Contact</a>
-            <a href="#portfolio" className="px-6 py-3 rounded-full border-2 border-yellow-400 text-yellow-400 font-semibold hover:bg-yellow-400 hover:text-[#181824] focus:ring-2 focus:ring-yellow-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg">Portfolio</a>
+            <a href="#project" className="px-6 py-3 rounded-full border-2 border-yellow-400 text-yellow-400 font-semibold hover:bg-yellow-400 hover:text-[#181824] focus:ring-2 focus:ring-yellow-400 transition-all duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-lg">Portfolio</a>
           </div>
         </div>
       </section>
@@ -660,7 +680,7 @@ function App() {
                     <span className="font-semibold text-white text-lg mb-1">{p.title}</span>
                     <span className="text-gray-400 text-sm mb-1">{p.desc}</span>
                     <span className="text-xs text-white font-medium mb-1">{p.role}</span>
-                    {p.title !== 'CupCraft Café Management System' && p.title !== 'BeyondHana' && (
+                    {p.title !== 'CupCraft Café Management System' && p.title !== 'BeyondHana' && p.title !== 'mini project xo game (tic tac toe)' && (
                       <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium mt-1 hover:underline hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-105">View Figma Prototype →</a>
                     )}
                     {p.title === 'ETSU Portfolio Website' && (
