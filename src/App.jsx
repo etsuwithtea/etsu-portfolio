@@ -405,19 +405,51 @@ function App() {
           </span>
         </div>
         <ul className={`flex flex-wrap gap-4 sm:gap-8 text-gray-200 text-base font-medium transition-all duration-700 ${isLoaded ? 'animate-fadeInRight delay-500' : 'opacity-0'}`}>
-          <li><a href="#about" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1">About</a></li>
-          <li><a href="#skills" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1">Skills</a></li>
-          <li><a href="#certificate" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1">Certificate</a></li>
+          <li><a href="#about" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1" onClick={e => {
+            e.preventDefault();
+            const el = document.getElementById('about');
+            if (el) {
+              const yOffset = -100;
+              const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }}>About</a></li>
+          <li><a href="#skills" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1" onClick={e => {
+            e.preventDefault();
+            const el = document.getElementById('skills');
+            if (el) {
+              const yOffset = -100;
+              const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }}>Skills</a></li>
+          <li><a href="#certificate" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1" onClick={e => {
+            e.preventDefault();
+            const el = document.getElementById('certificate');
+            if (el) {
+              const yOffset = -100;
+              const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }}>Certificate</a></li>
           <li><a href="#project" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1" onClick={e => {
             e.preventDefault();
             const el = document.getElementById('project');
             if (el) {
-              const yOffset = -100; // adjust this value to match your navbar height
+              const yOffset = -100;
               const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });
             }
           }}>Project</a></li>
-          <li><a href="#contact" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1">Contact</a></li>
+          <li><a href="#contact" className="hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1" onClick={e => {
+            e.preventDefault();
+            const el = document.getElementById('contact');
+            if (el) {
+              const yOffset = -100;
+              const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }}>Contact</a></li>
         </ul>
       </nav>
 
@@ -582,7 +614,7 @@ function App() {
       </section>
 
       {/* Certificate Section */}
-      <section id="certificate" className={`w-full max-w-4xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-300' : 'opacity-0 translate-y-10'}`}>
+      <section id="certificate" className={`scroll-mt-32 w-full max-w-4xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-300' : 'opacity-0 translate-y-10'}`}>
         <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-yellow-400 mb-2 animate-float">Certificate</h2>
         <div className="flex flex-col items-center mb-8">
           <span className="inline-block w-16 h-1 bg-yellow-400 rounded-full mb-2 animate-pulse" />
