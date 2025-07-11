@@ -111,7 +111,7 @@ const PROJECTS = [
       { src: ihaveticket_4, alt: 'I Have Tickets - Edit Ticket' },
       { src: ihaveticket_5, alt: 'I Have Tickets - Delete Ticket' },
     ],
-    desc: 'โปรเจกต์ Python GUI ที่สร้างด้วยไลบรารี customtkinter ทำตอนปี 1 ไม่มีการดึง API มีแต่หน้าแสดงผลและตรรกะในแอปทั้งหมด ฉันเป็น Main Developer ของโปรเจกต์นี้',
+    desc: 'A Python GUI project developed in my first year using the customtkinter library. The application features a simple ticket management interface with no API integration—everything is handled locally within the app. I was responsible for the entire design and development process as the main developer.',
     role: 'Role : Main Developer (Python, customtkinter)',
     github: 'https://github.com/etsuwithtea/ihavetickets',
     isPrototype: false,
@@ -214,19 +214,6 @@ const PROJECTS = [
     desc: 'Interactive XO (Tic Tac Toe) game with multiple board sizes (3x3, 4x4, 5x5) and language switching feature. Built with Vite + React + Tailwind CSS for a smooth and responsive gaming experience.',
     role: 'Role : Developer',
     github: 'https://github.com/etsuwithtea/xo_game',
-    isPrototype: false,
-  },
-  {
-    title: 'GUI-based Python Project: "I Have Tickets"',
-    images: [
-      { src: ihaveticket_1, alt: 'I Have Tickets - Main Screen' },
-      { src: ihaveticket_2, alt: 'I Have Tickets - Ticket List' },
-      { src: ihaveticket_3, alt: 'I Have Tickets - Add Ticket' },
-      { src: ihaveticket_4, alt: 'I Have Tickets - Edit Ticket' },
-      { src: ihaveticket_5, alt: 'I Have Tickets - Delete Ticket' },
-    ],
-    desc: 'A Python GUI project built with the customtkinter library. Created in my first year as a student, this project features a simple ticket management interface with no API integration—just local UI and logic. All screens and interactions are handled within the app.',
-    role: 'Role : Main Developer (Python, customtkinter)',
     isPrototype: false,
   },
 ];
@@ -647,13 +634,12 @@ function App() {
       {/* Modal Popup for certificate image (rendered with portal) */}
       {modalOpen && createPortal(
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-fadeIn"
-          onClick={closeModal}
+          className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none"
           aria-modal="true"
           role="dialog"
         >
           <div
-            className="relative max-w-2xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fadeInUp"
+            className="relative max-w-2xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fadeInUp pointer-events-auto"
             onClick={e => e.stopPropagation()}
           >
             <button
@@ -690,14 +676,15 @@ function App() {
             {PROJECTS.map((p, i) => (
               <div
                 key={i}
-                className={`bg-[#181824] rounded-2xl shadow-lg flex flex-col items-center justify-center border-2 border-yellow-400/20 hover:border-yellow-400/80 transition-all duration-500 w-full max-w-xl relative overflow-hidden py-8 px-6 h-full min-h-[520px] mt-16 hover:scale-105 hover:-translate-y-2 ${aboutVisible ? `animate-fadeInUp delay-${600 + i * 100}` : 'opacity-0'}`}
+                className={`bg-[#181824] rounded-2xl shadow-lg flex flex-col items-center border-2 border-yellow-400/20 hover:border-yellow-400/80 transition-all duration-500 w-full max-w-xl relative overflow-hidden py-8 px-6 h-full min-h-[520px] mt-16 hover:scale-105 hover:-translate-y-2 ${aboutVisible ? `animate-fadeInUp delay-${600 + i * 100}` : 'opacity-0'}`}
+                style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
               >
                 <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
                   <div className="w-full h-full bg-gradient-to-br from-[#232336] via-[#181824] to-[#101014] opacity-90" />
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-32 bg-yellow-400/10 blur-2xl rounded-full" />
                   <div className="absolute bottom-0 right-0 w-1/3 h-24 bg-yellow-400/10 blur-2xl rounded-full" />
                 </div>
-                <div className="relative z-10 w-full flex flex-col items-center h-full">
+                <div className="relative z-10 w-full flex flex-col items-center h-full justify-center">
                   <div className="flex flex-col items-center justify-center gap-4 mb-6 w-full">
                     <Carousel
                       images={p.images}
@@ -710,11 +697,11 @@ function App() {
                       }}
                     />
                   </div>
-                  <div className="flex flex-col items-center text-center w-full">
+                  <div className="flex flex-col items-center text-center w-full justify-center">
                     <span className="font-semibold text-white text-lg mb-1">{p.title}</span>
                     <span className="text-gray-400 text-sm mb-1">{p.desc}</span>
                     <span className="text-xs text-white font-medium mb-1">{p.role}</span>
-                    {p.title !== 'CupCraft Café Management System' && p.title !== 'BeyondHana' && p.title !== 'mini project xo game (tic tac toe)' && (
+                    {p.link && p.link.includes('figma.com') && (
                       <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium mt-1 hover:underline hover:text-yellow-300 focus:text-yellow-400 transition-all duration-300 hover:scale-105">View Figma Prototype →</a>
                     )}
                     {p.title === 'ETSU Portfolio Website' && (
