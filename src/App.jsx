@@ -8,6 +8,7 @@ import mainProfile from './assets/mainprofile.jpg';
 // Importing certificates
 import certificateCoursera from './assets/certificates/certificate_coursera.png';
 import certificateCybersecurity from './assets/certificates/certificate-cybersecurity.png';
+import certificateCyberawareness from './assets/certificates/certificate_cyber_awareness.png';
 
 // ecommerce project images
 import ecom_project1 from './assets/ecommerce/prototype_cloth_e_commerce_1.png';
@@ -229,6 +230,12 @@ const CERTIFICATES = [
     title: 'Basic Cybersecurity',
     desc: 'MOOC NCSA Thailand · Aug 31, 2024',
     image: certificateCybersecurity,
+    link: '', // No verify link
+  },
+  {
+    title: 'Cyber Awareness',
+    desc: 'DGA & TDGA Thailand · Oct 20, 2023',
+    image: certificateCyberawareness,
     link: '', // No verify link
   },
 ];
