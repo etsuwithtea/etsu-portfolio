@@ -485,7 +485,7 @@ function App() {
           </h1>
           <div className="text-base sm:text-lg text-gray-400 mb-6 max-w-md">
             <span className="font-bold text-yellow-400 text-xl">My friends call me est(etsu)</span><br/>
-            <span className="text-gray-400">A Computer Science student who enjoys bringing ideas to life through code and design. I'm passionate about Frontend Development and UX/UI Design, and I love creating digital experiences that are both intuitive and engaging.</span><br/>
+            <span className="text-gray-400">A Computer Science student who enjoys bringing ideas to life through code and design. I'm passionate about Frontend Development , Software Development and UX/UI Design, and I love creating digital experiences that are both intuitive and engaging.</span><br/>
             <span className="block mt-2 text-base text-gray-400">
               I’m always curious about how things work and how to improve them—whether it’s through cleaner code, better design, or a smoother user flow.<br/>
               <br/>
