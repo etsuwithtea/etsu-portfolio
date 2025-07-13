@@ -398,7 +398,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#101014] via-[#181824] to-[#232336] text-gray-100 font-sans flex flex-col items-center">
       {/* Navbar */}
-      <nav className={`w-full max-w-6xl mx-auto flex flex-wrap items-center justify-between px-4 sm:px-6 py-4 sm:py-5 bg-[#181824]/95 backdrop-blur-md sticky top-0 z-50 rounded-b-2xl border-b border-yellow-400/30 shadow-lg transition-all duration-500 ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`}>
+      <nav className={`fixed top-4 left-0 right-0 w-full max-w-6xl mx-auto flex flex-wrap items-center justify-between px-4 sm:px-6 py-4 sm:py-5 bg-[#181824]/95 backdrop-blur-md z-50 rounded-2xl border border-yellow-400/30 shadow-2xl transition-all duration-500 hover:shadow-yellow-400/20 hover:scale-[1.02] animate-float ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`}>
         <div className="flex items-center gap-2">
           <span className={`font-bold text-2xl tracking-tight text-white select-none transition-all duration-700 ${isLoaded ? 'animate-fadeInLeft delay-300' : 'opacity-0'}`}>
             ETSU<span className="text-yellow-400 animate-pulse">.</span>
@@ -409,7 +409,7 @@ function App() {
             e.preventDefault();
             const el = document.getElementById('about');
             if (el) {
-              const yOffset = -100;
+              const yOffset = -120;
               const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });
             }
@@ -418,7 +418,7 @@ function App() {
             e.preventDefault();
             const el = document.getElementById('skills');
             if (el) {
-              const yOffset = -100;
+              const yOffset = -120;
               const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });
             }
@@ -427,7 +427,7 @@ function App() {
             e.preventDefault();
             const el = document.getElementById('certificate');
             if (el) {
-              const yOffset = -100;
+              const yOffset = -120;
               const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });
             }
@@ -436,7 +436,7 @@ function App() {
             e.preventDefault();
             const el = document.getElementById('project');
             if (el) {
-              const yOffset = -100;
+              const yOffset = -120;
               const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });
             }
@@ -445,7 +445,7 @@ function App() {
             e.preventDefault();
             const el = document.getElementById('contact');
             if (el) {
-              const yOffset = -100;
+              const yOffset = -120;
               const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });
             }
@@ -454,7 +454,7 @@ function App() {
       </nav>
 
       {/* About Section */}
-      <section ref={aboutRef} id="about" className={`w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 pt-24 pb-12 md:pb-16 px-4 transition-all duration-1000 ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
+      <section ref={aboutRef} id="about" className={`w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 pt-32 pb-12 md:pb-16 px-4 transition-all duration-1000 ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
         {/* Left: Main Profile Image (Color) */}
         <div className={`flex-1 flex justify-center md:justify-end md:pr-4 mb-8 md:mb-0 transition-all duration-1000 ${aboutVisible ? 'animate-fadeInLeft delay-300' : 'opacity-0 -translate-x-10'}`}>
           <div className="relative group">
