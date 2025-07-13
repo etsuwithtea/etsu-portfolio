@@ -233,10 +233,10 @@ const CERTIFICATES = [
     link: '', // No verify link
   },
   {
-    title: 'Cyber Awareness',
+    title: 'Cybersecrurity Awareness',
     desc: 'DGA & TDGA Thailand · Oct 20, 2023',
     image: certificateCyberawareness,
-    link: '', // No verify link
+    link: 'https://portal.apps.go.th/edoc/signature/verify?DocumentID=ce7f5759-c6a9-48ce-8ddd-93ef706e801b',
   },
 ];
 
@@ -621,22 +621,23 @@ function App() {
       </section>
 
       {/* Certificate Section */}
-      <section id="certificate" className={`scroll-mt-32 w-full max-w-4xl mx-auto py-10 sm:py-14 md:py-16 px-2 sm:px-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-300' : 'opacity-0 translate-y-10'}`}>
-        <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-yellow-400 mb-2 animate-float">Certificate</h2>
-        <div className="flex flex-col items-center mb-8">
-          <span className="inline-block w-16 h-1 bg-yellow-400 rounded-full mb-2 animate-pulse" />
-          <span className="text-lg text-white font-semibold tracking-wide">My Achievements</span>
-        </div>
-        <div className="flex flex-col md:flex-row items-center md:items-stretch gap-8 w-full">
-          {CERTIFICATES.map((c, i) => (
-            <div key={c.title} className={`bg-[#181824] rounded-2xl shadow-lg p-4 sm:p-8 flex flex-col md:flex-col items-center border-2 border-yellow-400/20 hover:border-yellow-400/80 transition-all duration-500 w-full md:w-1/2 max-w-full relative overflow-hidden hover:scale-105 hover:-translate-y-2 ${aboutVisible ? `animate-fadeInUp delay-${500 + i * 200}` : 'opacity-0'}`}>
+      <section id="certificate" className={`scroll-mt-32 w-full flex justify-center py-10 sm:py-14 md:py-16 px-2 sm:px-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-300' : 'opacity-0 translate-y-10'}`}>
+        <div className="w-full max-w-6xl flex flex-col items-center">
+          <h2 className="text-center text-3xl sm:text-4xl font-extrabold text-yellow-400 mb-2 animate-float">Certificate</h2>
+          <div className="flex flex-col items-center mb-8">
+            <span className="inline-block w-16 h-1 bg-yellow-400 rounded-full mb-2 animate-pulse" />
+            <span className="text-lg text-white font-semibold tracking-wide">My Achievements</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full justify-items-center">
+            {CERTIFICATES.map((c, i) => (
+              <div key={c.title} className={`bg-[#181824] rounded-2xl shadow-lg p-4 sm:p-8 flex flex-col items-center justify-center border-2 border-yellow-400/20 hover:border-yellow-400/80 transition-all duration-500 w-full max-w-xl relative overflow-hidden hover:scale-105 hover:-translate-y-2 h-full min-h-[520px] mt-16 ${aboutVisible ? `animate-fadeInUp delay-${500 + i * 200}` : 'opacity-0'}`}>
               <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
                 <div className="w-full h-full bg-gradient-to-br from-[#232336] via-[#181824] to-[#101014] opacity-90" />
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-32 bg-yellow-400/10 blur-2xl rounded-full" />
                 <div className="absolute bottom-0 right-0 w-1/3 h-24 bg-yellow-400/10 blur-2xl rounded-full" />
               </div>
-              <div className="relative z-10 w-full flex flex-col items-center">
-                <div className="flex-shrink-0 w-full flex justify-center mb-4">
+              <div className="relative z-10 w-full flex flex-col items-center justify-center h-full">
+                <div className="flex-shrink-0 w-full flex justify-center mb-6">
                   <button
                     type="button"
                     onClick={() => openModal(c.image, c.title)}
@@ -647,19 +648,19 @@ function App() {
                     <img
                       src={c.image}
                       alt={c.title}
-                      width="320"
-                      height="240"
+                      width="280"
+                      height="200"
                       loading="lazy"
                       decoding="async"
-                      className="rounded-lg shadow-md max-w-xs w-full object-contain group-hover:scale-105 transition-transform duration-200 cursor-zoom-in border-2 border-yellow-400/30 hover:border-yellow-400/80"
+                      className="rounded-lg shadow-md w-full max-w-[280px] object-contain group-hover:scale-105 transition-transform duration-200 cursor-zoom-in border-2 border-yellow-400/30 hover:border-yellow-400/80"
                     />
                   </button>
                 </div>
-                <div className="flex-1 flex flex-col items-center md:items-center text-center md:text-center md:pl-0">
-                  <span className="text-lg font-semibold text-white mb-2">{c.title}</span>
-                  <span className="text-gray-400 text-sm mb-2">{c.desc}</span>
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <span className="text-lg font-semibold text-white leading-tight">{c.title}</span>
+                  <span className="text-gray-400 text-sm">{c.desc}</span>
                   {c.link ? (
-                    <a href={c.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium hover:underline hover:text-yellow-300 focus:text-yellow-400 transition">Verify Certificate</a>
+                    <a href={c.link} target="_blank" rel="noopener noreferrer" className="text-yellow-400 text-sm font-medium hover:underline hover:text-yellow-300 focus:text-yellow-400 transition mt-2">Verify Certificate</a>
                   ) : (
                     <span className="text-gray-500 text-sm font-medium italic select-none">No verification link</span>
                   )}
@@ -667,6 +668,7 @@ function App() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </section>
 
