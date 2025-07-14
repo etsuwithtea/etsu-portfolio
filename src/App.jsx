@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 
 // Importing images and assets
 import mainProfile from './assets/mainprofile.jpg';
+import mainProfile_2 from './assets/mainprofile_2.jpg';
 
 // Importing certificates
 import certificateCoursera from './assets/certificates/certificate_coursera.png';
@@ -374,6 +375,10 @@ function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   
+  // Profile image rotation state
+  const [currentProfileImage, setCurrentProfileImage] = useState(0);
+  const profileImages = [mainProfile, mainProfile_2];
+  
   // About section is always visible (above the fold)
   const aboutVisible = true;
   const aboutRef = useRef();
@@ -420,6 +425,15 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Profile image rotation effect
+  useEffect(() => {
+    const imageRotationInterval = setInterval(() => {
+      setCurrentProfileImage(prev => (prev + 1) % profileImages.length);
+    }, 3000); // เปลี่ยนรูปทุก 4 วินาที
+
+    return () => clearInterval(imageRotationInterval);
+  }, [profileImages.length]);
 
   // Toggle dark mode
   const toggleDarkMode = () => {
@@ -687,13 +701,13 @@ function App() {
               
               {/* Profile Image */}
               <img 
-                src={mainProfile} 
+                src={profileImages[currentProfileImage]} 
                 alt="Profile" 
                 width="400" 
                 height="400" 
                 loading="eager"
                 fetchPriority="high"
-                className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] object-cover rounded-2xl sm:rounded-3xl shadow-2xl bg-white hover-lift-soft animate-float border-2 sm:border-4 border-white/40 group-hover:scale-105 transition-all duration-500 relative z-10" 
+                className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] object-cover rounded-2xl sm:rounded-3xl shadow-2xl bg-white hover-lift-soft animate-float border-2 sm:border-4 border-white/40 group-hover:scale-105 transition-all duration-1000 relative z-10" 
                 style={{objectPosition: 'center 20%'}} 
               />
               
