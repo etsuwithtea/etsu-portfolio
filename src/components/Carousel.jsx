@@ -1,10 +1,10 @@
 // Minimal, dependency-free carousel for React
-// Usage: <Carousel images={[...]} />
+// Usage: <Carousel images={        <button
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 // Added imgClassName prop for custom image sizing
-export default function Carousel({ images, altPrefix = '', className = '', imgClassName, onAnyModalOpen }) {
+export default function Carousel({ images, altPrefix = '', className = '', imgClassName, onAnyModalOpen, onImageClick }) {
   const [idx, setIdx] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const total = images.length;
@@ -18,6 +18,11 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
 
   // เมื่อจะเปิด modal ให้แจ้ง parent (App) เพื่อปิด modal อื่นก่อน
   const openModal = () => {
+    if (onImageClick) {
+      // ส่งข้อมูลของ image/video ปัจจุบันไปยัง parent
+      onImageClick(images[idx], idx);
+      return;
+    }
     if (onAnyModalOpen) onAnyModalOpen();
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
@@ -34,11 +39,11 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
         <button
           onClick={prev}
           aria-label="Previous image"
-          className="absolute left-0 z-10 p-2 bg-[#181824]/80 hover:bg-yellow-400/80 text-yellow-400 hover:text-[#181824] rounded-full shadow transition disabled:opacity-40 disabled:pointer-events-none"
+          className="absolute left-2 z-10 p-3 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none hover:scale-110"
           disabled={total <= 1}
           type="button"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
         {/* Render video or image as a button to open modal */}
         <button
@@ -52,8 +57,8 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
             <video
               src={images[idx].src}
               controls
-              className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-lg shadow-md select-none"}
-              style={{ background: '#181824', cursor: 'zoom-in' }}
+              className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-xl shadow-sm select-none"}
+              style={{ background: '#f9fafb', cursor: 'zoom-in' }}
             >
               Your browser does not support the video tag.
             </video>
@@ -63,7 +68,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
               alt={images[idx].alt || ''}
               loading="lazy"
               decoding="async"
-              className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-lg shadow-md select-none"}
+              className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-xl shadow-sm select-none"}
               draggable="false"
               style={{cursor: 'zoom-in'}}
             />
@@ -72,11 +77,11 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
         <button
           onClick={next}
           aria-label="Next image"
-          className="absolute right-0 z-10 p-2 bg-[#181824]/80 hover:bg-yellow-400/80 text-yellow-400 hover:text-[#181824] rounded-full shadow transition disabled:opacity-40 disabled:pointer-events-none"
+          className="absolute right-2 z-10 p-3 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none hover:scale-110"
           disabled={total <= 1}
           type="button"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 6l6 6-6 6"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
       <div className="flex gap-2 mt-4 justify-center">
@@ -85,7 +90,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
             key={i}
             onClick={() => setIdx(i)}
             aria-label={`Go to image ${i+1}`}
-            className={`w-3 h-3 rounded-full border-2 ${i === idx ? 'bg-yellow-400 border-yellow-400' : 'bg-[#232336] border-gray-500'} transition`}
+            className={`w-2 h-2 rounded-full ${i === idx ? 'bg-gray-600' : 'bg-gray-300'} transition`}
             type="button"
           />
         ))}
@@ -94,44 +99,47 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
       {/* Modal Popup for full image or video (rendered with portal) */}
       {modalOpen && createPortal(
         <div
-          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/90 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn"
           onClick={closeModal}
           aria-modal="true"
           role="dialog"
         >
           <div
-            className="relative max-w-2xl w-[90vw] max-h-[90vh] flex flex-col items-center"
+            className="relative max-w-4xl w-[90vw] max-h-[90vh] flex flex-col items-center"
             onClick={e => e.stopPropagation()}
           >
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 bg-[#232336] text-gray-200 hover:text-yellow-400 rounded-full p-2 shadow-lg focus:outline-none z-10"
+              className="absolute top-2 right-2 bg-red-600/90 hover:bg-red-600 text-white rounded-full p-3 shadow-xl focus:outline-none z-10 border border-red-400/50 hover:border-red-300 transition-all duration-300 hover:scale-110"
               aria-label="Close"
               type="button"
             >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             {isVideo(images[idx]) ? (
-              <video
-                src={images[idx].src}
-                controls
-                autoPlay
-                className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824]"
-                style={{boxShadow: '0 8px 32px 0 rgba(0,0,0,0.5)'}}
-              >
-                Your browser does not support the video tag.
-              </video>
+              <div className="rounded-xl overflow-hidden" style={{borderRadius: '0.75rem'}}>
+                <video
+                  src={images[idx].src}
+                  controls
+                  autoPlay
+                  className="w-full h-auto object-contain max-h-[80vh]"
+                  style={{maxWidth: '100%', display: 'block'}}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             ) : (
-              <img
-                src={images[idx].src}
-                alt={images[idx].alt || ''}
-                loading="lazy"
-                decoding="async"
-                className="rounded-lg shadow-2xl w-full h-auto object-contain max-h-[80vh] bg-[#181824]"
-                style={{boxShadow: '0 8px 32px 0 rgba(0,0,0,0.5)'}}
-              />
+              <div className="rounded-xl overflow-hidden" style={{borderRadius: '0.75rem'}}>
+                <img
+                  src={images[idx].src}
+                  alt={images[idx].alt || ''}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain max-h-[80vh]"
+                  style={{display: 'block'}}
+                />
+              </div>
             )}
-            <div className="mt-4 text-center text-white text-base font-semibold max-w-lg w-full truncate">{images[idx].alt || ''}</div>
           </div>
         </div>,
         document.body
