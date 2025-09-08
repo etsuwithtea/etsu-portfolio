@@ -19,8 +19,8 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
   // เมื่อจะเปิด modal ให้แจ้ง parent (App) เพื่อปิด modal อื่นก่อน
   const openModal = () => {
     if (onImageClick) {
-      // ส่งข้อมูลของ image/video ปัจจุบันไปยัง parent
-      onImageClick(images[idx], idx);
+      // ส่งข้อมูลของ image/video ปัจจุบันไปยัง parent พร้อมกับ array ทั้งหมด
+      onImageClick(images[idx], idx, images);
       return;
     }
     if (onAnyModalOpen) onAnyModalOpen();

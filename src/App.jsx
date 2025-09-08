@@ -59,6 +59,14 @@ import beyondhana_6 from './assets/beyondhana/beyondhana_6.png';
 import beyondhana_7 from './assets/beyondhana/beyondhana_7.png';
 import beyondhana_8 from './assets/beyondhana/beyondhana_8.png';
 
+
+// Importing egat project images
+import egat1 from './assets/egat/egat1.png';
+import egat2 from './assets/egat/egat2.png';
+import egat3 from './assets/egat/egat3.png';
+import egat4 from './assets/egat/egat4.png';
+import egat5 from './assets/egat/egat5.png';
+
 // Importing video for BeyondHana project
 import beyondhana_video from './assets/beyondhana/beyondhana_video.mp4';
 
@@ -88,6 +96,87 @@ const SOCIALS = [
 ];
 
 const PROJECTS = [
+  {
+    title: 'Power Transformer Management for EGAT',
+    images: [
+      { src: egat1, alt: 'EGAT Power Transformer Dashboard' },
+      { src: egat2, alt: 'EGAT Data Visualization' },
+      { src: egat3, alt: 'EGAT Collection Overview' },
+      { src: egat4, alt: 'EGAT Query Optimization' },
+      { src: egat5, alt: 'EGAT Reporting' },
+    ],
+    desc: 'Remade EGAT’s power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from over 100+ MongoDB collections for centralized management. Optimized database queries for fast access and reliability, supporting thousands of transformer records. Improved operational efficiency and user satisfaction with advanced insights and reporting.',
+    role: 'Role : Fullstack Developer (Next.js, MongoDB)',
+    isPrototype: false,
+  },
+  {
+    title: 'BeyondHana',
+    images: [
+      { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
+      { src: beyondhana_1, alt: 'BeyondHana Title' },
+      { src: beyondhana_2, alt: 'BeyondHana Main Menu' },
+      { src: beyondhana_3, alt: 'BeyondHana Start Game' },
+      { src: beyondhana_4, alt: 'BeyondHana Load Game' },
+      { src: beyondhana_5, alt: 'BeyondHana Setting' },
+      { src: beyondhana_6, alt: 'BeyondHana Story' },
+      { src: beyondhana_7, alt: 'BeyondHana Choice' },
+      { src: beyondhana_8, alt: 'BeyondHana Ending' },
+    ],
+    desc: 'Visual Novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
+    role: 'Role : Main Developer & UX/UI Designer ',
+    github: 'https://github.com/etsuwithtea/BeyondHana',
+    isPrototype: false,
+  },
+  {
+    title: 'Eat Rai Dee',
+    images: [
+      { type: 'video', src: eat_rai_dee_video, alt: '' },
+      { src: eat_rai_dee_project1, alt: '' },
+      { src: eat_rai_dee_project2, alt: '' },
+      { src: eat_rai_dee_project3, alt: '' },
+      { src: eat_rai_dee_project4, alt: '' },
+      { src: eat_rai_dee_project5, alt: '' },
+      { src: eat_rai_dee_project6, alt: '' },
+      { src: eat_rai_dee_project7, alt: '' },
+      { src: eat_rai_dee_project8, alt: '' },
+      { src: eat_rai_dee_project9, alt: '' },
+      { src: eat_rai_dee_project10, alt: '' },
+    ],
+    link: 'https://www.figma.com/proto/sPzqtp8LxBSMteANT87PAQ/Eat-%E0%B9%84%E0%B8%A3-%E0%B8%94%E0%B8%B5?node-id=205-2034&t=ilVwoi93Evp4Nvz4-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=205%3A2034&show-proto-sidebar=1',
+    github: 'https://github.com/Jabiby7561/Eatraidee',
+    desc: 'Eat Rai Dee is a UX/UI and development project aimed at helping users decide what to eat when they have no idea. Designed in Figma and developed in Java using Apache NetBeans, this was my first project where I learned and applied Object-Oriented Programming (OOP). The application randomly suggests food options and displays the result on a kiosk screen. I was responsible for both the user interface design and the core programming logic.',
+    role: 'Role : UX/UI Designer & Main Developer (Java, Apache NetBeans)',
+    isPrototype: true,
+  },
+  {
+    title: 'ETSU Portfolio Website',
+    images: [
+      { src: portfolio_1, alt: '' },
+      { src: portfolio_2, alt: '' },
+      { src: portfolio_3, alt: '' },
+      { src: portfolio_4, alt: '' },
+    ],
+    link: 'https://etsuwithtea.github.io/etsu-portfolio/',
+    desc: 'Personal portfolio website built with React + Vite, styled with Tailwind CSS, and hosted on GitHub Pages. Designed and developed to showcase my projects, skills, and certificates in a modern, responsive layout.',
+    role: 'Role : Developer (with GitHub Copilot assistance)',
+    isPrototype: false,
+  },
+  {
+    title: 'CupCraft Café Management System',
+    images: [
+      { src: 'https://github.com/user-attachments/assets/2263413f-0b04-4a32-84e0-6c72a25aca11', alt: 'CupCraft Admin Login Page' },
+      { src: 'https://github.com/user-attachments/assets/cc2d3545-e14c-4bc9-8ffd-1d79fbb20be3', alt: 'CupCraft Order & Inventory Management' },
+      { src: 'https://github.com/user-attachments/assets/1d9230e7-f2f1-402f-adff-ecec866d6772', alt: 'CupCraft Order Details' },
+      { src: 'https://github.com/user-attachments/assets/febcd33d-f679-40a7-8650-06ed1a4f7cfb', alt: 'CupCraft Receipt Print' },
+      { src: 'https://github.com/user-attachments/assets/c1370c22-081a-4e22-b970-25d0b7b30c6c', alt: 'CupCraft Dashboard Analytics' },
+      { src: 'https://github.com/user-attachments/assets/7b524ed4-e0f5-4a80-a829-185020b7cc1c', alt: 'CupCraft Sales Records' },
+    ],
+    link: 'https://beconet.github.io/CUPCRAFT_PROJECT/login_page.html',
+    desc: 'Front-end café management system for order, sales, and analytics. Features admin login, order/inventory management, dashboard analytics, and sales records.',
+    role: 'Role : UX/UI Designer',
+    github: 'https://github.com/Beconet/CUPCRAFT_PROJECT',
+    isPrototype: false,
+  },
   {
     title: 'Cloth E-Commerce',
     images: [
@@ -119,27 +208,6 @@ const PROJECTS = [
     isPrototype: false,
   },
   {
-    title: 'Eat Rai Dee',
-    images: [
-      { type: 'video', src: eat_rai_dee_video, alt: '' },
-      { src: eat_rai_dee_project1, alt: '' },
-      { src: eat_rai_dee_project2, alt: '' },
-      { src: eat_rai_dee_project3, alt: '' },
-      { src: eat_rai_dee_project4, alt: '' },
-      { src: eat_rai_dee_project5, alt: '' },
-      { src: eat_rai_dee_project6, alt: '' },
-      { src: eat_rai_dee_project7, alt: '' },
-      { src: eat_rai_dee_project8, alt: '' },
-      { src: eat_rai_dee_project9, alt: '' },
-      { src: eat_rai_dee_project10, alt: '' },
-    ],
-    link: 'https://www.figma.com/proto/sPzqtp8LxBSMteANT87PAQ/Eat-%E0%B9%84%E0%B8%A3-%E0%B8%94%E0%B8%B5?node-id=205-2034&t=ilVwoi93Evp4Nvz4-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=205%3A2034&show-proto-sidebar=1',
-    github: 'https://github.com/Jabiby7561/Eatraidee',
-    desc: 'Eat Rai Dee is a UX/UI and development project aimed at helping users decide what to eat when they have no idea. Designed in Figma and developed in Java using Apache NetBeans, this was my first project where I learned and applied Object-Oriented Programming (OOP). The application randomly suggests food options and displays the result on a kiosk screen. I was responsible for both the user interface design and the core programming logic.',
-    role: 'Role : UX/UI Designer & Main Developer (Java, Apache NetBeans)',
-    isPrototype: true,
-  },
-  {
     title: 'Eat Rai Dee (Mobile)',
     images: [
       { src: eat_rai_dee_project1_mobile, alt: '' },
@@ -156,54 +224,6 @@ const PROJECTS = [
     desc: 'Eat Rai Dee (Mobile) is a Figma prototype for a mobile app version of the Eat Rai Dee project. This version focuses on a modern, user-friendly mobile experience for helping users decide what to eat. The design emphasizes intuitive navigation, playful visuals, and quick interactions tailored for mobile users. (Prototype only, no source code)',
     role: 'Role : UX/UI Designer',
     isPrototype: true,
-  },
-  {
-    title: 'ETSU Portfolio Website',
-    images: [
-      { src: portfolio_1, alt: '' },
-      { src: portfolio_2, alt: '' },
-      { src: portfolio_3, alt: '' },
-      { src: portfolio_4, alt: '' },
-    ],
-    link: 'https://etsuwithtea.github.io/etsu-portfolio/',
-    desc: 'Personal portfolio website built with React + Vite, styled with Tailwind CSS, and hosted on GitHub Pages. Designed and developed to showcase my projects, skills, and certificates in a modern, responsive layout.',
-    role: 'Role : Developer (with GitHub Copilot assistance)',
-    isPrototype: false,
-  },
-  {
-    title: 'CupCraft Café Management System',
-    images: [
-      { src: 'https://github.com/user-attachments/assets/2263413f-0b04-4a32-84e0-6c72a25aca11', alt: 'CupCraft Admin Login Page' },
-      { src: 'https://github.com/user-attachments/assets/cc2d3545-e14c-4bc9-8ffd-1d79fbb20be3', alt: 'CupCraft Order & Inventory Management' },
-      { src: 'https://github.com/user-attachments/assets/1d9230e7-f2f1-402f-adff-ecec866d6772', alt: 'CupCraft Order Details' },
-      { src: 'https://github.com/user-attachments/assets/febcd33d-f679-40a7-8650-06ed1a4f7cfb', alt: 'CupCraft Receipt Print' },
-      { src: 'https://github.com/user-attachments/assets/c1370c22-081a-4e22-b970-25d0b7b30c6c', alt: 'CupCraft Dashboard Analytics' },
-      { src: 'https://github.com/user-attachments/assets/7b524ed4-e0f5-4a80-a829-185020b7cc1c', alt: 'CupCraft Sales Records' },
-    ],
-    link: 'https://beconet.github.io/CUPCRAFT_PROJECT/login_page.html',
-    desc: 'Front-end café management system for order, sales, and analytics. Features admin login, order/inventory management, dashboard analytics, and sales records.',
-    role: 'Role : UX/UI Designer',
-    github: 'https://github.com/Beconet/CUPCRAFT_PROJECT',
-    isPrototype: false,
-
-  },
-  {
-    title: 'BeyondHana',
-    images: [
-      { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
-      { src: beyondhana_1, alt: 'BeyondHana Title' },
-      { src: beyondhana_2, alt: 'BeyondHana Main Menu' },
-      { src: beyondhana_3, alt: 'BeyondHana Start Game' },
-      { src: beyondhana_4, alt: 'BeyondHana Load Game' },
-      { src: beyondhana_5, alt: 'BeyondHana Setting' },
-      { src: beyondhana_6, alt: 'BeyondHana Story' },
-      { src: beyondhana_7, alt: 'BeyondHana Choice' },
-      { src: beyondhana_8, alt: 'BeyondHana Ending' },
-    ],
-    desc: 'Visual Novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
-    role: 'Role : Main Developer & UX/UI Designer ',
-    github: 'https://github.com/etsuwithtea/BeyondHana',
-    isPrototype: false,
   },
   {
     title: 'mini project xo game (tic tac toe)',
@@ -231,22 +251,22 @@ const CERTIFICATES = [
     title: 'Basic Cybersecurity',
     desc: 'MOOC NCSA Thailand · Aug 31, 2024',
     image: certificateCybersecurity,
-    link: '', // No verify link
+    link: '', 
   },
   {
-    title: 'Cybersecruity Awareness',
+    title: 'Cybersecurity Awareness',
     desc: 'DGA & TDGA Thailand · Oct 20, 2023',
     image: certificateCyberawareness,
     link: 'https://portal.apps.go.th/edoc/signature/verify?DocumentID=ce7f5759-c6a9-48ce-8ddd-93ef706e801b',
   },
 ];
 
-// Image optimization utility
+
 const optimizeImage = (src, width, height) => {
   if (typeof src === 'string' && src.startsWith('http')) {
-    return src; // External images, return as-is
+    return src; 
   }
-  return src; // Local images handled by Vite
+  return src; 
 };
 
 // Lazy loading utility hook
@@ -359,6 +379,8 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState(null);
   const [modalAlt, setModalAlt] = useState('');
+  const [modalImages, setModalImages] = useState([]);
+  const [currentModalIndex, setCurrentModalIndex] = useState(0);
 
   // Dark mode state
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -463,16 +485,39 @@ function App() {
     setIsMobileMenuOpen(false); // Close mobile menu after navigation
   };
   // openModal: set alt text for modal only (no title displayed)
-  const openModal = (img, alt, type, idx) => {
+  const openModal = (img, alt, type, idx, allImages = []) => {
+    setModalImages(allImages.length > 0 ? allImages : [{ src: img, alt: alt || '' }]);
+    setCurrentModalIndex(idx || 0);
     setModalImg(img);
     setModalAlt(''); // No title displayed in modal
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
+
+  const nextImage = () => {
+    if (modalImages.length > 1) {
+      const nextIndex = (currentModalIndex + 1) % modalImages.length;
+      setCurrentModalIndex(nextIndex);
+      const nextImg = modalImages[nextIndex];
+      setModalImg(nextImg.type === 'video' ? nextImg.src : nextImg.src);
+    }
+  };
+
+  const prevImage = () => {
+    if (modalImages.length > 1) {
+      const prevIndex = currentModalIndex === 0 ? modalImages.length - 1 : currentModalIndex - 1;
+      setCurrentModalIndex(prevIndex);
+      const prevImg = modalImages[prevIndex];
+      setModalImg(prevImg.type === 'video' ? prevImg.src : prevImg.src);
+    }
+  };
+
   const closeModal = () => {
     setModalOpen(false);
     setModalImg(null);
     setModalAlt('');
+    setModalImages([]);
+    setCurrentModalIndex(0);
     document.body.style.overflow = '';
   };
 
@@ -923,6 +968,7 @@ function App() {
             className="relative max-w-4xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fadeInUp"
             onClick={e => e.stopPropagation()}
           >
+            {/* Close Button */}
             <button
               onClick={closeModal}
               className="absolute top-2 right-2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-2 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
@@ -931,6 +977,43 @@ function App() {
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
+
+            {/* Previous Button */}
+            {modalImages.length > 1 && (
+              <button
+                onClick={prevImage}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
+                aria-label="Previous image"
+                type="button"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="15,18 9,12 15,6"></polyline>
+                </svg>
+              </button>
+            )}
+
+            {/* Next Button */}
+            {modalImages.length > 1 && (
+              <button
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
+                aria-label="Next image"
+                type="button"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+              </button>
+            )}
+
+            {/* Image Counter */}
+            {modalImages.length > 1 && (
+              <div className="absolute top-2 left-2 bg-black/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm border border-white/20">
+                {currentModalIndex + 1} / {modalImages.length}
+              </div>
+            )}
+
+            {/* Image/Video Content */}
             {modalImg && modalImg.endsWith('.mp4') ? (
               <div className="rounded-xl overflow-hidden" style={{borderRadius: '0.75rem'}}>
                 <video
@@ -978,8 +1061,8 @@ function App() {
                     title={p.title}
                     imgClassName="h-40 sm:h-48 w-full object-cover rounded-lg"
                     onAnyModalOpen={handleAnyModalOpen}
-                    onImageClick={(imgObj, idx) => {
-                      openModal(imgObj.src, imgObj.alt, imgObj.type, idx);
+                    onImageClick={(imgObj, idx, allImages) => {
+                      openModal(imgObj.src, imgObj.alt, imgObj.type, idx, allImages);
                     }}
                   />
                 </div>
