@@ -66,6 +66,8 @@ import egat2 from './assets/egat/egat2.png';
 import egat3 from './assets/egat/egat3.png';
 import egat4 from './assets/egat/egat4.png';
 import egat5 from './assets/egat/egat5.png';
+import egat6 from './assets/egat/egat6.png';
+import egat7 from './assets/egat/egat7.png';
 
 // Importing video for BeyondHana project
 import beyondhana_video from './assets/beyondhana/beyondhana_video.mp4';
@@ -89,6 +91,26 @@ import ihaveticket_3 from './assets/ihaveticket/ihaveticket_3.png';
 import ihaveticket_4 from './assets/ihaveticket/ihaveticket_4.png';
 import ihaveticket_5 from './assets/ihaveticket/ihaveticket_5.png';
 
+// Importing WhoCanEat project images
+import whocaneat_1 from './assets/whocaneat/whocateat_1.png';
+import whocaneat_2 from './assets/whocaneat/whocateat_2.png';
+import whocaneat_3 from './assets/whocaneat/whocateat_3.png';
+import whocaneat_4 from './assets/whocaneat/whocateat_4.png';
+import whocaneat_5 from './assets/whocaneat/whocateat_5.png';
+import whocaneat_6 from './assets/whocaneat/whocateat_6.png';
+import whocaneat_7 from './assets/whocaneat/whocateat_7.png';
+import whocaneat_8 from './assets/whocaneat/whocateat_8.png';
+import whocaneat_9 from './assets/whocaneat/whocateat_9.png';
+import whocaneat_10 from './assets/whocaneat/whocateat_10.png';
+import whocaneat_11 from './assets/whocaneat/whocateat_11.png';
+import whocaneat_12 from './assets/whocaneat/whocateat_12.png';
+
+// Importing gamecompany career project images
+import gamecompany_career1 from './assets/gamecompany_career/gamecompany_career1.png';
+import gamecompany_career2 from './assets/gamecompany_career/gamecompany_career2.png';
+import gamecompany_career3 from './assets/gamecompany_career/gamecompany_career3.png';
+import gamecompany_career4 from './assets/gamecompany_career/gamecompany_career4.png';
+
 const SOCIALS = [
   { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/etsuwithtea/' },
   { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/etsuwithtea' },
@@ -99,15 +121,31 @@ const PROJECTS = [
   {
     title: 'Power Transformer Management for EGAT',
     images: [
-      { src: egat1, alt: 'EGAT Power Transformer Dashboard' },
-      { src: egat2, alt: 'EGAT Data Visualization' },
-      { src: egat3, alt: 'EGAT Collection Overview' },
-      { src: egat4, alt: 'EGAT Query Optimization' },
-      { src: egat5, alt: 'EGAT Reporting' },
+      { src: egat1, alt: 'EGAT Transformer Management Login' },
+      { src: egat2, alt: 'EGAT Transformer Management Dashboard' },
+      { src: egat3, alt: 'EGAT MongoDB Collections Overview' },
+      { src: egat4, alt: 'EGAT Query Performance Optimization' },
+      { src: egat5, alt: 'EGAT Advanced Reporting System' },
+      { src: egat6, alt: 'EGAT User Interface Design' },
+      { src: egat7, alt: 'EGAT Database Management' },
     ],
     desc: 'Remade EGAT’s power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from over 100+ MongoDB collections for centralized management. Optimized database queries for fast access and reliability, supporting thousands of transformer records. Improved operational efficiency and user satisfaction with advanced insights and reporting.',
     role: 'Role : Fullstack Developer (Next.js, MongoDB)',
     isPrototype: false,
+  },
+  {
+    title: 'gamecompany career web',
+    images: [
+      { src: gamecompany_career1, alt: 'Landing page with game company branding' },
+      { src: gamecompany_career2, alt: 'Job detail page' },
+      { src: gamecompany_career3, alt: 'Job apply form' },
+      { src: gamecompany_career4, alt: 'Contact page' },
+    ],
+    desc: 'A playful prototype for a game company career web, designed for fun and developer practice. This project focuses on UI/UX prototyping and is not a production-ready application.',
+    role: 'Role : UX/UI Designer & Frontend Developer',
+    github: 'https://github.com/etsuwithtea/mini_proj1',
+    link: 'https://etsuwithtea.github.io/mini_proj1/',
+    isPrototype: true,
   },
   {
     title: 'BeyondHana',
@@ -176,6 +214,27 @@ const PROJECTS = [
     role: 'Role : UX/UI Designer',
     github: 'https://github.com/Beconet/CUPCRAFT_PROJECT',
     isPrototype: false,
+  },
+  {
+    title: 'WhoCanEat',
+    images: [
+      { src: whocaneat_1, alt: 'WhoCanEat - Home' },
+      { src: whocaneat_2, alt: 'WhoCanEat - Menu' },
+      { src: whocaneat_3, alt: 'WhoCanEat - Product Filter' },
+      { src: whocaneat_4, alt: 'WhoCanEat - Product List' },
+      { src: whocaneat_5, alt: 'WhoCanEat - Grocery Store' },
+      { src: whocaneat_6, alt: 'WhoCanEat - Health Menu' },
+      { src: whocaneat_7, alt: 'WhoCanEat - PharmaFlow' },
+      { src: whocaneat_8, alt: 'WhoCanEat - Deals' },
+      { src: whocaneat_9, alt: 'WhoCanEat - Self Pickup' },
+      { src: whocaneat_10, alt: 'WhoCanEat - Market Analysis' },
+      { src: whocaneat_11, alt: 'WhoCanEat - SWOT' },
+      { src: whocaneat_12, alt: 'WhoCanEat - Financials' },
+    ],
+    link: 'https://www.figma.com/proto/r4kXWcQ0iGvUdnsoxk4BHi/WhoCanEat?node-id=1-2&p=f&t=YTAx9omK1Krnb1Bw-9&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1',
+    desc: `WhoCanEat is a B2B2C e-commerce platform connecting grocery stores with customers, focusing on health and well-being through modern technology.\n\nMission: To develop innovative technology that helps people facing health challenges by enhancing care experiences and improving access to resources.\n\nProduct: A mobile application that saves customers time and money by managing and filtering products, supporting all types of grocery businesses to increase transactions.\n\nTarget Market: Thai customers who want to shop efficiently and conveniently, especially those with limited time.\n\nGoal: To become a partner with grocery stores, retailers, and hospitals nationwide.`,
+    role: 'Role : UX/UI Designer',
+    isPrototype: true,
   },
   {
     title: 'Cloth E-Commerce',
@@ -1068,17 +1127,14 @@ function App() {
                 </div>
                 <div className="flex flex-col flex-grow space-y-2 sm:space-y-3">
                   <h3 className={`font-semibold text-sm sm:text-base leading-tight line-clamp-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{p.title}</h3>
-                  <p className={`text-xs sm:text-sm leading-relaxed flex-grow line-clamp-3 ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>{p.desc}</p>
+                  <div className={`text-xs sm:text-sm leading-relaxed flex-grow ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`} style={{maxHeight:'4.5rem',overflowY:'auto'}}>{p.desc}</div>
                   <div className="pt-1 sm:pt-2">
                     <span className={`inline-block px-2 py-1 rounded text-xs font-medium mb-2 sm:mb-3 border ${isDarkMode ? 'bg-zinc-800 text-zinc-500 border-zinc-700' : 'bg-gray-50 text-gray-400 border-gray-200'}`}>{p.role}</span>
                     <div className="flex flex-col gap-1.5 sm:gap-2">
                       {p.link && p.link.includes('figma.com') && (
                         <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Figma Prototype →</a>
                       )}
-                      {p.title === 'ETSU Portfolio Website' && (
-                        <a href="https://etsuwithtea.github.io/etsu-portfolio/" target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Website →</a>
-                      )}
-                      {p.title === 'CupCraft Café Management System' && (
+                      {p.link && !p.link.includes('figma.com') && (
                         <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Website →</a>
                       )}
                       {p.github && (
@@ -1163,7 +1219,7 @@ function App() {
       {/* Footer */}
       <footer className={`w-full border-t py-6 sm:py-8 mt-12 sm:mt-16 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-gray-50 border-gray-200'}`}>
         <div className="max-w-4xl mx-auto flex flex-col items-center px-4 sm:px-8">
-          <div className={`text-center text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>© 2025 ETSU. All rights reserved.</div>
+          <div className={`text-center text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>© 2025 ETSU. Thx for view My portfolio.</div>
         </div>
       </footer>
 
