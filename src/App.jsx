@@ -119,7 +119,7 @@ const SOCIALS = [
 
 const PROJECTS = [
   {
-    title: 'Power Transformer Management for EGAT',
+    title: 'Power Transformer Management for EGAT (current in progress)',
     images: [
       { src: egat1, alt: 'EGAT Transformer Management Login' },
       { src: egat2, alt: 'EGAT Transformer Management Dashboard' },
