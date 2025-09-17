@@ -926,17 +926,17 @@ function App() {
           
           {/* Personal Info Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8 max-w-lg w-full">
-            <div className={`rounded-lg p-3 sm:p-4 border ${isDarkMode ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm' : 'bg-gray-50 border-gray-200'}`}>
-              <div className={`text-xs sm:text-sm mb-1 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Age</div>
-              <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>21 years old</div>
+            <div className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/80 hover:border-zinc-600/70' : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'}`}>
+              <div className={`text-xs sm:text-sm mb-1 transition-colors duration-300 ${isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : 'text-gray-600 group-hover:text-gray-700'}`}>Age</div>
+              <div className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white group-hover:text-zinc-100' : 'text-gray-900 group-hover:text-black'}`}>21 years old</div>
             </div>
-            <div className={`rounded-lg p-3 sm:p-4 border ${isDarkMode ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm' : 'bg-gray-50 border-gray-200'}`}>
-              <div className={`text-xs sm:text-sm mb-1 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Status</div>
-              <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>4th Year Student</div>
+            <div className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/80 hover:border-zinc-600/70' : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'}`}>
+              <div className={`text-xs sm:text-sm mb-1 transition-colors duration-300 ${isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : 'text-gray-600 group-hover:text-gray-700'}`}>Status</div>
+              <div className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white group-hover:text-zinc-100' : 'text-gray-900 group-hover:text-black'}`}>4th Year Student</div>
             </div>
-            <div className={`rounded-lg p-3 sm:p-4 border ${isDarkMode ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm' : 'bg-gray-50 border-gray-200'}`}>
-              <div className={`text-xs sm:text-sm mb-1 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Interests</div>
-              <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Gaming, Design</div>
+            <div className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/80 hover:border-zinc-600/70' : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'}`}>
+              <div className={`text-xs sm:text-sm mb-1 transition-colors duration-300 ${isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : 'text-gray-600 group-hover:text-gray-700'}`}>Interests</div>
+              <div className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white group-hover:text-zinc-100' : 'text-gray-900 group-hover:text-black'}`}>Gaming, Design</div>
             </div>
           </div>
           
@@ -995,9 +995,9 @@ function App() {
       </section>
 
       {/* Education Section */}
-      <section ref={aboutRef} id="education" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 rounded-xl sm:rounded-2xl border shadow-sm relative mt-12 sm:mt-16 transition-all duration-700 z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
+      <section ref={aboutRef} id="education" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 rounded-xl sm:rounded-2xl border shadow-sm relative mt-12 sm:mt-16 transition-all duration-700 hover-lift-soft hover:shadow-lg z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/60' : 'bg-white border-gray-200 hover:shadow-xl'} ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
         <div className="relative z-10">
-          <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Education</h2>
+          <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Education</h2>
           
           <div className="relative">
             {/* Timeline Line */}
@@ -1005,9 +1005,9 @@ function App() {
             
             <div className="space-y-4 sm:space-y-6">
               {/* University - Current */}
-              <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-700 ${isDarkMode ? 'bg-zinc-800/60 border-zinc-400 backdrop-blur-sm' : 'bg-gray-50 border-gray-900'} ${aboutVisible ? 'animate-fadeInLeft delay-400' : 'opacity-0'}`}>
+              <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-400 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-300' : 'bg-gray-50 border-gray-900 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fadeInLeft delay-400' : 'opacity-0'}`}>
                 {/* Timeline Dot */}
-                <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm ${isDarkMode ? 'bg-zinc-400 border-zinc-800' : 'bg-gray-900 border-white'}`}></div>
+                <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-400 border-zinc-800 group-hover:bg-zinc-300' : 'bg-gray-900 border-white group-hover:bg-black'}`}></div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
                   <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Bangkok University</h3>
                   <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border animate-rainbow-border self-start ${isDarkMode ? 'text-white bg-zinc-900 border-zinc-600' : 'text-gray-900 bg-white border-gray-200'}`}>2022 – Present</span>
@@ -1017,9 +1017,9 @@ function App() {
               </div>
 
               {/* High School */}
-              <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-700 ${isDarkMode ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm' : 'bg-gray-50 border-gray-600'} ${aboutVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
+              <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-400' : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
                 {/* Timeline Dot */}
-                <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm ${isDarkMode ? 'bg-zinc-500 border-zinc-800' : 'bg-gray-600 border-white'}`}></div>
+                <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-500 border-zinc-800 group-hover:bg-zinc-400' : 'bg-gray-600 border-white group-hover:bg-gray-800'}`}></div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
                   <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Thammasat Klongluang Wittayakom School</h3>
                   <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full self-start ${isDarkMode ? 'text-zinc-300 bg-zinc-700' : 'text-gray-600 bg-gray-200'}`}>2019 – 2022</span>
@@ -1037,7 +1037,7 @@ function App() {
         <div className="w-full max-w-6xl flex flex-col items-center">
           <div className={`rounded-2xl sm:rounded-3xl border shadow-sm p-6 sm:p-12 flex flex-col items-center relative overflow-hidden transition-all duration-700 hover-lift-soft z-10 w-full ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'}`}>
             <div className="relative z-10 w-full flex flex-col items-center">
-              <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 animate-bounceIn ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Skills</h2>
+              <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 animate-bounceIn transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Skills</h2>
               <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
                 {/* Languages */}
                 <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
@@ -1157,7 +1157,7 @@ function App() {
       {/* Project Section with Carousel and Video (if available) */}
       <section ref={projectRef} id="project" className={`w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${projectVisible ? 'animate-fadeInUp delay-400' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
-          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Projects</h2>
+          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Projects</h2>
           <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>A collection of my work spanning web development, UX/UI design, and software applications. Each project represents a learning journey and practical application of my skills.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center [&:has(>:nth-child(3n+1):last-child)]:xl:justify-items-center [&:has(>:nth-child(3n+2):last-child)]:xl:justify-items-center">
             {PROJECTS.map((p, i) => (
@@ -1232,7 +1232,7 @@ function App() {
       {/* Certificate Section */}
       <section ref={certificateRef} id="certificate" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${certificateVisible ? 'animate-fadeInUp delay-300' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
-          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Certificates</h2>
+          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Certificates</h2>
           <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Professional certifications and achievements that validate my skills and commitment to continuous learning in technology and cybersecurity.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center [&:has(>:nth-child(3n+1):last-child)]:xl:justify-items-center [&:has(>:nth-child(3n+2):last-child)]:xl:justify-items-center">
             {CERTIFICATES.map((c, i) => (
@@ -1275,7 +1275,7 @@ function App() {
       {/* Activity Section */}
       <section ref={activityRef} id="activity" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${activityVisible ? 'animate-fadeInUp delay-350' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
-          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Activities</h2>
+          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Activities</h2>
           <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>International seminars and knowledge sharing activities that enhanced my global perspective in technology and innovation.</p>
           
           <div className="w-full space-y-8 sm:space-y-12">
@@ -1340,7 +1340,7 @@ function App() {
 
       {/* Contact Section */}
       <section ref={contactRef} id="contact" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 transition-all duration-700 ${contactVisible ? 'animate-fadeInUp delay-500' : ''}`}>
-        <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Contact</h2>
+        <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Contact</h2>
         <div className={`rounded-xl sm:rounded-2xl border shadow-sm p-6 sm:p-8 transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${contactVisible ? 'animate-fadeInUp delay-700' : ''}`}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Left Column - Contact Info */}
