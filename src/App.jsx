@@ -6,6 +6,10 @@ import { createPortal } from 'react-dom';
 import mainProfile from './assets/mainprofile.jpg';
 import mainProfile_2 from './assets/mainprofile_2.jpg';
 
+// Importing PDF documents
+import resumePDF from './assets/Navapan_Suthon_Resume.pdf';
+import transcriptPDF from './assets/Navapan_Suthon_Unofficial_Transcript.pdf';
+
 // Importing certificates
 import certificateCoursera from './assets/certificates/certificate_coursera.png';
 import certificateCybersecurity from './assets/certificates/certificate-cybersecurity.png';
@@ -111,10 +115,61 @@ import gamecompany_career2 from './assets/gamecompany_career/gamecompany_career2
 import gamecompany_career3 from './assets/gamecompany_career/gamecompany_career3.png';
 import gamecompany_career4 from './assets/gamecompany_career/gamecompany_career4.png';
 
+// Importing BU x India activity images
+import bu_x_india_1 from './assets/bu_x_india/bu_x_india_embassy_1.webp';
+import bu_x_india_2 from './assets/bu_x_india/bu_x_india_embassy_2.jpg';
+import bu_x_india_3 from './assets/bu_x_india/bu_x_india_embassy_3.webp';
+import bu_x_india_4 from './assets/bu_x_india/bu_x_india_embassy_4.webp';
+
+// Importing BU x KAIT activity images
+import bu_x_kait_1 from './assets/bu_x_kait/bu_x_kait_1.webp';
+import bu_x_kait_2 from './assets/bu_x_kait/bu_x_kait_2.jpg';
+import bu_x_kait_3 from './assets/bu_x_kait/bu_x_kait_3.jpg';
+import bu_x_kait_4 from './assets/bu_x_kait/bu_x_kait_4.webp';
+import bu_x_kait_5 from './assets/bu_x_kait/bu_x_kait_5.jpg';
+
 const SOCIALS = [
-  { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/etsuwithtea/' },
+  { name: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/navapan-suthon-5245a3384' },
   { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/etsuwithtea' },
   { name: 'GitHub', icon: 'github', url: 'https://github.com/etsuwithtea' },
+];
+
+const ACTIVITIES = [
+    {
+    title: 'International Seminar: BU x KAIT 2025',
+    date: '20 February 2025',
+    description: 'Attended an international seminar organized as a collaboration between Bangkok University and Kanazawa Institute of Technology (KAIT), Japan. The seminar featured world-class speakers discussing AI and Network technologies, providing valuable insights into global technology trends and copyright challenges in AI implementation.',
+    highlights: [
+      'International academic seminar collaboration between Bangkok University and Kanazawa Institute of Technology (KAIT), Japan',
+      'Featured Prof. Masahiro SAKAI presenting "Navigating Generative AI Use in Japan: Our Challenges from \'not\' to \'with\' within the Unique Copyright Landscape"',
+      'Focused on AI/Network technologies and copyright landscape in generative AI',
+      'Enhanced understanding of international perspectives on AI technology implementation'
+    ],
+    images: [
+      { src: bu_x_kait_1, alt: 'BU x KAIT seminar opening' },
+      { src: bu_x_kait_2, alt: 'Prof. Masahiro SAKAI presentation' },
+      { src: bu_x_kait_3, alt: 'AI and copyright discussion' },
+      { src: bu_x_kait_4, alt: 'International collaboration showcase' },
+      { src: bu_x_kait_5, alt: 'Student participation and Q&A' },
+    ]
+  },
+  {
+    title: 'BU x Embassy of India: Knowledge Sharing',
+    date: '30 January 2025',
+    description: 'School of Information Technology and Innovation organized the "BU x Embassy of India: Knowledge Sharing" project, a collaboration between Bangkok University and the Embassy of India in Thailand, to provide students with opportunities to learn and exchange perspectives about technology and innovation from international experts.',
+    highlights: [
+      'Collaboration between Bangkok University and Embassy of India in Thailand',
+      'Technology and innovation knowledge sharing with international experts',
+      'Guest speakers including Ms. Paulomi Tripathi (Deputy Chief of Mission), Mr. Gurmeet Singh (Executive Director, Electronics & Computer Software Export Promotion Council), and Mr. Nagaraj Prasadh (Country Head, Intellect Design Arena)',
+      'Topics covered: Indian technology and innovation, digital industry role, technology business development, networking and career opportunities'
+    ],
+    images: [
+      { src: bu_x_india_1, alt: 'BU x Embassy of India opening ceremony' },
+      { src: bu_x_india_2, alt: 'Guest speakers presentation' },
+      { src: bu_x_india_3, alt: 'Knowledge sharing session' },
+      { src: bu_x_india_4, alt: 'Networking session with students' },
+    ]
+  },
 ];
 
 const PROJECTS = [
@@ -131,6 +186,7 @@ const PROJECTS = [
     ],
     desc: 'Remade EGAT’s power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from over 100+ MongoDB collections for centralized management. Optimized database queries for fast access and reliability, supporting thousands of transformer records. Improved operational efficiency and user satisfaction with advanced insights and reporting.',
     role: 'Role : Fullstack Developer (Next.js, MongoDB)',
+    tools: ['Next.js', 'MongoDB', 'React', 'JavaScript', 'Node.js', 'CSS', 'HTML', 'Visual Studio Code', 'Git', 'Tailwind CSS'],
     isPrototype: false,
   },
   {
@@ -143,6 +199,7 @@ const PROJECTS = [
     ],
     desc: 'A playful prototype for a game company career web, designed for fun and developer practice. This project focuses on UI/UX prototyping and is not a production-ready application.',
     role: 'Role : UX/UI Designer & Frontend Developer',
+    tools: ['HTML', 'CSS', 'JavaScript', 'Figma', 'Visual Studio Code', 'Git', 'GitHub Pages'],
     github: 'https://github.com/etsuwithtea/mini_proj1',
     link: 'https://etsuwithtea.github.io/mini_proj1/',
     isPrototype: true,
@@ -162,6 +219,7 @@ const PROJECTS = [
     ],
     desc: 'Visual Novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
     role: 'Role : Main Developer & UX/UI Designer ',
+    tools: ['.NET MAUI', 'C#', 'XAML', 'Visual Studio', 'Android SDK', 'Figma', 'Git'],
     github: 'https://github.com/etsuwithtea/BeyondHana',
     isPrototype: false,
   },
@@ -184,6 +242,7 @@ const PROJECTS = [
     github: 'https://github.com/Jabiby7561/Eatraidee',
     desc: 'Eat Rai Dee is a UX/UI and development project aimed at helping users decide what to eat when they have no idea. Designed in Figma and developed in Java using Apache NetBeans, this was my first project where I learned and applied Object-Oriented Programming (OOP). The application randomly suggests food options and displays the result on a kiosk screen. I was responsible for both the user interface design and the core programming logic.',
     role: 'Role : UX/UI Designer & Main Developer (Java, Apache NetBeans)',
+    tools: ['Java', 'Apache NetBeans', 'Figma', 'Git'],
     isPrototype: true,
   },
   {
@@ -197,6 +256,7 @@ const PROJECTS = [
     link: 'https://etsuwithtea.github.io/etsu-portfolio/',
     desc: 'Personal portfolio website built with React + Vite, styled with Tailwind CSS, and hosted on GitHub Pages. Designed and developed to showcase my projects, skills, and certificates in a modern, responsive layout.',
     role: 'Role : Developer (with GitHub Copilot assistance)',
+    tools: ['React', 'Vite', 'Tailwind CSS', 'JavaScript', 'HTML', 'CSS', 'GitHub Pages', 'Git', 'GitHub Copilot'],
     isPrototype: false,
   },
   {
@@ -212,6 +272,7 @@ const PROJECTS = [
     link: 'https://beconet.github.io/CUPCRAFT_PROJECT/login_page.html',
     desc: 'Front-end café management system for order, sales, and analytics. Features admin login, order/inventory management, dashboard analytics, and sales records.',
     role: 'Role : UX/UI Designer',
+    tools: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Figma', 'GitHub Pages', 'Git'],
     github: 'https://github.com/Beconet/CUPCRAFT_PROJECT',
     isPrototype: false,
   },
@@ -234,6 +295,7 @@ const PROJECTS = [
     link: 'https://www.figma.com/proto/r4kXWcQ0iGvUdnsoxk4BHi/WhoCanEat?node-id=1-2&p=f&t=YTAx9omK1Krnb1Bw-9&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1',
     desc: `WhoCanEat is a B2B2C e-commerce platform connecting grocery stores with customers, focusing on health and well-being through modern technology.\n\nMission: To develop innovative technology that helps people facing health challenges by enhancing care experiences and improving access to resources.\n\nProduct: A mobile application that saves customers time and money by managing and filtering products, supporting all types of grocery businesses to increase transactions.\n\nTarget Market: Thai customers who want to shop efficiently and conveniently, especially those with limited time.\n\nGoal: To become a partner with grocery stores, retailers, and hospitals nationwide.`,
     role: 'Role : UX/UI Designer',
+    tools: ['Figma'],
     isPrototype: true,
   },
   {
@@ -250,6 +312,7 @@ const PROJECTS = [
     link: 'https://www.figma.com/proto/F0KR84V7gLRwX2bZKg8XA1/Cloth--E-Commerce?node-id=37-3&p=f&t=knOFLvcgd9f9wzZp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=37%3A3',
     desc: 'My first UX/UI project — an e-commerce app prototype designed in Figma while learning the basics of user-centered design.',
     role: 'Role : UX/UI Designer',
+    tools: ['Figma', 'User Interface Design'],
     isPrototype: true,
   },
   {
@@ -263,6 +326,7 @@ const PROJECTS = [
     ],
     desc: 'A Python GUI project developed in my first year using the customtkinter library. The application features a simple ticket management interface with no API integration—everything is handled locally within the app. I was responsible for the entire design and development process as the main developer.',
     role: 'Role : Main Developer (Python, customtkinter)',
+    tools: ['Python', 'CustomTkinter', 'Tkinter', 'Git'],
     github: 'https://github.com/etsuwithtea/ihavetickets',
     isPrototype: false,
   },
@@ -282,6 +346,7 @@ const PROJECTS = [
     link: 'https://www.figma.com/proto/sPzqtp8LxBSMteANT87PAQ/Eat-%E0%B9%84%E0%B8%A3-%E0%B8%94%E0%B8%B5?node-id=1-228&starting-point-node-id=1%3A228&show-proto-sidebar=1&t=i4zghbmnjlwyEqXa-1',
     desc: 'Eat Rai Dee (Mobile) is a Figma prototype for a mobile app version of the Eat Rai Dee project. This version focuses on a modern, user-friendly mobile experience for helping users decide what to eat. The design emphasizes intuitive navigation, playful visuals, and quick interactions tailored for mobile users. (Prototype only, no source code)',
     role: 'Role : UX/UI Designer',
+    tools: ['Figma'],
     isPrototype: true,
   },
   {
@@ -294,6 +359,7 @@ const PROJECTS = [
     ],
     desc: 'Interactive XO (Tic Tac Toe) game with multiple board sizes (3x3, 4x4, 5x5) and language switching feature. Built with Vite + React + Tailwind CSS for a smooth and responsive gaming experience.',
     role: 'Role : Developer',
+    tools: ['React', 'Vite', 'Tailwind CSS', 'JavaScript', 'HTML', 'CSS', 'GitHub Pages', 'Git'],
     github: 'https://github.com/etsuwithtea/xo_game',
     isPrototype: false,
   },
@@ -411,8 +477,7 @@ const useTypingAnimation = (text, speed = 50) => {
 
   useEffect(() => {
     // Start typing animation immediately on component mount
-    setShouldStart(true);
-  }, []);
+    setShouldStart(true);}, []);
 
   useEffect(() => {
     if (shouldStart) {
@@ -468,7 +533,11 @@ function App() {
   const [skillsRef, skillsVisible] = useScrollAnimation();
   const [certificateRef, certificateVisible] = useScrollAnimation();
   const [projectRef, projectVisible] = useScrollAnimation();
+  const [activityRef, activityVisible] = useScrollAnimation();
   const [contactRef, contactVisible] = useScrollAnimation();
+  
+  // Expanded tools state for each project
+  const [expandedTools, setExpandedTools] = useState({});
   
   // Typing animation - start immediately when page loads
   const [typingRef, typedText] = useTypingAnimation("Hi I'm Navapan", 100);
@@ -506,6 +575,14 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Toggle tools expansion for specific project
+  const toggleToolsExpansion = (projectIndex) => {
+    setExpandedTools(prev => ({
+      ...prev,
+      [projectIndex]: !prev[projectIndex]
+    }));
+  };
 
   // Profile image rotation effect
   useEffect(() => {
@@ -584,8 +661,7 @@ function App() {
     if (modalOpen) closeModal();
   };
 
-  return (
-    <>
+  return (<>
       {/* Loading Screen */}
       {showLoader && (
         <div className={`fixed inset-0 z-[10000] flex items-center justify-center transition-all duration-500 ${isDarkMode ? 'bg-black' : 'bg-white'} ${!isLoaded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
@@ -607,29 +683,25 @@ function App() {
           style={{
             animationDelay: '0s',
             transform: `translateY(${scrollY * 0.1}px)`
-          }}
-        ></div>
+          }}></div>
         <div 
           className={`absolute top-40 right-20 w-48 h-48 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-15 bg-gradient-to-r from-pink-500 to-orange-500' : 'opacity-25 bg-gradient-to-r from-pink-300 to-orange-300'}`} 
           style={{
             animationDelay: '2s',
             transform: `translateY(${scrollY * 0.15}px)`
-          }}
-        ></div>
+          }}></div>
         <div 
           className={`absolute bottom-20 left-1/4 w-56 h-56 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-10 bg-gradient-to-r from-green-500 to-teal-500' : 'opacity-20 bg-gradient-to-r from-green-300 to-teal-300'}`} 
           style={{
             animationDelay: '4s',
             transform: `translateY(${scrollY * 0.08}px)`
-          }}
-        ></div>
+          }}></div>
         <div 
           className={`absolute bottom-32 right-1/4 w-40 h-40 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-20 bg-gradient-to-r from-yellow-500 to-red-500' : 'opacity-30 bg-gradient-to-r from-yellow-300 to-red-300'}`} 
           style={{
             animationDelay: '6s',
             transform: `translateY(${scrollY * 0.12}px)`
-          }}
-        ></div>
+          }}></div>
         
         {/* Additional decorative elements for light mode */}
         <div 
@@ -692,14 +764,18 @@ function App() {
               e.preventDefault();
               handleNavClick('skills');
             }}>Skills</a></li>
-            <li><a href="#certificate" className={`transition-all duration-300 hover-scale-105 hover:animate-rainbow-text ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`} onClick={e => {
-              e.preventDefault();
-              handleNavClick('certificate');
-            }}>Certificate</a></li>
             <li><a href="#project" className={`transition-all duration-300 hover-scale-105 hover:animate-rainbow-text ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('project');
             }}>Project</a></li>
+            <li><a href="#certificate" className={`transition-all duration-300 hover-scale-105 hover:animate-rainbow-text ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`} onClick={e => {
+              e.preventDefault();
+              handleNavClick('certificate');
+            }}>Certificate</a></li>
+            <li><a href="#activity" className={`transition-all duration-300 hover-scale-105 hover:animate-rainbow-text ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`} onClick={e => {
+              e.preventDefault();
+              handleNavClick('activity');
+            }}>Activity</a></li>
             <li><a href="#contact" className={`transition-all duration-300 hover-scale-105 hover:animate-rainbow-text ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('contact');
@@ -710,8 +786,7 @@ function App() {
           <button
             onClick={toggleMobileMenu}
             className={`md:hidden p-2 rounded-lg transition-all duration-300 ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}
-            aria-label="Toggle menu"
-          >
+            aria-label="Toggle menu">
             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M3 12h18M3 6h18M3 18h18"/>
             </svg>
@@ -721,8 +796,7 @@ function App() {
           <button
             onClick={toggleDarkMode}
             className={`relative p-2 rounded-lg sm:rounded-xl transition-all duration-300 hover-scale-105 ${isDarkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-gray-100 hover:bg-gray-200'} ${isLoaded ? 'animate-fadeInRight delay-700' : 'opacity-0'}`}
-            aria-label="Toggle dark mode"
-          >
+            aria-label="Toggle dark mode">
             <div className="relative w-5 h-5 sm:w-6 sm:h-6">
               {/* Sun Icon */}
               <svg 
@@ -730,8 +804,7 @@ function App() {
                 fill="none" 
                 stroke="#000"
                 strokeWidth="2" 
-                viewBox="0 0 24 24"
-              >
+                viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="5"/>
                 <line x1="12" y1="1" x2="12" y2="3"/>
                 <line x1="12" y1="21" x2="12" y2="23"/>
@@ -749,8 +822,7 @@ function App() {
                 fill="none" 
                 stroke="#fff"
                 strokeWidth="2" 
-                viewBox="0 0 24 24"
-              >
+                viewBox="0 0 24 24">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
               </svg>
             </div>
@@ -770,14 +842,18 @@ function App() {
               e.preventDefault();
               handleNavClick('skills');
             }}>Skills</a></li>
-            <li><a href="#certificate" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
-              e.preventDefault();
-              handleNavClick('certificate');
-            }}>Certificate</a></li>
             <li><a href="#project" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('project');
             }}>Project</a></li>
+            <li><a href="#certificate" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
+              e.preventDefault();
+              handleNavClick('certificate');
+            }}>Certificate</a></li>
+            <li><a href="#activity" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
+              e.preventDefault();
+              handleNavClick('activity');
+            }}>Activity</a></li>
             <li><a href="#contact" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('contact');
@@ -812,8 +888,7 @@ function App() {
                 loading="eager"
                 fetchPriority="high"
                 className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] object-cover rounded-2xl sm:rounded-3xl shadow-2xl bg-white hover-lift-soft animate-float border-2 sm:border-4 border-white/40 group-hover:scale-105 transition-all duration-1000 relative z-10" 
-                style={{objectPosition: 'center 20%'}} 
-              />
+                style={{objectPosition: 'center 20%'}} />
               
               {/* Shine Effect Overlay */}
               <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-tr from-transparent via-white/5 to-white/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"></div>
@@ -877,10 +952,9 @@ function App() {
                 style={{fontSize:'1.25rem'}} 
                 aria-label={s.name}
                 target="_blank"
-                rel="noopener noreferrer"
-              >
+                rel="noopener noreferrer">
                 <span className="sr-only">{s.name}</span>
-                {s.icon === 'instagram' && <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor"/><circle cx="12" cy="12" r="5" stroke="currentColor"/><circle cx="17" cy="7" r="1.5" stroke="currentColor"/></svg>}
+                {s.icon === 'linkedin' && <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>}
                 {s.icon === 'facebook' && <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>}
                 {s.icon === 'github' && <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.71.12 2.51.35 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.17.58.68.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>}
               </a>
@@ -889,6 +963,33 @@ function App() {
           <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-900' : 'opacity-0'}`}>
             <a href="#contact" className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-100' : 'bg-gray-900 text-white hover:bg-gray-800'}`}>Contact</a>
             <a href="#project" className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 shadow-sm border animate-rainbow-border hover-lift-soft text-center ${isDarkMode ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'}`}>View Work</a>
+          </div>
+          
+          {/* Download Section */}
+          <div className={`flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-1000' : 'opacity-0'}`}>
+            <a 
+              href={resumePDF} 
+              download="Navapan_Suthon_Resume.pdf"
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'}`}
+            >
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7,10 12,15 17,10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download Resume
+            </a>
+            <a 
+              href={transcriptPDF} 
+              download="Navapan_Suthon_Unofficial_Transcript.pdf"
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'}`}>
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7,10 12,15 17,10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download Transcript
+            </a>
           </div>
         </div>
       </section>
@@ -971,6 +1072,163 @@ function App() {
         </div>
       </section>
 
+      {/* Modal Popup for certificate image (rendered with portal) */}
+      {modalOpen && createPortal(
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn"
+          onClick={closeModal}
+          aria-modal="true"
+          role="dialog">
+          <div
+            className="relative max-w-4xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fadeInUp"
+            onClick={e => e.stopPropagation()}>
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-2 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
+              aria-label="Close"
+              type="button">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+
+            {/* Previous Button */}
+            {modalImages.length > 1 && (
+              <button
+                onClick={prevImage}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
+                aria-label="Previous image"
+                type="button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="15,18 9,12 15,6"></polyline>
+                </svg>
+              </button>
+            )}
+
+            {/* Next Button */}
+            {modalImages.length > 1 && (
+              <button
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
+                aria-label="Next image"
+                type="button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+              </button>
+            )}
+
+            {/* Image Counter */}
+            {modalImages.length > 1 && (
+              <div className="absolute top-2 left-2 bg-black/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm border border-white/20">
+                {currentModalIndex + 1} / {modalImages.length}
+              </div>
+            )}
+
+            {/* Image/Video Content */}
+            {modalImg && modalImg.endsWith('.mp4') ? (
+              <div className="rounded-xl overflow-hidden" style={{borderRadius: '0.75rem'}}>
+                <video
+                  src={modalImg}
+                  controls
+                  autoPlay
+                  className="w-full h-auto object-contain max-h-[80vh]"
+                  style={{maxWidth: '100%', display: 'block'}}>
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            ) : (
+              <div className="rounded-xl overflow-hidden" style={{borderRadius: '0.75rem'}}>
+                <img
+                  src={modalImg}
+                  alt={modalAlt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain max-h-[80vh]"
+                  style={{display: 'block'}}
+                />
+              </div>
+            )}
+          </div>
+        </div>,
+        document.body
+      )}
+
+
+      {/* Project Section with Carousel and Video (if available) */}
+      <section ref={projectRef} id="project" className={`w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${projectVisible ? 'animate-fadeInUp delay-400' : 'opacity-0 translate-y-10'}`}>
+        <div className="w-full max-w-6xl flex flex-col items-center">
+          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Projects</h2>
+          <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>A collection of my work spanning web development, UX/UI design, and software applications. Each project represents a learning journey and practical application of my skills.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center [&:has(>:nth-child(3n+1):last-child)]:xl:justify-items-center [&:has(>:nth-child(3n+2):last-child)]:xl:justify-items-center">
+            {PROJECTS.map((p, i) => (
+              <div
+                key={i}
+                className={`rounded-xl sm:rounded-2xl border shadow-sm flex flex-col p-4 sm:p-6 hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${projectVisible ? `animate-fadeInUp delay-${600 + i * 100}` : 'opacity-0'}`}>
+                <div className="w-full mb-3 sm:mb-4">
+                  <Carousel
+                    images={p.images}
+                    link={p.link}
+                    title={p.title}
+                    imgClassName="h-40 sm:h-48 w-full object-cover rounded-lg"
+                    onAnyModalOpen={handleAnyModalOpen}
+                    onImageClick={(imgObj, idx, allImages) => {
+                      openModal(imgObj.src, imgObj.alt, imgObj.type, idx, allImages);
+                    }}
+                  />
+                </div>
+                <div className="flex flex-col flex-grow space-y-2 sm:space-y-3">
+                  <h3 className={`font-semibold text-sm sm:text-base leading-tight line-clamp-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{p.title}</h3>
+                  <div className={`text-xs sm:text-sm leading-relaxed flex-grow ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`} style={{maxHeight:'4.5rem',overflowY:'auto'}}>{p.desc}</div>
+                  <div className="pt-1 sm:pt-2">
+                    <span className={`inline-block px-2 py-1 rounded text-xs font-medium mb-2 sm:mb-3 border ${isDarkMode ? 'bg-zinc-800 text-zinc-500 border-zinc-700' : 'bg-gray-50 text-gray-400 border-gray-200'}`}>{p.role}</span>
+                    {p.tools && (
+                      <div className="mb-2 sm:mb-3">
+                        <div className="flex flex-wrap gap-1">
+                          {(expandedTools[i] ? p.tools : p.tools.slice(0, 6)).map((tool, toolIndex) => (
+                            <span
+                              key={toolIndex}
+                              className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium transition-all duration-300 ${
+                                isDarkMode 
+                                  ? 'bg-zinc-700/80 text-zinc-300 hover:bg-zinc-600' 
+                                  : 'bg-blue-50/80 text-blue-700 hover:bg-blue-100'
+                              }`}>
+                              {tool}
+                            </span>
+                          ))}
+                          {p.tools.length > 6 && (
+                            <button
+                              onClick={() => toggleToolsExpansion(i)}
+                              className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium cursor-pointer transition-all duration-300 hover:scale-105 ${
+                                isDarkMode 
+                                  ? 'bg-zinc-600 text-zinc-300 hover:bg-zinc-500' 
+                                  : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                              }`}
+                              title={expandedTools[i] ? 'ดูน้อยลง' : `ดู tools ทั้งหมด (${p.tools.length})`}>
+                              {expandedTools[i] ? '−' : `+${p.tools.length - 6}`}
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                    <div className="flex flex-col gap-1.5 sm:gap-2">
+                      {p.link && p.link.includes('figma.com') && (
+                        <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Figma Prototype →</a>
+                      )}
+                      {p.link && !p.link.includes('figma.com') && (
+                        <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Website →</a>
+                      )}
+                      {p.github && (
+                        <a href={p.github} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm border animate-rainbow-border hover-lift-soft text-center ${isDarkMode ? 'bg-zinc-900 text-white border-zinc-600 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'}`}>View Source Code →</a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
       {/* Certificate Section */}
       <section ref={certificateRef} id="certificate" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${certificateVisible ? 'animate-fadeInUp delay-300' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
@@ -985,8 +1243,7 @@ function App() {
                     onClick={() => openModal(c.image, c.title)}
                     className="focus:outline-none group w-full"
                     aria-label={`View certificate: ${c.title}`}
-                    style={{background: 'none', border: 'none', padding: 0, margin: 0}}
-                  >
+                    style={{background: 'none', border: 'none', padding: 0, margin: 0}}>
                     <img
                       src={c.image}
                       alt={c.title}
@@ -1015,132 +1272,63 @@ function App() {
         </div>
       </section>
 
-      {/* Modal Popup for certificate image (rendered with portal) */}
-      {modalOpen && createPortal(
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn"
-          onClick={closeModal}
-          aria-modal="true"
-          role="dialog"
-        >
-          <div
-            className="relative max-w-4xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fadeInUp"
-            onClick={e => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={closeModal}
-              className="absolute top-2 right-2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-2 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
-              aria-label="Close"
-              type="button"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-            </button>
-
-            {/* Previous Button */}
-            {modalImages.length > 1 && (
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
-                aria-label="Previous image"
-                type="button"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="15,18 9,12 15,6"></polyline>
-                </svg>
-              </button>
-            )}
-
-            {/* Next Button */}
-            {modalImages.length > 1 && (
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
-                aria-label="Next image"
-                type="button"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="9,18 15,12 9,6"></polyline>
-                </svg>
-              </button>
-            )}
-
-            {/* Image Counter */}
-            {modalImages.length > 1 && (
-              <div className="absolute top-2 left-2 bg-black/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm border border-white/20">
-                {currentModalIndex + 1} / {modalImages.length}
-              </div>
-            )}
-
-            {/* Image/Video Content */}
-            {modalImg && modalImg.endsWith('.mp4') ? (
-              <div className="rounded-xl overflow-hidden" style={{borderRadius: '0.75rem'}}>
-                <video
-                  src={modalImg}
-                  controls
-                  autoPlay
-                  className="w-full h-auto object-contain max-h-[80vh]"
-                  style={{maxWidth: '100%', display: 'block'}}
-                >
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            ) : (
-              <div className="rounded-xl overflow-hidden" style={{borderRadius: '0.75rem'}}>
-                <img
-                  src={modalImg}
-                  alt={modalAlt}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto object-contain max-h-[80vh]"
-                  style={{display: 'block'}}
-                />
-              </div>
-            )}
-          </div>
-        </div>,
-        document.body
-      )}
-
-      {/* Project Section with Carousel and Video (if available) */}
-      <section ref={projectRef} id="project" className={`w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${projectVisible ? 'animate-fadeInUp delay-400' : 'opacity-0 translate-y-10'}`}>
+      {/* Activity Section */}
+      <section ref={activityRef} id="activity" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${activityVisible ? 'animate-fadeInUp delay-350' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
-          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Projects</h2>
-          <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>A collection of my work spanning web development, UX/UI design, and software applications. Each project represents a learning journey and practical application of my skills.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center [&:has(>:nth-child(3n+1):last-child)]:xl:justify-items-center [&:has(>:nth-child(3n+2):last-child)]:xl:justify-items-center">
-            {PROJECTS.map((p, i) => (
-              <div
-                key={i}
-                className={`rounded-xl sm:rounded-2xl border shadow-sm flex flex-col p-4 sm:p-6 hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${projectVisible ? `animate-fadeInUp delay-${600 + i * 100}` : 'opacity-0'}`}
-              >
-                <div className="w-full mb-3 sm:mb-4">
-                  <Carousel
-                    images={p.images}
-                    link={p.link}
-                    title={p.title}
-                    imgClassName="h-40 sm:h-48 w-full object-cover rounded-lg"
-                    onAnyModalOpen={handleAnyModalOpen}
-                    onImageClick={(imgObj, idx, allImages) => {
-                      openModal(imgObj.src, imgObj.alt, imgObj.type, idx, allImages);
-                    }}
-                  />
-                </div>
-                <div className="flex flex-col flex-grow space-y-2 sm:space-y-3">
-                  <h3 className={`font-semibold text-sm sm:text-base leading-tight line-clamp-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{p.title}</h3>
-                  <div className={`text-xs sm:text-sm leading-relaxed flex-grow ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`} style={{maxHeight:'4.5rem',overflowY:'auto'}}>{p.desc}</div>
-                  <div className="pt-1 sm:pt-2">
-                    <span className={`inline-block px-2 py-1 rounded text-xs font-medium mb-2 sm:mb-3 border ${isDarkMode ? 'bg-zinc-800 text-zinc-500 border-zinc-700' : 'bg-gray-50 text-gray-400 border-gray-200'}`}>{p.role}</span>
-                    <div className="flex flex-col gap-1.5 sm:gap-2">
-                      {p.link && p.link.includes('figma.com') && (
-                        <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Figma Prototype →</a>
-                      )}
-                      {p.link && !p.link.includes('figma.com') && (
-                        <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Website →</a>
-                      )}
-                      {p.github && (
-                        <a href={p.github} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm border animate-rainbow-border hover-lift-soft text-center ${isDarkMode ? 'bg-zinc-900 text-white border-zinc-600 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'}`}>View Source Code →</a>
-                      )}
+          <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Activities</h2>
+          <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>International seminars and knowledge sharing activities that enhanced my global perspective in technology and innovation.</p>
+          
+          <div className="w-full space-y-8 sm:space-y-12">
+            {ACTIVITIES.map((activity, index) => (
+              <div key={activity.title} className={`rounded-xl sm:rounded-2xl border shadow-sm transition-all duration-300 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${activityVisible ? `animate-fadeInUp delay-${600 + index * 300}` : 'opacity-0'}`}>
+                <div className="p-6 sm:p-8">
+                  {/* Activity Header */}
+                  <div className="mb-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                      <h3 className={`text-lg sm:text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{activity.title}</h3>
+                      <span className={`text-sm font-medium px-3 py-1 rounded-full ${isDarkMode ? 'bg-blue-900/30 text-blue-300 border border-blue-700/50' : 'bg-blue-100 text-blue-700 border border-blue-200'}`}>
+                        {activity.date}
+                      </span>
                     </div>
+                    <p className={`text-sm sm:text-base leading-relaxed ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>
+                      {activity.description}
+                    </p>
+                  </div>
+
+                  {/* Activity Images */}
+                  <div className="mb-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3">
+                      {activity.images.map((image, imgIndex) => (
+                        <button
+                          key={imgIndex}
+                          type="button"
+                          onClick={() => openModal(image.src, image.alt)}
+                          className={`group focus:outline-none rounded-lg overflow-hidden transition-all duration-300 hover-lift-soft hover:scale-105 border ${isDarkMode ? 'border-zinc-600 hover:border-zinc-500' : 'border-gray-200 hover:border-gray-300'}`}
+                          aria-label={`View image: ${image.alt}`}
+                        >
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-20 sm:h-24 object-cover group-hover:scale-110 transition-transform duration-200 cursor-zoom-in"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Activity Highlights */}
+                  <div>
+                    <h4 className={`text-base sm:text-lg font-semibold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Key Highlights</h4>
+                    <ul className="space-y-2">
+                      {activity.highlights.map((highlight, hlIndex) => (
+                        <li key={hlIndex} className={`flex items-start gap-2 text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>
+                          <span className={`flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2 ${isDarkMode ? 'bg-blue-400' : 'bg-blue-500'}`}></span>
+                          <span className="leading-relaxed">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -1150,15 +1338,14 @@ function App() {
       </section>
 
 
-
       {/* Contact Section */}
-      <section ref={contactRef} id="contact" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 transition-all duration-700 ${contactVisible ? 'animate-fadeInUp delay-500' : 'opacity-0 translate-y-10'}`}>
+      <section ref={contactRef} id="contact" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 transition-all duration-700 ${contactVisible ? 'animate-fadeInUp delay-500' : ''}`}>
         <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Contact</h2>
-        <div className={`rounded-xl sm:rounded-2xl border shadow-sm p-6 sm:p-8 transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${contactVisible ? 'animate-fadeInUp delay-700' : 'opacity-0'}`}>
+        <div className={`rounded-xl sm:rounded-2xl border shadow-sm p-6 sm:p-8 transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${contactVisible ? 'animate-fadeInUp delay-700' : ''}`}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Left Column - Contact Info */}
             <div className="space-y-3 sm:space-y-4">
-              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInLeft delay-900' : 'opacity-0'}`}>
+              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInLeft delay-900' : ''}`}>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
                   <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -1171,7 +1358,7 @@ function App() {
                 </div>
               </div>
               
-              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInLeft delay-1000' : 'opacity-0'}`}>
+              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInLeft delay-1000' : ''}`}>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
                   <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -1186,7 +1373,7 @@ function App() {
 
             {/* Right Column - Email Info */}
             <div className="space-y-3 sm:space-y-4">
-              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInRight delay-1100' : 'opacity-0'}`}>
+              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInRight delay-1100' : ''}`}>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
                   <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -1194,12 +1381,12 @@ function App() {
                   </svg>
                 </div>
                 <div>
-                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Personal Email</div>
+                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Contacted Email</div>
                   <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>navapan.suth@gmail.com</div>
                 </div>
               </div>
               
-              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInRight delay-1200' : 'opacity-0'}`}>
+              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInRight delay-1200' : ''}`}>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
                   <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -1211,6 +1398,29 @@ function App() {
                   <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>navapan.suth@bumail.net</div>
                 </div>
               </div>
+            </div>
+          </div>
+          
+          {/* Social Links Section */}
+          <div className={`mt-6 sm:mt-8 pt-6 sm:pt-8 border-t ${isDarkMode ? 'border-zinc-700/50' : 'border-gray-200'}`}>
+            <h3 className={`text-lg font-semibold text-center mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Connect with me</h3>
+            <div className={`flex justify-center gap-4 sm:gap-6 transition-all duration-700 ${contactVisible ? 'animate-fadeInUp delay-1300' : ''}`}>
+              {SOCIALS.map((s, index) => (
+                <a 
+                  key={s.name} 
+                  href={s.url} 
+                  className={`transition-all duration-300 hover-scale-105 hover-rotate p-3 rounded-lg ${isDarkMode ? 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'}`}
+                  style={{fontSize:'1.25rem'}} 
+                  aria-label={s.name}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="sr-only">{s.name}</span>
+                  {s.icon === 'linkedin' && <svg width="24" height="24" className="sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>}
+                  {s.icon === 'facebook' && <svg width="24" height="24" className="sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>}
+                  {s.icon === 'github' && <svg width="24" height="24" className="sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.71.12 2.51.35 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.17.58.68.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -1227,8 +1437,7 @@ function App() {
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 p-3 sm:p-4 rounded-full hover:shadow-lg transition-all duration-500 z-50 shadow-md hover-lift-soft animate-float ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'} ${isDarkMode ? 'bg-white text-black hover:bg-gray-100' : 'bg-gray-900 text-white hover:bg-black'}`}
-        aria-label="Back to Top"
-      >
+        aria-label="Back to Top">
         <svg width="18" height="18" className="sm:w-5 sm:h-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 13V7M10 7L6 11M10 7L14 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
