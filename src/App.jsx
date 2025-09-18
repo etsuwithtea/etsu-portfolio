@@ -135,9 +135,9 @@ const SOCIALS = [
 ];
 
 const ACTIVITIES = [
-    {
-    title: 'International Seminar: BU x KAIT 2025',
-    date: '20 February 2025',
+  {
+  title: 'International Seminar: BU x KAIT 2025',
+  date: '20/02/2025',
     description: 'Attended an international seminar organized as a collaboration between Bangkok University and Kanazawa Institute of Technology (KAIT), Japan. The seminar featured world-class speakers discussing AI and Network technologies, providing valuable insights into global technology trends and copyright challenges in AI implementation.',
     highlights: [
       'International academic seminar collaboration between Bangkok University and Kanazawa Institute of Technology (KAIT), Japan',
@@ -155,7 +155,7 @@ const ACTIVITIES = [
   },
   {
     title: 'BU x Embassy of India: Knowledge Sharing',
-    date: '30 January 2025',
+    date: '30/01/2025',
     description: 'School of Information Technology and Innovation organized the "BU x Embassy of India: Knowledge Sharing" project, a collaboration between Bangkok University and the Embassy of India in Thailand, to provide students with opportunities to learn and exchange perspectives about technology and innovation from international experts.',
     highlights: [
       'Collaboration between Bangkok University and Embassy of India in Thailand',
@@ -386,35 +386,6 @@ const CERTIFICATES = [
   },
 ];
 
-
-const optimizeImage = (src, width, height) => {
-  if (typeof src === 'string' && src.startsWith('http')) {
-    return src; 
-  }
-  return src; 
-};
-
-// Lazy loading utility hook
-const useLazyLoading = () => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  
-  const setRef = useCallback((node) => {
-    if (node) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsIntersecting(true);
-            observer.disconnect();
-          }
-        },
-        { rootMargin: '50px' }
-      );
-      observer.observe(node);
-    }
-  }, []);
-  
-  return [isIntersecting, setRef];
-};
 
 // Custom hook for scroll animations
 const useScrollAnimation = () => {
@@ -662,17 +633,17 @@ function App() {
   };
 
   return (<>
-      {/* Loading Screen */}
-      {showLoader && (
-        <div className={`fixed inset-0 z-[10000] flex items-center justify-center transition-all duration-500 ${isDarkMode ? 'bg-black' : 'bg-white'} ${!isLoaded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-          <div className="text-center">
-            <div className={`inline-block w-12 h-12 border-4 border-t-transparent rounded-full animate-spin mb-4 ${isDarkMode ? 'border-white' : 'border-gray-900'}`}></div>
-            <div className={`text-lg font-semibold tracking-wide animate-pulse ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              ETSU Portfolio
-            </div>
+    {/* Loading Screen */}
+    {showLoader && (
+      <div className={`fixed inset-0 z-[10000] flex items-center justify-center transition-all duration-500 ${isDarkMode ? 'bg-black' : 'bg-white'} ${!isLoaded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className="text-center">
+          <div className={`inline-block w-12 h-12 border-4 border-t-transparent rounded-full animate-spin mb-4 ${isDarkMode ? 'border-white' : 'border-gray-900'}`}></div>
+          <div className={`text-lg font-semibold tracking-wide animate-pulse ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+            ETSU Portfolio
           </div>
         </div>
-      )}
+      </div>
+    )}
       
     <div className={`min-h-screen transition-colors duration-300 font-sans flex flex-col items-center relative overflow-hidden ${isDarkMode ? 'bg-black' : 'bg-gray-50'}`}>
       {/* Animated Background Elements */}
@@ -943,23 +914,7 @@ function App() {
           <div className={`text-xs sm:text-sm mb-6 sm:mb-8 max-w-lg leading-relaxed italic ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
             "I enjoy creating simple digital solutions that make life a little easier for others."
           </div>
-          <div className={`flex gap-4 sm:gap-6 mb-6 sm:mb-8 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-700' : 'opacity-0'}`}>
-            {SOCIALS.map((s, index) => (
-              <a 
-                key={s.name} 
-                href={s.url} 
-                className={`transition-all duration-300 hover-scale-105 hover-rotate ${isDarkMode ? 'text-zinc-400 hover:text-zinc-200' : 'text-gray-700 hover:text-gray-900'}`}
-                style={{fontSize:'1.25rem'}} 
-                aria-label={s.name}
-                target="_blank"
-                rel="noopener noreferrer">
-                <span className="sr-only">{s.name}</span>
-                {s.icon === 'linkedin' && <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>}
-                {s.icon === 'facebook' && <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>}
-                {s.icon === 'github' && <svg width="20" height="20" className="sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.71.12 2.51.35 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.17.58.68.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>}
-              </a>
-            ))}
-          </div>
+
           <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-900' : 'opacity-0'}`}>
             <a href="#contact" className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-100' : 'bg-gray-900 text-white hover:bg-gray-800'}`}>Contact</a>
             <a href="#project" className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 shadow-sm border animate-rainbow-border hover-lift-soft text-center ${isDarkMode ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'}`}>View Work</a>
@@ -995,8 +950,10 @@ function App() {
       </section>
 
       {/* Education Section */}
-      <section ref={aboutRef} id="education" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 rounded-xl sm:rounded-2xl border shadow-sm relative mt-12 sm:mt-16 transition-all duration-700 hover-lift-soft hover:shadow-lg z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/60' : 'bg-white border-gray-200 hover:shadow-xl'} ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
-        <div className="relative z-10">
+      <section ref={aboutRef} id="education" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
+        <div className="w-full max-w-6xl flex flex-col items-center">
+          <div className={`rounded-2xl sm:rounded-3xl border shadow-sm p-6 sm:p-12 w-full mt-12 sm:mt-16 transition-all duration-700 hover-lift-soft hover:shadow-lg z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/60' : 'bg-white border-gray-200 hover:shadow-xl'}`}>
+            <div className="relative z-10">
           <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Education</h2>
           
           <div className="relative">
@@ -1030,7 +987,9 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
       {/* Skills Section */}
       <section ref={skillsRef} id="skills" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${skillsVisible ? 'animate-fadeInUp delay-200' : 'opacity-0 translate-y-10'}`}>
@@ -1273,66 +1232,62 @@ function App() {
       </section>
 
       {/* Activity Section */}
-      <section ref={activityRef} id="activity" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${activityVisible ? 'animate-fadeInUp delay-350' : 'opacity-0 translate-y-10'}`}>
+      <section
+        ref={activityRef}
+        id="activity"
+        className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${activityVisible ? 'animate-fadeInUp delay-350' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
           <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Activities</h2>
           <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>International seminars and knowledge sharing activities that enhanced my global perspective in technology and innovation.</p>
-          
-          <div className="w-full space-y-8 sm:space-y-12">
-            {ACTIVITIES.map((activity, index) => (
-              <div key={activity.title} className={`rounded-xl sm:rounded-2xl border shadow-sm transition-all duration-300 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${activityVisible ? `animate-fadeInUp delay-${600 + index * 300}` : 'opacity-0'}`}>
-                <div className="p-6 sm:p-8">
-                  {/* Activity Header */}
-                  <div className="mb-6">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                      <h3 className={`text-lg sm:text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{activity.title}</h3>
-                      <span className={`text-sm font-medium px-3 py-1 rounded-full ${isDarkMode ? 'bg-blue-900/30 text-blue-300 border border-blue-700/50' : 'bg-blue-100 text-blue-700 border border-blue-200'}`}>
-                        {activity.date}
-                      </span>
-                    </div>
-                    <p className={`text-sm sm:text-base leading-relaxed ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>
-                      {activity.description}
-                    </p>
-                  </div>
 
-                  {/* Activity Images */}
-                  <div className="mb-6">
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3">
-                      {activity.images.map((image, imgIndex) => (
-                        <button
-                          key={imgIndex}
-                          type="button"
-                          onClick={() => openModal(image.src, image.alt)}
-                          className={`group focus:outline-none rounded-lg overflow-hidden transition-all duration-300 hover-lift-soft hover:scale-105 border ${isDarkMode ? 'border-zinc-600 hover:border-zinc-500' : 'border-gray-200 hover:border-gray-300'}`}
-                          aria-label={`View image: ${image.alt}`}
-                        >
-                          <img
-                            src={image.src}
-                            alt={image.alt}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-20 sm:h-24 object-cover group-hover:scale-110 transition-transform duration-200 cursor-zoom-in"
-                          />
-                        </button>
-                      ))}
+          {/* Responsive grid: 1 column on mobile, 2 columns on sm+ */}
+          <div className="w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+              {ACTIVITIES.map((activity, index) => (
+                <div
+                  key={activity.title}
+                  className={`rounded-xl sm:rounded-2xl border shadow-sm transition-all duration-300 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${activityVisible ? `animate-fadeInUp delay-${600 + index * 300}` : 'opacity-0'}`}>
+                  <div className="p-6 sm:p-8">
+                    {/* Activity Header */}
+                    <div className="mb-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <h3 className={`text-lg sm:text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{activity.title}</h3>
+                        <span className={`text-sm font-medium px-3 py-1 rounded-full border bg-black text-white`}>
+                          {activity.date}
+                        </span>
+                      </div>
+                      <p className={`text-xs sm:text-sm leading-relaxed max-h-20 sm:max-h-24 overflow-hidden ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>
+                        {activity.description}
+                      </p>
                     </div>
-                  </div>
 
-                  {/* Activity Highlights */}
-                  <div>
-                    <h4 className={`text-base sm:text-lg font-semibold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Key Highlights</h4>
-                    <ul className="space-y-2">
-                      {activity.highlights.map((highlight, hlIndex) => (
-                        <li key={hlIndex} className={`flex items-start gap-2 text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>
-                          <span className={`flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2 ${isDarkMode ? 'bg-blue-400' : 'bg-blue-500'}`}></span>
-                          <span className="leading-relaxed">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Activity Images */}
+                    <div className="mb-6 w-full">
+                      <Carousel
+                        images={activity.images}
+                        title={activity.title}
+                        imgClassName="h-40 sm:h-48 md:h-56 w-full object-cover rounded-lg"
+                        onAnyModalOpen={handleAnyModalOpen}
+                        onImageClick={(imgObj, idx, allImages) => {
+                        openModal(imgObj.src, imgObj.alt, imgObj.type, idx, allImages);}}/>
+                    </div>
+
+                    {/* Activity Highlights */}
+                    <div>
+                      <h4 className={`text-base sm:text-lg font-semibold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Key Highlights</h4>
+                      <ul className="space-y-2">
+                        {activity.highlights.map((highlight, hlIndex) => (
+                          <li key={hlIndex} className={`flex items-start gap-2 text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>
+                            <span className={`flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2 ${isDarkMode ? 'bg-blue-400' : 'bg-blue-500'}`}></span>
+                            <span className="leading-relaxed">{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1413,8 +1368,7 @@ function App() {
                   style={{fontSize:'1.25rem'}} 
                   aria-label={s.name}
                   target="_blank"
-                  rel="noopener noreferrer"
-                >
+                  rel="noopener noreferrer">
                   <span className="sr-only">{s.name}</span>
                   {s.icon === 'linkedin' && <svg width="24" height="24" className="sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>}
                   {s.icon === 'facebook' && <svg width="24" height="24" className="sm:w-7 sm:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>}
@@ -1443,6 +1397,7 @@ function App() {
         </svg>
       </button>
     </div>
+    
     </>
   );
 }
