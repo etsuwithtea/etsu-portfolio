@@ -128,6 +128,12 @@ import bu_x_kait_3 from './assets/bu_x_kait/bu_x_kait_3.jpg';
 import bu_x_kait_4 from './assets/bu_x_kait/bu_x_kait_4.webp';
 import bu_x_kait_5 from './assets/bu_x_kait/bu_x_kait_5.jpg';
 
+// Importing ImMemmo project images
+import ImMemo_1 from './assets/ImMemmo/ImMemo_1.png';
+import ImMemo_2 from './assets/ImMemmo/ImMemo_2.png';
+import ImMemo_3 from './assets/ImMemmo/ImMemo_3.png';
+import ImMemo_4 from './assets/ImMemmo/ImMemo_4.png';
+
 const SOCIALS = [
   { name: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/navapan-suthon-5245a3384' },
   { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/etsuwithtea' },
@@ -186,7 +192,21 @@ const PROJECTS = [
     ],
     desc: 'Remade EGAT’s power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from over 100+ MongoDB collections for centralized management. Optimized database queries for fast access and reliability, supporting thousands of transformer records. Improved operational efficiency and user satisfaction with advanced insights and reporting.',
     role: 'Role : Fullstack Developer (Next.js, MongoDB)',
-    tools: ['Next.js', 'MongoDB', 'React', 'JavaScript', 'Node.js', 'CSS', 'HTML', 'Visual Studio Code', 'Git', 'Tailwind CSS'],
+    tools: ['Next.js', 'GitHub Copilot', 'MongoDB', 'React', 'JavaScript', 'Node.js', 'CSS', 'HTML', 'Visual Studio Code', 'Git', 'Tailwind CSS'],
+    isPrototype: false,
+  },
+    {
+    title: 'ImMemmo',
+    images: [
+      { src: ImMemo_1, alt: 'ImMemmo - Note Taking Interface' },
+      { src: ImMemo_2, alt: 'ImMemmo - Note Management' },
+      { src: ImMemo_3, alt: 'ImMemmo - Note Organization' },
+      { src: ImMemo_4, alt: 'ImMemmo - Local Storage Features' },
+    ],
+    desc: 'A note-taking web application built for practice and experimentation. This local storage-based app allows users to create, manage, and organize notes without requiring a database connection. Features a game-inspired design and user-friendly interface that makes note-taking enjoyable and efficient.',
+    role: 'Role : Developer',
+    tools: ['ASP.NET', 'GitHub Copilot', 'HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/etsuwithtea/ImMemmo',
     isPrototype: false,
   },
   {
@@ -201,7 +221,6 @@ const PROJECTS = [
     role: 'Role : UX/UI Designer & Frontend Developer',
     tools: ['HTML', 'CSS', 'JavaScript', 'Figma', 'Visual Studio Code', 'Git', 'GitHub Pages'],
     github: 'https://github.com/etsuwithtea/mini_proj1',
-    link: 'https://etsuwithtea.github.io/mini_proj1/',
     isPrototype: true,
   },
   {
