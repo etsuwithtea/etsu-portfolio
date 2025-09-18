@@ -1337,7 +1337,7 @@ function App() {
                 </div>
                 <div>
                   <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Contacted Email</div>
-                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>navapan.suth@gmail.com</div>
+                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>navapan.suthon@gmail.com</div>
                 </div>
               </div>
               
