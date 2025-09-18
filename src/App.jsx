@@ -907,7 +907,7 @@ function App() {
             </div>
             <div className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/80 hover:border-zinc-600/70' : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'}`}>
               <div className={`text-xs sm:text-sm mb-1 transition-colors duration-300 ${isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : 'text-gray-600 group-hover:text-gray-700'}`}>Interests</div>
-              <div className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white group-hover:text-zinc-100' : 'text-gray-900 group-hover:text-black'}`}>Gaming, Design</div>
+              <div className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${isDarkMode ? 'text-white group-hover:text-zinc-100' : 'text-gray-900 group-hover:text-black'}`}>Gaming, Design , Coding</div>
             </div>
           </div>
           
