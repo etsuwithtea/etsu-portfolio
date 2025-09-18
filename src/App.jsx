@@ -488,6 +488,27 @@ const useTypingAnimation = (text, speed = 50) => {
   return [ref, displayedText];
 };
 
+// Helper function to get icon for skills
+const getSkillIcon = (skill, isDarkMode = false) => {
+  const iconMap = {
+    'Python': <i className="fab fa-python text-blue-500"></i>,
+    'C#': <i className="fas fa-code text-green-600"></i>,
+    'Java': <i className="fab fa-java text-orange-600"></i>,
+    'Node.js': <i className="fab fa-node-js text-green-500"></i>,
+    'HTML, CSS, JavaScript': <i className="fab fa-html5 text-orange-500"></i>,
+    'SQL': <i className="fas fa-database text-blue-600"></i>,
+    'Figma': <i className="fab fa-figma text-purple-500"></i>,
+    'Git, GitHub': <i className={`fab fa-github ${isDarkMode ? 'text-white' : 'text-gray-800'}`}></i>,
+    'MongoDB': <i className="fas fa-leaf text-green-600"></i>,
+    'Apache NetBeans': <i className="fas fa-code text-blue-600"></i>,
+    '.NET MAUI': <i className="fas fa-mobile-alt text-purple-600"></i>,
+    'Visual Studio Code': <i className="fas fa-code text-blue-500"></i>,
+    'Visual Studio 2022': <i className="fas fa-laptop-code text-purple-700"></i>
+  };
+
+  return iconMap[skill] || <i className="fas fa-check-circle text-green-500"></i>;
+};
+
 function App() {
   // Modal state for certificate popup
   const [modalOpen, setModalOpen] = useState(false);
@@ -943,109 +964,155 @@ function App() {
           <div className={`flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-1000' : 'opacity-0'}`}>
             <a 
               href={resumePDF} 
-              download="Navapan_Suthon_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'}`}
             >
               <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7,10 12,15 17,10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14,2 14,8 20,8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10,9 9,9 8,9"/>
               </svg>
-              Download Resume
+              View Resume
             </a>
             <a 
               href={transcriptPDF} 
-              download="Navapan_Suthon_Unofficial_Transcript.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'}`}>
               <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7,10 12,15 17,10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14,2 14,8 20,8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10,9 9,9 8,9"/>
               </svg>
-              Download Transcript
+              View Transcript
             </a>
           </div>
         </div>
       </section>
 
-      {/* Education Section */}
+      {/* Education & Skills Section */}
       <section ref={aboutRef} id="education" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
-        <div className="w-full max-w-6xl flex flex-col items-center">
-          <div className={`rounded-2xl sm:rounded-3xl border shadow-sm p-6 sm:p-12 w-full mt-12 sm:mt-16 transition-all duration-700 hover-lift-soft hover:shadow-lg z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/60' : 'bg-white border-gray-200 hover:shadow-xl'}`}>
-            <div className="relative z-10">
-          <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Education</h2>
-          
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className={`absolute left-4 sm:left-6 top-6 bottom-6 w-0.5 ${isDarkMode ? 'bg-zinc-600' : 'bg-gray-300'}`}></div>
+        <div className="w-full max-w-7xl flex flex-col items-center">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             
-            <div className="space-y-4 sm:space-y-6">
-              {/* University - Current */}
-              <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-400 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-300' : 'bg-gray-50 border-gray-900 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fadeInLeft delay-400' : 'opacity-0'}`}>
-                {/* Timeline Dot */}
-                <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-400 border-zinc-800 group-hover:bg-zinc-300' : 'bg-gray-900 border-white group-hover:bg-black'}`}></div>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
-                  <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Bangkok University</h3>
-                  <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border animate-rainbow-border self-start ${isDarkMode ? 'text-white bg-zinc-900 border-zinc-600' : 'text-gray-900 bg-white border-gray-200'}`}>2022 – Present</span>
-                </div>
-                <p className={`text-sm sm:text-base font-medium mb-1 ${isDarkMode ? 'text-zinc-300' : 'text-gray-700'}`}>Computer Science</p>
-                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>School of Information Technology and Innovation</p>
-              </div>
+            {/* Education Section */}
+            <div className={`rounded-2xl sm:rounded-3xl border shadow-sm p-6 sm:p-8 transition-all duration-700 hover-lift-soft hover:shadow-lg z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/60' : 'bg-white border-gray-200 hover:shadow-xl'}`}>
+              <div className="relative z-10">
+                <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Education</h2>
+                
+                <div className="relative">
+                  {/* Timeline Line */}
+                  <div className={`absolute left-4 sm:left-6 top-6 bottom-6 w-0.5 ${isDarkMode ? 'bg-zinc-600' : 'bg-gray-300'}`}></div>
+                  
+                  <div className="space-y-4 sm:space-y-6">
+                    {/* University - Current */}
+                    <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-400 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-300' : 'bg-gray-50 border-gray-900 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fadeInLeft delay-400' : 'opacity-0'}`}>
+                      {/* Timeline Dot */}
+                      <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-400 border-zinc-800 group-hover:bg-zinc-300' : 'bg-gray-900 border-white group-hover:bg-black'}`}></div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
+                        <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Bangkok University</h3>
+                        <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border animate-rainbow-border self-start ${isDarkMode ? 'text-white bg-zinc-900 border-zinc-600' : 'text-gray-900 bg-white border-gray-200'}`}>2022 – Present</span>
+                      </div>
+                      <p className={`text-sm sm:text-base font-medium mb-1 ${isDarkMode ? 'text-zinc-300' : 'text-gray-700'}`}>Computer Science</p>
+                      <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>School of Information Technology and Innovation</p>
+                    </div>
 
-              {/* High School */}
-              <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-400' : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
-                {/* Timeline Dot */}
-                <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-500 border-zinc-800 group-hover:bg-zinc-400' : 'bg-gray-600 border-white group-hover:bg-gray-800'}`}></div>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
-                  <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Thammasat Klongluang Wittayakom School</h3>
-                  <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full self-start ${isDarkMode ? 'text-zinc-300 bg-zinc-700' : 'text-gray-600 bg-gray-200'}`}>2019 – 2022</span>
-                </div>
-                <p className={`text-sm sm:text-base font-medium ${isDarkMode ? 'text-zinc-300' : 'text-gray-700'}`}>High School</p>
-                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Science-Math Program</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-      {/* Skills Section */}
-      <section ref={skillsRef} id="skills" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${skillsVisible ? 'animate-fadeInUp delay-200' : 'opacity-0 translate-y-10'}`}>
-        <div className="w-full max-w-6xl flex flex-col items-center">
-          <div className={`rounded-2xl sm:rounded-3xl border shadow-sm p-6 sm:p-12 flex flex-col items-center relative overflow-hidden transition-all duration-700 hover-lift-soft z-10 w-full ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'}`}>
-            <div className="relative z-10 w-full flex flex-col items-center">
-              <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 animate-bounceIn transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Skills</h2>
-              <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-                {/* Languages */}
-                <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
-                  <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Languages</h3>
-                  <p className={`text-xs sm:text-sm mb-4 sm:mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Programming languages I enjoy working with</p>
-                  <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>Python</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>C#</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>Java</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>Node.js</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>HTML, CSS, JavaScript</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>SQL</span>
-                  </div>
-                </div>
-                {/* Tools */}
-                <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fadeInRight delay-800' : 'opacity-0'}`}>
-                  <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Tools</h3>
-                  <p className={`text-xs sm:text-sm mb-4 sm:mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Tools I use regularly for development</p>
-                  <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>Figma</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>Git, GitHub</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>MongoDB</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>Apache NetBeans</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>.NET MAUI</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>Visual Studio Code</span>
-                    <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>Visual Studio 2022</span>
+                    {/* High School */}
+                    <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-400' : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
+                      {/* Timeline Dot */}
+                      <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-500 border-zinc-800 group-hover:bg-zinc-400' : 'bg-gray-600 border-white group-hover:bg-gray-800'}`}></div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
+                        <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Thammasat Klongluang<br />Wittayakom School</h3>
+                        <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full self-start ${isDarkMode ? 'text-zinc-300 bg-zinc-700' : 'text-gray-600 bg-gray-200'}`}>2019 –2022</span>
+                      </div>
+                      <p className={`text-sm sm:text-base font-medium ${isDarkMode ? 'text-zinc-300' : 'text-gray-700'}`}>High School</p>
+                      <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Science-Math Program</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Skills Section */}
+            <div ref={skillsRef} id="skills" className={`rounded-2xl sm:rounded-3xl border shadow-sm p-6 sm:p-8 transition-all duration-700 hover-lift-soft z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${skillsVisible ? 'animate-fadeInUp delay-200' : 'opacity-0 translate-y-10'}`}>
+              <div className="relative z-10 w-full flex flex-col items-center">
+                <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 animate-bounceIn transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Skills</h2>
+                <div className="w-full space-y-6 sm:space-y-8">
+                  {/* Languages */}
+                  <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
+                    <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Languages</h3>
+                    <p className={`text-xs sm:text-sm mb-4 sm:mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Programming languages I enjoy working with</p>
+                    <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('Python', isDarkMode)}
+                        Python
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('C#', isDarkMode)}
+                        C#
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('Java', isDarkMode)}
+                        Java
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('Node.js', isDarkMode)}
+                        Node.js
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('HTML, CSS, JavaScript', isDarkMode)}
+                        HTML, CSS, JavaScript
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('SQL', isDarkMode)}
+                        SQL
+                      </span>
+                    </div>
+                  </div>
+                  {/* Tools */}
+                  <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fadeInRight delay-800' : 'opacity-0'}`}>
+                    <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Tools</h3>
+                    <p className={`text-xs sm:text-sm mb-4 sm:mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Tools I use regularly for development</p>
+                    <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('Figma', isDarkMode)}
+                        Figma
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('Git, GitHub', isDarkMode)}
+                        Git, GitHub
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('MongoDB', isDarkMode)}
+                        MongoDB
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('Apache NetBeans', isDarkMode)}
+                        Apache NetBeans
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('.NET MAUI', isDarkMode)}
+                        .NET MAUI
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('Visual Studio Code', isDarkMode)}
+                        Visual Studio Code
+                      </span>
+                      <span className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'}`}>
+                        {getSkillIcon('Visual Studio 2022', isDarkMode)}
+                        Visual Studio 2022
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
