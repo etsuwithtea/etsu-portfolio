@@ -1383,7 +1383,7 @@ function App() {
       {/* Footer */}
       <footer className={`w-full border-t py-6 sm:py-8 mt-12 sm:mt-16 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-gray-50 border-gray-200'}`}>
         <div className="max-w-4xl mx-auto flex flex-col items-center px-4 sm:px-8">
-          <div className={`text-center text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>© 2025 ETSU. Thx for view My portfolio.</div>
+          <div className={`text-center text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>© 2025 ETSU. Thx for visiting My portfolio.</div>
         </div>
       </footer>
 
