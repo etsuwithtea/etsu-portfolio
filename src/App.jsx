@@ -759,14 +759,14 @@ function App() {
       {/* Navbar */}
       <nav className={`fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 backdrop-blur-md z-[999] rounded-xl sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/70 border-zinc-700/60' : 'bg-white/95 border-gray-200'} ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`}>
         <div className="flex items-center">
-          <span className={`font-bold text-xl sm:text-2xl tracking-tight select-none transition-all duration-700 hover-wiggle ${isDarkMode ? 'text-white' : 'text-gray-900'} ${isLoaded ? 'animate-fadeInLeft delay-300' : 'opacity-0'}`}>
+          <span className={`font-bold text-xl sm:text-2xl tracking-tight select-none transition-all duration-700 hover-wiggle ${isDarkMode ? 'text-white' : 'text-gray-900'} ${isLoaded ? 'animate-fadeInLeft delay-300' : ''}`}>
             ETSU
           </span>
         </div>
         
         <div className="flex items-center gap-3 sm:gap-6">
           {/* Navigation Links - Desktop */}
-          <ul className={`hidden md:flex gap-4 lg:gap-8 text-sm font-medium transition-all duration-700 ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'} ${isLoaded ? 'animate-fadeInRight delay-500' : 'opacity-0'}`}>
+          <ul className={`hidden md:flex gap-4 lg:gap-8 text-sm font-medium transition-all duration-700 ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'} ${isLoaded ? 'animate-fadeInRight delay-500' : ''}`}>
             <li><a href="#about" className={`transition-all duration-300 hover-scale-105 hover:animate-rainbow-text ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('about');
