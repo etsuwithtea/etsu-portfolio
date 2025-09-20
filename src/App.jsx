@@ -757,7 +757,7 @@ function App() {
       </div>
       
       {/* Navbar */}
-      <nav className={`fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 backdrop-blur-md z-[999] rounded-xl sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/70 border-zinc-700/60' : 'bg-white/95 border-gray-200'} ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`}>
+      <nav className={`navbar-fallback fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 z-50 rounded-xl sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900 bg-opacity-70 border-zinc-700 border-opacity-60 dark' : 'bg-white bg-opacity-95 border-gray-200'} ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`} style={{backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)'}}>
         <div className="flex items-center">
           <span className={`font-bold text-xl sm:text-2xl tracking-tight select-none transition-all duration-700 hover-wiggle ${isDarkMode ? 'text-white' : 'text-gray-900'} ${isLoaded ? 'animate-fadeInLeft delay-300' : ''}`}>
             ETSU

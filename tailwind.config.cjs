@@ -29,6 +29,14 @@ module.exports = {
       fontWeight: {
         extrabold: '900',
       },
+      // Add browser-safe backdrop blur
+      backdropBlur: {
+        'xs': '2px',
+        'sm': '4px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '24px',
+      },
       animation: {
         'fadeInUp': 'fadeInUp 0.6s ease-out forwards',
         'fadeInLeft': 'fadeInLeft 0.6s ease-out forwards',
