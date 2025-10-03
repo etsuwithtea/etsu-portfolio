@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force hide desktop nav on mobile */
+@media (max-width: 1023px) {
+  .desktop-nav {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+  .mobile-nav-btn {
+    display: none !important;
+  }
+}
+
 /* Browser compatibility for older Edge versions */
 .backdrop-blur-fallback {
   background: rgba(255, 255, 255, 0.95) !important;
@@ -418,17 +434,6 @@ body, html {
   }
 }
 
-/* Ensure navigation is always visible on all browsers */
-nav ul {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-}
-
-nav ul li {
-  display: block !important;
-  visibility: visible !important;
-}
 
 /* Force visibility for Edge Legacy */
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

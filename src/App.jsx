@@ -757,7 +757,7 @@ function App() {
       </div>
       
       {/* Navbar */}
-      <nav className={`navbar-fallback fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 z-50 rounded-xl sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900 bg-opacity-70 border-zinc-700 border-opacity-60 dark' : 'bg-white bg-opacity-95 border-gray-200'} ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`} style={{backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)'}}>
+      <nav className={`navbar-fallback fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 z-[999] rounded-xl sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900 bg-opacity-70 border-zinc-700 border-opacity-60 dark' : 'bg-white bg-opacity-95 border-gray-200'} ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`} style={{backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)'}}>
         <div className="flex items-center">
           <span className={`font-bold text-xl sm:text-2xl tracking-tight select-none transition-all duration-700 hover-wiggle ${isDarkMode ? 'text-white' : 'text-gray-900'} ${isLoaded ? 'animate-fadeInLeft delay-300' : ''}`}>
             ETSU
@@ -766,7 +766,7 @@ function App() {
         
         <div className="flex items-center gap-3 sm:gap-6">
           {/* Navigation Links - Desktop */}
-          <ul className={`hidden md:flex gap-4 lg:gap-8 text-sm font-medium transition-all duration-700 ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'} ${isLoaded ? 'animate-fadeInRight delay-500' : ''}`}>
+          <ul className={`desktop-nav gap-4 lg:gap-8 text-sm font-medium transition-all duration-700 ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'} ${isLoaded ? 'animate-fadeInRight delay-500' : ''}`}>
             <li><a href="#about" className={`transition-all duration-300 hover-scale-105 hover:animate-rainbow-text ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('about');
@@ -796,11 +796,21 @@ function App() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className={`md:hidden p-2 rounded-lg transition-all duration-300 ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`}
-            aria-label="Toggle menu">
-            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path d="M3 12h18M3 6h18M3 18h18"/>
-            </svg>
+            className={`mobile-nav-btn p-3 rounded-lg transition-all duration-300 relative z-[1000] border-2 ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800 border-zinc-600' : 'text-gray-900 hover:text-gray-900 hover:bg-gray-100 border-gray-300'}`}
+            aria-label="Toggle menu"
+            style={{ minWidth: '44px', minHeight: '44px' }}>
+            {isMobileMenuOpen ? (
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" className="mx-auto">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            ) : (
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" className="mx-auto">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            )}
           </button>
           
           {/* Dark Mode Toggle */}
@@ -841,31 +851,39 @@ function App() {
         </div>
       </nav>
 
+      {/* Mobile Menu Backdrop */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/20 z-[997] lg:hidden backdrop-blur-sm"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       {/* Mobile Navigation Menu */}
-      <div className={`fixed top-16 sm:top-20 left-3 right-3 z-[998] md:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
-        <div className={`rounded-xl border shadow-lg backdrop-blur-md ${isDarkMode ? 'bg-zinc-900/90 border-zinc-700/60' : 'bg-white/95 border-gray-200'}`}>
-          <ul className="flex flex-col p-4 space-y-2">
-            <li><a href="#about" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
+      <div className={`fixed top-[calc(12px+3rem+12px)] sm:top-[calc(24px+4rem+24px)] right-3 sm:right-6 z-[998] lg:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+        <div className={`rounded-lg border shadow-lg backdrop-blur-md max-h-[calc(100vh-120px)] overflow-y-auto w-auto min-w-[140px] ${isDarkMode ? 'bg-zinc-900/90 border-zinc-700/60' : 'bg-white/95 border-gray-200'}`}>
+          <ul className="flex flex-col p-2 space-y-1">
+            <li><a href="#about" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('about');
             }}>About</a></li>
-            <li><a href="#skills" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
+            <li><a href="#skills" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('skills');
             }}>Skills</a></li>
-            <li><a href="#project" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
+            <li><a href="#project" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('project');
             }}>Project</a></li>
-            <li><a href="#certificate" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
+            <li><a href="#certificate" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('certificate');
             }}>Certificate</a></li>
-            <li><a href="#activity" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
+            <li><a href="#activity" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('activity');
             }}>Activity</a></li>
-            <li><a href="#contact" className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 hover:animate-rainbow-text ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
+            <li><a href="#contact" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('contact');
             }}>Contact</a></li>
