@@ -756,10 +756,10 @@ function App() {
         ></div>
       </div>
       
-      {/* Navbar */}
-      <nav className={`navbar-fallback fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 z-[999] rounded-xl sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900 bg-opacity-70 border-zinc-700 border-opacity-60 dark' : 'bg-white bg-opacity-95 border-gray-200'} ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`} style={{backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)'}}>
+  {/* Navbar */}
+  <nav className={`navbar-fallback fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-2 sm:px-6 py-1.5 sm:py-3 z-[999] rounded-md sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900 bg-opacity-70 border-zinc-700 border-opacity-60 dark' : 'bg-white bg-opacity-95 border-gray-200'} ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`} style={{backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)'}}>
         <div className="flex items-center">
-          <span className={`font-bold text-xl sm:text-2xl tracking-tight select-none transition-all duration-700 hover-wiggle ${isDarkMode ? 'text-white' : 'text-gray-900'} ${isLoaded ? 'animate-fadeInLeft delay-300' : ''}`}>
+          <span className={`font-bold text-base sm:text-2xl tracking-tight select-none transition-all duration-700 hover-wiggle ${isDarkMode ? 'text-white' : 'text-gray-900'} ${isLoaded ? 'animate-fadeInLeft delay-300' : ''}`}>
             ETSU
           </span>
         </div>
@@ -796,9 +796,9 @@ function App() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className={`mobile-nav-btn p-3 rounded-lg transition-all duration-300 relative z-[1000] border-2 ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800 border-zinc-600' : 'text-gray-900 hover:text-gray-900 hover:bg-gray-100 border-gray-300'}`}
+            className={`mobile-nav-btn p-1.5 rounded-md transition-all duration-300 relative z-[1000] border-2 ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800 border-zinc-600' : 'text-gray-900 hover:text-gray-900 hover:bg-gray-100 border-gray-300'}`}
             aria-label="Toggle menu"
-            style={{ minWidth: '44px', minHeight: '44px' }}>
+            style={{ minWidth: '36px', minHeight: '36px' }}>
             {isMobileMenuOpen ? (
               <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" className="mx-auto">
                 <line x1="18" y1="6" x2="6" y2="18"/>
@@ -816,7 +816,7 @@ function App() {
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
-            className={`relative p-2 rounded-lg sm:rounded-xl transition-all duration-300 hover-scale-105 ${isDarkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-gray-100 hover:bg-gray-200'} ${isLoaded ? 'animate-fadeInRight delay-700' : 'opacity-0'}`}
+            className={`relative p-1 rounded-md sm:p-2 sm:rounded-xl transition-all duration-300 hover-scale-105 ${isDarkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-gray-100 hover:bg-gray-200'} ${isLoaded ? 'animate-fadeInRight delay-700' : 'opacity-0'}`}
             aria-label="Toggle dark mode">
             <div className="relative w-5 h-5 sm:w-6 sm:h-6">
               {/* Sun Icon */}
@@ -860,7 +860,7 @@ function App() {
       )}
 
       {/* Mobile Navigation Menu */}
-      <div className={`fixed top-[calc(12px+3rem+12px)] sm:top-[calc(24px+4rem+24px)] right-3 sm:right-6 z-[998] lg:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+  <div className={`fixed top-[calc(12px+2rem)] sm:top-[calc(24px+2.5rem)] right-3 sm:right-6 z-[998] lg:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
         <div className={`rounded-lg border shadow-lg backdrop-blur-md max-h-[calc(100vh-120px)] overflow-y-auto w-auto min-w-[140px] ${isDarkMode ? 'bg-zinc-900/90 border-zinc-700/60' : 'bg-white/95 border-gray-200'}`}>
           <ul className="flex flex-col p-2 space-y-1">
             <li><a href="#about" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
