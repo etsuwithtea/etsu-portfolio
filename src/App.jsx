@@ -860,7 +860,7 @@ function App() {
       )}
 
       {/* Mobile Navigation Menu */}
-  <div className={`fixed top-[calc(12px+2rem)] sm:top-[calc(24px+2.5rem)] right-3 sm:right-6 z-[998] lg:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+  <div className={`fixed top-[calc(12px+2rem+25px)] sm:top-[calc(24px+2.5rem+8px)] right-3 sm:right-6 z-[998] lg:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
         <div className={`rounded-lg border shadow-lg backdrop-blur-md max-h-[calc(100vh-120px)] overflow-y-auto w-auto min-w-[140px] ${isDarkMode ? 'bg-zinc-900/90 border-zinc-700/60' : 'bg-white/95 border-gray-200'}`}>
           <ul className="flex flex-col p-2 space-y-1">
             <li><a href="#about" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
