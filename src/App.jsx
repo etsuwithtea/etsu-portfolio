@@ -701,7 +701,7 @@ function App() {
   return (<>
     {/* Loading Screen */}
     {showLoader && (
-      <div className={`fixed inset-0 z-[10000] flex items-center justify-center transition-all duration-500 ${isDarkMode ? 'bg-black' : 'bg-white'} ${!isLoaded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 z-10000 flex items-center justify-center transition-all duration-500 ${isDarkMode ? 'bg-black' : 'bg-white'} ${!isLoaded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className="text-center">
           <div className={`inline-block w-12 h-12 border-4 border-t-transparent rounded-full animate-spin mb-4 ${isDarkMode ? 'border-white' : 'border-gray-900'}`}></div>
           <div className={`text-lg font-semibold tracking-wide animate-pulse ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -716,25 +716,25 @@ function App() {
       <div className="fixed inset-0 pointer-events-none z-0">
         {/* Gradient Orbs with Parallax */}
         <div 
-          className={`absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-20 bg-gradient-to-r from-purple-500 to-blue-500' : 'opacity-30 bg-gradient-to-r from-blue-300 to-purple-300'}`} 
+          className={`absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-20 bg-linear-to-r from-purple-500 to-blue-500' : 'opacity-30 bg-linear-to-r from-blue-300 to-purple-300'}`} 
           style={{
             animationDelay: '0s',
             transform: `translateY(${scrollY * 0.1}px)`
           }}></div>
         <div 
-          className={`absolute top-40 right-20 w-48 h-48 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-15 bg-gradient-to-r from-pink-500 to-orange-500' : 'opacity-25 bg-gradient-to-r from-pink-300 to-orange-300'}`} 
+          className={`absolute top-40 right-20 w-48 h-48 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-15 bg-linear-to-r from-pink-500 to-orange-500' : 'opacity-25 bg-linear-to-r from-pink-300 to-orange-300'}`} 
           style={{
             animationDelay: '2s',
             transform: `translateY(${scrollY * 0.15}px)`
           }}></div>
         <div 
-          className={`absolute bottom-20 left-1/4 w-56 h-56 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-10 bg-gradient-to-r from-green-500 to-teal-500' : 'opacity-20 bg-gradient-to-r from-green-300 to-teal-300'}`} 
+          className={`absolute bottom-20 left-1/4 w-56 h-56 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-10 bg-linear-to-r from-green-500 to-teal-500' : 'opacity-20 bg-linear-to-r from-green-300 to-teal-300'}`} 
           style={{
             animationDelay: '4s',
             transform: `translateY(${scrollY * 0.08}px)`
           }}></div>
         <div 
-          className={`absolute bottom-32 right-1/4 w-40 h-40 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-20 bg-gradient-to-r from-yellow-500 to-red-500' : 'opacity-30 bg-gradient-to-r from-yellow-300 to-red-300'}`} 
+          className={`absolute bottom-32 right-1/4 w-40 h-40 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-20 bg-linear-to-r from-yellow-500 to-red-500' : 'opacity-30 bg-linear-to-r from-yellow-300 to-red-300'}`} 
           style={{
             animationDelay: '6s',
             transform: `translateY(${scrollY * 0.12}px)`
@@ -742,14 +742,14 @@ function App() {
         
         {/* Additional decorative elements for light mode */}
         <div 
-          className={`absolute top-1/3 left-1/2 w-72 h-72 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-5 bg-gradient-to-r from-indigo-500 to-purple-500' : 'opacity-15 bg-gradient-to-r from-indigo-200 to-purple-200'}`} 
+          className={`absolute top-1/3 left-1/2 w-72 h-72 rounded-full blur-3xl animate-float ${isDarkMode ? 'opacity-5 bg-linear-to-r from-indigo-500 to-purple-500' : 'opacity-15 bg-linear-to-r from-indigo-200 to-purple-200'}`} 
           style={{
             animationDelay: '8s',
             transform: `translateY(${scrollY * 0.06}px)`
           }}
         ></div>
         <div 
-          className={`absolute bottom-1/2 right-10 w-32 h-32 rounded-full blur-2xl animate-float ${isDarkMode ? 'opacity-10 bg-gradient-to-r from-rose-500 to-pink-500' : 'opacity-20 bg-gradient-to-r from-rose-200 to-pink-200'}`} 
+          className={`absolute bottom-1/2 right-10 w-32 h-32 rounded-full blur-2xl animate-float ${isDarkMode ? 'opacity-10 bg-linear-to-r from-rose-500 to-pink-500' : 'opacity-20 bg-linear-to-r from-rose-200 to-pink-200'}`} 
           style={{
             animationDelay: '10s',
             transform: `translateY(${scrollY * 0.14}px)`
@@ -771,28 +771,28 @@ function App() {
         }}></div>
         
         {/* Subtle gradient overlay for light mode */}
-        <div className={`absolute inset-0 ${isDarkMode ? 'opacity-0' : 'opacity-10 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50'}`}></div>
+        <div className={`absolute inset-0 ${isDarkMode ? 'opacity-0' : 'opacity-10 bg-linear-to-br from-blue-50 via-purple-50 to-pink-50'}`}></div>
       </div>
       
       {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-transparent z-[1000] pointer-events-none">
+      <div className="fixed top-0 left-0 w-full h-1 bg-transparent z-1000 pointer-events-none">
         <div 
-          className={`h-full transition-all duration-300 ease-out ${isDarkMode ? 'bg-gradient-to-r from-purple-500 via-pink-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500' : 'bg-gradient-to-r from-blue-500 via-purple-500 via-pink-500 via-orange-500 to-red-500'}`}
+          className={`h-full transition-all duration-300 ease-out ${isDarkMode ? 'bg-linear-to-r from-purple-500 via-pink-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500' : 'bg-linear-to-r from-blue-500 via-purple-500 via-pink-500 via-orange-500 to-red-500'}`}
           style={{ width: `${scrollProgress}%` }}
         ></div>
       </div>
       
   {/* Navbar */}
-  <nav className={`navbar-fallback fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-2 sm:px-6 py-1.5 sm:py-3 z-[999] rounded-md sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900 bg-opacity-70 border-zinc-700 border-opacity-60 dark' : 'bg-white bg-opacity-95 border-gray-200'} ${isLoaded ? 'animate-slideInDown' : 'opacity-0 -translate-y-full'}`} style={{backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)'}}>
+  <nav className={`navbar-fallback fixed top-3 sm:top-6 left-3 sm:left-6 right-3 sm:right-6 w-auto max-w-5xl mx-auto flex items-center justify-between px-2 sm:px-6 py-1.5 sm:py-3 z-999 rounded-md sm:rounded-2xl border shadow-lg transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900 bg-opacity-70 border-zinc-700 border-opacity-60 dark' : 'bg-white bg-opacity-95 border-gray-200'} ${isLoaded ? 'animate-slide-in-down' : 'opacity-0 -translate-y-full'}`} style={{backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)'}}>
         <div className="flex items-center">
-          <span className={`font-bold text-base sm:text-2xl tracking-tight select-none transition-all duration-700 hover-wiggle ${isDarkMode ? 'text-white' : 'text-gray-900'} ${isLoaded ? 'animate-fadeInLeft delay-300' : ''}`}>
+          <span className={`font-bold text-base sm:text-2xl tracking-tight select-none transition-all duration-700 hover-wiggle ${isDarkMode ? 'text-white' : 'text-gray-900'} ${isLoaded ? 'animate-fade-in-left delay-300' : ''}`}>
             ETSU
           </span>
         </div>
         
         <div className="flex items-center gap-3 sm:gap-6">
           {/* Navigation Links - Desktop */}
-          <ul className={`desktop-nav gap-4 lg:gap-8 text-sm font-medium transition-all duration-700 ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'} ${isLoaded ? 'animate-fadeInRight delay-500' : ''}`}>
+          <ul className={`desktop-nav gap-4 lg:gap-8 text-sm font-medium transition-all duration-700 ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'} ${isLoaded ? 'animate-fade-in-right delay-500' : ''}`}>
             <li><a href="#about" className={`transition-all duration-300 hover-scale-105 hover:animate-rainbow-text ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`} onClick={e => {
               e.preventDefault();
               handleNavClick('about');
@@ -822,7 +822,7 @@ function App() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className={`mobile-nav-btn p-1.5 rounded-md transition-all duration-300 relative z-[1000] border-2 ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800 border-zinc-600' : 'text-gray-900 hover:text-gray-900 hover:bg-gray-100 border-gray-300'}`}
+            className={`mobile-nav-btn p-1.5 rounded-md transition-all duration-300 relative z-1000 border-2 ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800 border-zinc-600' : 'text-gray-900 hover:text-gray-900 hover:bg-gray-100 border-gray-300'}`}
             aria-label="Toggle menu"
             style={{ minWidth: '36px', minHeight: '36px' }}>
             {isMobileMenuOpen ? (
@@ -842,7 +842,7 @@ function App() {
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
-            className={`relative p-1 rounded-md sm:p-2 sm:rounded-xl transition-all duration-300 hover-scale-105 ${isDarkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-gray-100 hover:bg-gray-200'} ${isLoaded ? 'animate-fadeInRight delay-700' : 'opacity-0'}`}
+            className={`relative p-1 rounded-md sm:p-2 sm:rounded-xl transition-all duration-300 hover-scale-105 ${isDarkMode ? 'bg-zinc-800 hover:bg-zinc-700' : 'bg-gray-100 hover:bg-gray-200'} ${isLoaded ? 'animate-fade-in-right delay-700' : 'opacity-0'}`}
             aria-label="Toggle dark mode">
             <div className="relative w-5 h-5 sm:w-6 sm:h-6">
               {/* Sun Icon */}
@@ -880,13 +880,13 @@ function App() {
       {/* Mobile Menu Backdrop */}
       {isMobileMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black/20 z-[997] lg:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-black/20 z-997 lg:hidden backdrop-blur-sm"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
 
       {/* Mobile Navigation Menu */}
-  <div className={`fixed top-[calc(12px+2rem+25px)] sm:top-[calc(24px+2.5rem+8px)] right-3 sm:right-6 z-[998] lg:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+  <div className={`fixed top-[calc(12px+2rem+25px)] sm:top-[calc(24px+2.5rem+8px)] right-3 sm:right-6 z-998 lg:hidden transition-all duration-300 ease-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
         <div className={`rounded-lg border shadow-lg backdrop-blur-md max-h-[calc(100vh-120px)] overflow-y-auto w-auto min-w-[140px] ${isDarkMode ? 'bg-zinc-900/90 border-zinc-700/60' : 'bg-white/95 border-gray-200'}`}>
           <ul className="flex flex-col p-2 space-y-1">
             <li><a href="#about" className={`block px-4 py-2 rounded-md text-xs font-medium transition-all duration-300 hover:animate-rainbow-text text-right whitespace-nowrap ${isDarkMode ? 'text-zinc-300 hover:text-white hover:bg-zinc-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'}`} onClick={e => {
@@ -918,13 +918,13 @@ function App() {
       </div>
 
       {/* About Section */}
-      <section ref={aboutRef} id="about" className={`w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-8 transition-all duration-1000 relative z-10 ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
+      <section ref={aboutRef} id="about" className={`w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-8 transition-all duration-1000 relative z-10 ${aboutVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
         {/* Left: Main Profile Image */}
-        <div className={`flex-1 flex justify-center lg:justify-end transition-all duration-1000 ${aboutVisible ? 'animate-fadeInLeft delay-300' : 'opacity-0 -translate-x-10'}`}>
+        <div className={`flex-1 flex justify-center lg:justify-end transition-all duration-1000 ${aboutVisible ? 'animate-fade-in-left delay-300' : 'opacity-0 -translate-x-10'}`}>
           <div className="relative group">
             {/* Gradient Background Rings */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 rounded-full opacity-15 blur-xl group-hover:opacity-25 transition-all duration-500 animate-pulse"></div>
-            <div className="absolute -inset-2 bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 rounded-full opacity-20 blur-lg group-hover:opacity-30 transition-all duration-500"></div>
+            <div className="absolute -inset-4 bg-linear-to-r from-gray-300 via-gray-400 to-gray-500 rounded-full opacity-15 blur-xl group-hover:opacity-25 transition-all duration-500 animate-pulse"></div>
+            <div className="absolute -inset-2 bg-linear-to-r from-gray-400 via-gray-500 to-gray-600 rounded-full opacity-20 blur-lg group-hover:opacity-30 transition-all duration-500"></div>
             
             {/* Main Profile Container */}
             <div className="relative">
@@ -946,7 +946,7 @@ function App() {
                 style={{objectPosition: 'center 20%'}} />
               
               {/* Shine Effect Overlay */}
-              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-tr from-transparent via-white/5 to-white/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"></div>
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-linear-to-tr from-transparent via-white/5 to-white/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"></div>
               
               {/* Status Indicator */}
               <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-4 h-4 sm:w-6 sm:h-6 bg-gray-600 rounded-full border-2 sm:border-4 border-white shadow-lg z-30">
@@ -962,7 +962,7 @@ function App() {
           </div>
         </div>
         {/* Right: About Me Title & Info */}
-        <div className={`flex-1 flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-1000 ${aboutVisible ? 'animate-fadeInRight delay-500' : 'opacity-0 translate-x-10'}`}>
+        <div className={`flex-1 flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-1000 ${aboutVisible ? 'animate-fade-in-right delay-500' : 'opacity-0 translate-x-10'}`}>
           <h1 ref={typingRef} className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             <span className="inline-block">
               {typedText}<span className={isDarkMode ? 'text-gray-500' : 'text-gray-400'}>|</span>
@@ -999,18 +999,18 @@ function App() {
             "I enjoy creating simple digital solutions that make life a little easier for others."
           </div>
 
-          <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-900' : 'opacity-0'}`}>
+          <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 transition-all duration-700 ${aboutVisible ? 'animate-fade-in-up delay-900' : 'opacity-0'}`}>
             <a href="#contact" className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-100' : 'bg-gray-900 text-white hover:bg-gray-800'}`}>Contact</a>
-            <a href="#project" className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 shadow-sm border animate-rainbow-border hover-lift-soft text-center ${isDarkMode ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'}`}>View Work</a>
+            <a href="#project" className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 shadow-xs border animate-rainbow-border hover-lift-soft text-center ${isDarkMode ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'}`}>View Work</a>
           </div>
           
           {/* Download Section */}
-          <div className={`flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp delay-1000' : 'opacity-0'}`}>
+          <div className={`flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 transition-all duration-700 ${aboutVisible ? 'animate-fade-in-up delay-1000' : 'opacity-0'}`}>
             <a 
               href={resumePDF} 
               target="_blank"
               rel="noopener noreferrer"
-              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'}`}
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-xs border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'}`}
             >
               <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -1025,7 +1025,7 @@ function App() {
               href={transcriptPDF} 
               target="_blank"
               rel="noopener noreferrer"
-              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-sm border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'}`}>
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-xs border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'}`}>
               <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14,2 14,8 20,8"/>
@@ -1040,12 +1040,12 @@ function App() {
       </section>
 
       {/* Education & Skills Section */}
-      <section ref={aboutRef} id="education" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${aboutVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-10'}`}>
+      <section ref={aboutRef} id="education" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${aboutVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-7xl flex flex-col items-center">
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             
             {/* Education Section */}
-            <div className={`rounded-2xl sm:rounded-3xl border shadow-sm p-6 sm:p-8 transition-all duration-700 hover-lift-soft hover:shadow-lg z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/60' : 'bg-white border-gray-200 hover:shadow-xl'}`}>
+            <div className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-700 hover-lift-soft hover:shadow-lg z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/60' : 'bg-white border-gray-200 hover:shadow-xl'}`}>
               <div className="relative z-10">
                 <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Education</h2>
                 
@@ -1055,9 +1055,9 @@ function App() {
                   
                   <div className="space-y-4 sm:space-y-6">
                     {/* University - Current */}
-                    <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-400 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-300' : 'bg-gray-50 border-gray-900 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fadeInLeft delay-400' : 'opacity-0'}`}>
+                    <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-400 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-300' : 'bg-gray-50 border-gray-900 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fade-in-left delay-400' : 'opacity-0'}`}>
                       {/* Timeline Dot */}
-                      <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-400 border-zinc-800 group-hover:bg-zinc-300' : 'bg-gray-900 border-white group-hover:bg-black'}`}></div>
+                      <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-xs transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-400 border-zinc-800 group-hover:bg-zinc-300' : 'bg-gray-900 border-white group-hover:bg-black'}`}></div>
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
                         <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Bangkok University</h3>
                         <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border animate-rainbow-border self-start ${isDarkMode ? 'text-white bg-zinc-900 border-zinc-600' : 'text-gray-900 bg-white border-gray-200'}`}>2022 – Present</span>
@@ -1067,9 +1067,9 @@ function App() {
                     </div>
 
                     {/* High School */}
-                    <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-400' : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
+                    <div className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${isDarkMode ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-400' : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'} ${aboutVisible ? 'animate-fade-in-left delay-600' : 'opacity-0'}`}>
                       {/* Timeline Dot */}
-                      <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-500 border-zinc-800 group-hover:bg-zinc-400' : 'bg-gray-600 border-white group-hover:bg-gray-800'}`}></div>
+                      <div className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-xs transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${isDarkMode ? 'bg-zinc-500 border-zinc-800 group-hover:bg-zinc-400' : 'bg-gray-600 border-white group-hover:bg-gray-800'}`}></div>
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
                         <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Thammasat Klongluang<br />Wittayakom School</h3>
                         <span className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full self-start ${isDarkMode ? 'text-zinc-300 bg-zinc-700' : 'text-gray-600 bg-gray-200'}`}>2019 –2022</span>
@@ -1083,12 +1083,12 @@ function App() {
             </div>
 
             {/* Skills Section */}
-            <div ref={skillsRef} id="skills" className={`rounded-2xl sm:rounded-3xl border shadow-sm p-6 sm:p-8 transition-all duration-700 hover-lift-soft z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${skillsVisible ? 'animate-fadeInUp delay-200' : 'opacity-0 translate-y-10'}`}>
+            <div ref={skillsRef} id="skills" className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-700 hover-lift-soft z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${skillsVisible ? 'animate-fade-in-up delay-200' : 'opacity-0 translate-y-10'}`}>
               <div className="relative z-10 w-full flex flex-col items-center">
                 <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 animate-bounceIn transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Skills</h2>
                 <div className="w-full space-y-6 sm:space-y-8">
                   {/* Languages */}
-                  <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fadeInLeft delay-600' : 'opacity-0'}`}>
+                  <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fade-in-left delay-600' : 'opacity-0'}`}>
                     <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Languages</h3>
                     <p className={`text-xs sm:text-sm mb-4 sm:mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Programming languages I enjoy working with</p>
                     <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
@@ -1119,7 +1119,7 @@ function App() {
                     </div>
                   </div>
                   {/* Tools */}
-                  <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fadeInRight delay-800' : 'opacity-0'}`}>
+                  <div className={`flex flex-col items-center text-center transition-all duration-700 ${skillsVisible ? 'animate-fade-in-right delay-800' : 'opacity-0'}`}>
                     <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Tools</h3>
                     <p className={`text-xs sm:text-sm mb-4 sm:mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Tools I use regularly for development</p>
                     <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
@@ -1164,17 +1164,17 @@ function App() {
       {/* Modal Popup for certificate image (rendered with portal) */}
       {modalOpen && createPortal(
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in"
           onClick={closeModal}
           aria-modal="true"
           role="dialog">
           <div
-            className="relative max-w-4xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fadeInUp"
+            className="relative max-w-4xl w-[90vw] max-h-[90vh] flex flex-col items-center animate-fade-in-up"
             onClick={e => e.stopPropagation()}>
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-2 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
+              className="absolute top-2 right-2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-2 shadow-lg focus:outline-hidden z-10 border border-white/20 transition-colors duration-300"
               aria-label="Close"
               type="button">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -1184,7 +1184,7 @@ function App() {
             {modalImages.length > 1 && (
               <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-hidden z-10 border border-white/20 transition-colors duration-300"
                 aria-label="Previous image"
                 type="button">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -1197,7 +1197,7 @@ function App() {
             {modalImages.length > 1 && (
               <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-none z-10 border border-white/20 transition-colors duration-300"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm text-white hover:bg-black/30 rounded-full p-3 shadow-lg focus:outline-hidden z-10 border border-white/20 transition-colors duration-300"
                 aria-label="Next image"
                 type="button">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -1244,15 +1244,15 @@ function App() {
 
 
       {/* Project Section with Carousel and Video (if available) */}
-      <section ref={projectRef} id="project" className={`w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${projectVisible ? 'animate-fadeInUp delay-400' : 'opacity-0 translate-y-10'}`}>
+      <section ref={projectRef} id="project" className={`w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${projectVisible ? 'animate-fade-in-up delay-400' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
           <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Projects</h2>
           <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>A collection of my work spanning web development, UX/UI design, and software applications. Each project represents a learning journey and practical application of my skills.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center [&:has(>:nth-child(3n+1):last-child)]:xl:justify-items-center [&:has(>:nth-child(3n+2):last-child)]:xl:justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center xl:[&:has(>:nth-child(3n+1):last-child)]:justify-items-center xl:[&:has(>:nth-child(3n+2):last-child)]:justify-items-center">
             {PROJECTS.map((p, i) => (
               <div
                 key={i}
-                className={`rounded-xl sm:rounded-2xl border shadow-sm flex flex-col p-4 sm:p-6 hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${projectVisible ? `animate-fadeInUp delay-${600 + i * 100}` : 'opacity-0'}`}>
+                className={`rounded-xl sm:rounded-2xl border shadow-xs flex flex-col p-4 sm:p-6 hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${projectVisible ? `animate-fade-in-up delay-${600 + i * 100}` : 'opacity-0'}`}>
                 <div className="w-full mb-3 sm:mb-4">
                   <Carousel
                     images={p.images}
@@ -1265,11 +1265,11 @@ function App() {
                     }}
                   />
                 </div>
-                <div className="flex flex-col flex-grow space-y-2 sm:space-y-3">
+                <div className="flex flex-col grow space-y-2 sm:space-y-3">
                   <h3 className={`font-semibold text-sm sm:text-base leading-tight line-clamp-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{p.title}</h3>
-                  <div className={`text-xs sm:text-sm leading-relaxed flex-grow ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`} style={{maxHeight:'4.5rem',overflowY:'auto'}}>{p.desc}</div>
+                  <div className={`text-xs sm:text-sm leading-relaxed grow ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`} style={{maxHeight:'4.5rem',overflowY:'auto'}}>{p.desc}</div>
                   <div className="pt-1 sm:pt-2">
-                    <span className={`inline-block px-2 py-1 rounded text-xs font-medium mb-2 sm:mb-3 border ${isDarkMode ? 'bg-zinc-800 text-zinc-500 border-zinc-700' : 'bg-gray-50 text-gray-400 border-gray-200'}`}>{p.role}</span>
+                    <span className={`inline-block px-2 py-1 rounded-sm text-xs font-medium mb-2 sm:mb-3 border ${isDarkMode ? 'bg-zinc-800 text-zinc-500 border-zinc-700' : 'bg-gray-50 text-gray-400 border-gray-200'}`}>{p.role}</span>
                     {p.tools && (
                       <div className="mb-2 sm:mb-3">
                         <div className="flex flex-wrap gap-1">
@@ -1301,13 +1301,13 @@ function App() {
                     )}
                     <div className="flex flex-col gap-1.5 sm:gap-2">
                       {p.link && p.link.includes('figma.com') && (
-                        <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Figma Prototype →</a>
+                        <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-xs hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Figma Prototype →</a>
                       )}
                       {p.link && !p.link.includes('figma.com') && (
-                        <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Website →</a>
+                        <a href={p.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-xs hover-lift-soft text-center ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>View Website →</a>
                       )}
                       {p.github && (
-                        <a href={p.github} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm border animate-rainbow-border hover-lift-soft text-center ${isDarkMode ? 'bg-zinc-900 text-white border-zinc-600 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'}`}>View Source Code →</a>
+                        <a href={p.github} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-xs border animate-rainbow-border hover-lift-soft text-center ${isDarkMode ? 'bg-zinc-900 text-white border-zinc-600 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'}`}>View Source Code →</a>
                       )}
                     </div>
                   </div>
@@ -1319,18 +1319,18 @@ function App() {
       </section>
       
       {/* Certificate Section */}
-      <section ref={certificateRef} id="certificate" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${certificateVisible ? 'animate-fadeInUp delay-300' : 'opacity-0 translate-y-10'}`}>
+      <section ref={certificateRef} id="certificate" className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${certificateVisible ? 'animate-fade-in-up delay-300' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
           <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Certificates</h2>
           <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Professional certifications and achievements that validate my skills and commitment to continuous learning in technology and cybersecurity.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center [&:has(>:nth-child(3n+1):last-child)]:xl:justify-items-center [&:has(>:nth-child(3n+2):last-child)]:xl:justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center xl:[&:has(>:nth-child(3n+1):last-child)]:justify-items-center xl:[&:has(>:nth-child(3n+2):last-child)]:justify-items-center">
             {CERTIFICATES.map((c, i) => (
-              <div key={c.title} className={`rounded-xl sm:rounded-2xl border shadow-sm p-4 sm:p-6 flex flex-col hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${certificateVisible ? `animate-fadeInUp delay-${500 + i * 200}` : 'opacity-0'}`}>
+              <div key={c.title} className={`rounded-xl sm:rounded-2xl border shadow-xs p-4 sm:p-6 flex flex-col hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${certificateVisible ? `animate-fade-in-up delay-${500 + i * 200}` : 'opacity-0'}`}>
                 <div className="w-full flex justify-center mb-3 sm:mb-4">
                   <button
                     type="button"
                     onClick={() => openModal(c.image, c.title)}
-                    className="focus:outline-none group w-full"
+                    className="focus:outline-hidden group w-full"
                     aria-label={`View certificate: ${c.title}`}
                     style={{background: 'none', border: 'none', padding: 0, margin: 0}}>
                     <img
@@ -1344,12 +1344,12 @@ function App() {
                     />
                   </button>
                 </div>
-                <div className="flex flex-col flex-grow space-y-2 sm:space-y-3">
+                <div className="flex flex-col grow space-y-2 sm:space-y-3">
                   <h3 className={`text-sm sm:text-base font-semibold leading-tight line-clamp-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{c.title}</h3>
-                  <p className={`text-xs sm:text-sm flex-grow ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>{c.desc}</p>
+                  <p className={`text-xs sm:text-sm grow ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>{c.desc}</p>
                   <div className="pt-1 sm:pt-2">
                     {c.link ? (
-                      <a href={c.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm hover-lift-soft inline-block ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>Verify Certificate →</a>
+                      <a href={c.link} target="_blank" rel="noopener noreferrer" className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-xs hover-lift-soft inline-block ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'}`}>Verify Certificate →</a>
                     ) : (
                       <span className="text-xs sm:text-sm text-gray-400">No verification available</span>
                     )}
@@ -1365,7 +1365,7 @@ function App() {
       <section
         ref={activityRef}
         id="activity"
-        className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${activityVisible ? 'animate-fadeInUp delay-350' : 'opacity-0 translate-y-10'}`}>
+        className={`scroll-mt-32 w-full flex justify-center py-12 sm:py-16 px-4 sm:px-8 transition-all duration-700 ${activityVisible ? 'animate-fade-in-up delay-350' : 'opacity-0 translate-y-10'}`}>
         <div className="w-full max-w-6xl flex flex-col items-center">
           <h2 className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Activities</h2>
           <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>International seminars and knowledge sharing activities that enhanced my global perspective in technology and innovation.</p>
@@ -1376,7 +1376,7 @@ function App() {
               {ACTIVITIES.map((activity, index) => (
                 <div
                   key={activity.title}
-                  className={`rounded-xl sm:rounded-2xl border shadow-sm transition-all duration-300 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${activityVisible ? `animate-fadeInUp delay-${600 + index * 300}` : 'opacity-0'}`}>
+                  className={`rounded-xl sm:rounded-2xl border shadow-xs transition-all duration-300 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${activityVisible ? `animate-fade-in-up delay-${600 + index * 300}` : 'opacity-0'}`}>
                   <div className="p-6 sm:p-8">
                     {/* Activity Header */}
                     <div className="mb-6">
@@ -1408,7 +1408,7 @@ function App() {
                       <ul className="space-y-2">
                         {activity.highlights.map((highlight, hlIndex) => (
                           <li key={hlIndex} className={`flex items-start gap-2 text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>
-                            <span className={`flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2 ${isDarkMode ? 'bg-blue-400' : 'bg-blue-500'}`}></span>
+                            <span className={`shrink-0 w-1.5 h-1.5 rounded-full mt-2 ${isDarkMode ? 'bg-blue-400' : 'bg-blue-500'}`}></span>
                             <span className="leading-relaxed">{highlight}</span>
                           </li>
                         ))}
@@ -1424,13 +1424,13 @@ function App() {
 
 
       {/* Contact Section */}
-      <section ref={contactRef} id="contact" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 transition-all duration-700 ${contactVisible ? 'animate-fadeInUp delay-500' : ''}`}>
+      <section ref={contactRef} id="contact" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 transition-all duration-700 ${contactVisible ? 'animate-fade-in-up delay-500' : ''}`}>
         <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Contact</h2>
-        <div className={`rounded-xl sm:rounded-2xl border shadow-sm p-6 sm:p-8 transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${contactVisible ? 'animate-fadeInUp delay-700' : ''}`}>
+        <div className={`rounded-xl sm:rounded-2xl border shadow-xs p-6 sm:p-8 transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${contactVisible ? 'animate-fade-in-up delay-700' : ''}`}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Left Column - Contact Info */}
             <div className="space-y-3 sm:space-y-4">
-              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInLeft delay-900' : ''}`}>
+              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fade-in-left delay-900' : ''}`}>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
                   <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -1443,7 +1443,7 @@ function App() {
                 </div>
               </div>
               
-              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInLeft delay-1000' : ''}`}>
+              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fade-in-left delay-1000' : ''}`}>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
                   <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -1458,7 +1458,7 @@ function App() {
 
             {/* Right Column - Email Info */}
             <div className="space-y-3 sm:space-y-4">
-              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInRight delay-1100' : ''}`}>
+              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fade-in-right delay-1100' : ''}`}>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
                   <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -1471,7 +1471,7 @@ function App() {
                 </div>
               </div>
               
-              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fadeInRight delay-1200' : ''}`}>
+              <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-300 ${contactVisible ? 'animate-fade-in-right delay-1200' : ''}`}>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
                   <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -1489,7 +1489,7 @@ function App() {
           {/* Social Links Section */}
           <div className={`mt-6 sm:mt-8 pt-6 sm:pt-8 border-t ${isDarkMode ? 'border-zinc-700/50' : 'border-gray-200'}`}>
             <h3 className={`text-lg font-semibold text-center mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Connect with me</h3>
-            <div className={`flex justify-center gap-4 sm:gap-6 transition-all duration-700 ${contactVisible ? 'animate-fadeInUp delay-1300' : ''}`}>
+            <div className={`flex justify-center gap-4 sm:gap-6 transition-all duration-700 ${contactVisible ? 'animate-fade-in-up delay-1300' : ''}`}>
               {SOCIALS.map((s, index) => (
                 <a 
                   key={s.name} 

@@ -49,7 +49,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
         <button
           type="button"
           onClick={openModal}
-          className="focus:outline-none"
+          className="focus:outline-hidden"
           style={{background: 'none', border: 'none', padding: 0, margin: 0}}
           aria-label={isVideo(images[idx]) ? "View full video" : "View full image"}
         >
@@ -57,7 +57,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
             <video
               src={images[idx].src}
               controls
-              className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-xl shadow-sm select-none"}
+              className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-xl shadow-xs select-none"}
               style={{ background: '#f9fafb', cursor: 'zoom-in' }}
             >
               Your browser does not support the video tag.
@@ -68,7 +68,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
               alt={images[idx].alt || ''}
               loading="lazy"
               decoding="async"
-              className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-xl shadow-sm select-none"}
+              className={imgClassName ? imgClassName + " select-none" : "w-full h-56 sm:h-72 md:h-80 lg:h-96 object-cover object-top rounded-xl shadow-xs select-none"}
               draggable="false"
               style={{cursor: 'zoom-in'}}
             />
@@ -99,7 +99,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
       {/* Modal Popup for full image or video (rendered with portal) */}
       {modalOpen && createPortal(
         <div
-          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-120 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in"
           onClick={closeModal}
           aria-modal="true"
           role="dialog"
@@ -110,7 +110,7 @@ export default function Carousel({ images, altPrefix = '', className = '', imgCl
           >
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 bg-red-600/90 hover:bg-red-600 text-white rounded-full p-3 shadow-xl focus:outline-none z-10 border border-red-400/50 hover:border-red-300 transition-all duration-300 hover:scale-110"
+              className="absolute top-2 right-2 bg-red-600/90 hover:bg-red-600 text-white rounded-full p-3 shadow-xl focus:outline-hidden z-10 border border-red-400/50 hover:border-red-300 transition-all duration-300 hover:scale-110"
               aria-label="Close"
               type="button"
             >

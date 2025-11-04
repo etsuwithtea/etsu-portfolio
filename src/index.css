@@ -1,395 +1,612 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* Force hide desktop nav on mobile */
-@media (max-width: 1023px) {
-  .desktop-nav {
-    display: none !important;
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-*: initial;
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+
+  --color-primary: #222;
+  --color-accent: #ffd600;
+  --color-graybg: #f6f7f4;
+
+  --font-weight-extrabold: 900;
+
+  --backdrop-blur-xs: 2px;
+  --backdrop-blur-sm: 4px;
+  --backdrop-blur-md: 12px;
+  --backdrop-blur-lg: 16px;
+  --backdrop-blur-xl: 24px;
+
+  --animate-fade-in-up: fadeInUp 0.6s ease-out forwards;
+  --animate-fade-in-left: fadeInLeft 0.6s ease-out forwards;
+  --animate-fade-in-right: fadeInRight 0.6s ease-out forwards;
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+  --animate-slide-in-down: slideInDown 0.5s ease-out forwards;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-pulse-slow: pulse 2s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite;
+  --animate-typing:
+    typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 5px #fbbf24,
+        0 0 10px #fbbf24,
+        0 0 15px #fbbf24;
+    }
+    50% {
+      box-shadow:
+        0 0 10px #fbbf24,
+        0 0 20px #fbbf24,
+        0 0 30px #fbbf24;
+    }
+  }
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #fbbf24;
+    }
   }
 }
 
-@media (min-width: 1024px) {
-  .desktop-nav {
-    display: flex !important;
-  }
-  .mobile-nav-btn {
-    display: none !important;
-  }
-}
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-/* Browser compatibility for older Edge versions */
-.backdrop-blur-fallback {
-  background: rgba(255, 255, 255, 0.95) !important;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-}
-
-.backdrop-blur-fallback.dark {
-  background: rgba(39, 39, 42, 0.7) !important;
-}
-
-/* Ensure flexbox works in older browsers */
-.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.items-center {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.justify-between {
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+@utility hover-lift {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-@keyframes rainbow-shadow {
-  0% { 
-    box-shadow: 0 0 20px rgba(255, 0, 150, 0.3), 
-                0 0 40px rgba(255, 0, 150, 0.15),
-                0 0 60px rgba(255, 0, 150, 0.05);
-  }
-  25% { 
-    box-shadow: 0 0 20px rgba(0, 255, 150, 0.3), 
-                0 0 40px rgba(0, 255, 150, 0.15),
-                0 0 60px rgba(0, 255, 150, 0.05);
-  }
-  50% { 
-    box-shadow: 0 0 20px rgba(150, 0, 255, 0.3), 
-                0 0 40px rgba(150, 0, 255, 0.15),
-                0 0 60px rgba(150, 0, 255, 0.05);
-  }
-  75% { 
-    box-shadow: 0 0 20px rgba(255, 150, 0, 0.3), 
-                0 0 40px rgba(255, 150, 0, 0.15),
-                0 0 60px rgba(255, 150, 0, 0.05);
-  }
-  100% { 
-    box-shadow: 0 0 20px rgba(255, 0, 150, 0.3), 
-                0 0 40px rgba(255, 0, 150, 0.15),
-                0 0 60px rgba(255, 0, 150, 0.05);
-  }
-}
-
-@keyframes rainbow-border {
-  0% { 
-    border-color: rgba(255, 0, 150, 0.4);
-    box-shadow: 0 0 10px rgba(255, 0, 150, 0.2),
-                inset 0 0 10px rgba(255, 0, 150, 0.05);
-  }
-  25% { 
-    border-color: rgba(0, 255, 150, 0.4);
-    box-shadow: 0 0 10px rgba(0, 255, 150, 0.2),
-                inset 0 0 10px rgba(0, 255, 150, 0.05);
-  }
-  50% { 
-    border-color: rgba(150, 0, 255, 0.4);
-    box-shadow: 0 0 10px rgba(150, 0, 255, 0.2),
-                inset 0 0 10px rgba(150, 0, 255, 0.05);
-  }
-  75% { 
-    border-color: rgba(255, 150, 0, 0.4);
-    box-shadow: 0 0 10px rgba(255, 150, 0, 0.2),
-                inset 0 0 10px rgba(255, 150, 0, 0.05);
-  }
-  100% { 
-    border-color: rgba(255, 0, 150, 0.4);
-    box-shadow: 0 0 10px rgba(255, 0, 150, 0.2),
-                inset 0 0 10px rgba(255, 0, 150, 0.05);
-  }
-}
-
-.animate-rainbow-shadow {
-  animation: rainbow-shadow 6s ease-in-out infinite;
-}
-
-.animate-rainbow-border {
-  animation: rainbow-border 11s ease-in-out infinite;
-  border-width: 2px;
-  border-style: solid;
-}
-
-/* Animation utility classes */
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.animate-fadeInLeft {
-  animation: fadeInLeft 0.8s ease-out forwards;
-}
-
-.animate-fadeInRight {
-  animation: fadeInRight 0.8s ease-out forwards;
-}
-
-.animate-slideInDown {
-  animation: slideInDown 0.6s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse-gentle {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.animate-typing {
-  overflow: hidden;
-  border-right: 2px solid #fbbf24;
-  animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
-}
-
-.animate-rainbow-shadow {
-  animation: rainbow-shadow 3s ease-in-out infinite;
-}
-
-/* Enhanced bounce and scale animations */
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-}
-
-@keyframes wiggle {
-  0%, 100% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(156, 163, 175, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(156, 163, 175, 0.6);
-  }
-}
-
-/* New utility classes */
-.animate-bounceIn {
-  animation: bounceIn 0.8s ease-out forwards;
-}
-
-.animate-rotate {
-  animation: rotate 2s linear infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  background-size: 200px 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-.animate-wiggle {
-  animation: wiggle 1s ease-in-out infinite;
-}
-
-.animate-heartbeat {
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-/* Interactive hover effects */
-.hover-lift-soft {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-lift-soft:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.hover-scale-105 {
-  transition: transform 0.3s ease;
-}
-
-.hover-scale-105:hover {
-  transform: scale(1.05);
-}
-
-.hover-glow-blue {
-  transition: all 0.3s ease;
-}
-
-.hover-glow-blue:hover {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-}
-
-.hover-rotate {
-  transition: transform 0.3s ease;
-}
-
-.hover-rotate:hover {
-  transform: rotate(5deg);
-}
-
-/* Stagger animation support */
-.stagger-animation > * {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
-.stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
-.stagger-animation > *:nth-child(7) { animation-delay: 0.7s; }
-
-/* Scroll animations (initially hidden) */
-.scroll-animate {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.scroll-animate.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Additional hover utilities */
-@layer utilities {
-  .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .hover-lift:hover {
+  &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   }
+}
+@utility delay-100 {
+  animation-delay: 0.1s;
+}
+@utility delay-200 {
+  animation-delay: 0.2s;
+}
+@utility delay-300 {
+  animation-delay: 0.3s;
+}
+@utility delay-400 {
+  animation-delay: 0.4s;
+}
+@utility delay-500 {
+  animation-delay: 0.5s;
+}
+@utility delay-700 {
+  animation-delay: 0.7s;
+}
+@utility delay-1000 {
+  animation-delay: 1s;
+}
 
-  .delay-100 { animation-delay: 0.1s; }
-  .delay-200 { animation-delay: 0.2s; }
-  .delay-300 { animation-delay: 0.3s; }
-  .delay-400 { animation-delay: 0.4s; }
-  .delay-500 { animation-delay: 0.5s; }
-  .delay-700 { animation-delay: 0.7s; }
-  .delay-1000 { animation-delay: 1s; }
+@layer utilities {
+  /* Force hide desktop nav on mobile */
+  @media (max-width: 1023px) {
+    .desktop-nav {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .desktop-nav {
+      display: flex !important;
+    }
+    .mobile-nav-btn {
+      display: none !important;
+    }
+  }
+
+  /* Browser compatibility for older Edge versions */
+  .backdrop-blur-fallback {
+    background: rgba(255, 255, 255, 0.95) !important;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .backdrop-blur-fallback.dark {
+    background: rgba(39, 39, 42, 0.7) !important;
+  }
+
+  /* Ensure flexbox works in older browsers */
+  .flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .items-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .justify-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  @keyframes rainbow-shadow {
+    0% {
+      box-shadow:
+        0 0 20px rgba(255, 0, 150, 0.3),
+        0 0 40px rgba(255, 0, 150, 0.15),
+        0 0 60px rgba(255, 0, 150, 0.05);
+    }
+    25% {
+      box-shadow:
+        0 0 20px rgba(0, 255, 150, 0.3),
+        0 0 40px rgba(0, 255, 150, 0.15),
+        0 0 60px rgba(0, 255, 150, 0.05);
+    }
+    50% {
+      box-shadow:
+        0 0 20px rgba(150, 0, 255, 0.3),
+        0 0 40px rgba(150, 0, 255, 0.15),
+        0 0 60px rgba(150, 0, 255, 0.05);
+    }
+    75% {
+      box-shadow:
+        0 0 20px rgba(255, 150, 0, 0.3),
+        0 0 40px rgba(255, 150, 0, 0.15),
+        0 0 60px rgba(255, 150, 0, 0.05);
+    }
+    100% {
+      box-shadow:
+        0 0 20px rgba(255, 0, 150, 0.3),
+        0 0 40px rgba(255, 0, 150, 0.15),
+        0 0 60px rgba(255, 0, 150, 0.05);
+    }
+  }
+
+  @keyframes rainbow-border {
+    0% {
+      border-color: rgba(255, 0, 150, 0.4);
+      box-shadow:
+        0 0 10px rgba(255, 0, 150, 0.2),
+        inset 0 0 10px rgba(255, 0, 150, 0.05);
+    }
+    25% {
+      border-color: rgba(0, 255, 150, 0.4);
+      box-shadow:
+        0 0 10px rgba(0, 255, 150, 0.2),
+        inset 0 0 10px rgba(0, 255, 150, 0.05);
+    }
+    50% {
+      border-color: rgba(150, 0, 255, 0.4);
+      box-shadow:
+        0 0 10px rgba(150, 0, 255, 0.2),
+        inset 0 0 10px rgba(150, 0, 255, 0.05);
+    }
+    75% {
+      border-color: rgba(255, 150, 0, 0.4);
+      box-shadow:
+        0 0 10px rgba(255, 150, 0, 0.2),
+        inset 0 0 10px rgba(255, 150, 0, 0.05);
+    }
+    100% {
+      border-color: rgba(255, 0, 150, 0.4);
+      box-shadow:
+        0 0 10px rgba(255, 0, 150, 0.2),
+        inset 0 0 10px rgba(255, 0, 150, 0.05);
+    }
+  }
+
+  .animate-rainbow-shadow {
+    animation: rainbow-shadow 6s ease-in-out infinite;
+  }
+
+  .animate-rainbow-border {
+    animation: rainbow-border 11s ease-in-out infinite;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  /* Animation utility classes */
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fadeInLeft {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-fadeInRight {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+
+  .animate-slideInDown {
+    animation: slideInDown 0.6s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-gentle {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .animate-typing {
+    overflow: hidden;
+    border-right: 2px solid #fbbf24;
+    animation:
+      typing 3s steps(40, end),
+      blink 0.75s step-end infinite;
+  }
+
+  .animate-rainbow-shadow {
+    animation: rainbow-shadow 3s ease-in-out infinite;
+  }
+
+  /* Enhanced bounce and scale animations */
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  @keyframes heartbeat {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px rgba(156, 163, 175, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(156, 163, 175, 0.6);
+    }
+  }
+
+  /* New utility classes */
+  .animate-bounceIn {
+    animation: bounceIn 0.8s ease-out forwards;
+  }
+
+  .animate-rotate {
+    animation: rotate 2s linear infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  /* Interactive hover effects */
+  .hover-lift-soft {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift-soft:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .hover-scale-105 {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-scale-105:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-glow-blue {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow-blue:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+
+  .hover-rotate {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-rotate:hover {
+    transform: rotate(5deg);
+  }
+
+  /* Stagger animation support */
+  .stagger-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .stagger-animation > *:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .stagger-animation > *:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .stagger-animation > *:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .stagger-animation > *:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .stagger-animation > *:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  .stagger-animation > *:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+  .stagger-animation > *:nth-child(7) {
+    animation-delay: 0.7s;
+  }
+
+  /* Scroll animations (initially hidden) */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+
+  .scroll-animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Additional hover utilities */
 }
 
 /* Smooth scrolling */
