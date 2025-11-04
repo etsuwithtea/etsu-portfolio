@@ -134,6 +134,15 @@ import ImMemo_2 from './assets/ImMemmo/ImMemo_2.png';
 import ImMemo_3 from './assets/ImMemmo/ImMemo_3.png';
 import ImMemo_4 from './assets/ImMemmo/ImMemo_4.png';
 
+// Importing Game Store project images
+import gamestore_1 from './assets/game-store/mini-proj2_game-store_screenshot_1_home.jpeg';
+import gamestore_2 from './assets/game-store/mini-proj2_game-store_screenshot_1_sidebar.jpeg';
+import gamestore_3 from './assets/game-store/mini-proj2_game-store_screenshot_2_about.jpeg';
+import gamestore_4 from './assets/game-store/mini-proj2_game-store_screenshot_3_clearfavorites.jpeg';
+import gamestore_5 from './assets/game-store/mini-proj2_game-store_screenshot_3_favorites.jpeg';
+import gamestore_6 from './assets/game-store/mini-proj2_game-store_screenshot_4_gamedetail.png';
+import gamestore_7 from './assets/game-store/mini-proj2_game-store_screenshot_5_gamedeveloper.png';
+
 const SOCIALS = [
   { name: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/navapan-suthon-5245a3384' },
   { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/etsuwithtea' },
@@ -193,6 +202,23 @@ const PROJECTS = [
     desc: 'Remade EGAT’s power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from over 100+ MongoDB collections for centralized management. Optimized database queries for fast access and reliability, supporting thousands of transformer records. Improved operational efficiency and user satisfaction with advanced insights and reporting.',
     role: 'Role : Fullstack Developer (Next.js, MongoDB)',
     tools: ['Next.js', 'GitHub Copilot', 'MongoDB', 'React', 'JavaScript', 'Node.js', 'CSS', 'HTML', 'Visual Studio Code', 'Git', 'Tailwind CSS'],
+    isPrototype: false,
+  },
+  {
+    title: 'Game Store',
+    images: [
+      { src: gamestore_1, alt: 'Game Store - Home' },
+      { src: gamestore_2, alt: 'Game Store - Sidebar' },
+      { src: gamestore_3, alt: 'Game Store - About' },
+      { src: gamestore_4, alt: 'Game Store - Clear Favorites' },
+      { src: gamestore_5, alt: 'Game Store - Favorites' },
+      { src: gamestore_6, alt: 'Game Store - Game Detail' },
+      { src: gamestore_7, alt: 'Game Store - Game Developer' },
+    ],
+    desc: 'A web application for browsing and discovering video games. Built with React + Vite, featuring a game grid display, search functionality, sidebar filters, and a favorites system. Integrated with a game API to fetch real-time game data. Users can explore games by categories, view detailed information about each game, and save their favorite games to a favorites list.',
+    role: 'Role : Frontend Developer',
+    tools: ['React', 'Vite', 'TypeScript', 'Redux Toolkit', 'Tailwind CSS', 'Git', 'Node.js', 'Visual Studio Code'],
+    github: 'https://github.com/etsuwithtea/game-store',
     isPrototype: false,
   },
     {
