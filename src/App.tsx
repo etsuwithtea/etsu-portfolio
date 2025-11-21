@@ -1,5 +1,5 @@
 import './index.css';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useRef, JSX } from 'react';
 import { createPortal } from 'react-dom';
 
 // Importing images and assets
@@ -51,7 +51,39 @@ import eat_rai_dee_project8_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee
 import eat_rai_dee_project9_mobile from './assets/eat_rai_dee/mobile/eat_rai_dee_9_mobile.png';
 
 // Importing the Carousel component
-import Carousel from './components/Carousel.jsx';
+import Carousel, { type CarouselMediaItem } from './components/Carousel';
+
+type SocialLink = {
+  name: string;
+  icon: string;
+  url: string;
+};
+
+type Activity = {
+  title: string;
+  date: string;
+  description: string;
+  highlights: string[];
+  images: CarouselMediaItem[];
+};
+
+type Project = {
+  title: string;
+  images: CarouselMediaItem[];
+  desc: string;
+  role: string;
+  tools: string[];
+  github?: string;
+  link?: string;
+  isPrototype?: boolean;
+};
+
+type Certificate = {
+  title: string;
+  desc: string;
+  image: string;
+  link: string;
+};
 
 // Importing BeyondHana project images
 import beyondhana_1 from './assets/beyondhana/beyondhana_1.png';
@@ -143,13 +175,13 @@ import gamestore_5 from './assets/game-store/mini-proj2_game-store_screenshot_3_
 import gamestore_6 from './assets/game-store/mini-proj2_game-store_screenshot_4_gamedetail.png';
 import gamestore_7 from './assets/game-store/mini-proj2_game-store_screenshot_5_gamedeveloper.png';
 
-const SOCIALS = [
+const SOCIALS: SocialLink[] = [
   { name: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/navapan-suthon-5245a3384' },
   { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/etsuwithtea' },
   { name: 'GitHub', icon: 'github', url: 'https://github.com/etsuwithtea' },
 ];
 
-const ACTIVITIES = [
+const ACTIVITIES: Activity[] = [
   {
   title: 'International Seminar: BU x KAIT 2025',
   date: '20/02/2025',
@@ -187,7 +219,7 @@ const ACTIVITIES = [
   },
 ];
 
-const PROJECTS = [
+const PROJECTS: Project[] = [
   {
     title: 'Power Transformer Management for EGAT (current in progress)',
     images: [
@@ -410,7 +442,7 @@ const PROJECTS = [
   },
 ];
 
-const CERTIFICATES = [
+const CERTIFICATES: Certificate[] = [
   {
     title: 'Customer Service with Python: Build a Chatbot using ChatGPT',
     desc: 'Coursera Project Network · Apr 18, 2025',
@@ -435,7 +467,7 @@ const CERTIFICATES = [
 // Custom hook for scroll animations
 const useScrollAnimation = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const currentRef = ref.current;
@@ -482,41 +514,42 @@ const useScrollAnimation = () => {
     };
   }, []);
 
-  return [ref, isVisible];
+  return [ref, isVisible] as const;
 };
 
 // Custom hook for typing animation - starts immediately if element is visible
-const useTypingAnimation = (text, speed = 50) => {
+const useTypingAnimation = (text: string, speed = 50) => {
   const [displayedText, setDisplayedText] = useState('');
   const [shouldStart, setShouldStart] = useState(false);
-  const ref = useRef();
+  const ref = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     // Start typing animation immediately on component mount
-    setShouldStart(true);}, []);
+    setShouldStart(true);
+  }, []);
 
   useEffect(() => {
     if (shouldStart) {
       let index = 0;
-      const timer = setInterval(() => {
+      const timer = window.setInterval(() => {
         if (index < text.length) {
           setDisplayedText(text.slice(0, index + 1));
           index++;
         } else {
-          clearInterval(timer);
+          window.clearInterval(timer);
         }
       }, speed);
 
-      return () => clearInterval(timer);
+      return () => window.clearInterval(timer);
     }
   }, [shouldStart, text, speed]);
 
-  return [ref, displayedText];
+  return [ref, displayedText] as const;
 };
 
 // Helper function to get icon for skills
-const getSkillIcon = (skill, isDarkMode = false) => {
-  const iconMap = {
+const getSkillIcon = (skill: string, isDarkMode = false): JSX.Element => {
+  const iconMap: Record<string, JSX.Element> = {
     'Python': <i className="fab fa-python text-blue-500"></i>,
     'C#': <i className="fas fa-code text-green-600"></i>,
     'Java': <i className="fab fa-java text-orange-600"></i>,
@@ -532,15 +565,15 @@ const getSkillIcon = (skill, isDarkMode = false) => {
     'Visual Studio 2022': <i className="fas fa-laptop-code text-purple-700"></i>
   };
 
-  return iconMap[skill] || <i className="fas fa-check-circle text-green-500"></i>;
+  return iconMap[skill] ?? <i className="fas fa-check-circle text-green-500"></i>;
 };
 
 function App() {
   // Modal state for certificate popup
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalImg, setModalImg] = useState(null);
+  const [modalImg, setModalImg] = useState<string | null>(null);
   const [modalAlt, setModalAlt] = useState('');
-  const [modalImages, setModalImages] = useState([]);
+  const [modalImages, setModalImages] = useState<CarouselMediaItem[]>([]);
   const [currentModalIndex, setCurrentModalIndex] = useState(0);
 
   // Dark mode state
@@ -560,11 +593,11 @@ function App() {
   
   // Profile image rotation state
   const [currentProfileImage, setCurrentProfileImage] = useState(0);
-  const profileImages = [mainProfile, mainProfile_2];
+  const profileImages: string[] = [mainProfile, mainProfile_2];
   
   // About section is always visible (above the fold)
   const aboutVisible = true;
-  const aboutRef = useRef();
+  const aboutRef = useRef<HTMLDivElement | null>(null);
   
   // Other scroll animation refs
   const [skillsRef, skillsVisible] = useScrollAnimation();
@@ -574,16 +607,16 @@ function App() {
   const [contactRef, contactVisible] = useScrollAnimation();
   
   // Expanded tools state for each project
-  const [expandedTools, setExpandedTools] = useState({});
+  const [expandedTools, setExpandedTools] = useState<Record<number, boolean>>({});
   
   // Typing animation - start immediately when page loads
   const [typingRef, typedText] = useTypingAnimation("Hi I'm Navapan", 100);
 
   useEffect(() => {
     // Loading sequence
-    const timer = setTimeout(() => {
+    const timer = window.setTimeout(() => {
       setIsLoaded(true);
-      setTimeout(() => setShowLoader(false), 500); // Hide loader after animations start
+      window.setTimeout(() => setShowLoader(false), 500); // Hide loader after animations start
     }, 1500); // Show loader for 1.5 seconds
     
     // Check for saved dark mode preference
@@ -593,7 +626,7 @@ function App() {
       document.documentElement.classList.add('dark');
     }
     
-    return () => clearTimeout(timer);
+    return () => window.clearTimeout(timer);
   }, []);
 
   // Scroll progress tracking
@@ -614,7 +647,7 @@ function App() {
   }, []);
 
   // Toggle tools expansion for specific project
-  const toggleToolsExpansion = (projectIndex) => {
+  const toggleToolsExpansion = (projectIndex: number) => {
     setExpandedTools(prev => ({
       ...prev,
       [projectIndex]: !prev[projectIndex]
@@ -623,32 +656,35 @@ function App() {
 
   // Profile image rotation effect
   useEffect(() => {
-    const imageRotationInterval = setInterval(() => {
+    const imageRotationInterval = window.setInterval(() => {
       setCurrentProfileImage(prev => (prev + 1) % profileImages.length);
     }, 3000); // เปลี่ยนรูปทุก 4 วินาที
 
-    return () => clearInterval(imageRotationInterval);
+    return () => window.clearInterval(imageRotationInterval);
   }, [profileImages.length]);
 
   // Toggle dark mode
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    if (!isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('darkMode', 'true');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('darkMode', 'false');
-    }
+    setIsDarkMode(prevMode => {
+      const nextMode = !prevMode;
+      if (nextMode) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('darkMode', 'false');
+      }
+      return nextMode;
+    });
   };
 
   // Toggle mobile menu
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen(prev => !prev);
   };
 
   // Navigation click handler
-  const handleNavClick = (sectionId) => {
+  const handleNavClick = (sectionId: string) => {
     const el = document.getElementById(sectionId);
     if (el) {
       const yOffset = -120;
@@ -658,11 +694,22 @@ function App() {
     setIsMobileMenuOpen(false); // Close mobile menu after navigation
   };
   // openModal: set alt text for modal only (no title displayed)
-  const openModal = (img, alt, type, idx, allImages = []) => {
-    setModalImages(allImages.length > 0 ? allImages : [{ src: img, alt: alt || '' }]);
-    setCurrentModalIndex(idx || 0);
+  const openModal = (
+    img: string,
+    alt: string = '',
+    type?: CarouselMediaItem['type'],
+    idx = 0,
+    allImages: CarouselMediaItem[] = []
+  ) => {
+    const modalItems =
+      allImages.length > 0
+        ? allImages
+        : [{ src: img, alt, ...(type ? { type } : {}) }];
+
+    setModalImages(modalItems);
+    setCurrentModalIndex(allImages.length > 0 ? idx : 0);
     setModalImg(img);
-    setModalAlt(''); // No title displayed in modal
+    setModalAlt(alt);
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
   };
@@ -672,7 +719,8 @@ function App() {
       const nextIndex = (currentModalIndex + 1) % modalImages.length;
       setCurrentModalIndex(nextIndex);
       const nextImg = modalImages[nextIndex];
-      setModalImg(nextImg.type === 'video' ? nextImg.src : nextImg.src);
+      setModalImg(nextImg?.src ?? null);
+      setModalAlt(nextImg?.alt ?? '');
     }
   };
 
@@ -681,7 +729,8 @@ function App() {
       const prevIndex = currentModalIndex === 0 ? modalImages.length - 1 : currentModalIndex - 1;
       setCurrentModalIndex(prevIndex);
       const prevImg = modalImages[prevIndex];
-      setModalImg(prevImg.type === 'video' ? prevImg.src : prevImg.src);
+      setModalImg(prevImg?.src ?? null);
+      setModalAlt(prevImg?.alt ?? '');
     }
   };
 
@@ -777,7 +826,7 @@ function App() {
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-transparent z-1000 pointer-events-none">
         <div 
-          className={`h-full transition-all duration-300 ease-out ${isDarkMode ? 'bg-linear-to-r from-purple-500 via-pink-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500' : 'bg-linear-to-r from-blue-500 via-purple-500 via-pink-500 via-orange-500 to-red-500'}`}
+          className={`h-full transition-all duration-300 ease-out ${isDarkMode ? 'bg-linear-to-r from-purple-500 to-pink-500' : 'bg-linear-to-r from-blue-500 to-red-500'}`}
           style={{ width: `${scrollProgress}%` }}
         ></div>
       </div>
@@ -963,7 +1012,7 @@ function App() {
         </div>
         {/* Right: About Me Title & Info */}
         <div className={`flex-1 flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-1000 ${aboutVisible ? 'animate-fade-in-right delay-500' : 'opacity-0 translate-x-10'}`}>
-          <h1 ref={typingRef} className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+          <h1 ref={typingRef as React.Ref<HTMLHeadingElement>} className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             <span className="inline-block">
               {typedText}<span className={isDarkMode ? 'text-gray-500' : 'text-gray-400'}>|</span>
             </span>
@@ -1045,7 +1094,7 @@ function App() {
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             
             {/* Education Section */}
-            <div className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-700 hover-lift-soft hover:shadow-lg z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/60' : 'bg-white border-gray-200 hover:shadow-xl'}`}>
+            <div className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-300 hover-lift-soft hover:shadow-md hover:rotate-1 hover:scale-105 z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'}`}>
               <div className="relative z-10">
                 <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Education</h2>
                 
@@ -1083,7 +1132,7 @@ function App() {
             </div>
 
             {/* Skills Section */}
-            <div ref={skillsRef} id="skills" className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-700 hover-lift-soft z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${skillsVisible ? 'animate-fade-in-up delay-200' : 'opacity-0 translate-y-10'}`}>
+            <div ref={skillsRef as React.Ref<HTMLDivElement>} id="skills" className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-300 hover-lift-soft hover:shadow-md hover:rotate-1 hover:scale-105 z-10 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${skillsVisible ? 'animate-fade-in-up delay-200' : 'opacity-0 translate-y-10'}`}>
               <div className="relative z-10 w-full flex flex-col items-center">
                 <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 animate-bounceIn transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Skills</h2>
                 <div className="w-full space-y-6 sm:space-y-8">
@@ -1225,7 +1274,7 @@ function App() {
                   Your browser does not support the video tag.
                 </video>
               </div>
-            ) : (
+            ) : modalImg ? (
               <div className="rounded-xl overflow-hidden" style={{borderRadius: '0.75rem'}}>
                 <img
                   src={modalImg}
@@ -1236,7 +1285,7 @@ function App() {
                   style={{display: 'block'}}
                 />
               </div>
-            )}
+            ) : null}
           </div>
         </div>,
         document.body
@@ -1252,12 +1301,11 @@ function App() {
             {PROJECTS.map((p, i) => (
               <div
                 key={i}
-                className={`rounded-xl sm:rounded-2xl border shadow-xs flex flex-col p-4 sm:p-6 hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${projectVisible ? `animate-fade-in-up delay-${600 + i * 100}` : 'opacity-0'}`}>
+                className={`rounded-xl sm:rounded-2xl border shadow-xs flex flex-col p-4 sm:p-6 hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${projectVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                style={projectVisible ? { animationDelay: `${(600 + i * 100) / 1000}s` } : {}}>
                 <div className="w-full mb-3 sm:mb-4">
                   <Carousel
                     images={p.images}
-                    link={p.link}
-                    title={p.title}
                     imgClassName="h-40 sm:h-48 w-full object-cover rounded-lg"
                     onAnyModalOpen={handleAnyModalOpen}
                     onImageClick={(imgObj, idx, allImages) => {
@@ -1325,7 +1373,8 @@ function App() {
           <p className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Professional certifications and achievements that validate my skills and commitment to continuous learning in technology and cybersecurity.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full justify-items-center xl:[&:has(>:nth-child(3n+1):last-child)]:justify-items-center xl:[&:has(>:nth-child(3n+2):last-child)]:justify-items-center">
             {CERTIFICATES.map((c, i) => (
-              <div key={c.title} className={`rounded-xl sm:rounded-2xl border shadow-xs p-4 sm:p-6 flex flex-col hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${certificateVisible ? `animate-fade-in-up delay-${500 + i * 200}` : 'opacity-0'}`}>
+              <div key={c.title} className={`rounded-xl sm:rounded-2xl border shadow-xs p-4 sm:p-6 flex flex-col hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${certificateVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                style={certificateVisible ? { animationDelay: `${(500 + i * 200) / 1000}s` } : {}}>
                 <div className="w-full flex justify-center mb-3 sm:mb-4">
                   <button
                     type="button"
@@ -1376,7 +1425,8 @@ function App() {
               {ACTIVITIES.map((activity, index) => (
                 <div
                   key={activity.title}
-                  className={`rounded-xl sm:rounded-2xl border shadow-xs transition-all duration-300 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${activityVisible ? `animate-fade-in-up delay-${600 + index * 300}` : 'opacity-0'}`}>
+                  className={`rounded-xl sm:rounded-2xl border shadow-xs transition-all duration-300 hover:shadow-md hover:rotate-1 hover:scale-105 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${activityVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+                  style={activityVisible ? { animationDelay: `${(600 + index * 300) / 1000}s` } : {}}>
                   <div className="p-6 sm:p-8">
                     {/* Activity Header */}
                     <div className="mb-6">
@@ -1395,11 +1445,12 @@ function App() {
                     <div className="mb-6 w-full">
                       <Carousel
                         images={activity.images}
-                        title={activity.title}
                         imgClassName="h-40 sm:h-48 md:h-56 w-full object-cover rounded-lg"
                         onAnyModalOpen={handleAnyModalOpen}
                         onImageClick={(imgObj, idx, allImages) => {
-                        openModal(imgObj.src, imgObj.alt, imgObj.type, idx, allImages);}}/>
+                          openModal(imgObj.src, imgObj.alt, imgObj.type, idx, allImages);
+                        }}
+                      />
                     </div>
 
                     {/* Activity Highlights */}
@@ -1426,7 +1477,7 @@ function App() {
       {/* Contact Section */}
       <section ref={contactRef} id="contact" className={`w-full max-w-4xl mx-auto py-8 sm:py-12 px-4 sm:px-8 transition-all duration-700 ${contactVisible ? 'animate-fade-in-up delay-500' : ''}`}>
         <h2 className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'}`}>Contact</h2>
-        <div className={`rounded-xl sm:rounded-2xl border shadow-xs p-6 sm:p-8 transition-all duration-500 hover-lift-soft ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${contactVisible ? 'animate-fade-in-up delay-700' : ''}`}>
+        <div className={`rounded-xl sm:rounded-2xl border shadow-xs p-6 sm:p-8 transition-all duration-300 hover-lift-soft hover:shadow-md hover:rotate-1 hover:scale-105 ${isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'} ${contactVisible ? 'animate-fade-in-up delay-700' : ''}`}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Left Column - Contact Info */}
             <div className="space-y-3 sm:space-y-4">
@@ -1490,7 +1541,7 @@ function App() {
           <div className={`mt-6 sm:mt-8 pt-6 sm:pt-8 border-t ${isDarkMode ? 'border-zinc-700/50' : 'border-gray-200'}`}>
             <h3 className={`text-lg font-semibold text-center mb-4 sm:mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Connect with me</h3>
             <div className={`flex justify-center gap-4 sm:gap-6 transition-all duration-700 ${contactVisible ? 'animate-fade-in-up delay-1300' : ''}`}>
-              {SOCIALS.map((s, index) => (
+              {SOCIALS.map(s => (
                 <a 
                   key={s.name} 
                   href={s.url} 
