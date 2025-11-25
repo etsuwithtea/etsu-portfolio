@@ -11,6 +11,7 @@ import resumePDF from './assets/Navapan_Suthon_Resume.pdf';
 import transcriptPDF from './assets/Navapan_Suthon_Unofficial_Transcript.pdf';
 
 // Importing certificates
+import certificateAwsCloudFoundations from './assets/certificates/AWS_Cloud Foundations.png';
 import certificateCoursera from './assets/certificates/certificate_coursera.png';
 import certificateCybersecurity from './assets/certificates/certificate-cybersecurity.png';
 import certificateCyberawareness from './assets/certificates/certificate_cyber_awareness.png';
@@ -104,6 +105,13 @@ import egat4 from './assets/egat/egat4.png';
 import egat5 from './assets/egat/egat5.png';
 import egat6 from './assets/egat/egat6.png';
 import egat7 from './assets/egat/egat7.png';
+
+// Importing PawSafe project images
+import pawsafeHome from './assets/PawSafe/HomePage.jpeg';
+import pawsafeAdoption from './assets/PawSafe/AdoptionPage.jpeg';
+import pawsafeLostPet from './assets/PawSafe/LostPetPage.jpeg';
+import pawsafeMyPost from './assets/PawSafe/MyPostPage.jpeg';
+import pawsafeBookmark from './assets/PawSafe/BookMarkPage.jpeg';
 
 // Importing video for BeyondHana project
 import beyondhana_video from './assets/beyondhana/beyondhana_video.mp4';
@@ -234,6 +242,21 @@ const PROJECTS: Project[] = [
     desc: 'Remade EGAT’s power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from over 100+ MongoDB collections for centralized management. Optimized database queries for fast access and reliability, supporting thousands of transformer records. Improved operational efficiency and user satisfaction with advanced insights and reporting.',
     role: 'Role : Fullstack Developer (Next.js, MongoDB)',
     tools: ['Next.js', 'GitHub Copilot', 'MongoDB', 'React', 'JavaScript', 'Node.js', 'CSS', 'HTML', 'Visual Studio Code', 'Git', 'Tailwind CSS'],
+    isPrototype: false,
+  },
+  {
+    title: 'PawSafe',
+    images: [
+      { src: pawsafeHome, alt: 'PawSafe home feed' },
+      { src: pawsafeAdoption, alt: 'PawSafe adoption listings' },
+      { src: pawsafeLostPet, alt: 'PawSafe lost pet board' },
+      { src: pawsafeMyPost, alt: 'PawSafe my posts management' },
+      { src: pawsafeBookmark, alt: 'PawSafe saved pets collection' },
+    ],
+    desc: 'Full-stack web app for pet adoption and lost/found tracking. Built with Vite + React + TypeScript on the frontend and Express + MongoDB on the backend. Supports posting and browsing pets, saving favorites, uploading images with Multer, and real-time chat/notifications via Socket.IO. Structured client/server codebases with environment templates and setup scripts for quick local runs.',
+    role: 'Role : Fullstack Developer (React, Express, MongoDB)',
+    tools: ['React', 'Vite', 'TypeScript', 'Redux Toolkit', 'Tailwind CSS', 'Express', 'Node.js', 'MongoDB', 'Multer', 'Socket.IO', 'Git'],
+    github: 'https://github.com/etsuwithtea/PawSafe',
     isPrototype: false,
   },
   {
@@ -443,6 +466,12 @@ const PROJECTS: Project[] = [
 ];
 
 const CERTIFICATES: Certificate[] = [
+  {
+    title: 'AWS Academy Graduate - Cloud Foundations',
+    desc: 'AWS Academy - Nov 24, 2025 - 20 hours',
+    image: certificateAwsCloudFoundations,
+    link: 'https://www.credly.com/go/0OKA0x1Z',
+  },
   {
     title: 'Customer Service with Python: Build a Chatbot using ChatGPT',
     desc: 'Coursera Project Network · Apr 18, 2025',
