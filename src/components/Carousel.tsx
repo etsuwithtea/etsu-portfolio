@@ -1,11 +1,7 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 
-export type CarouselMediaItem = {
-  src: string
-  alt?: string
-  type?: 'video'
-}
+import { type CarouselMediaItem } from '../types/content'
 
 type VideoItem = CarouselMediaItem & { type: 'video' }
 
