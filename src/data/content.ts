@@ -103,6 +103,10 @@ import gamestore_4 from '../assets/game-store/mini-proj2_game-store_screenshot_3
 import gamestore_5 from '../assets/game-store/mini-proj2_game-store_screenshot_3_favorites.jpeg';
 import gamestore_6 from '../assets/game-store/mini-proj2_game-store_screenshot_4_gamedetail.png';
 import gamestore_7 from '../assets/game-store/mini-proj2_game-store_screenshot_5_gamedeveloper.png';
+import farm2d_video from '../assets/farm2d/Farm2d.mp4';
+import farm2d_1 from '../assets/farm2d/Farm2d_1.jpeg';
+import farm2d_2 from '../assets/farm2d/Farm2d_2.jpeg';
+import farm2d_3 from '../assets/farm2d/Farm2d_3.jpeg';
 
 export const PROFILE_IMAGES = [mainProfile, mainProfile2];
 
@@ -181,6 +185,47 @@ export const PROJECTS: Project[] = [
     ],
     isPrototype: false,
   },
+   {
+    title: 'Farm2D Simulation Base',
+    images: [
+      { type: 'video', src: farm2d_video, alt: 'Farm2D Demo Video' },
+      { src: farm2d_1, alt: 'Farm2D Gameplay 1' },
+      { src: farm2d_2, alt: 'Farm2D Gameplay 2' },
+      { src: farm2d_3, alt: 'Farm2D Gameplay 3' },
+    ],
+    desc: "A 2D top-down pixel art farm simulation game built with Phaser.js and TypeScript. It features custom 8x8 sprite integration, player animations, environmental collisions, and dynamic camera controls. Includes interactive elements like a responsive HUD inventory and NPCs with a seed purchasing economy system.",
+    role: 'Role : Game Developer',
+    tools: [
+      'Phaser.js',
+      'TypeScript',
+      'Vite',
+      'HTML5 Canvas',
+      'Git',
+      'GitHub Pages'
+    ],
+    github: 'https://github.com/etsuwithtea/Farm2d',
+    link: 'https://etsuwithtea.github.io/Farm2d/',
+    isPrototype: false,
+  },
+    {
+    title: 'BeyondHana',
+    images: [
+      { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
+      { src: beyondhana_1, alt: 'BeyondHana Title' },
+      { src: beyondhana_2, alt: 'BeyondHana Main Menu' },
+      { src: beyondhana_3, alt: 'BeyondHana Start Game' },
+      { src: beyondhana_4, alt: 'BeyondHana Load Game' },
+      { src: beyondhana_5, alt: 'BeyondHana Setting' },
+      { src: beyondhana_6, alt: 'BeyondHana Story' },
+      { src: beyondhana_7, alt: 'BeyondHana Choice' },
+      { src: beyondhana_8, alt: 'BeyondHana Ending' },
+    ],
+    desc: 'Visual novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
+    role: 'Role : Main Developer & UX/UI Designer',
+    tools: ['.NET MAUI', 'C#', 'XAML', 'Visual Studio', 'Android SDK', 'Figma', 'Git'],
+    github: 'https://github.com/etsuwithtea/BeyondHana',
+    isPrototype: false,
+  },
   {
     title: 'PawSafe',
     images: [
@@ -253,25 +298,7 @@ export const PROJECTS: Project[] = [
     github: 'https://github.com/etsuwithtea/mini_proj1',
     isPrototype: true,
   },
-  {
-    title: 'BeyondHana',
-    images: [
-      { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
-      { src: beyondhana_1, alt: 'BeyondHana Title' },
-      { src: beyondhana_2, alt: 'BeyondHana Main Menu' },
-      { src: beyondhana_3, alt: 'BeyondHana Start Game' },
-      { src: beyondhana_4, alt: 'BeyondHana Load Game' },
-      { src: beyondhana_5, alt: 'BeyondHana Setting' },
-      { src: beyondhana_6, alt: 'BeyondHana Story' },
-      { src: beyondhana_7, alt: 'BeyondHana Choice' },
-      { src: beyondhana_8, alt: 'BeyondHana Ending' },
-    ],
-    desc: 'Visual novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
-    role: 'Role : Main Developer & UX/UI Designer',
-    tools: ['.NET MAUI', 'C#', 'XAML', 'Visual Studio', 'Android SDK', 'Figma', 'Git'],
-    github: 'https://github.com/etsuwithtea/BeyondHana',
-    isPrototype: false,
-  },
+
   {
     title: 'Eat Rai Dee',
     images: [
