@@ -4,7 +4,7 @@ import { type Certificate } from '../../types/content';
 
 type CertificatesSectionProps = {
   isDarkMode: boolean;
-  certificateRef: RefObject<HTMLDivElement>;
+  certificateRef: RefObject<HTMLDivElement | null>;
   certificateVisible: boolean;
   certificates: Certificate[];
   onOpenModal: (img: string, alt?: string) => void;

@@ -35,3 +35,11 @@ export type Certificate = {
   image: string;
   link: string;
 };
+export type WorkExperience = {
+  company: string;
+  role: string;
+  period: string;
+  description?: string;
+  highlights?: string[];
+  logo?: string;
+};

@@ -2,11 +2,11 @@ import { RefObject } from 'react';
 
 type AboutSectionProps = {
   isDarkMode: boolean;
-  aboutRef: RefObject<HTMLDivElement>;
+  aboutRef: RefObject<HTMLDivElement | null>;
   aboutVisible: boolean;
   profileImages: string[];
   currentProfileImage: number;
-  typingRef: RefObject<HTMLHeadingElement>;
+  typingRef: RefObject<HTMLHeadingElement | null>;
   typedText: string;
   resumePDF: string;
   transcriptPDF: string;

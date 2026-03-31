@@ -5,7 +5,7 @@ import { type Activity, type CarouselMediaItem } from '../../types/content';
 
 type ActivitiesSectionProps = {
   isDarkMode: boolean;
-  activityRef: RefObject<HTMLDivElement>;
+  activityRef: RefObject<HTMLDivElement | null>;
   activityVisible: boolean;
   activities: Activity[];
   onAnyModalOpen: () => void;

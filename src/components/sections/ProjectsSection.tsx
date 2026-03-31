@@ -5,7 +5,7 @@ import { type Project, type CarouselMediaItem } from '../../types/content';
 
 type ProjectsSectionProps = {
   isDarkMode: boolean;
-  projectRef: RefObject<HTMLDivElement>;
+  projectRef: RefObject<HTMLDivElement | null>;
   projectVisible: boolean;
   projects: Project[];
   expandedTools: Record<number, boolean>;

@@ -1,4 +1,4 @@
-import { type Activity, type Certificate, type Project, type SocialLink } from '../types/content';
+import { type Activity, type Certificate, type Project, type SocialLink, type WorkExperience } from '../types/content';
 
 import mainProfile from '../assets/mainprofile.jpg';
 import mainProfile2 from '../assets/mainprofile_2.jpg';
@@ -158,7 +158,7 @@ export const ACTIVITIES: Activity[] = [
 
 export const PROJECTS: Project[] = [
   {
-    title: 'Power Transformer Management for EGAT (in progress)',
+    title: 'Power Transformer Management for EGAT',
     images: [
       { src: egat1, alt: 'EGAT Transformer Management Login' },
       { src: egat2, alt: 'EGAT Transformer Management Dashboard' },
@@ -473,5 +473,14 @@ export const CERTIFICATES: Certificate[] = [
     desc: 'DGA & TDGA Thailand - Oct 20, 2023',
     image: certificateCyberawareness,
     link: 'https://portal.apps.go.th/edoc/signature/verify?DocumentID=ce7f5759-c6a9-48ce-8ddd-93ef706e801b',
+  },
+];
+
+export const WORK_EXPERIENCE: WorkExperience[] = [
+  {
+    company: 'codehard.co.th',
+    role: 'Intern Web Developer',
+    period: '2026 Q1',
+    description: 'Professional internship focused on frontend and backend web development using modern frameworks.',
   },
 ];

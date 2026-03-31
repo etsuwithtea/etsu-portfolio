@@ -1,15 +1,17 @@
 import { JSX, RefObject } from 'react';
+import { type WorkExperience } from '../../types/content';
 
 type EducationSkillsSectionProps = {
   isDarkMode: boolean;
-  educationRef: RefObject<HTMLDivElement>;
+  educationRef: RefObject<HTMLDivElement | null>;
   educationVisible: boolean;
-  skillsRef: RefObject<HTMLDivElement>;
+  skillsRef: RefObject<HTMLDivElement | null>;
   skillsVisible: boolean;
   skillBadgeClass: string;
   getSkillIcon: (skill: string, isDarkMode?: boolean) => JSX.Element;
   languageSkills: readonly string[];
   toolSkills: readonly string[];
+  experiences: WorkExperience[];
 };
 
 export function EducationSkillsSection({
@@ -22,6 +24,7 @@ export function EducationSkillsSection({
   getSkillIcon,
   languageSkills,
   toolSkills,
+  experiences,
 }: EducationSkillsSectionProps) {
   return (
     <section
@@ -107,6 +110,55 @@ export function EducationSkillsSection({
                     </div>
                     <p className={`text-sm sm:text-base font-medium ${isDarkMode ? 'text-zinc-300' : 'text-gray-700'}`}>High School</p>
                     <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>Science-Math Program</p>
+                  </div>
+                </div>
+
+                {/* Work Experience Integration */}
+                <div id="experience" className="mt-10 sm:mt-12">
+                  <h2
+                    className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${
+                      isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'
+                    }`}
+                  >
+                    Work Experience
+                  </h2>
+
+                  <div className="relative">
+                    <div className={`absolute left-4 sm:left-6 top-6 bottom-6 w-0.5 ${isDarkMode ? 'bg-zinc-600' : 'bg-gray-300'}`}></div>
+
+                    <div className="space-y-4 sm:space-y-6">
+                      {experiences.map((exp, index) => (
+                        <div
+                          key={index}
+                          className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${
+                            isDarkMode
+                              ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-400'
+                              : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'
+                          } ${educationVisible ? 'animate-fade-in-left delay-400' : 'opacity-0'}`}
+                          style={{ animationDelay: `${700 + index * 100}ms` }}
+                        >
+                          <div
+                            className={`absolute -left-10 sm:-left-14 top-4 sm:top-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 shadow-xs transition-all duration-300 group-hover:scale-125 group-hover:shadow-md ${
+                              isDarkMode ? 'bg-zinc-500 border-zinc-800 group-hover:bg-zinc-400' : 'bg-gray-600 border-white group-hover:bg-gray-800'
+                            }`}
+                          ></div>
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
+                            <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{exp.company}</h3>
+                            <span
+                              className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border animate-rainbow-border self-start ${
+                                isDarkMode ? 'text-white bg-zinc-900 border-zinc-600' : 'text-gray-900 bg-white border-gray-200'
+                              }`}
+                            >
+                              {exp.period}
+                            </span>
+                          </div>
+                          <p className={`text-sm sm:text-base font-medium mb-1 ${isDarkMode ? 'text-zinc-300' : 'text-gray-700'}`}>{exp.role}</p>
+                          <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
+                            {exp.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

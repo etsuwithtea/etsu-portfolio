@@ -9,7 +9,7 @@ import ProjectsSection from './components/sections/ProjectsSection';
 import CertificatesSection from './components/sections/CertificatesSection';
 import ActivitiesSection from './components/sections/ActivitiesSection';
 import ContactSection from './components/sections/ContactSection';
-import { ACTIVITIES, CERTIFICATES, PROFILE_IMAGES, PROJECTS, SOCIALS } from './data/content';
+import { ACTIVITIES, CERTIFICATES, PROFILE_IMAGES, PROJECTS, SOCIALS, WORK_EXPERIENCE } from './data/content';
 import { useScrollAnimation, useTypingAnimation } from './hooks/animations';
 import resumePDF from './assets/Navapan_Suthon_Resume.pdf';
 import transcriptPDF from './assets/Navapan_Suthon_Unofficial_Transcript.pdf';
@@ -350,6 +350,7 @@ function App() {
           getSkillIcon={getSkillIcon}
           languageSkills={LANGUAGE_SKILLS}
           toolSkills={TOOL_SKILLS}
+          experiences={WORK_EXPERIENCE}
         />
 
         <ProjectsSection

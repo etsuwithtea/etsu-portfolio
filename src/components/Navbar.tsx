@@ -10,6 +10,7 @@ type NavbarProps = {
 const NAV_LINKS = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
+  { id: 'experience', label: 'Experience' },
   { id: 'project', label: 'Project' },
   { id: 'certificate', label: 'Certificate' },
   { id: 'activity', label: 'Activity' },

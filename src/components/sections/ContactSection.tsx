@@ -4,7 +4,7 @@ import { type SocialLink } from '../../types/content';
 
 type ContactSectionProps = {
   isDarkMode: boolean;
-  contactRef: RefObject<HTMLDivElement>;
+  contactRef: RefObject<HTMLDivElement | null>;
   contactVisible: boolean;
   socials: SocialLink[];
   onBackToTop?: () => void;
