@@ -23,7 +23,7 @@ function App() {
   const [modalImages, setModalImages] = useState<CarouselMediaItem[]>([]);
   const [currentModalIndex, setCurrentModalIndex] = useState(0);
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark' | 'doodle'>('dark');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -49,10 +49,15 @@ function App() {
   const [expandedTools, setExpandedTools] = useState<Record<number, boolean>>({});
   const [typingRef, typedText] = useTypingAnimation<HTMLHeadingElement>("Hi I'm Navapan", 100);
 
-  const skillBadgeClass = `px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 border hover-scale-105 flex items-center gap-1.5 ${
+  const isDarkMode = theme === 'dark';
+  const isDoodleMode = theme === 'doodle';
+
+  const skillBadgeClass = `inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
     isDarkMode
-      ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700'
-      : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'
+      ? 'bg-zinc-800 text-zinc-300 border border-zinc-700/50 hover:bg-zinc-700 hover:text-white'
+      : isDoodleMode
+        ? 'bg-white text-black border-2 border-black rounded-doodle shadow-doodle hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none'
+        : 'bg-white text-gray-700 border border-gray-200 shadow-xs hover:shadow-md hover:text-gray-900 border-gray-300 shadow-md'
   }`;
 
   useEffect(() => {
@@ -61,11 +66,12 @@ function App() {
       window.setTimeout(() => setShowLoader(false), 500);
     }, 1500);
 
-    const savedTheme = localStorage.getItem('darkMode');
-    if (savedTheme === 'true') {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
+    const savedTheme = localStorage.getItem('portfolioTheme') as 'light' | 'dark' | 'doodle' | null;
+    const initialTheme = savedTheme || 'dark';
+    
+    setTheme(initialTheme);
+    document.documentElement.classList.remove('light', 'dark', 'doodle');
+    document.documentElement.classList.add(initialTheme);
 
     return () => window.clearTimeout(timer);
   }, []);
@@ -99,17 +105,17 @@ function App() {
     return () => window.clearInterval(imageRotationInterval);
   }, [profileImages.length]);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => {
-      const nextMode = !prevMode;
-      if (nextMode) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('darkMode', 'true');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('darkMode', 'false');
-      }
-      return nextMode;
+  const cycleTheme = () => {
+    setTheme(current => {
+      let next: 'light' | 'dark' | 'doodle';
+      if (current === 'light') next = 'dark';
+      else if (current === 'dark') next = 'doodle';
+      else next = 'light';
+
+      document.documentElement.classList.remove('light', 'dark', 'doodle');
+      document.documentElement.classList.add(next);
+      localStorage.setItem('portfolioTheme', next);
+      return next;
     });
   };
 
@@ -182,17 +188,19 @@ function App() {
       {showLoader && (
         <div
           className={`fixed inset-0 z-10000 flex items-center justify-center transition-all duration-500 ${
-            isDarkMode ? 'bg-black' : 'bg-white'
+            theme === 'dark' ? 'bg-black' : theme === 'doodle' ? 'bg-doodle-bg' : 'bg-white'
           } ${!isLoaded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         >
           <div className="text-center">
             <div
               className={`inline-block w-12 h-12 border-4 border-t-transparent rounded-full animate-spin mb-4 ${
-                isDarkMode ? 'border-white' : 'border-gray-900'
+                theme === 'dark' ? 'border-white' : 'border-gray-900'
               }`}
             ></div>
             <div
-              className={`text-lg font-semibold tracking-wide animate-pulse ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
+              className={`text-lg font-semibold tracking-wide animate-pulse ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}
             >
               ETSU Portfolio
             </div>
@@ -202,13 +210,17 @@ function App() {
 
       <div
         className={`min-h-screen transition-colors duration-300 font-sans flex flex-col items-center relative overflow-hidden ${
-          isDarkMode ? 'bg-black' : 'bg-gray-50'
+          theme === 'dark' ? 'bg-black' : theme === 'doodle' ? 'bg-doodle-bg' : 'bg-gray-50'
         }`}
       >
         <div className="fixed inset-0 pointer-events-none z-0">
           <div
             className={`absolute top-20 left-10 w-64 h-64 rounded-full blur-3xl animate-float ${
-              isDarkMode ? 'opacity-20 bg-linear-to-r from-purple-500 to-blue-500' : 'opacity-30 bg-linear-to-r from-blue-300 to-purple-300'
+              isDarkMode
+                ? 'opacity-20 bg-linear-to-r from-purple-500 to-blue-500'
+                : isDoodleMode
+                  ? 'opacity-30 bg-doodle-accent border-4 border-black'
+                  : 'opacity-30 bg-linear-to-r from-blue-300 to-purple-300'
             }`}
             style={{
               animationDelay: '0s',
@@ -217,7 +229,11 @@ function App() {
           ></div>
           <div
             className={`absolute top-40 right-20 w-48 h-48 rounded-full blur-3xl animate-float ${
-              isDarkMode ? 'opacity-15 bg-linear-to-r from-pink-500 to-orange-500' : 'opacity-25 bg-linear-to-r from-pink-300 to-orange-300'
+              isDarkMode
+                ? 'opacity-15 bg-linear-to-r from-pink-500 to-orange-500'
+                : isDoodleMode
+                  ? 'opacity-25 bg-doodle-coral border-4 border-black'
+                  : 'opacity-25 bg-linear-to-r from-pink-300 to-orange-300'
             }`}
             style={{
               animationDelay: '2s',
@@ -226,7 +242,11 @@ function App() {
           ></div>
           <div
             className={`absolute bottom-20 left-1/4 w-56 h-56 rounded-full blur-3xl animate-float ${
-              isDarkMode ? 'opacity-10 bg-linear-to-r from-green-500 to-teal-500' : 'opacity-20 bg-linear-to-r from-green-300 to-teal-300'
+              isDarkMode
+                ? 'opacity-10 bg-linear-to-r from-green-500 to-teal-500'
+                : isDoodleMode
+                  ? 'opacity-20 bg-doodle-accent border-4 border-black'
+                  : 'opacity-20 bg-linear-to-r from-green-300 to-teal-300'
             }`}
             style={{
               animationDelay: '4s',
@@ -235,7 +255,11 @@ function App() {
           ></div>
           <div
             className={`absolute bottom-32 right-1/4 w-40 h-40 rounded-full blur-3xl animate-float ${
-              isDarkMode ? 'opacity-20 bg-linear-to-r from-yellow-500 to-red-500' : 'opacity-30 bg-linear-to-r from-yellow-300 to-red-300'
+              theme === 'dark'
+                ? 'opacity-20 bg-linear-to-r from-yellow-500 to-red-500'
+                : theme === 'doodle'
+                  ? 'opacity-40 bg-linear-to-r from-doodle-accent to-doodle-coral'
+                  : 'opacity-30 bg-linear-to-r from-yellow-300 to-red-300'
             }`}
             style={{
               animationDelay: '6s',
@@ -245,7 +269,7 @@ function App() {
 
           <div
             className={`absolute top-1/3 left-1/2 w-72 h-72 rounded-full blur-3xl animate-float ${
-              isDarkMode ? 'opacity-5 bg-linear-to-r from-indigo-500 to-purple-500' : 'opacity-15 bg-linear-to-r from-indigo-200 to-purple-200'
+              isDarkMode ? 'opacity-5 bg-linear-to-r from-indigo-500 to-purple-500' : isDoodleMode ? 'hidden' : 'opacity-15 bg-linear-to-r from-indigo-200 to-purple-200'
             }`}
             style={{
               animationDelay: '8s',
@@ -254,7 +278,7 @@ function App() {
           ></div>
           <div
             className={`absolute bottom-1/2 right-10 w-32 h-32 rounded-full blur-2xl animate-float ${
-              isDarkMode ? 'opacity-10 bg-linear-to-r from-rose-500 to-pink-500' : 'opacity-20 bg-linear-to-r from-rose-200 to-pink-200'
+              isDarkMode ? 'opacity-10 bg-linear-to-r from-rose-500 to-pink-500' : isDoodleMode ? 'hidden' : 'opacity-20 bg-linear-to-r from-rose-200 to-pink-200'
             }`}
             style={{
               animationDelay: '10s',
@@ -264,72 +288,76 @@ function App() {
 
           <div
             className={`absolute top-1/4 left-1/3 w-2 h-2 rounded-full opacity-40 animate-bounce ${
-              isDarkMode ? 'bg-white' : 'bg-gray-600'
+              isDarkMode ? 'bg-white' : isDoodleMode ? 'bg-black' : 'bg-gray-600'
             }`}
             style={{ animationDelay: '0s' }}
           ></div>
           <div
             className={`absolute top-1/3 right-1/4 w-1.5 h-1.5 rounded-full opacity-35 animate-bounce ${
-              isDarkMode ? 'bg-gray-300' : 'bg-gray-700'
+              isDarkMode ? 'bg-gray-300' : isDoodleMode ? 'bg-black' : 'bg-gray-700'
             }`}
             style={{ animationDelay: '1s' }}
           ></div>
           <div
             className={`absolute bottom-1/3 left-1/4 w-1 h-1 rounded-full opacity-30 animate-bounce ${
-              isDarkMode ? 'bg-gray-400' : 'bg-gray-800'
+              isDarkMode ? 'bg-gray-400' : isDoodleMode ? 'bg-black' : 'bg-gray-800'
             }`}
             style={{ animationDelay: '2s' }}
           ></div>
           <div
             className={`absolute bottom-1/4 right-1/3 w-2.5 h-2.5 rounded-full opacity-25 animate-bounce ${
-              isDarkMode ? 'bg-gray-500' : 'bg-gray-600'
+              isDarkMode ? 'bg-gray-500' : isDoodleMode ? 'bg-black' : 'bg-gray-600'
             }`}
             style={{ animationDelay: '3s' }}
           ></div>
           <div
             className={`absolute top-1/2 left-1/6 w-1.5 h-1.5 rounded-full opacity-35 animate-bounce ${
-              isDarkMode ? 'bg-white' : 'bg-gray-700'
+              isDarkMode ? 'bg-white' : isDoodleMode ? 'bg-black' : 'bg-gray-700'
             }`}
             style={{ animationDelay: '4s' }}
           ></div>
           <div
             className={`absolute top-3/4 right-1/6 w-1 h-1 rounded-full opacity-30 animate-bounce ${
-              isDarkMode ? 'bg-gray-300' : 'bg-gray-800'
+              isDarkMode ? 'bg-gray-300' : isDoodleMode ? 'bg-black' : 'bg-gray-800'
             }`}
             style={{ animationDelay: '5s' }}
           ></div>
 
           <div
-            className={`absolute inset-0 ${isDarkMode ? 'opacity-5' : 'opacity-8'}`}
+            className={`absolute inset-0 ${theme === 'dark' ? 'opacity-5' : theme === 'doodle' ? 'opacity-10' : 'opacity-8'}`}
             style={{
-              backgroundImage: `radial-gradient(circle, ${isDarkMode ? '#ffffff' : '#4b5563'} 1px, transparent 1px)`,
-              backgroundSize: '50px 50px',
+              backgroundImage: `radial-gradient(circle, ${theme === 'dark' ? '#ffffff' : theme === 'doodle' ? '#000000' : '#4b5563'} 1px, transparent 1px)`,
+              backgroundSize: theme === 'doodle' ? '30px 30px' : '24px 24px',
             }}
           ></div>
 
-          <div className={`absolute inset-0 ${isDarkMode ? 'opacity-0' : 'opacity-10 bg-linear-to-br from-blue-50 via-purple-50 to-pink-50'}`}></div>
+          <div className={`absolute inset-0 ${theme === 'dark' ? 'opacity-0' : 'opacity-10 bg-linear-to-br from-blue-50 via-purple-50 to-pink-50'}`}></div>
         </div>
 
         <div className="fixed top-0 left-0 w-full h-1 bg-transparent z-1000 pointer-events-none">
           <div
             className={`h-full transition-all duration-300 ease-out ${
-              isDarkMode ? 'bg-linear-to-r from-purple-500 to-pink-500' : 'bg-linear-to-r from-blue-500 to-red-500'
+              theme === 'dark'
+                ? 'bg-linear-to-r from-purple-500 to-pink-500'
+                : theme === 'doodle'
+                  ? 'bg-doodle-coral'
+                  : 'bg-linear-to-r from-blue-500 to-red-500'
             }`}
             style={{ width: `${scrollProgress}%` }}
           ></div>
         </div>
 
         <Navbar
-          isDarkMode={isDarkMode}
+          currentTheme={theme}
           isLoaded={isLoaded}
           isMobileMenuOpen={isMobileMenuOpen}
           onToggleMobileMenu={toggleMobileMenu}
-          onToggleDarkMode={toggleDarkMode}
+          onCycleTheme={cycleTheme}
           onNavClick={handleNavClick}
         />
 
         <AboutSection
-          isDarkMode={isDarkMode}
+          currentTheme={theme}
           aboutRef={aboutRef}
           aboutVisible={aboutVisible}
           profileImages={profileImages}
@@ -341,7 +369,7 @@ function App() {
         />
 
         <EducationSkillsSection
-          isDarkMode={isDarkMode}
+          currentTheme={theme}
           educationRef={educationRef}
           educationVisible={educationVisible}
           skillsRef={skillsRef}
@@ -354,7 +382,7 @@ function App() {
         />
 
         <ProjectsSection
-          isDarkMode={isDarkMode}
+          currentTheme={theme}
           projectRef={projectRef}
           projectVisible={projectVisible}
           projects={PROJECTS}
@@ -365,7 +393,7 @@ function App() {
         />
 
         <CertificatesSection
-          isDarkMode={isDarkMode}
+          currentTheme={theme}
           certificateRef={certificateRef}
           certificateVisible={certificateVisible}
           certificates={CERTIFICATES}
@@ -373,7 +401,7 @@ function App() {
         />
 
         <ActivitiesSection
-          isDarkMode={isDarkMode}
+          currentTheme={theme}
           activityRef={activityRef}
           activityVisible={activityVisible}
           activities={ACTIVITIES}
@@ -382,7 +410,7 @@ function App() {
         />
 
         <ContactSection
-          isDarkMode={isDarkMode}
+          currentTheme={theme}
           contactRef={contactRef}
           contactVisible={contactVisible}
           socials={SOCIALS}
@@ -390,13 +418,49 @@ function App() {
           showBackToTop={showBackToTop}
         />
 
+        <button
+          className={`fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center z-50 transition-all duration-300 group ${
+            theme === 'dark'
+              ? 'bg-zinc-800 text-white hover:bg-zinc-700'
+              : theme === 'doodle'
+                ? 'bg-doodle-accent border-4 border-black shadow-doodle hover:translate-x-1 hover:translate-y-1 hover:shadow-none'
+                : 'bg-white shadow-lg text-gray-900 hover:bg-gray-50'
+          }`}
+          onClick={() => handleNavClick('contact')}
+          aria-label="Quick contact"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="group-hover:rotate-12 transition-transform"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+
+
         <footer
           className={`w-full border-t py-6 sm:py-8 mt-12 sm:mt-16 ${
-            isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-gray-50 border-gray-200'
+            theme === 'dark'
+              ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm'
+              : theme === 'doodle'
+                ? 'bg-white border-t-4 border-black'
+                : 'bg-gray-50 border-gray-200'
           }`}
         >
           <div className="max-w-4xl mx-auto flex flex-col items-center px-4 sm:px-8">
-            <div className={`text-center text-xs sm:text-sm ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
+            <div
+              className={`text-center text-xs sm:text-sm ${
+                theme === 'dark' ? 'text-zinc-400' : 'text-gray-600'
+              }`}
+            >
               (c) 2025 ETSU. Thx for visiting my portfolio.
             </div>
           </div>
@@ -412,6 +476,7 @@ function App() {
         onClose={closeModal}
         onPrev={prevImage}
         onNext={nextImage}
+        currentTheme={theme}
       />
     </>
   );

@@ -1,7 +1,7 @@
 import { RefObject } from 'react';
 
 type AboutSectionProps = {
-  isDarkMode: boolean;
+  currentTheme: 'light' | 'dark' | 'doodle';
   aboutRef: RefObject<HTMLDivElement | null>;
   aboutVisible: boolean;
   profileImages: string[];
@@ -13,7 +13,7 @@ type AboutSectionProps = {
 };
 
 export function AboutSection({
-  isDarkMode,
+  currentTheme,
   aboutRef,
   aboutVisible,
   profileImages,
@@ -23,6 +23,8 @@ export function AboutSection({
   resumePDF,
   transcriptPDF,
 }: AboutSectionProps) {
+  const isDarkMode = currentTheme === 'dark';
+  const isDoodleMode = currentTheme === 'doodle';
   return (
     <section
       ref={aboutRef}
@@ -53,14 +55,18 @@ export function AboutSection({
               height="400"
               loading="eager"
               fetchPriority="high"
-              className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] object-cover rounded-2xl sm:rounded-3xl shadow-2xl bg-white hover-lift-soft animate-float border-2 sm:border-4 border-white/40 group-hover:scale-105 transition-all duration-1000 relative z-10"
+              className={`w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] object-cover rounded-2xl sm:rounded-3xl shadow-2xl bg-white hover-lift-soft animate-float border-2 sm:border-4 group-hover:scale-105 transition-all duration-1000 relative z-10 ${
+                isDoodleMode ? 'border-black border-4 rounded-doodle shadow-doodle' : 'border-white/40'
+              }`}
               style={{ objectPosition: 'center 20%' }}
             />
 
             <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-linear-to-tr from-transparent via-white/5 to-white/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"></div>
 
-            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-4 h-4 sm:w-6 sm:h-6 bg-gray-600 rounded-full border-2 sm:border-4 border-white shadow-lg z-30">
-              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-gray-500 rounded-full mx-auto mt-0.5"></div>
+            <div className={`absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-4 h-4 sm:w-6 sm:h-6 rounded-full border-2 sm:border-4 shadow-lg z-30 ${
+              isDoodleMode ? 'bg-doodle-coral border-black' : 'bg-gray-600 border-white'
+            }`}>
+              <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full mx-auto mt-0.5 ${isDoodleMode ? 'bg-black' : 'bg-gray-500'}`}></div>
             </div>
           </div>
 
@@ -91,18 +97,23 @@ export function AboutSection({
         <h1
           ref={typingRef}
           className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 sm:mb-6 ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
+            isDarkMode ? 'text-white' : isDoodleMode ? 'text-black font-extrabold uppercase' : 'text-gray-900'
           }`}
         >
-          <span className="inline-block">
+          <span className="inline-block relative">
             {typedText}
-            <span className={isDarkMode ? 'text-gray-500' : 'text-gray-400'}>|</span>
+            <span className={isDarkMode ? 'text-gray-500' : isDoodleMode ? 'text-doodle-coral' : 'text-gray-400'}>|</span>
+            {isDoodleMode && (
+              <svg className="absolute -bottom-2 -left-2 w-full h-2 text-doodle-coral opacity-70" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0,5 Q25,0 50,5 T100,5" fill="none" stroke="currentColor" strokeWidth="2" />
+              </svg>
+            )}
           </span>
         </h1>
-        <p className={`text-base sm:text-lg mb-2 font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+        <p className={`text-base sm:text-lg mb-2 font-medium ${isDarkMode ? 'text-gray-300' : isDoodleMode ? 'text-black font-bold' : 'text-gray-600'}`}>
           My friends call me est(etsu)
         </p>
-        <div className={`text-sm sm:text-base mb-6 max-w-lg leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+        <div className={`text-sm sm:text-base mb-6 max-w-lg leading-relaxed ${isDarkMode ? 'text-gray-400' : isDoodleMode ? 'text-black' : 'text-gray-500'}`}>
           A Computer Science student passionate about Frontend Development, Software Development and UX/UI Design. I love creating digital experiences that are both intuitive and engaging.
           <br />
           <br />
@@ -114,66 +125,72 @@ export function AboutSection({
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8 max-w-lg w-full">
           <div
-            className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft hover:shadow-md group ${
+            className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft group ${
               isDarkMode
                 ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/80 hover:border-zinc-600/70'
-                : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'
+                : isDoodleMode
+                  ? 'bg-doodle-accent border-2 border-black shadow-doodle hover:translate-x-1 hover:translate-y-1 hover:shadow-none'
+                  : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'
             }`}
           >
             <div
               className={`text-xs sm:text-sm mb-1 transition-colors duration-300 ${
-                isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : 'text-gray-600 group-hover:text-gray-700'
+                isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : isDoodleMode ? 'text-black opacity-70 group-hover:opacity-100' : 'text-gray-600 group-hover:text-gray-700'
               }`}
             >
               Age
             </div>
             <div
               className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${
-                isDarkMode ? 'text-white group-hover:text-zinc-100' : 'text-gray-900 group-hover:text-black'
+                isDarkMode ? 'text-white group-hover:text-zinc-100' : isDoodleMode ? 'text-black font-extrabold' : 'text-gray-900 group-hover:text-black'
               }`}
             >
               21 years old
             </div>
           </div>
           <div
-            className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft hover:shadow-md group ${
+            className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft group ${
               isDarkMode
                 ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/80 hover:border-zinc-600/70'
-                : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'
+                : isDoodleMode
+                  ? 'bg-doodle-coral border-2 border-black shadow-doodle hover:translate-x-1 hover:translate-y-1 hover:shadow-none'
+                  : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'
             }`}
           >
             <div
               className={`text-xs sm:text-sm mb-1 transition-colors duration-300 ${
-                isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : 'text-gray-600 group-hover:text-gray-700'
+                isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : isDoodleMode ? 'text-black opacity-70 group-hover:opacity-100' : 'text-gray-600 group-hover:text-gray-700'
               }`}
             >
               Status
             </div>
             <div
               className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${
-                isDarkMode ? 'text-white group-hover:text-zinc-100' : 'text-gray-900 group-hover:text-black'
+                isDarkMode ? 'text-white group-hover:text-zinc-100' : isDoodleMode ? 'text-black font-extrabold' : 'text-gray-900 group-hover:text-black'
               }`}
             >
               4th Year Student
             </div>
           </div>
           <div
-            className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft hover:shadow-md group ${
+            className={`rounded-lg p-3 sm:p-4 border transition-all duration-300 hover-lift-soft group ${
               isDarkMode
                 ? 'bg-zinc-900/60 border-zinc-700/50 backdrop-blur-sm hover:bg-zinc-900/80 hover:border-zinc-600/70'
-                : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'
+                : isDoodleMode
+                  ? 'bg-doodle-accent border-2 border-black shadow-doodle hover:translate-x-1 hover:translate-y-1 hover:shadow-none'
+                  : 'bg-gray-50 border-gray-200 hover:bg-gray-100 hover:shadow-lg'
             }`}
           >
             <div
               className={`text-xs sm:text-sm mb-1 transition-colors duration-300 ${
-                isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : 'text-gray-600 group-hover:text-gray-700'
+                isDarkMode ? 'text-zinc-400 group-hover:text-zinc-300' : isDoodleMode ? 'text-black opacity-70 group-hover:opacity-100' : 'text-gray-600 group-hover:text-gray-700'
               }`}
             >
               Interests
             </div>
             <div
               className={`text-sm sm:text-base font-semibold transition-colors duration-300 ${
-                isDarkMode ? 'text-white group-hover:text-zinc-100' : 'text-gray-900 group-hover:text-black'
+                isDarkMode ? 'text-white group-hover:text-zinc-100' : isDoodleMode ? 'text-black font-extrabold' : 'text-gray-900 group-hover:text-black'
               }`}
             >
               Gaming, Design , Coding
@@ -183,7 +200,7 @@ export function AboutSection({
 
         <div
           className={`text-xs sm:text-sm mb-6 sm:mb-8 max-w-lg leading-relaxed italic ${
-            isDarkMode ? 'text-zinc-400' : 'text-gray-600'
+            isDarkMode ? 'text-zinc-400' : isDoodleMode ? 'text-black font-bold border-l-4 border-doodle-coral pl-4' : 'text-gray-600'
           }`}
         >
           "I enjoy creating simple digital solutions that make life a little easier for others."
@@ -197,15 +214,15 @@ export function AboutSection({
           <a
             href="#contact"
             className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 hover-lift-soft text-center ${
-              isDarkMode ? 'bg-white text-black hover:bg-gray-100' : 'bg-gray-900 text-white hover:bg-gray-800'
+              isDarkMode ? 'bg-white text-black hover:bg-gray-100' : isDoodleMode ? 'bg-black text-white hover:bg-doodle-coral border-2 border-black rounded-doodle shadow-doodle' : 'bg-gray-900 text-white hover:bg-gray-800'
             }`}
           >
             Contact
           </a>
           <a
             href="#project"
-            className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 shadow-xs border animate-rainbow-border hover-lift-soft text-center ${
-              isDarkMode ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'
+            className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium text-sm transition-all duration-300 shadow-xs border hover-lift-soft text-center ${
+              isDarkMode ? 'bg-zinc-900 text-white border-zinc-700 hover:bg-zinc-800 animate-rainbow-border' : isDoodleMode ? 'bg-doodle-accent text-black border-4 border-black font-bold uppercase rounded-doodle shadow-doodle' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50 animate-rainbow-border'
             }`}
           >
             View Work
@@ -222,7 +239,7 @@ export function AboutSection({
             target="_blank"
             rel="noopener noreferrer"
             className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-xs border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${
-              isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
+              isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : isDoodleMode ? 'bg-white text-black border-2 border-black font-bold rounded-doodle' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
             }`}
           >
             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -239,7 +256,7 @@ export function AboutSection({
             target="_blank"
             rel="noopener noreferrer"
             className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium text-xs sm:text-sm transition-all duration-300 shadow-xs border hover-lift-soft text-center flex items-center justify-center gap-1.5 ${
-              isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
+              isDarkMode ? 'bg-zinc-800 text-zinc-200 border-zinc-600 hover:bg-zinc-700' : isDoodleMode ? 'bg-white text-black border-2 border-black font-bold rounded-doodle' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
             }`}
           >
             <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

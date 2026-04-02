@@ -3,7 +3,7 @@ import { RefObject } from 'react';
 import { type SocialLink } from '../../types/content';
 
 type ContactSectionProps = {
-  isDarkMode: boolean;
+  currentTheme: 'light' | 'dark' | 'doodle';
   contactRef: RefObject<HTMLDivElement | null>;
   contactVisible: boolean;
   socials: SocialLink[];
@@ -38,7 +38,9 @@ const renderSocialIcon = (icon: string) => {
   return null;
 };
 
-export function ContactSection({ isDarkMode, contactRef, contactVisible, socials, onBackToTop, showBackToTop }: ContactSectionProps) {
+export function ContactSection({ currentTheme, contactRef, contactVisible, socials, onBackToTop, showBackToTop }: ContactSectionProps) {
+  const isDarkMode = currentTheme === 'dark';
+  const isDoodleMode = currentTheme === 'doodle';
   return (
     <>
       <section
@@ -50,14 +52,18 @@ export function ContactSection({ isDarkMode, contactRef, contactVisible, socials
       >
         <h2
           className={`text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 transition-all duration-300 hover:scale-105 cursor-default ${
-            isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'
+            isDarkMode ? 'text-white hover:text-zinc-100' : isDoodleMode ? 'text-black font-extrabold uppercase' : 'text-gray-900 hover:text-black'
           }`}
         >
           Contact
         </h2>
         <div
-          className={`rounded-xl sm:rounded-2xl border shadow-xs p-6 sm:p-8 transition-all duration-300 hover-lift-soft hover:shadow-md hover:rotate-1 hover:scale-105 ${
-            isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'
+          className={`rounded-xl sm:rounded-2xl border p-6 sm:p-8 transition-all duration-300 hover-lift-soft ${
+            isDarkMode
+              ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm shadow-xs hover:shadow-md hover:rotate-1 hover:scale-105'
+              : isDoodleMode
+                ? 'bg-white border-4 border-black rounded-doodle shadow-doodle hover:rotate-1 hover:translate-y-1 hover:shadow-none'
+                : 'bg-white border-gray-200 shadow-xs hover:shadow-md hover:rotate-1 hover:scale-105'
           } ${contactVisible ? 'animate-fade-in-up delay-700' : ''}`}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -67,15 +73,15 @@ export function ContactSection({ isDarkMode, contactRef, contactVisible, socials
                   contactVisible ? 'animate-fade-in-left delay-900' : ''
                 }`}
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
-                  <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center ${isDoodleMode ? 'bg-doodle-accent border-2 border-black rounded-doodle' : 'bg-gray-100'}`}>
+                  <svg className={`${isDoodleMode ? 'text-black' : 'text-gray-700'} w-4 h-4 sm:w-[18px] sm:h-[18px]`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                     <circle cx="12" cy="7" r="4" />
                   </svg>
                 </div>
                 <div>
-                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Navapan Suthon</div>
-                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>My friends call me est(etsu)</div>
+                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : isDoodleMode ? 'text-black font-bold uppercase' : 'text-gray-900'}`}>Navapan Suthon</div>
+                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : isDoodleMode ? 'text-black font-medium' : 'text-gray-600'}`}>My friends call me est(etsu)</div>
                 </div>
               </div>
 
@@ -84,14 +90,14 @@ export function ContactSection({ isDarkMode, contactRef, contactVisible, socials
                   contactVisible ? 'animate-fade-in-left delay-1000' : ''
                 }`}
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
-                  <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center ${isDoodleMode ? 'bg-doodle-coral border-2 border-black rounded-doodle' : 'bg-gray-100'}`}>
+                  <svg className={`${isDoodleMode ? 'text-black' : 'text-gray-700'} w-4 h-4 sm:w-[18px] sm:h-[18px]`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </div>
                 <div>
-                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Phone</div>
-                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>0960159077</div>
+                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : isDoodleMode ? 'text-black font-bold uppercase' : 'text-gray-900'}`}>Phone</div>
+                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : isDoodleMode ? 'text-black font-medium' : 'text-gray-600'}`}>0960159077</div>
                 </div>
               </div>
             </div>
@@ -102,15 +108,15 @@ export function ContactSection({ isDarkMode, contactRef, contactVisible, socials
                   contactVisible ? 'animate-fade-in-right delay-1100' : ''
                 }`}
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
-                  <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center ${isDoodleMode ? 'bg-doodle-accent border-2 border-black rounded-doodle' : 'bg-gray-100'}`}>
+                  <svg className={`${isDoodleMode ? 'text-black' : 'text-gray-700'} w-4 h-4 sm:w-[18px] sm:h-[18px]`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </div>
                 <div>
-                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Contacted Email</div>
-                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>navapan.suthon@gmail.com</div>
+                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : isDoodleMode ? 'text-black font-bold uppercase' : 'text-gray-900'}`}>Contacted Email</div>
+                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : isDoodleMode ? 'text-black font-medium' : 'text-gray-600'}`}>navapan.suthon@gmail.com</div>
                 </div>
               </div>
 
@@ -119,15 +125,15 @@ export function ContactSection({ isDarkMode, contactRef, contactVisible, socials
                   contactVisible ? 'animate-fade-in-right delay-1200' : ''
                 }`}
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-gray-100">
-                  <svg className="text-gray-700 w-4 h-4 sm:w-[18px] sm:h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center ${isDoodleMode ? 'bg-doodle-coral border-2 border-black rounded-doodle' : 'bg-gray-100'}`}>
+                  <svg className={`${isDoodleMode ? 'text-black' : 'text-gray-700'} w-4 h-4 sm:w-[18px] sm:h-[18px]`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 </div>
                 <div>
-                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>University Email</div>
-                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}>navapan.suth@bumail.net</div>
+                  <div className={`text-sm sm:text-base font-semibold ${isDarkMode ? 'text-white' : isDoodleMode ? 'text-black font-bold uppercase' : 'text-gray-900'}`}>University Email</div>
+                  <div className={`text-xs sm:text-sm ${isDarkMode ? 'text-zinc-300' : isDoodleMode ? 'text-black font-medium' : 'text-gray-600'}`}>navapan.suth@bumail.net</div>
                 </div>
               </div>
             </div>
@@ -141,7 +147,7 @@ export function ContactSection({ isDarkMode, contactRef, contactVisible, socials
                   key={social.name}
                   href={social.url}
                   className={`transition-all duration-300 hover-scale-105 hover-rotate p-3 rounded-lg ${
-                    isDarkMode ? 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                    isDarkMode ? 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800' : isDoodleMode ? 'text-black hover:bg-doodle-accent border-2 border-black rounded-doodle shadow-doodle' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
                   }`}
                   style={{ fontSize: '1.25rem' }}
                   aria-label={social.name}
@@ -162,7 +168,7 @@ export function ContactSection({ isDarkMode, contactRef, contactVisible, socials
           onClick={onBackToTop}
           className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 p-3 sm:p-4 rounded-full hover:shadow-lg transition-all duration-500 z-50 shadow-md hover-lift-soft animate-float ${
             showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-          } ${isDarkMode ? 'bg-white text-black hover:bg-gray-100' : 'bg-gray-900 text-white hover:bg-black'}`}
+          } ${isDarkMode ? 'bg-white text-black hover:bg-gray-100' : isDoodleMode ? 'bg-doodle-accent text-black border-2 border-black rounded-doodle shadow-doodle hover:bg-doodle-coral' : 'bg-gray-900 text-white hover:bg-black'}`}
           aria-label="Back to Top"
           type="button"
         >

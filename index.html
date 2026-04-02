@@ -10,6 +10,12 @@
     <link rel="preconnect" href="https://github.com" />
     <link rel="dns-prefetch" href="https://github.com" />
     <title>etsu portfolio</title>
+    <script>
+      (function() {
+        const theme = localStorage.getItem('portfolioTheme') || 'dark';
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
     <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->

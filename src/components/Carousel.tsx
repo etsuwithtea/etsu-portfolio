@@ -12,6 +12,7 @@ export interface CarouselProps {
   imgClassName?: string
   onAnyModalOpen?: () => void
   onImageClick?: (item: CarouselMediaItem, index: number, allItems: CarouselMediaItem[]) => void
+  currentTheme?: 'light' | 'dark' | 'doodle'
 }
 
 const isVideoItem = (item: CarouselMediaItem): item is VideoItem => item.type === 'video'
@@ -23,7 +24,9 @@ export default function Carousel({
   imgClassName,
   onAnyModalOpen,
   onImageClick,
+  currentTheme = 'light',
 }: CarouselProps) {
+  const isDoodleMode = currentTheme === 'doodle'
   const [idx, setIdx] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
 
@@ -60,7 +63,9 @@ export default function Carousel({
         <button
           onClick={prev}
           aria-label="Previous image"
-          className="absolute left-2 z-10 p-3 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none hover:scale-110"
+          className={`absolute left-2 z-10 p-3 rounded-full shadow-lg transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none hover:scale-110 ${
+            isDoodleMode ? 'bg-white text-black border-2 border-black shadow-doodle' : 'bg-gray-900/80 hover:bg-gray-900 text-white'
+          }`}
           disabled={total <= 1}
           type="button"
         >
@@ -98,7 +103,9 @@ export default function Carousel({
         <button
           onClick={next}
           aria-label="Next image"
-          className="absolute right-2 z-10 p-3 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none hover:scale-110"
+          className={`absolute right-2 z-10 p-3 rounded-full shadow-lg transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none hover:scale-110 ${
+            isDoodleMode ? 'bg-white text-black border-2 border-black shadow-doodle' : 'bg-gray-900/80 hover:bg-gray-900 text-white'
+          }`}
           disabled={total <= 1}
           type="button"
         >
@@ -113,7 +120,7 @@ export default function Carousel({
             key={index}
             onClick={() => setIdx(index)}
             aria-label={`Go to image ${index + 1}`}
-            className={`w-2 h-2 rounded-full ${index === idx ? 'bg-gray-600' : 'bg-gray-300'} transition`}
+            className={`w-2 h-2 rounded-full ${index === idx ? (isDoodleMode ? 'bg-black w-4' : 'bg-gray-600') : (isDoodleMode ? 'bg-black/30' : 'bg-gray-300')} transition-all duration-300`}
             type="button"
           />
         ))}
@@ -133,7 +140,9 @@ export default function Carousel({
             >
               <button
                 onClick={closeModal}
-                className="absolute top-2 right-2 bg-red-600/90 hover:bg-red-600 text-white rounded-full p-3 shadow-xl focus:outline-hidden z-10 border border-red-400/50 hover:border-red-300 transition-all duration-300 hover:scale-110"
+                className={`absolute top-2 right-2 rounded-full p-3 shadow-xl focus:outline-hidden z-10 transition-all duration-300 hover:scale-110 ${
+                  isDoodleMode ? 'bg-doodle-coral text-black border-2 border-black shadow-doodle' : 'bg-red-600/90 hover:bg-red-600 text-white border border-red-400/50 hover:border-red-300'
+                }`}
                 aria-label="Close"
                 type="button"
               >
@@ -141,30 +150,28 @@ export default function Carousel({
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
-              {isVideoItem(activeItem) ? (
-                <div className="rounded-xl overflow-hidden" style={{ borderRadius: '0.75rem' }}>
-                  <video
-                    src={activeItem.src}
-                    controls
-                    autoPlay
-                    className="w-full h-auto object-contain max-h-[80vh]"
-                    style={{ maxWidth: '100%', display: 'block' }}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
+                <div className={`overflow-hidden ${isDoodleMode ? 'rounded-doodle border-4 border-black shadow-doodle' : 'rounded-xl'}`} style={{ borderRadius: isDoodleMode ? '0' : '0.75rem' }}>
+                  {isVideoItem(activeItem) ? (
+                    <video
+                      src={activeItem.src}
+                      controls
+                      autoPlay
+                      className="w-full h-auto object-contain max-h-[80vh]"
+                      style={{ maxWidth: '100%', display: 'block' }}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <img
+                      src={activeItem.src}
+                      alt={activeAlt}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto object-contain max-h-[80vh]"
+                      style={{ display: 'block' }}
+                    />
+                  )}
                 </div>
-              ) : (
-                <div className="rounded-xl overflow-hidden" style={{ borderRadius: '0.75rem' }}>
-                  <img
-                    src={activeItem.src}
-                    alt={activeAlt}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-auto object-contain max-h-[80vh]"
-                    style={{ display: 'block' }}
-                  />
-                </div>
-              )}
             </div>
           </div>,
           document.body,

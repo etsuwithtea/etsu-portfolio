@@ -4,7 +4,7 @@ import Carousel from '../Carousel';
 import { type Project, type CarouselMediaItem } from '../../types/content';
 
 type ProjectsSectionProps = {
-  isDarkMode: boolean;
+  currentTheme: 'light' | 'dark' | 'doodle';
   projectRef: RefObject<HTMLDivElement | null>;
   projectVisible: boolean;
   projects: Project[];
@@ -15,7 +15,7 @@ type ProjectsSectionProps = {
 };
 
 export function ProjectsSection({
-  isDarkMode,
+  currentTheme,
   projectRef,
   projectVisible,
   projects,
@@ -24,6 +24,8 @@ export function ProjectsSection({
   onOpenModal,
   onAnyModalOpen,
 }: ProjectsSectionProps) {
+  const isDarkMode = currentTheme === 'dark';
+  const isDoodleMode = currentTheme === 'doodle';
   return (
     <section
       ref={projectRef}
@@ -35,14 +37,14 @@ export function ProjectsSection({
       <div className="w-full max-w-6xl flex flex-col items-center">
         <h2
           className={`text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4 transition-all duration-300 hover:scale-105 cursor-default ${
-            isDarkMode ? 'text-white hover:text-zinc-100' : 'text-gray-900 hover:text-black'
+            isDarkMode ? 'text-white hover:text-zinc-100' : isDoodleMode ? 'text-black font-extrabold uppercase' : 'text-gray-900 hover:text-black'
           }`}
         >
           Projects
         </h2>
         <p
           className={`text-center mb-8 sm:mb-12 max-w-2xl mx-auto text-sm sm:text-base ${
-            isDarkMode ? 'text-zinc-400' : 'text-gray-600'
+            isDarkMode ? 'text-zinc-400' : isDoodleMode ? 'text-black font-medium' : 'text-gray-600'
           }`}
         >
           A collection of my work spanning web development, UX/UI design, and software applications. Each project represents a learning journey and practical application of my skills.
@@ -51,8 +53,12 @@ export function ProjectsSection({
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`rounded-xl sm:rounded-2xl border shadow-xs flex flex-col p-4 sm:p-6 hover:shadow-md transition-all duration-300 hover-lift-soft hover:rotate-1 hover:scale-105 w-full max-w-sm ${
-                isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'
+              className={`rounded-xl sm:rounded-2xl border flex flex-col p-4 sm:p-6 transition-all duration-300 hover-lift-soft w-full max-w-sm ${
+                isDarkMode
+                  ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm shadow-xs hover:shadow-md hover:rotate-1 hover:scale-105'
+                  : isDoodleMode
+                    ? 'bg-white border-4 border-black rounded-doodle shadow-doodle hover:rotate-1 hover:translate-y-1 hover:shadow-none'
+                    : 'bg-white border-gray-200 shadow-xs hover:shadow-md hover:rotate-1 hover:scale-105'
               } ${projectVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
               style={projectVisible ? { animationDelay: `${(600 + index * 100) / 1000}s` } : {}}
             >
@@ -64,14 +70,15 @@ export function ProjectsSection({
                   onImageClick={(imgObj, idx, allImages) => {
                     onOpenModal(imgObj.src, imgObj.alt, imgObj.type, idx, allImages);
                   }}
+                  currentTheme={currentTheme}
                 />
               </div>
               <div className="flex flex-col grow space-y-2 sm:space-y-3">
-                <h3 className={`font-semibold text-sm sm:text-base leading-tight line-clamp-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                <h3 className={`font-semibold text-sm sm:text-base leading-tight line-clamp-2 ${isDarkMode ? 'text-white' : isDoodleMode ? 'text-black font-bold uppercase' : 'text-gray-900'}`}>
                   {project.title}
                 </h3>
                 <div
-                  className={`text-xs sm:text-sm leading-relaxed grow ${isDarkMode ? 'text-zinc-300' : 'text-gray-600'}`}
+                  className={`text-xs sm:text-sm leading-relaxed grow ${isDarkMode ? 'text-zinc-300' : isDoodleMode ? 'text-black font-medium' : 'text-gray-600'}`}
                   style={{ maxHeight: '4.5rem', overflowY: 'auto' }}
                 >
                   {project.desc}
@@ -79,7 +86,11 @@ export function ProjectsSection({
                 <div className="pt-1 sm:pt-2">
                   <span
                     className={`inline-block px-2 py-1 rounded-sm text-xs font-medium mb-2 sm:mb-3 border ${
-                      isDarkMode ? 'bg-zinc-800 text-zinc-500 border-zinc-700' : 'bg-gray-50 text-gray-400 border-gray-200'
+                      isDarkMode
+                        ? 'bg-zinc-800 text-zinc-500 border-zinc-700'
+                        : isDoodleMode
+                          ? 'bg-doodle-accent text-black border-2 border-black font-bold'
+                          : 'bg-gray-50 text-gray-400 border-gray-200'
                     }`}
                   >
                     {project.role}
@@ -119,7 +130,11 @@ export function ProjectsSection({
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-xs hover-lift-soft text-center ${
-                          isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'
+                          isDarkMode
+                            ? 'bg-white text-black hover:bg-gray-200'
+                            : isDoodleMode
+                              ? 'bg-black text-white hover:bg-doodle-coral border-2 border-black rounded-doodle shadow-doodle'
+                              : 'bg-gray-900 text-white hover:bg-black'
                         }`}
                       >
                         View Figma Prototype
@@ -131,7 +146,11 @@ export function ProjectsSection({
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-xs hover-lift-soft text-center ${
-                          isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-black'
+                          isDarkMode
+                            ? 'bg-white text-black hover:bg-gray-200'
+                            : isDoodleMode
+                              ? 'bg-black text-white hover:bg-doodle-coral border-2 border-black rounded-doodle shadow-doodle'
+                              : 'bg-gray-900 text-white hover:bg-black'
                         }`}
                       >
                         View Website
@@ -142,8 +161,12 @@ export function ProjectsSection({
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-xs border animate-rainbow-border hover-lift-soft text-center ${
-                          isDarkMode ? 'bg-zinc-900 text-white border-zinc-600 hover:bg-zinc-800' : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'
+                        className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-xs border hover-lift-soft text-center ${
+                          isDarkMode
+                            ? 'bg-zinc-900 text-white border-zinc-600 hover:bg-zinc-800 animate-rainbow-border'
+                            : isDoodleMode
+                              ? 'bg-doodle-accent text-black border-4 border-black font-bold uppercase rounded-doodle shadow-doodle'
+                              : 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50 animate-rainbow-border'
                         }`}
                       >
                         View Source Code

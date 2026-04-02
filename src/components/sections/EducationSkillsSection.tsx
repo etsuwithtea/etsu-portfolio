@@ -2,20 +2,20 @@ import { JSX, RefObject } from 'react';
 import { type WorkExperience } from '../../types/content';
 
 type EducationSkillsSectionProps = {
-  isDarkMode: boolean;
+  currentTheme: 'light' | 'dark' | 'doodle';
   educationRef: RefObject<HTMLDivElement | null>;
   educationVisible: boolean;
   skillsRef: RefObject<HTMLDivElement | null>;
   skillsVisible: boolean;
   skillBadgeClass: string;
-  getSkillIcon: (skill: string, isDarkMode?: boolean) => JSX.Element;
+  getSkillIcon: (skill: string, theme?: 'light' | 'dark' | 'doodle') => JSX.Element;
   languageSkills: readonly string[];
   toolSkills: readonly string[];
   experiences: WorkExperience[];
 };
 
 export function EducationSkillsSection({
-  isDarkMode,
+  currentTheme,
   educationRef,
   educationVisible,
   skillsRef,
@@ -26,6 +26,8 @@ export function EducationSkillsSection({
   toolSkills,
   experiences,
 }: EducationSkillsSectionProps) {
+  const isDarkMode = currentTheme === 'dark';
+  const isDoodleMode = currentTheme === 'doodle';
   return (
     <section
       ref={educationRef}
@@ -37,8 +39,12 @@ export function EducationSkillsSection({
       <div className="w-full max-w-7xl flex flex-col items-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           <div
-            className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-300 hover-lift-soft hover:shadow-md hover:rotate-1 hover:scale-105 z-10 ${
-              isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'
+            className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-300 hover-lift-soft z-10 ${
+              isDarkMode
+                ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm'
+                : isDoodleMode
+                  ? 'bg-white border-4 border-black rounded-doodle shadow-doodle hover:rotate-1'
+                  : 'bg-white border-gray-200'
             }`}
           >
             <div className="relative z-10">
@@ -55,10 +61,12 @@ export function EducationSkillsSection({
 
                 <div className="space-y-4 sm:space-y-6">
                   <div
-                    className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${
+                    className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft group ${
                       isDarkMode
                         ? 'bg-zinc-800/60 border-zinc-400 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-300'
-                        : 'bg-gray-50 border-gray-900 hover:bg-gray-100 hover:shadow-lg'
+                        : isDoodleMode
+                          ? 'bg-doodle-accent border-l-black border-2 border-black rounded-doodle shadow-doodle hover:translate-x-1 hover:translate-y-1 hover:shadow-none'
+                          : 'bg-gray-50 border-gray-900 hover:bg-gray-100 hover:shadow-lg'
                     } ${educationVisible ? 'animate-fade-in-left delay-400' : 'opacity-0'}`}
                   >
                     <div
@@ -69,8 +77,12 @@ export function EducationSkillsSection({
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
                       <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Bangkok University</h3>
                       <span
-                        className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border animate-rainbow-border self-start ${
-                          isDarkMode ? 'text-white bg-zinc-900 border-zinc-600' : 'text-gray-900 bg-white border-gray-200'
+                        className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border self-start ${
+                          isDarkMode
+                            ? 'bg-zinc-800 text-zinc-300 border-zinc-700 animate-rainbow-border'
+                            : isDoodleMode
+                              ? 'bg-doodle-accent text-black border-2 border-black rounded-doodle shadow-doodle font-bold uppercase'
+                              : 'bg-gray-50 text-gray-400 border-gray-200 animate-rainbow-border'
                         }`}
                       >
                         2022 - Present
@@ -83,10 +95,12 @@ export function EducationSkillsSection({
                   </div>
 
                   <div
-                    className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${
+                    className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft group ${
                       isDarkMode
                         ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-400'
-                        : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'
+                        : isDoodleMode
+                          ? 'bg-white border-l-black border-2 border-black rounded-doodle shadow-doodle hover:translate-x-1 hover:translate-y-1 hover:shadow-none font-medium'
+                          : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'
                     } ${educationVisible ? 'animate-fade-in-left delay-600' : 'opacity-0'}`}
                   >
                     <div
@@ -130,10 +144,12 @@ export function EducationSkillsSection({
                       {experiences.map((exp, index) => (
                         <div
                           key={index}
-                          className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft hover:shadow-md group ${
+                          className={`relative rounded-lg sm:rounded-xl p-4 sm:p-6 ml-8 sm:ml-12 border-l-2 sm:border-l-4 transition-all duration-300 hover-lift-soft group ${
                             isDarkMode
                               ? 'bg-zinc-800/60 border-zinc-500 backdrop-blur-sm hover:bg-zinc-800/80 hover:border-zinc-400'
-                              : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'
+                              : isDoodleMode
+                                ? 'bg-doodle-accent border-l-black border-4 border-black rounded-doodle shadow-doodle hover:translate-x-1 hover:translate-y-1 hover:shadow-none'
+                                : 'bg-gray-50 border-gray-600 hover:bg-gray-100 hover:shadow-lg'
                           } ${educationVisible ? 'animate-fade-in-left delay-400' : 'opacity-0'}`}
                           style={{ animationDelay: `${700 + index * 100}ms` }}
                         >
@@ -145,8 +161,12 @@ export function EducationSkillsSection({
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2">
                             <h3 className={`text-base sm:text-lg font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{exp.company}</h3>
                             <span
-                              className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border animate-rainbow-border self-start ${
-                                isDarkMode ? 'text-white bg-zinc-900 border-zinc-600' : 'text-gray-900 bg-white border-gray-200'
+                              className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full border self-start ${
+                                isDarkMode
+                                  ? 'bg-zinc-800 text-zinc-300 border-zinc-700 animate-rainbow-border'
+                                  : isDoodleMode
+                                    ? 'bg-doodle-accent text-black border-2 border-black rounded-doodle shadow-doodle font-bold uppercase'
+                                    : 'bg-gray-50 text-gray-400 border-gray-200 animate-rainbow-border'
                               }`}
                             >
                               {exp.period}
@@ -168,8 +188,12 @@ export function EducationSkillsSection({
           <div
             ref={skillsRef}
             id="skills"
-            className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-300 hover-lift-soft hover:shadow-md hover:rotate-1 hover:scale-105 z-10 ${
-              isDarkMode ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm' : 'bg-white border-gray-200'
+            className={`rounded-2xl sm:rounded-3xl border shadow-xs p-6 sm:p-8 transition-all duration-300 hover-lift-soft z-10 ${
+              isDarkMode
+                ? 'bg-zinc-900/40 border-zinc-700/50 backdrop-blur-sm'
+                : isDoodleMode
+                  ? 'bg-white border-4 border-black rounded-doodle shadow-doodle'
+                  : 'bg-white border-gray-200'
             } ${skillsVisible ? 'animate-fade-in-up delay-200' : 'opacity-0 translate-y-10'}`}
           >
             <div className="relative z-10 w-full flex flex-col items-center">
@@ -193,7 +217,7 @@ export function EducationSkillsSection({
                   <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
                     {languageSkills.map(skill => (
                       <span key={skill} className={skillBadgeClass}>
-                        {getSkillIcon(skill, isDarkMode)}
+                        {getSkillIcon(skill, currentTheme)}
                         {skill}
                       </span>
                     ))}
@@ -212,7 +236,7 @@ export function EducationSkillsSection({
                   <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
                     {toolSkills.map(tool => (
                       <span key={tool} className={skillBadgeClass}>
-                        {getSkillIcon(tool, isDarkMode)}
+                        {getSkillIcon(tool, currentTheme)}
                         {tool}
                       </span>
                     ))}
