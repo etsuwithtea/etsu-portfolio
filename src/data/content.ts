@@ -107,6 +107,10 @@ import farm2d_video from '../assets/farm2d/Farm2d.mp4';
 import farm2d_1 from '../assets/farm2d/Farm2d_1.jpeg';
 import farm2d_2 from '../assets/farm2d/Farm2d_2.jpeg';
 import farm2d_3 from '../assets/farm2d/Farm2d_3.jpeg';
+import doodlerush_1 from '../assets/doodlerush/doodlerush_1.jpeg';
+import doodlerush_2 from '../assets/doodlerush/doodlerush_2.jpeg';
+import doodlerush_3 from '../assets/doodlerush/doodlerush_3.jpeg';
+import doodlerush_video from '../assets/doodlerush/doodlerush_video.MP4';
 
 export const PROFILE_IMAGES = [mainProfile, mainProfile2];
 
@@ -184,6 +188,31 @@ export const PROJECTS: Project[] = [
       'Tailwind CSS',
     ],
     isPrototype: false,
+  }, 
+  {
+    title: 'DoodleRush',
+    images: [
+      { type: 'video', src: doodlerush_video, alt: 'DoodleRush Demo Video' },
+      { src: doodlerush_1, alt: 'DoodleRush Gameplay 1' },
+      { src: doodlerush_2, alt: 'DoodleRush Gameplay 2' },
+      { src: doodlerush_3, alt: 'DoodleRush Gameplay 3' },
+    ],
+    desc: "A modern 2D infinite runner and platformer game featuring procedurally generated levels and a bold Neo-brutalism aesthetic. It incorporates dynamic physics with double-jump mechanics and a session history system to track stars collected and time survived. Optimized for both desktop and mobile play.",
+    role: 'Role : Game Developer',
+    tools: [
+      'Next.js 15',
+      'React 19',
+      'Tailwind CSS v4',
+      'Framer Motion',
+      'Zustand',
+      'Lucide React',
+      'TypeScript',
+      'Git',
+      'GitHub Pages',
+    ],
+    github: 'https://github.com/etsuwithtea/doodlerush',
+    link: 'https://etsuwithtea.github.io/doodlerush/',
+    isPrototype: false,
   },
    {
     title: 'Farm2D Simulation Base',
@@ -207,7 +236,8 @@ export const PROJECTS: Project[] = [
     link: 'https://etsuwithtea.github.io/Farm2d/',
     isPrototype: false,
   },
-    {
+    
+  {
     title: 'BeyondHana',
     images: [
       { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
