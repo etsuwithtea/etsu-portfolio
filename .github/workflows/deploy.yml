@@ -1,0 +1,59 @@
+# Build and Deploy to GitHub Pages
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main  # 👈 ตรวจสอบว่า branch หลักของคุณคือ main หรือ master
+
+# ให้สิทธิ์ในการเขียน GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# อนุญาตให้มีการรันเพียง 1 Workflow ในครั้งเดียว
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Job สำหรับการ Build
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # โฟลเดอร์ที่ได้จากการ build สำหรับ Vite คือ 'dist'
+          path: './dist'
+
+  # Job สำหรับการ Deploy
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
