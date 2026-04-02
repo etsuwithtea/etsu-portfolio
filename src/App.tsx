@@ -418,33 +418,6 @@ function App() {
           showBackToTop={showBackToTop}
         />
 
-        <button
-          className={`fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center z-50 transition-all duration-300 group ${
-            theme === 'dark'
-              ? 'bg-zinc-800 text-white hover:bg-zinc-700'
-              : theme === 'doodle'
-                ? 'bg-doodle-accent border-4 border-black shadow-doodle hover:translate-x-1 hover:translate-y-1 hover:shadow-none'
-                : 'bg-white shadow-lg text-gray-900 hover:bg-gray-50'
-          }`}
-          onClick={() => handleNavClick('contact')}
-          aria-label="Quick contact"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="group-hover:rotate-12 transition-transform"
-          >
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-        </button>
-
 
         <footer
           className={`w-full border-t py-6 sm:py-8 mt-12 sm:mt-16 ${
