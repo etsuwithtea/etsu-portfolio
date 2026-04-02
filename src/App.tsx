@@ -56,8 +56,8 @@ function App() {
     isDarkMode
       ? 'bg-zinc-800 text-zinc-300 border border-zinc-700/50 hover:bg-zinc-700 hover:text-white'
       : isDoodleMode
-        ? 'bg-white text-black border-2 border-black rounded-doodle shadow-doodle hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none'
-        : 'bg-white text-gray-700 border border-gray-200 shadow-xs hover:shadow-md hover:text-gray-900 border-gray-300 shadow-md'
+        ? 'bg-white text-black border-2 border-black rounded-doodle shadow-doodle hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none font-bold'
+        : 'bg-white text-blue-700 border border-blue-100 shadow-sm hover:shadow-md hover:bg-blue-50/50'
   }`;
 
   useEffect(() => {

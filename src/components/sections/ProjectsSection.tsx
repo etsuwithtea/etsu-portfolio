@@ -102,7 +102,11 @@ export function ProjectsSection({
                           <span
                             key={toolIndex}
                             className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                              isDarkMode ? 'bg-zinc-700/80 text-zinc-300 hover:bg-zinc-600' : 'bg-blue-50/80 text-blue-700 hover:bg-blue-100'
+                              isDarkMode
+                                ? 'bg-zinc-800/80 text-zinc-300 border border-zinc-700/50 hover:bg-zinc-700 hover:text-white'
+                                : isDoodleMode
+                                  ? 'bg-white text-black border-2 border-black rounded-doodle shadow-doodle hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none font-bold'
+                                  : 'bg-blue-50/80 text-blue-700 border border-blue-100 hover:bg-blue-100/80'
                             }`}
                           >
                             {tool}
@@ -112,7 +116,11 @@ export function ProjectsSection({
                           <button
                             onClick={() => onToggleTools(index)}
                             className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium cursor-pointer transition-all duration-300 hover:scale-105 ${
-                              isDarkMode ? 'bg-zinc-600 text-zinc-300 hover:bg-zinc-500' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                              isDarkMode
+                                ? 'bg-zinc-700 text-zinc-300 hover:bg-zinc-600 hover:text-white'
+                                : isDoodleMode
+                                  ? 'bg-doodle-accent text-black border-2 border-black rounded-doodle shadow-doodle hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none font-bold uppercase'
+                                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 border border-gray-200'
                             }`}
                             title={expandedTools[index] ? 'Show fewer tools' : `Show all tools (${project.tools.length})`}
                             type="button"
