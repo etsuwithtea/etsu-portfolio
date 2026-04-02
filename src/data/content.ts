@@ -110,7 +110,7 @@ import farm2d_3 from '../assets/farm2d/Farm2d_3.jpeg';
 import doodlerush_1 from '../assets/doodlerush/doodlerush_1.jpeg';
 import doodlerush_2 from '../assets/doodlerush/doodlerush_2.jpeg';
 import doodlerush_3 from '../assets/doodlerush/doodlerush_3.jpeg';
-import doodlerush_video from '../assets/doodlerush/doodlerush_video.MP4';
+import doodlerush_video from '../assets/doodlerush/doodlerush_video.mp4';
 
 export const PROFILE_IMAGES = [mainProfile, mainProfile2];
 
