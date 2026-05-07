@@ -11,6 +11,7 @@ type EducationSkillsSectionProps = {
   getSkillIcon: (skill: string, theme?: 'light' | 'dark' | 'doodle') => JSX.Element;
   languageSkills: readonly string[];
   toolSkills: readonly string[];
+  aiSkills: readonly string[];
   experiences: WorkExperience[];
 };
 
@@ -24,6 +25,7 @@ export function EducationSkillsSection({
   getSkillIcon,
   languageSkills,
   toolSkills,
+  aiSkills,
   experiences,
 }: EducationSkillsSectionProps) {
   const isDarkMode = currentTheme === 'dark';
@@ -238,6 +240,25 @@ export function EducationSkillsSection({
                       <span key={tool} className={skillBadgeClass}>
                         {getSkillIcon(tool, currentTheme)}
                         {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div
+                  className={`flex flex-col items-center text-center transition-all duration-700 ${
+                    skillsVisible ? 'animate-fade-in-left delay-1000' : 'opacity-0'
+                  }`}
+                >
+                  <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>AI Tools</h3>
+                  <p className={`text-xs sm:text-sm mb-4 sm:mb-6 ${isDarkMode ? 'text-zinc-400' : 'text-gray-600'}`}>
+                    AI-powered tools that enhance my workflow
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2 sm:gap-3 stagger-animation">
+                    {aiSkills.map(aiTool => (
+                      <span key={aiTool} className={skillBadgeClass}>
+                        {getSkillIcon(aiTool, currentTheme)}
+                        {aiTool}
                       </span>
                     ))}
                   </div>

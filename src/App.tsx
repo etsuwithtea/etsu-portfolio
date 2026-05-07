@@ -13,7 +13,7 @@ import { ACTIVITIES, CERTIFICATES, PROFILE_IMAGES, PROJECTS, SOCIALS, WORK_EXPER
 import { useScrollAnimation, useTypingAnimation } from './hooks/animations';
 import resumePDF from './assets/Navapan_Suthon_Resume.pdf';
 import transcriptPDF from './assets/Navapan_Suthon_Unofficial_Transcript.pdf';
-import { getSkillIcon, LANGUAGE_SKILLS, TOOL_SKILLS } from './utils/skills';
+import { getSkillIcon, LANGUAGE_SKILLS, TOOL_SKILLS, AI_SKILLS } from './utils/skills';
 import { type CarouselMediaItem } from './types/content';
 
 function App() {
@@ -378,6 +378,7 @@ function App() {
           getSkillIcon={getSkillIcon}
           languageSkills={LANGUAGE_SKILLS}
           toolSkills={TOOL_SKILLS}
+          aiSkills={AI_SKILLS}
           experiences={WORK_EXPERIENCE}
         />
 

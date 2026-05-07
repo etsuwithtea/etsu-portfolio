@@ -7,6 +7,7 @@ export const LANGUAGE_SKILLS = [
   'TypeScript',
   'React',
   'Next.js',
+  'Nuxt',
   'Node.js',
   'Express',
   'ASP.NET',
@@ -22,6 +23,9 @@ export const TOOL_SKILLS = [
   'Git, GitHub',
   'GitHub Copilot',
   'MongoDB',
+  'PostgreSQL',
+  'Docker',
+  'Antigravity',
   'Bootstrap',
   'Phaser.js',
   'Socket.IO',
@@ -29,6 +33,13 @@ export const TOOL_SKILLS = [
   '.NET MAUI',
   'Visual Studio Code',
   'Visual Studio 2022',
+] as const;
+
+export const AI_SKILLS = [
+  'Claude Code',
+  'Claude Design',
+  'Figma Make AI',
+  'Figma AI',
 ] as const;
 
 export const getSkillIcon = (skill: string, theme: 'light' | 'dark' | 'doodle' = 'light'): JSX.Element => {
@@ -41,6 +52,7 @@ export const getSkillIcon = (skill: string, theme: 'light' | 'dark' | 'doodle' =
     TypeScript: <i className="fab fa-js text-blue-600"></i>,
     React: <i className="fab fa-react text-blue-400"></i>,
     'Next.js': <i className={`fab fa-react ${isDarkMode ? 'text-white' : isDoodleMode ? 'text-black' : 'text-zinc-900'}`}></i>,
+    Nuxt: <i className="fab fa-vuejs text-emerald-500"></i>,
     'Node.js': <i className="fab fa-node-js text-green-500"></i>,
     Express: <i className={`fas fa-server ${isDarkMode ? 'text-zinc-400' : isDoodleMode ? 'text-black' : 'text-zinc-700'}`}></i>,
     'ASP.NET': <i className="fas fa-desktop text-purple-600"></i>,
@@ -53,6 +65,9 @@ export const getSkillIcon = (skill: string, theme: 'light' | 'dark' | 'doodle' =
     'Git, GitHub': <i className={`fab fa-github ${isDarkMode ? 'text-white' : isDoodleMode ? 'text-black' : 'text-gray-800'}`}></i>,
     'GitHub Copilot': <i className="fas fa-robot text-blue-400"></i>,
     MongoDB: <i className="fas fa-leaf text-green-600"></i>,
+    PostgreSQL: <i className="fas fa-database text-blue-400"></i>,
+    Docker: <i className="fab fa-docker text-blue-500"></i>,
+    Antigravity: <i className="fas fa-user-astronaut text-indigo-500"></i>,
     Bootstrap: <i className="fab fa-bootstrap text-purple-600"></i>,
     'Phaser.js': <i className="fas fa-gamepad text-orange-500"></i>,
     'Socket.IO': <i className={`fas fa-plug ${isDarkMode ? 'text-white' : isDoodleMode ? 'text-black' : 'text-gray-900'}`}></i>,
@@ -60,6 +75,10 @@ export const getSkillIcon = (skill: string, theme: 'light' | 'dark' | 'doodle' =
     '.NET MAUI': <i className="fas fa-mobile-alt text-purple-600"></i>,
     'Visual Studio Code': <i className="fas fa-code text-blue-500"></i>,
     'Visual Studio 2022': <i className="fas fa-laptop-code text-purple-700"></i>,
+    'Claude Code': <i className="fas fa-code text-orange-500"></i>,
+    'Claude Design': <i className="fas fa-paint-brush text-orange-400"></i>,
+    'Figma Make AI': <i className="fas fa-wand-magic-sparkles text-purple-400"></i>,
+    'Figma AI': <i className="fas fa-brain text-purple-500"></i>,
   };
 
   return iconMap[skill] ?? <i className="fas fa-check-circle text-green-500"></i>;
