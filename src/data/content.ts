@@ -214,7 +214,26 @@ export const PROJECTS: Project[] = [
     link: 'https://etsuwithtea.github.io/doodlerush/',
     isPrototype: false,
   },
-   {
+  {
+    title: 'BeyondHana',
+    images: [
+      { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
+      { src: beyondhana_1, alt: 'BeyondHana Title' },
+      { src: beyondhana_2, alt: 'BeyondHana Main Menu' },
+      { src: beyondhana_3, alt: 'BeyondHana Start Game' },
+      { src: beyondhana_4, alt: 'BeyondHana Load Game' },
+      { src: beyondhana_5, alt: 'BeyondHana Setting' },
+      { src: beyondhana_6, alt: 'BeyondHana Story' },
+      { src: beyondhana_7, alt: 'BeyondHana Choice' },
+      { src: beyondhana_8, alt: 'BeyondHana Ending' },
+    ],
+    desc: 'Visual novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
+    role: 'Role : Main Developer & UX/UI Designer',
+    tools: ['.NET MAUI', 'C#', 'XAML', 'Visual Studio', 'Android SDK', 'Figma', 'Git'],
+    github: 'https://github.com/etsuwithtea/BeyondHana',
+    isPrototype: false,
+  },
+     {
     title: 'Farm2D Simulation Base',
     images: [
       { type: 'video', src: farm2d_video, alt: 'Farm2D Demo Video' },
@@ -234,26 +253,6 @@ export const PROJECTS: Project[] = [
     ],
     github: 'https://github.com/etsuwithtea/Farm2d',
     link: 'https://etsuwithtea.github.io/Farm2d/',
-    isPrototype: false,
-  },
-    
-  {
-    title: 'BeyondHana',
-    images: [
-      { type: 'video', src: beyondhana_video, alt: 'BeyondHana Demo Video' },
-      { src: beyondhana_1, alt: 'BeyondHana Title' },
-      { src: beyondhana_2, alt: 'BeyondHana Main Menu' },
-      { src: beyondhana_3, alt: 'BeyondHana Start Game' },
-      { src: beyondhana_4, alt: 'BeyondHana Load Game' },
-      { src: beyondhana_5, alt: 'BeyondHana Setting' },
-      { src: beyondhana_6, alt: 'BeyondHana Story' },
-      { src: beyondhana_7, alt: 'BeyondHana Choice' },
-      { src: beyondhana_8, alt: 'BeyondHana Ending' },
-    ],
-    desc: 'Visual novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
-    role: 'Role : Main Developer & UX/UI Designer',
-    tools: ['.NET MAUI', 'C#', 'XAML', 'Visual Studio', 'Android SDK', 'Figma', 'Git'],
-    github: 'https://github.com/etsuwithtea/BeyondHana',
     isPrototype: false,
   },
   {
@@ -361,7 +360,7 @@ export const PROJECTS: Project[] = [
     ],
     link: 'https://etsuwithtea.github.io/etsu-portfolio/',
     desc: 'Personal portfolio website built with React + Vite, styled with Tailwind CSS, and hosted on GitHub Pages. Designed and developed to showcase my projects, skills, and certificates in a modern, responsive layout.',
-    role: 'Role : Developer (with GitHub Copilot assistance)',
+    role: 'Role : Developer',
     tools: ['React', 'Vite', 'Tailwind CSS', 'JavaScript', 'HTML', 'CSS', 'GitHub Pages', 'Git', 'GitHub Copilot'],
     isPrototype: false,
   },

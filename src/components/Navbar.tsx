@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { id: 'experience', label: 'Experience' },
   { id: 'project', label: 'Project' },
   { id: 'certificate', label: 'Certificate' },
-  { id: 'activity', label: 'Activity' },
+  // { id: 'activity', label: 'Activity' },
   { id: 'contact', label: 'Contact' },
 ];
 

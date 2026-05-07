@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import Navbar from './components/Navbar';
 import ImageModal from './components/ImageModal';
 import AboutSection from './components/sections/AboutSection';
-import EducationSkillsSection from './components/sections/EducationSkillsSection';
+import EducationSection from './components/sections/EducationSection';
+import SkillsSection from './components/sections/SkillsSection';
 import ProjectsSection from './components/sections/ProjectsSection';
 import CertificatesSection from './components/sections/CertificatesSection';
 import ActivitiesSection from './components/sections/ActivitiesSection';
@@ -368,10 +369,15 @@ function App() {
           transcriptPDF={transcriptPDF}
         />
 
-        <EducationSkillsSection
+        <EducationSection
           currentTheme={theme}
           educationRef={educationRef}
           educationVisible={educationVisible}
+          experiences={WORK_EXPERIENCE}
+        />
+
+        <SkillsSection
+          currentTheme={theme}
           skillsRef={skillsRef}
           skillsVisible={skillsVisible}
           skillBadgeClass={skillBadgeClass}
@@ -379,7 +385,6 @@ function App() {
           languageSkills={LANGUAGE_SKILLS}
           toolSkills={TOOL_SKILLS}
           aiSkills={AI_SKILLS}
-          experiences={WORK_EXPERIENCE}
         />
 
         <ProjectsSection
@@ -401,14 +406,14 @@ function App() {
           onOpenModal={openModal}
         />
 
-        <ActivitiesSection
+        {/* <ActivitiesSection
           currentTheme={theme}
           activityRef={activityRef}
           activityVisible={activityVisible}
           activities={ACTIVITIES}
           onAnyModalOpen={handleAnyModalOpen}
           onOpenModal={openModal}
-        />
+        /> */}
 
         <ContactSection
           currentTheme={theme}
