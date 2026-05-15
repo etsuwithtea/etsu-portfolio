@@ -4,6 +4,7 @@ import { BentoCard } from "@/components/ui/BentoCard";
 import { ImageLightbox } from "@/components/ui/ImageLightbox";
 import { motion, type HTMLMotionProps, type Variants, AnimatePresence } from "framer-motion";
 import type { ProjectType } from "@/types";
+import { SKILLS } from "@/data/skills";
 import { useScrollFocus } from "@/hooks/useScrollFocus";
 import { ProjectGallery } from "./ProjectGallery";
 
@@ -199,14 +200,29 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
             <motion.div variants={fadeInUp}>
               <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-8 opacity-30">Technology Stack</h3>
               <div className="flex flex-wrap gap-3">
-                {project.tools.map((tool, idx) => (
-                  <span
-                    key={idx}
-                    className="px-5 py-2.5 rounded-2xl text-sm font-medium bg-white/5 border border-white/10 hover:border-primary-glow/50 transition-colors"
-                  >
-                    {tool}
-                  </span>
-                ))}
+                {project.tools.map((tool, idx) => {
+                  const skill = SKILLS.find(s => s.name.toLowerCase() === tool.toLowerCase());
+                  const Icon = skill?.icon;
+                  
+                  return (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ y: -2, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                      className="flex items-center gap-2.5 px-4 py-2 rounded-xl text-sm font-medium bg-white/5 border border-white/10 hover:border-primary-glow/50 transition-all cursor-default group/skill"
+                    >
+                      {Icon && (
+                        <Icon 
+                          size={16} 
+                          style={{ color: skill.color || "inherit" }} 
+                          className="opacity-70 group-hover/skill:opacity-100 transition-opacity" 
+                        />
+                      )}
+                      <span className="opacity-60 group-hover/skill:opacity-100 transition-opacity">
+                        {tool}
+                      </span>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
 

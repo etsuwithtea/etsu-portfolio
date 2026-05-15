@@ -57,7 +57,6 @@ function App() {
             isActive={activeCard === "work"}
             onClick={() => handleSetActiveCard(activeCard === "work" ? null : "work")}
             onSelectProject={setSelectedProject}
-            selectedProjectId={selectedProject?.id}
           />
 
           <CertificatesCard

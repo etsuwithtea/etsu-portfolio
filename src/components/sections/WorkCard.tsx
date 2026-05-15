@@ -13,7 +13,6 @@ interface WorkCardProps extends HTMLMotionProps<"div"> {
   isActive?: boolean;
   onClick?: () => void;
   onSelectProject?: (project: ProjectType) => void;
-  selectedProjectId?: number | null;
 }
 
 const staggerContainer: Variants = {
@@ -27,7 +26,7 @@ const staggerContainer: Variants = {
   }
 };
 
-export function WorkCard({ isActive, onClick, onSelectProject, selectedProjectId, ...props }: WorkCardProps) {
+export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkCardProps) {
   const { cardRef } = useScrollFocus({ isActive });
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
