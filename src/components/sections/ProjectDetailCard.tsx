@@ -38,7 +38,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
     <BentoCard
       ref={cardRef}
       onClick={onClick}
-      className="md:col-span-3 h-max flex flex-col overflow-hidden relative"
+      className="col-span-1 sm:col-span-2 lg:col-span-3 h-max flex flex-col overflow-hidden relative p-6 md:p-12 lg:p-20"
       style={{
         backgroundColor: "var(--color-canvas)",
         color: "var(--color-canvas-fg)",
@@ -65,7 +65,12 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
         {/* Header Action */}
         <motion.div variants={fadeInUp} className="flex justify-between items-center mb-12">
           <button
-            onClick={onClose}
+            onClick={() => {
+              onClose();
+              setTimeout(() => {
+                document.getElementById('work-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 50);
+            }}
             className="group flex items-center gap-3 px-6 py-3 rounded-full transition-all border border-white/10 bg-white/5 hover:bg-white/10"
             style={{ color: "var(--alpha-light-80)" }}
           >
@@ -77,7 +82,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
         {/* Hero Section */}
         <motion.div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-16 items-end">
           <motion.div variants={fadeInUp} className="md:col-span-8">
-            <h2 className="text-5xl md:text-8xl font-black font-display tracking-tighter leading-[0.85] mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-8xl font-black font-display tracking-tighter leading-[0.85] mb-6">
               {project.title}
             </h2>
             <div className="flex items-center gap-4">
@@ -163,11 +168,11 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
               playsInline
             />
           ) : (
-            <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+            <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 md:group-hover:scale-110" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:opacity-60" />
           {project.images[0]?.type !== "video" && (
-            <div className="absolute top-8 right-8 p-4 rounded-full bg-black/40 backdrop-blur-xl border border-white/20 opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
+            <div className="absolute top-8 right-8 p-4 rounded-full bg-black/40 backdrop-blur-xl border border-white/20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0">
               <ZoomIn size={28} />
             </div>
           )}

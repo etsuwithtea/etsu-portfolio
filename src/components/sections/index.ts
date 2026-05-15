@@ -7,3 +7,4 @@ export { SkillsDetailCard } from "./SkillsDetailCard";
 export { SocialLinks } from "./SocialLinks";
 export { TechStackMarquee } from "./TechStackMarquee";
 export { ProjectGallery } from "./ProjectGallery";
+export { CertificatesCard } from "./CertificatesCard";

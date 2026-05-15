@@ -4,13 +4,14 @@ import { HeroCard } from "@/components/sections/HeroCard";
 import { WorkCard } from "@/components/sections/WorkCard";
 import { AboutCard } from "@/components/sections/AboutCard";
 import { ContactCard } from "@/components/sections/ContactCard";
+import { CertificatesCard } from "@/components/sections/CertificatesCard";
 import { ProjectDetailCard } from "@/components/sections/ProjectDetailCard";
 import { SkillsDetailCard } from "@/components/sections/SkillsDetailCard";
 import { AnimatePresence } from "framer-motion";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import type { ProjectType } from "@/types";
 
-type CardId = "hero" | "work" | "about" | "contact" | null;
+type CardId = "hero" | "work" | "about" | "contact" | "certificates" | null;
 
 function App() {
   const [activeCard, setActiveCard] = useState<CardId>(null);
@@ -37,7 +38,7 @@ function App() {
       
       {/* Header */}
       <header className="mb-12">
-        <h1 className="text-3xl font-black tracking-tighter text-center">
+        <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-center">
           <span className="text-[10px] font-bold tracking-[0.4em] block uppercase text-center mb-2 opacity-40 font-sans">Portfolio of</span>
           ETSUWITHTEA
         </h1>
@@ -57,6 +58,11 @@ function App() {
             onClick={() => handleSetActiveCard(activeCard === "work" ? null : "work")}
             onSelectProject={setSelectedProject}
             selectedProjectId={selectedProject?.id}
+          />
+
+          <CertificatesCard
+            isActive={activeCard === "certificates"}
+            onClick={() => handleSetActiveCard(activeCard === "certificates" ? null : "certificates")}
           />
 
           <AnimatePresence mode="popLayout">

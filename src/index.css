@@ -16,6 +16,7 @@
   --color-accent:    #FFF176;   /* brand yellow → Contact card */
   --color-secondary: #1E1E1E;   /* dark charcoal → About card */
   --color-canvas:    #111111;   /* deep dark → Project Detail card */
+  --color-card-dark: #0A0A0A;   /* darker black → Skills Detail card */
   --color-surface:   #FFFFFF;   /* pure white → Work card */
   --color-base:      #000000;   /* pure black */
 

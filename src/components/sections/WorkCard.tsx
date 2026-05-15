@@ -43,6 +43,7 @@ export function WorkCard({ isActive, onClick, onSelectProject, selectedProjectId
 
   return (
     <BentoCard
+      id="work-card"
       ref={cardRef}
       onClick={isActive ? undefined : onClick}
       style={{
@@ -51,7 +52,9 @@ export function WorkCard({ isActive, onClick, onSelectProject, selectedProjectId
       }}
       className={cn(
         "flex flex-col justify-between group overflow-hidden relative transition-all duration-500",
-        isActive ? "md:col-span-3 h-max cursor-default" : "col-span-1 min-h-[200px]"
+        isActive 
+          ? "col-span-1 sm:col-span-2 lg:col-span-3 h-max cursor-default p-6 md:p-10 lg:p-12" 
+          : "col-span-1 sm:col-span-1 md:row-span-1 min-h-[240px] p-6 md:p-8"
       )}
       {...props}
     >
@@ -59,7 +62,7 @@ export function WorkCard({ isActive, onClick, onSelectProject, selectedProjectId
       {!isActive && (
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div
-            className="flex w-max animate-marquee h-full opacity-30 group-hover:opacity-60 group-hover:paused transition-all duration-700"
+            className="flex w-max animate-marquee h-full opacity-60 md:opacity-30 md:group-hover:opacity-60 md:group-hover:paused transition-all duration-700"
             style={{ animationDuration: "60s" }}
           >
             {[...PROJECTS, ...PROJECTS].map((project, index) => (
@@ -67,7 +70,7 @@ export function WorkCard({ isActive, onClick, onSelectProject, selectedProjectId
                 key={`${project.id}-${index}`}
                 src={project.coverImage}
                 alt={project.title}
-                className="h-full object-cover min-w-[300px]"
+                className="h-full object-cover min-w-[300px] flex-shrink-0 -mr-[1px]"
               />
             ))}
           </div>

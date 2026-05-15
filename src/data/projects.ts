@@ -35,6 +35,35 @@ import p4_3 from "@/assets/4_3.png";
 
 import p5_1 from "@/assets/5_1.png";
 
+import p6_1 from "@/assets/6_1.png";
+import p6_2 from "@/assets/6_2.png";
+
+import p7_video from "@/assets/7_video.mp4";
+import p7_1 from "@/assets/7_1.png";
+
+import p8_1 from "@/assets/8_1.png";
+import p8_2 from "@/assets/8_2.png";
+
+import p9_1 from "@/assets/9_1.png";
+
+import p10_1 from "@/assets/10_1.png";
+
+import p11_1 from "@/assets/11_1.png";
+
+import p12_1 from "@/assets/12_1.png";
+import p12_2 from "@/assets/12_2.png";
+import p12_video from "@/assets/12_video.mp4";
+
+import p13_1 from "@/assets/13_1.png";
+
+import p14_1 from "@/assets/14_1.png";
+
+import p15_1 from "@/assets/15_1.png";
+
+import p16_1 from "@/assets/16_1.png";
+
+import p17_1 from "@/assets/17_1.png";
+
 import { type ProjectType } from "@/types";
 
 export const PROJECTS: ProjectType[] = [
@@ -122,22 +151,23 @@ export const PROJECTS: ProjectType[] = [
     title: 'HR Management',
     coverImage: p6,
     images: [
-      { src: p6, alt: 'HR Management - Pending content' }
+      { src: p6, alt: 'OverAll' },
+      { src: p6_1, alt: 'Page1' },
+      { src: p6_2, alt: 'Page2' },
     ],
-    desc: 'Data pending to be added for HR Management project.',
-    role: 'Role : Pending',
-    tools: ['Pending'],
-    category: 'Development',
+    desc: 'A comprehensive Human Resource Management System developed during an internship. The system streamlines employee lifecycle management, including personnel records, attendance tracking, and organizational reporting. It features a modern, enterprise-grade interface designed for efficiency and ease of use.',
+    role: 'Role : Full-stack Developer (Internship)',
+    tools: ['.NET Blazor', 'PostgreSQL', 'Entity Framework Core', '.NET Backend', 'C#', 'Fluent UI'],
+    category: 'Fullstack',
   },
   {
     id: 7,
     title: 'Farm2D Simulation Base',
     coverImage: p7,
     images: [
-      { type: 'video', src: 'farm2d_video_placeholder', alt: 'Farm2D Demo Video' },
-      { src: p7, alt: 'Farm2D Gameplay 1' },
-      { src: 'farm2d_2_placeholder', alt: 'Farm2D Gameplay 2' },
-      { src: 'farm2d_3_placeholder', alt: 'Farm2D Gameplay 3' },
+      { src: p7, alt: 'OverAll' },
+      { src: p7_1, alt: 'Page1' },
+      { type: 'video', src: p7_video, alt: 'Video' },
     ],
     desc: "A 2D top-down pixel art farm simulation game built with Phaser.js and TypeScript. It features custom 8x8 sprite integration, player animations, environmental collisions, and dynamic camera controls. Includes interactive elements like a responsive HUD inventory and NPCs with a seed purchasing economy system.",
     role: 'Role : Game Developer',
@@ -153,13 +183,9 @@ export const PROJECTS: ProjectType[] = [
     title: 'Power Transformer Management for EGAT',
     coverImage: p8,
     images: [
-      { src: p8, alt: 'EGAT Transformer Management Login' },
-      { src: 'egat2_placeholder', alt: 'EGAT Transformer Management Dashboard' },
-      { src: 'egat3_placeholder', alt: 'EGAT MongoDB Collections Overview' },
-      { src: 'egat4_placeholder', alt: 'EGAT Query Performance Optimization' },
-      { src: 'egat5_placeholder', alt: 'EGAT Advanced Reporting System' },
-      { src: 'egat6_placeholder', alt: 'EGAT User Interface Design' },
-      { src: 'egat7_placeholder', alt: 'EGAT Database Management' },
+      { src: p8, alt: 'OverAll' },
+      { src: p8_1, alt: 'Page1' },
+      { src: p8_2, alt: 'Page2' },
     ],
     desc: "Remade EGAT's power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from more than 100 MongoDB collections for centralized management. Optimized database queries for fast access and reliability to support thousands of transformer records, improving operational efficiency and reporting.",
     role: 'Role : Fullstack Developer (Next.js, MongoDB)',
@@ -173,11 +199,8 @@ export const PROJECTS: ProjectType[] = [
     title: 'PawSafe',
     coverImage: p9,
     images: [
-      { src: p9, alt: 'PawSafe home feed' },
-      { src: 'pawsafeAdoption_placeholder', alt: 'PawSafe adoption listings' },
-      { src: 'pawsafeLostPet_placeholder', alt: 'PawSafe lost pet board' },
-      { src: 'pawsafeMyPost_placeholder', alt: 'PawSafe my posts management' },
-      { src: 'pawsafeBookmark_placeholder', alt: 'PawSafe saved pets collection' },
+      { src: p9, alt: 'OverAll' },
+      { src: p9_1, alt: 'Page1' },
     ],
     desc: 'Full-stack web app for pet adoption and lost/found tracking. Built with Vite + React + TypeScript on the frontend and Express + MongoDB on the backend. Supports posting and browsing pets, saving favorites, uploading images with Multer, and real-time chat/notifications via Socket.IO. Structured client/server codebases with environment templates and setup scripts for quick local runs.',
     role: 'Role : Fullstack Developer (React, Express, MongoDB)',
@@ -192,11 +215,8 @@ export const PROJECTS: ProjectType[] = [
     title: 'GUI-based Python Project: I Have Tickets',
     coverImage: p10,
     images: [
-      { src: p10, alt: 'I Have Tickets - Main Screen' },
-      { src: 'ihaveticket_2_placeholder', alt: 'I Have Tickets - Ticket List' },
-      { src: 'ihaveticket_3_placeholder', alt: 'I Have Tickets - Add Ticket' },
-      { src: 'ihaveticket_4_placeholder', alt: 'I Have Tickets - Edit Ticket' },
-      { src: 'ihaveticket_5_placeholder', alt: 'I Have Tickets - Delete Ticket' },
+      { src: p10, alt: 'OverAll' },
+      { src: p10_1, alt: 'Page1' },
     ],
     desc: 'A Python GUI project developed in my first year using the customtkinter library. The application features a simple ticket management interface with no API integration - everything is handled locally within the app.',
     role: 'Role : Main Developer (Python, customtkinter)',
@@ -209,10 +229,8 @@ export const PROJECTS: ProjectType[] = [
     title: 'mini project xo game (tic tac toe)',
     coverImage: p11,
     images: [
-      { src: p11, alt: 'XO Game 3x3 Board' },
-      { src: 'xo_2_placeholder', alt: 'XO Game 4x4 Board' },
-      { src: 'xo_3_placeholder', alt: 'XO Game 5x5 Board' },
-      { src: 'xo_4_placeholder', alt: 'XO Game Thai Interface' },
+      { src: p11, alt: 'OverAll' },
+      { src: p11_1, alt: 'Page1' },
     ],
     desc: 'Interactive XO (Tic Tac Toe) game with multiple board sizes (3x3, 4x4, 5x5) and language switching. Built with Vite + React + Tailwind CSS for a smooth and responsive experience.',
     role: 'Role : Developer',
@@ -225,15 +243,10 @@ export const PROJECTS: ProjectType[] = [
     title: 'BeyondHana',
     coverImage: p12,
     images: [
-      { type: 'video', src: 'beyondhana_video_placeholder', alt: 'BeyondHana Demo Video' },
-      { src: p12, alt: 'BeyondHana Title' },
-      { src: 'beyondhana_2_placeholder', alt: 'BeyondHana Main Menu' },
-      { src: 'beyondhana_3_placeholder', alt: 'BeyondHana Start Game' },
-      { src: 'beyondhana_4_placeholder', alt: 'BeyondHana Load Game' },
-      { src: 'beyondhana_5_placeholder', alt: 'BeyondHana Setting' },
-      { src: 'beyondhana_6_placeholder', alt: 'BeyondHana Story' },
-      { src: 'beyondhana_7_placeholder', alt: 'BeyondHana Choice' },
-      { src: 'beyondhana_8_placeholder', alt: 'BeyondHana Ending' },
+      { src: p12, alt: 'OverAll' },
+      { src: p12_1, alt: 'Page1' },
+      { src: p12_2, alt: 'Page2' },
+      { type: 'video', src: p12_video, alt: 'Video' },
     ],
     desc: 'Visual novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.',
     role: 'Role : Main Developer & UX/UI Designer',
@@ -246,10 +259,8 @@ export const PROJECTS: ProjectType[] = [
     title: 'DoodleRush',
     coverImage: p13,
     images: [
-      { type: 'video', src: 'doodlerush_video_placeholder', alt: 'DoodleRush Demo Video' },
-      { src: p13, alt: 'DoodleRush Gameplay 1' },
-      { src: 'doodlerush_2_placeholder', alt: 'DoodleRush Gameplay 2' },
-      { src: 'doodlerush_3_placeholder', alt: 'DoodleRush Gameplay 3' },
+      { src: p13, alt: 'OverAll' },
+      { src: p13_1, alt: 'Page1' },
     ],
     desc: "A modern 2D infinite runner and platformer game featuring procedurally generated levels and a bold Neo-brutalism aesthetic. It incorporates dynamic physics with double-jump mechanics and a session history system to track stars collected and time survived. Optimized for both desktop and mobile play.",
     role: 'Role : Game Developer',
@@ -265,7 +276,8 @@ export const PROJECTS: ProjectType[] = [
     title: 'Travel Buddy',
     coverImage: p14,
     images: [
-      { src: p14, alt: 'Travel Buddy - Pending content' }
+      { src: p14, alt: 'OverAll' },
+      { src: p14_1, alt: 'Page1' },
     ],
     desc: 'Data pending to be added for Travel Buddy project.',
     role: 'Role : Pending',
@@ -277,18 +289,8 @@ export const PROJECTS: ProjectType[] = [
     title: 'WhoCanEat',
     coverImage: p15,
     images: [
-      { src: p15, alt: 'WhoCanEat - Home' },
-      { src: 'whocaneat_2_placeholder', alt: 'WhoCanEat - Menu' },
-      { src: 'whocaneat_3_placeholder', alt: 'WhoCanEat - Product Filter' },
-      { src: 'whocaneat_4_placeholder', alt: 'WhoCanEat - Product List' },
-      { src: 'whocaneat_5_placeholder', alt: 'WhoCanEat - Grocery Store' },
-      { src: 'whocaneat_6_placeholder', alt: 'WhoCanEat - Health Menu' },
-      { src: 'whocaneat_7_placeholder', alt: 'WhoCanEat - PharmaFlow' },
-      { src: 'whocaneat_8_placeholder', alt: 'WhoCanEat - Deals' },
-      { src: 'whocaneat_9_placeholder', alt: 'WhoCanEat - Self Pickup' },
-      { src: 'whocaneat_10_placeholder', alt: 'WhoCanEat - Market Analysis' },
-      { src: 'whocaneat_11_placeholder', alt: 'WhoCanEat - SWOT' },
-      { src: 'whocaneat_12_placeholder', alt: 'WhoCanEat - Financials' },
+      { src: p15, alt: 'OverAll' },
+      { src: p15_1, alt: 'Page1' },
     ],
     link: 'https://www.figma.com/proto/r4kXWcQ0iGvUdnsoxk4BHi/WhoCanEat?node-id=1-2&p=f&t=YTAx9omK1Krnb1Bw-9&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1',
     desc: `WhoCanEat is a B2B2C e-commerce platform connecting grocery stores with customers, focusing on health and well-being through modern technology. Mission: Develop technology that helps people facing health challenges. Product: A mobile application that saves customers time and money.`,
@@ -301,13 +303,8 @@ export const PROJECTS: ProjectType[] = [
     title: 'Cloth E-Commerce',
     coverImage: p16,
     images: [
-      { src: p16, alt: 'Cloth E-Commerce cover 1' },
-      { src: 'ecom_project2_placeholder', alt: 'Cloth E-Commerce cover 2' },
-      { src: 'ecom_project3_placeholder', alt: 'Cloth E-Commerce cover 3' },
-      { src: 'ecom_project4_placeholder', alt: 'Cloth E-Commerce cover 4' },
-      { src: 'ecom_project5_placeholder', alt: 'Cloth E-Commerce cover 5' },
-      { src: 'ecom_project6_placeholder', alt: 'Cloth E-Commerce cover 6' },
-      { src: 'ecom_project7_placeholder', alt: 'Cloth E-Commerce cover 7' },
+      { src: p16, alt: 'OverAll' },
+      { src: p16_1, alt: 'Page1' },
     ],
     link: 'https://www.figma.com/proto/F0KR84V7gLRwX2bZKg8XA1/Cloth--E-Commerce?node-id=37-3&p=f&t=knOFLvcgd9f9wzZp-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=37%3A3',
     desc: 'My first UX/UI project - an e-commerce app prototype designed in Figma while learning the basics of user-centered design.',
@@ -320,15 +317,8 @@ export const PROJECTS: ProjectType[] = [
     title: 'Eat Rai Dee (Mobile)',
     coverImage: p17,
     images: [
-      { src: p17, alt: 'Eat Rai Dee mobile 1' },
-      { src: 'eat_rai_dee_project2_mobile_placeholder', alt: 'Eat Rai Dee mobile 2' },
-      { src: 'eat_rai_dee_project3_mobile_placeholder', alt: 'Eat Rai Dee mobile 3' },
-      { src: 'eat_rai_dee_project4_mobile_placeholder', alt: 'Eat Rai Dee mobile 4' },
-      { src: 'eat_rai_dee_project5_mobile_placeholder', alt: 'Eat Rai Dee mobile 5' },
-      { src: 'eat_rai_dee_project6_mobile_placeholder', alt: 'Eat Rai Dee mobile 6' },
-      { src: 'eat_rai_dee_project7_mobile_placeholder', alt: 'Eat Rai Dee mobile 7' },
-      { src: 'eat_rai_dee_project8_mobile_placeholder', alt: 'Eat Rai Dee mobile 8' },
-      { src: 'eat_rai_dee_project9_mobile_placeholder', alt: 'Eat Rai Dee mobile 9' },
+      { src: p17, alt: 'OverAll' },
+      { src: p17_1, alt: 'Page1' },
     ],
     link: 'https://www.figma.com/proto/sPzqtp8LxBSMteANT87PAQ/Eat-%E0%B9%84%E0%B8%A3-%E0%B8%94%E0%B8%B5?node-id=1-228&starting-point-node-id=1%3A228&show-proto-sidebar=1&t=i4zghbmnjlwyEqXa-1',
     desc: 'Eat Rai Dee (Mobile) is a Figma prototype for a mobile app version of the Eat Rai Dee project. The design emphasizes intuitive navigation, playful visuals, and quick interactions tailored for mobile users. Prototype only, no source code.',

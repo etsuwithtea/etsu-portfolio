@@ -45,7 +45,9 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
       }}
       className={cn(
         "flex flex-col justify-between overflow-hidden relative group transition-all duration-700",
-        isActive ? "md:col-span-3 md:row-span-3 min-h-[600px]" : "md:col-span-2 md:row-span-2"
+        isActive 
+          ? "col-span-1 sm:col-span-2 lg:col-span-3 lg:row-span-3 min-h-[500px] md:min-h-[600px] p-6 md:p-10" 
+          : "col-span-1 sm:col-span-2 lg:col-span-2 lg:row-span-2 p-6 md:p-8"
       )}
       {...props}
     >
@@ -73,7 +75,7 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
         <motion.div layout className="relative w-full md:w-3/4">
           <h1 className={cn(
             "font-display font-black tracking-tighter leading-[0.9] transition-all duration-500",
-            isActive ? "text-5xl md:text-8xl" : "text-5xl md:text-7xl"
+            isActive ? "text-4xl sm:text-5xl md:text-8xl" : "text-4xl sm:text-5xl md:text-7xl"
           )}>
             Specialized in <br />
             <span style={{ color: "var(--color-primary-glow)" }}>{PERSONAL_INFO.role}</span>
@@ -119,8 +121,8 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
         className={cn(
           "absolute transition-all duration-700 ease-in-out z-0 overflow-hidden rounded-full shadow-2xl top-1/2 -translate-y-1/2",
           isActive
-            ? "right-[-20%] w-64 h-64 md:right-[-10%] md:w-[450px] md:h-[450px] opacity-100"
-            : "right-[-20%] w-64 h-64 md:right-[-10%] md:w-80 md:h-80 opacity-100 group-hover:scale-105"
+            ? "right-[-25%] w-48 h-48 sm:right-[-10%] sm:w-64 sm:h-64 md:w-[450px] md:h-[450px] opacity-100 md:opacity-100"
+            : "right-[-20%] w-48 h-48 sm:right-[-10%] sm:w-64 sm:h-64 md:w-80 md:h-80 opacity-100 md:opacity-100 :group-hover:opacity-100 md:group-hover:scale-105"
         )}
       >
         <img src={heroImg} alt="Hero" className="w-full h-full object-cover" />

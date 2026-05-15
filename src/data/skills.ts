@@ -4,7 +4,7 @@ import {
   SiMongodb, SiFigma, SiGit, SiGithubcopilot, SiOpenai, SiNuxt,
   SiBlazor, SiDotnet, SiClaude, SiGooglegemini, SiDocker,
   SiPostgresql, SiLine, SiGoogle, SiPython, SiApachenetbeanside,
-  SiJavascript
+  SiJavascript, SiAndroidstudio, SiJetbrains
 } from "react-icons/si";
 import { FiDatabase } from "react-icons/fi";
 import { FaJava } from "react-icons/fa";
@@ -24,6 +24,7 @@ export const SKILLS: SkillType[] = [
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4", category: "Frontend" },
   { name: "Blazor", icon: SiBlazor, color: "#5C2D91", category: "Frontend" },
   { name: "LINE Mini App", icon: SiLine, color: "#00C300", category: "Frontend" },
+  { name: ".NET MAUI", icon: SiDotnet, color: "#512BD4", category: "Frontend" },
   // Backend
   { name: "Node.js", icon: SiNodedotjs, color: "#339933", category: "Backend" },
   { name: "MongoDB", icon: SiMongodb, color: "#47A248", category: "Backend" },
@@ -39,9 +40,13 @@ export const SKILLS: SkillType[] = [
   { name: "Git", icon: SiGit, color: "#F05032", category: "Tools" },
   { name: "Docker", icon: SiDocker, color: "#2496ED", category: "Tools" },
   { name: "Apache NetBeans", icon: SiApachenetbeanside, color: "#1B6AC6", category: "Tools" },
+  { name: "Android Studio", icon: SiAndroidstudio, color: "#3DDC84", category: "Tools" },
+  { name: "Rider", icon: SiJetbrains, color: "#000000", category: "Tools" },
+  { name: "Antigravity", icon: SiGoogle, color: "#4285F4", category: "Tools" },
   // AI
   { name: "Copilot", icon: SiGithubcopilot, color: "#000000", category: "AI" },
   { name: "ChatGPT", icon: SiOpenai, color: "#10A37F", category: "AI" },
   { name: "Gemini", icon: SiGooglegemini, color: "#8E75B2", category: "AI" },
   { name: "Claude Code", icon: SiClaude, color: "#D97757", category: "AI" },
+
 ];

@@ -24,7 +24,9 @@ export function AboutCard({ isActive, onClick, ...props }: AboutCardProps) {
       }}
       className={cn(
         "flex flex-col justify-between overflow-hidden",
-        isActive ? "md:col-span-3 md:row-span-2 min-h-[400px]" : "col-span-1"
+        isActive 
+          ? "col-span-1 sm:col-span-2 lg:col-span-3 lg:row-span-2 min-h-[400px] p-6 md:p-10 lg:p-12" 
+          : "col-span-1 sm:col-span-1 p-6 md:p-8"
       )}
       {...props}
     >
@@ -43,7 +45,7 @@ export function AboutCard({ isActive, onClick, ...props }: AboutCardProps) {
 
         <h2 className={cn(
           "font-display leading-[0.9] transition-all duration-500",
-          isActive ? "text-6xl md:text-8xl mb-12 font-black tracking-tighter" : "text-4xl font-bold"
+          isActive ? "text-5xl sm:text-6xl md:text-8xl mb-12 font-black tracking-tighter" : "text-3xl sm:text-4xl font-bold"
         )} style={{ color: "var(--color-neutral-400)" }}>
           {isActive ? (
             <>

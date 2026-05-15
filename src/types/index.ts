@@ -53,3 +53,10 @@ export interface WorkItem {
   period: string;
   desc?: string;
 }
+
+export interface Certificate {
+  title: string;
+  desc: string;
+  image: string;
+  link: string;
+}
