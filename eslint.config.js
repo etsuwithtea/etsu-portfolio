@@ -8,44 +8,15 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 export default defineConfig([
   globalIgnores(['dist']),
   {
-    files: ['**/*.{js,cjs,mjs}'],
-    extends: [js.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
+      globals: globals.browser,
     },
   },
-  ...tseslint.configs.recommendedTypeChecked.map((config) => ({
-    ...config,
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      ...config.languageOptions,
-      parserOptions: {
-        ...config.languageOptions?.parserOptions,
-        project: ['./tsconfig.app.json', './tsconfig.node.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      globals: {
-        ...globals.browser,
-      },
-    },
-    plugins: {
-      ...(config.plugins ?? {}),
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
-    rules: {
-      ...(config.rules ?? {}),
-      ...reactHooks.configs['recommended-latest'].rules,
-      ...reactRefresh.configs.vite.rules,
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^_' },
-      ],
-    },
-  })),
 ])

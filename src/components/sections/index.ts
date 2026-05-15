@@ -1,0 +1,10 @@
+export { HeroCard } from "./HeroCard";
+export { WorkCard } from "./WorkCard";
+export { AboutCard } from "./AboutCard";
+export { ContactCard } from "./ContactCard";
+export { ProjectDetailCard } from "./ProjectDetailCard";
+export { SkillsDetailCard } from "./SkillsDetailCard";
+export { SocialLinks } from "./SocialLinks";
+export { TechStackMarquee } from "./TechStackMarquee";
+export { ProjectGallery } from "./ProjectGallery";
+export { CertificatesCard } from "./CertificatesCard";
