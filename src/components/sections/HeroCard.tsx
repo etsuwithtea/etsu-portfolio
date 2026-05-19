@@ -77,8 +77,13 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
             "font-display font-black tracking-tighter leading-[0.9] transition-all duration-500",
             isActive ? "text-4xl sm:text-5xl md:text-8xl" : "text-4xl sm:text-5xl md:text-7xl"
           )}>
-            Specialized in <br />
-            <span style={{ color: "var(--color-primary-glow)" }}>{PERSONAL_INFO.role}</span>
+            <span className={cn(
+              "text-white/80 font-medium block tracking-normal mb-2",
+              isActive ? "text-2xl sm:text-3xl md:text-5xl" : "text-xl sm:text-2xl md:text-3xl"
+            )}>
+              Specialized in
+            </span>
+            {PERSONAL_INFO.role}
           </h1>
         </motion.div>
         

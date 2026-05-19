@@ -9,6 +9,7 @@ import { ProjectDetailCard } from "@/components/sections/ProjectDetailCard";
 import { SkillsDetailCard } from "@/components/sections/SkillsDetailCard";
 import { AnimatePresence } from "framer-motion";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
+import { TimelineNav } from "@/components/ui/TimelineNav";
 import type { ProjectType } from "@/types";
 
 type CardId = "hero" | "work" | "about" | "contact" | "certificates" | null;
@@ -36,6 +37,9 @@ function App() {
     >
       <GrainOverlay />
       
+      {/* Timeline Navigation - Left sidebar on Desktop, Floating Drawer on Mobile */}
+      <TimelineNav activeCard={activeCard} setActiveCard={handleSetActiveCard} />
+      
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-center">
@@ -45,7 +49,7 @@ function App() {
       </header>
 
       {/* Main Grid Content */}
-      <main className="w-full flex justify-center relative">
+      <main className="w-full flex justify-center relative md:pl-24 lg:pl-28 transition-all duration-500">
         <BentoGrid>
           <HeroCard
             isActive={activeCard === "hero"}

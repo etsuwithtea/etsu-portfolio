@@ -88,7 +88,10 @@ export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
               <motion.div 
                 variants={fadeInUp}
                 className="group/item relative p-8 rounded-3xl bg-black/[0.04] border border-black/5 hover:bg-black/[0.08] transition-all cursor-pointer flex flex-col justify-between min-h-[160px]"
-                onClick={() => handleCopy(contactInfo.phone, "phone")}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCopy(contactInfo.phone, "phone");
+                }}
               >
                 <div className="flex justify-between items-start">
                   <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center text-black/60">
@@ -117,7 +120,10 @@ export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
               <motion.div 
                 variants={fadeInUp}
                 className="group/item relative p-8 rounded-3xl bg-black/[0.04] border border-black/5 hover:bg-black/[0.08] transition-all cursor-pointer flex flex-col justify-between min-h-[160px]"
-                onClick={() => window.location.href = `mailto:${contactInfo.email}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.location.href = `mailto:${contactInfo.email}`;
+                }}
               >
                 <div className="flex justify-between items-start">
                   <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center text-black/60">
