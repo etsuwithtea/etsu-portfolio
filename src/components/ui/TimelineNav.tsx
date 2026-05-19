@@ -8,7 +8,6 @@ import {
   Send, 
   ChevronLeft, 
   ChevronRight, 
-  Menu, 
   X 
 } from "lucide-react";
 import { cn } from "@/utils/cn";
