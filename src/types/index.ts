@@ -14,6 +14,11 @@ export interface ProjectImage {
   alt: string;
 }
 
+export interface ProcessStep {
+  title: string;
+  description: string;
+}
+
 export interface ProjectType {
   id: number;
   title: string;
@@ -25,6 +30,7 @@ export interface ProjectType {
   link?: string;
   coverImage: string;
   category: "Development" | "Design" | "Game" | "Fullstack";
+  process?: ProcessStep[];
 }
 
 export interface SkillType {

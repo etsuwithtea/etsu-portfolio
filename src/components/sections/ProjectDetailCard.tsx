@@ -34,6 +34,8 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
   const { cardRef, scrollRef } = useScrollFocus({ dependencies: [project.id] });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [hoveredAction, setHoveredAction] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"overview" | "process" | "gallery">("overview");
+  const hasProcess = project.process && project.process.length > 0;
 
   return (
     <BentoCard
@@ -87,7 +89,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
               {project.title}
             </h2>
             <div className="flex items-center gap-4">
-              <div className="h-[1px] w-12 bg-primary-glow" style={{ backgroundColor: "var(--color-primary-glow)" }} />
+              <div className="h-px w-12 bg-primary-glow" style={{ backgroundColor: "var(--color-primary-glow)" }} />
               <p className="text-xl md:text-2xl font-medium tracking-tight" style={{ color: "var(--color-primary-glow)" }}>
                 {project.role}
               </p>
@@ -156,7 +158,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
         <motion.div
           variants={fadeInUp}
           onClick={() => project.images[0]?.type !== "video" && setSelectedImage(project.coverImage)}
-          className="w-full aspect-video md:aspect-[21/8] rounded-[3rem] overflow-hidden mb-20 shadow-[0_0_100px_rgba(0,0,0,0.5)] relative group cursor-zoom-in"
+          className="w-full aspect-video md:aspect-21/8 rounded-3xl overflow-hidden mb-20 shadow-[0_0_100px_rgba(0,0,0,0.5)] relative group cursor-zoom-in"
           style={{ border: "1px solid var(--alpha-light-10)" }}
         >
           {project.images[0]?.type === "video" ? (
@@ -171,7 +173,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
           ) : (
             <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 md:group-hover:scale-110" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:opacity-60" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent md:opacity-60" />
           {project.images[0]?.type !== "video" && (
             <div className="absolute top-8 right-8 p-4 rounded-full bg-black/40 backdrop-blur-xl border border-white/20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0">
               <ZoomIn size={28} />
@@ -183,16 +185,146 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
         <motion.div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
           {/* Main Content */}
           <div className="md:col-span-8 space-y-16">
-            <motion.div variants={fadeInUp}>
-              <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-6 opacity-30">Overview</h3>
-              <p className="text-xl md:text-2xl leading-relaxed font-light opacity-80 whitespace-pre-wrap">
-                {project.desc}
-              </p>
-            </motion.div>
+            {/* Tab Navigation */}
+            {hasProcess && (
+              <motion.div variants={fadeInUp} className="flex gap-2 border-b border-white/10 pb-4">
+                <button
+                  onClick={() => setActiveTab("overview")}
+                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
+                    activeTab === "overview" ? "opacity-100" : "opacity-40 hover:opacity-70"
+                  }`}
+                >
+                  Overview
+                  {activeTab === "overview" && (
+                    <motion.div
+                      layoutId="tab-indicator"
+                      className="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary-glow"
+                      style={{ backgroundColor: "var(--color-primary-glow)" }}
+                    />
+                  )}
+                </button>
+                <button
+                  onClick={() => setActiveTab("process")}
+                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
+                    activeTab === "process" ? "opacity-100" : "opacity-40 hover:opacity-70"
+                  }`}
+                >
+                  Process
+                  {activeTab === "process" && (
+                    <motion.div
+                      layoutId="tab-indicator"
+                      className="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary-glow"
+                      style={{ backgroundColor: "var(--color-primary-glow)" }}
+                    />
+                  )}
+                </button>
+                {project.images.length > 0 && (
+                  <button
+                    onClick={() => setActiveTab("gallery")}
+                    className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
+                      activeTab === "gallery" ? "opacity-100" : "opacity-40 hover:opacity-70"
+                    }`}
+                  >
+                    Gallery
+                    {activeTab === "gallery" && (
+                      <motion.div
+                        layoutId="tab-indicator"
+                        className="absolute -bottom-4 left-0 right-0 h-0.5 bg-primary-glow"
+                        style={{ backgroundColor: "var(--color-primary-glow)" }}
+                      />
+                    )}
+                  </button>
+                )}
+              </motion.div>
+            )}
 
-            <motion.div variants={fadeInUp}>
-              <ProjectGallery images={project.images} onSelectImage={setSelectedImage} />
-            </motion.div>
+            {/* Tab Content */}
+            <AnimatePresence mode="wait">
+              {activeTab === "overview" && (
+                <motion.div
+                  key="overview"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  variants={fadeInUp}
+                >
+                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-6 opacity-30">Overview</h3>
+                  <p className="text-xl md:text-2xl leading-relaxed font-light opacity-80 whitespace-pre-wrap">
+                    {project.desc}
+                  </p>
+                </motion.div>
+              )}
+
+              {activeTab === "process" && hasProcess && (
+                <motion.div
+                  key="process"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-8"
+                >
+                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold opacity-30">Process Timeline</h3>
+                  <div className="space-y-6">
+                    {(project.process || []).map((step, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="flex gap-4"
+                      >
+                        <div className="flex flex-col items-center gap-4">
+                          <div
+                            className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm"
+                            style={{
+                              backgroundColor: "var(--color-primary-glow)",
+                              opacity: 0.8
+                            }}
+                          >
+                            {idx + 1}
+                          </div>
+                          {idx < (project.process || []).length - 1 && (
+                            <div
+                              className="w-1 h-12 rounded-full"
+                              style={{
+                                backgroundColor: "var(--color-primary-glow)",
+                                opacity: 0.2
+                              }}
+                            />
+                          )}
+                        </div>
+                        <div className="pt-2">
+                          <h4 className="font-bold text-lg mb-2 opacity-90">{step.title}</h4>
+                          <p className="text-base leading-relaxed" style={{ color: "var(--color-canvas-fg)", opacity: 0.85 }}>{step.description}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {activeTab === "gallery" && (
+                <motion.div
+                  key="gallery"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  variants={fadeInUp}
+                >
+                  <ProjectGallery images={project.images} onSelectImage={setSelectedImage} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Gallery fallback when no process */}
+            {!hasProcess && (
+              <motion.div variants={fadeInUp}>
+                <ProjectGallery images={project.images} onSelectImage={setSelectedImage} />
+              </motion.div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -232,7 +364,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between group p-6 rounded-[2rem] bg-primary-glow/10 border border-primary-glow/20 hover:bg-primary-glow/20 transition-all"
+                    className="flex items-center justify-between group p-6 rounded-4xl bg-primary-glow/10 border border-primary-glow/20 hover:bg-primary-glow/20 transition-all"
                     style={{ 
                       backgroundColor: "rgba(var(--color-primary-glow-rgb), 0.1)",
                       borderColor: "rgba(var(--color-primary-glow-rgb), 0.2)"

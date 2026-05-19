@@ -80,6 +80,24 @@ export const PROJECTS: ProjectType[] = [
     role: 'Role : Full-stack Developer (Internship)',
     tools: ['Nuxt.js', 'TypeScript', 'Line Mini App', '.NET Core', 'Entity Framework Core', 'PostgreSQL'],
     category: 'Fullstack',
+    process: [
+      {
+        title: 'Planning & Architecture',
+        description: 'Analyzed TAT requirements for travel information management. Designed system architecture with Line Mini App frontend and .NET Core backend. Planned database schema using PostgreSQL for tourism data.'
+      },
+      {
+        title: 'Frontend Development',
+        description: 'Built Line Mini App interface with Nuxt.js and TypeScript. Implemented user features for browsing travel information, viewing recommendations, and booking management.'
+      },
+      {
+        title: 'Backend Development',
+        description: 'Developed .NET Core API with Entity Framework Core for data management. Implemented authentication, travel information endpoints, and admin functionalities.'
+      },
+      {
+        title: 'Integration & Testing',
+        description: 'Integrated Line Mini App with backend services. Performed comprehensive testing for user flows and admin operations. Deployed to production environment.'
+      }
+    ],
   },
   {
     id: 12,
@@ -96,6 +114,24 @@ export const PROJECTS: ProjectType[] = [
     tools: ['.NET MAUI', 'C#', 'XAML', 'Visual Studio', 'Android SDK', 'Figma', 'Git'],
     github: 'https://github.com/etsuwithtea/BeyondHana',
     category: 'Game',
+    process: [
+      {
+        title: 'Concept & Design',
+        description: 'Conceived Thai-themed visual novel narrative. Designed UI mockups in Figma with bilingual interface support. Planned story branching system with choice mechanics.'
+      },
+      {
+        title: 'Development',
+        description: 'Set up .NET MAUI project structure with C# and XAML. Implemented core game engine with choice system. Integrated custom illustrations and dialogue management.'
+      },
+      {
+        title: 'Polish & Optimization',
+        description: 'Refined UI/UX for mobile experience. Optimized performance for Android devices. Added visual effects, animations, and audio integration.'
+      },
+      {
+        title: 'Launch',
+        description: 'Tested across Android devices for compatibility. Published as an Android app. Gathered user feedback and prepared for updates.'
+      }
+    ],
   },
   {
     id: 6,
@@ -110,6 +146,24 @@ export const PROJECTS: ProjectType[] = [
     role: 'Role : Full-stack Developer (Internship)',
     tools: ['.NET Blazor', 'PostgreSQL', 'Entity Framework Core', '.NET Backend', 'C#', 'Fluent UI'],
     category: 'Fullstack',
+    process: [
+      {
+        title: 'Planning & Architecture',
+        description: 'Analyzed HR requirements for employee lifecycle management. Designed Blazor-based architecture with PostgreSQL backend. Planned data model for personnel records, attendance, and reporting.'
+      },
+      {
+        title: 'Frontend Development',
+        description: 'Built interactive Blazor components using Fluent UI design system. Implemented employee dashboard, attendance tracking interface, and reporting views with real-time updates.'
+      },
+      {
+        title: 'Backend Development',
+        description: 'Developed .NET Core APIs with Entity Framework Core. Implemented business logic for employee management, attendance calculations, and report generation.'
+      },
+      {
+        title: 'Integration & Testing',
+        description: 'Integrated frontend with backend services. Performed user acceptance testing with HR staff. Deployed to production with data migration support.'
+      }
+    ],
   },
   {
     id: 1,
@@ -126,6 +180,24 @@ export const PROJECTS: ProjectType[] = [
     tools: ['HTML', 'CSS', 'JavaScript', 'Figma', 'Visual Studio Code', 'Git', 'GitHub Pages'],
     github: 'https://github.com/etsuwithtea/mini_proj1',
     category: 'Design',
+    process: [
+      {
+        title: 'Problem & Research',
+        description: 'Identified the need for an engaging career showcase for game companies. Researched modern game industry UI/UX trends, competitor portals, and user expectations for career platforms.'
+      },
+      {
+        title: 'Define',
+        description: 'Defined project scope: create an attractive, interactive career page that reflects gaming aesthetics. Set goals for user engagement, portfolio display, and application process clarity.'
+      },
+      {
+        title: 'Ideate',
+        description: 'Brainstormed vibrant design concepts with gaming elements. Sketched layout ideas combining playful interactions, hero sections, and career opportunity displays.'
+      },
+      {
+        title: 'Design',
+        description: 'Created high-fidelity mockups in Figma with dynamic animations and responsive layouts. Developed component library and implemented frontend with HTML/CSS/JavaScript.'
+      }
+    ],
   },
   {
     id: 2,
@@ -142,6 +214,24 @@ export const PROJECTS: ProjectType[] = [
     tools: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Figma', 'GitHub Pages', 'Git'],
     github: 'https://github.com/Beconet/CUPCRAFT_PROJECT',
     category: 'Design',
+    process: [
+      {
+        title: 'Problem & Research',
+        description: 'Identified need for cafe management interface. Researched cafe workflows, POS systems, and inventory management practices. Analyzed user pain points in order processing and analytics.'
+      },
+      {
+        title: 'Define',
+        description: 'Defined system requirements: admin login, order management, inventory tracking, and sales analytics. Set goals for user efficiency and data visualization clarity.'
+      },
+      {
+        title: 'Ideate',
+        description: 'Sketched dashboard layouts combining order entry, inventory display, and analytics. Designed admin authentication flow and menu management interfaces.'
+      },
+      {
+        title: 'Design',
+        description: 'Created high-fidelity Figma mockups with cafe branding. Implemented responsive Bootstrap layout with intuitive navigation and data visualization components.'
+      }
+    ],
   },
   {
     id: 3,
@@ -157,6 +247,24 @@ export const PROJECTS: ProjectType[] = [
     tools: ['ASP.NET', 'GitHub Copilot', 'HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/etsuwithtea/ImMemmo',
     category: 'Development',
+    process: [
+      {
+        title: 'Planning & Setup',
+        description: 'Designed note-taking app concept with local storage approach. Planned feature set: create, read, update, delete notes. Set up ASP.NET project with HTML/CSS/JavaScript stack.'
+      },
+      {
+        title: 'Core Development',
+        description: 'Implemented core CRUD operations for notes using browser localStorage API. Created responsive UI with game-inspired design aesthetics. Built note organization and search functionality.'
+      },
+      {
+        title: 'Testing & Refinement',
+        description: 'Tested cross-browser compatibility and localStorage persistence. Refined UI/UX based on testing feedback. Optimized performance and fixed edge cases.'
+      },
+      {
+        title: 'Deployment',
+        description: 'Deployed to GitHub Pages for public access. Documented usage and features. Prepared for potential enhancements and user feedback.'
+      }
+    ],
   },
   {
     id: 4,
@@ -175,10 +283,28 @@ export const PROJECTS: ProjectType[] = [
     role: 'Role : UX/UI Designer & Main Developer (Java, Apache NetBeans)',
     tools: ['Java', 'Apache NetBeans', 'Figma', 'Git'],
     category: 'Development',
+    process: [
+      {
+        title: 'Planning & Setup',
+        description: 'Conceptualized food suggestion system for indecisive users. Designed kiosk interface in Figma. Set up Apache NetBeans project to learn object-oriented programming principles.'
+      },
+      {
+        title: 'Core Development',
+        description: 'Implemented random food suggestion algorithm in Java. Built GUI with user-friendly interface for kiosk display. Created classes for food data and suggestion logic.'
+      },
+      {
+        title: 'Testing & Refinement',
+        description: 'Tested suggestion randomization and UI responsiveness. Debugged object-oriented code and optimized performance. Refined interface based on testing feedback.'
+      },
+      {
+        title: 'Deployment',
+        description: 'Integrated system on kiosk hardware. Tested full workflow from startup to food suggestion display. Documented code and prepared user instructions.'
+      }
+    ],
   },
   {
     id: 5,
-    title: 'Game Career',
+    title: 'Game Category',
     coverImage: p5,
     images: [
       { src: p5, alt: 'OverAll' },
@@ -189,6 +315,20 @@ export const PROJECTS: ProjectType[] = [
     tools: ['React', 'Vite', 'TypeScript', 'Redux Toolkit', 'Tailwind CSS', 'Git', 'Node.js', 'Visual Studio Code'],
     github: 'https://github.com/etsuwithtea/game-store',
     category: 'Development',
+    process: [
+      {
+        title: 'Sprint 1: Project Setup & Core Features',
+        description: 'Initialized React + Vite project structure with TypeScript and Redux Toolkit. Set up API integration with game database. Implemented game grid display component and basic search functionality with real-time filtering.'
+      },
+      {
+        title: 'Sprint 2: Advanced Filtering & UI Polish',
+        description: 'Developed sidebar filter system for game categories, ratings, and genres. Enhanced UI/UX with Tailwind CSS styling. Implemented game detail modal and category browsing navigation.'
+      },
+      {
+        title: 'Sprint 3: Favorites System & Optimization',
+        description: 'Added persistent favorites system using Redux state management. Optimized API calls and component rendering. Implemented responsive design for mobile devices and final bug fixes.'
+      }
+    ],
   },
   {
     id: 7,
@@ -207,6 +347,24 @@ export const PROJECTS: ProjectType[] = [
     github: 'https://github.com/etsuwithtea/Farm2d',
     link: 'https://etsuwithtea.github.io/Farm2d/',
     category: 'Game',
+    process: [
+      {
+        title: 'Concept & Design',
+        description: 'Conceived farm simulation game with pixel art aesthetic. Designed game mechanics: planting, harvesting, NPC interaction. Created sprite sheets and tile-based world layout.'
+      },
+      {
+        title: 'Development',
+        description: 'Set up Phaser.js engine with TypeScript and Vite. Implemented player movement, sprite animations, and collision detection. Built world state management and NPC systems.'
+      },
+      {
+        title: 'Polish & Optimization',
+        description: 'Added inventory HUD with visual feedback. Implemented economy system for seed purchasing. Optimized rendering performance and asset loading.'
+      },
+      {
+        title: 'Launch',
+        description: 'Tested gameplay mechanics and progression. Deployed to GitHub Pages. Added user documentation and controls guide.'
+      }
+    ],
   },
   {
     id: 8,
@@ -223,6 +381,24 @@ export const PROJECTS: ProjectType[] = [
       'Next.js', 'GitHub Copilot', 'MongoDB', 'React', 'JavaScript', 'Node.js', 'CSS', 'HTML', 'Visual Studio Code', 'Git', 'Tailwind CSS'
     ],
     category: 'Fullstack',
+    process: [
+      {
+        title: 'Planning & Architecture',
+        description: 'Analyzed legacy system and EGAT requirements for transformer management. Designed Next.js architecture connecting to 100+ MongoDB collections. Planned data visualization strategy for transformer records.'
+      },
+      {
+        title: 'Frontend Development',
+        description: 'Built modern React components with Next.js framework. Implemented responsive dashboard with transformer data visualization. Created search and filter interfaces for thousands of records.'
+      },
+      {
+        title: 'Backend Development',
+        description: 'Optimized MongoDB queries for performance with large datasets. Developed Node.js APIs for data retrieval and management. Implemented caching strategies for faster access.'
+      },
+      {
+        title: 'Integration & Testing',
+        description: 'Integrated frontend with optimized backend services. Performed load testing for 1000+ concurrent records. Deployed with data migration from legacy system.'
+      }
+    ],
   },
   {
     id: 9,
@@ -239,6 +415,24 @@ export const PROJECTS: ProjectType[] = [
     ],
     github: 'https://github.com/etsuwithtea/PawSafe',
     category: 'Fullstack',
+    process: [
+      {
+        title: 'Planning & Architecture',
+        description: 'Designed pet adoption platform architecture with React frontend and Express backend. Planned MongoDB schema for pet records and user profiles. Outlined Socket.IO integration for real-time notifications.'
+      },
+      {
+        title: 'Frontend Development',
+        description: 'Built React UI with Vite for pet browsing and posting. Implemented favorites system with Redux Toolkit. Created pet detail pages with image galleries.'
+      },
+      {
+        title: 'Backend Development',
+        description: 'Developed Express APIs for pet CRUD operations. Implemented file upload with Multer for pet images. Built Socket.IO real-time chat system for pet inquiries.'
+      },
+      {
+        title: 'Integration & Testing',
+        description: 'Integrated frontend with backend services and Socket.IO. Tested image upload and real-time notifications. Created setup scripts for quick local deployment.'
+      }
+    ],
   },
   {
     id: 10,
@@ -253,6 +447,24 @@ export const PROJECTS: ProjectType[] = [
     tools: ['Python', 'CustomTkinter', 'Tkinter', 'Git'],
     github: 'https://github.com/etsuwithtea/ihavetickets',
     category: 'Development',
+    process: [
+      {
+        title: 'Planning & Setup',
+        description: 'Designed ticket management system for local use. Planned GUI layout with customtkinter for modern appearance. Set up Python project structure with basic architecture.'
+      },
+      {
+        title: 'Core Development',
+        description: 'Built GUI components using customtkinter library. Implemented ticket creation, editing, and deletion functionality. Added local data persistence with file storage.'
+      },
+      {
+        title: 'Testing & Refinement',
+        description: 'Tested ticket operations and data integrity. Refined UI based on usability testing. Fixed edge cases in data handling.'
+      },
+      {
+        title: 'Deployment',
+        description: 'Packaged Python application for distribution. Created user documentation. Prepared repository for sharing and feedback.'
+      }
+    ],
   },
   {
     id: 11,
@@ -267,6 +479,24 @@ export const PROJECTS: ProjectType[] = [
     tools: ['React', 'Vite', 'Tailwind CSS', 'JavaScript', 'HTML', 'CSS', 'GitHub Pages', 'Git'],
     github: 'https://github.com/etsuwithtea/xo_game',
     category: 'Development',
+    process: [
+      {
+        title: 'Planning & Setup',
+        description: 'Designed Tic Tac Toe game with configurable board sizes. Planned game logic, win detection, and language support. Set up React + Vite project with Tailwind CSS.'
+      },
+      {
+        title: 'Core Development',
+        description: 'Implemented game logic for 3x3, 4x4, 5x5 boards. Built React components for board, squares, and game state. Added player turn management and win detection algorithm.'
+      },
+      {
+        title: 'Testing & Refinement',
+        description: 'Tested game mechanics across all board sizes. Verified win/draw conditions. Refined UI responsiveness and game flow.'
+      },
+      {
+        title: 'Deployment',
+        description: 'Deployed to GitHub Pages. Added language switching feature. Created user instructions and README documentation.'
+      }
+    ],
   },
   {
     id: 13,
@@ -284,6 +514,24 @@ export const PROJECTS: ProjectType[] = [
     github: 'https://github.com/etsuwithtea/doodlerush',
     link: 'https://etsuwithtea.github.io/doodlerush/',
     category: 'Game',
+    process: [
+      {
+        title: 'Concept & Design',
+        description: 'Conceived infinite runner game with neo-brutalism aesthetic. Designed double-jump mechanics and procedural level generation. Planned session history system for score tracking.'
+      },
+      {
+        title: 'Development',
+        description: 'Set up Next.js 15 with React 19. Implemented game physics engine with double-jump mechanics. Built procedural level generation algorithm for endless gameplay.'
+      },
+      {
+        title: 'Polish & Optimization',
+        description: 'Created neo-brutalism UI with Tailwind CSS v4. Added Framer Motion animations for visual polish. Optimized performance for mobile devices with Zustand state management.'
+      },
+      {
+        title: 'Launch',
+        description: 'Implemented session history system with star and time tracking. Tested across devices. Deployed to GitHub Pages with responsive design.'
+      }
+    ],
   },
   {
     id: 15,
@@ -298,6 +546,24 @@ export const PROJECTS: ProjectType[] = [
     role: 'Role : UX/UI Designer',
     tools: ['Figma'],
     category: 'Design',
+    process: [
+      {
+        title: 'Problem & Research',
+        description: 'Researched health-conscious consumers and grocery shopping behaviors. Identified pain points: time spent shopping, difficulty finding suitable products for health conditions. Analyzed competitor e-commerce solutions.'
+      },
+      {
+        title: 'Define',
+        description: 'Defined product vision: B2B2C platform empowering people with health challenges. Set goals: product discoverability, time savings, affordability. Outlined user personas for customers and grocery partners.'
+      },
+      {
+        title: 'Ideate',
+        description: 'Sketched platform flows for product browsing, health condition filtering, and store partnerships. Brainstormed features: health-based recommendations, easy checkout, store network visualization.'
+      },
+      {
+        title: 'Design',
+        description: 'Created high-fidelity Figma prototypes for mobile app. Designed intuitive health filtering system and store locator. Built component library for consistent design system.'
+      }
+    ],
   },
   {
     id: 16,
@@ -312,6 +578,24 @@ export const PROJECTS: ProjectType[] = [
     role: 'Role : UX/UI Designer',
     tools: ['Figma', 'User Interface Design'],
     category: 'Design',
+    process: [
+      {
+        title: 'Problem & Research',
+        description: 'Studied e-commerce best practices and mobile shopping patterns. Researched target audience preferences for clothing shopping. Analyzed competitor apps for inspiration.'
+      },
+      {
+        title: 'Define',
+        description: 'Defined core requirements for clothing e-commerce app. Set goals: product discovery, shopping cart, checkout flow. Created wireframes for key user journeys.'
+      },
+      {
+        title: 'Ideate',
+        description: 'Sketched multiple design directions for product browsing, filtering, and checkout. Explored visual styles and navigation patterns suitable for fashion products.'
+      },
+      {
+        title: 'Design',
+        description: 'Created first Figma prototype with product grids, detail pages, and checkout flow. Designed visual branding for clothing store. Built reusable Figma components.'
+      }
+    ],
   },
   {
     id: 17,
@@ -326,5 +610,23 @@ export const PROJECTS: ProjectType[] = [
     role: 'Role : UX/UI Designer',
     tools: ['Figma'],
     category: 'Design',
+    process: [
+      {
+        title: 'Problem & Research',
+        description: 'Analyzed original Eat Rai Dee project for mobile adaptation. Researched mobile food suggestion apps and user behavior on small screens. Identified optimization opportunities for touch interaction.'
+      },
+      {
+        title: 'Define',
+        description: 'Defined mobile-specific requirements: one-handed usage, quick decision-making. Set goals: simplified UI for kiosk experience on mobile. Planned gesture-based interactions.'
+      },
+      {
+        title: 'Ideate',
+        description: 'Sketched mobile-optimized layouts for food suggestion. Designed playful animations for decision presentation. Brainstormed quick-action buttons and gesture controls.'
+      },
+      {
+        title: 'Design',
+        description: 'Created high-fidelity Figma prototype for mobile screens. Designed interactive animations for food reveal. Optimized typography and spacing for mobile readability.'
+      }
+    ],
   },
 ];
