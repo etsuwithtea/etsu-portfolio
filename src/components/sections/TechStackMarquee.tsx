@@ -60,7 +60,7 @@ export function TechStackMarquee({ skills, onShowAllSkills, className }: TechSta
             </button>
           )}
           <span className="text-[10px] text-white/40 uppercase tracking-widest ml-auto pr-8 opacity-0 group-hover:opacity-100 transition-opacity font-medium">
-            {isPaused ? "Click to resume" : "Hover or click to pause"}
+            {isPaused ? "click to resume" : "click to pause"}
           </span>
         </div>
 
