@@ -158,20 +158,20 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
         <motion.div
           variants={fadeInUp}
           onClick={() => project.images[0]?.type !== "video" && setSelectedImage(project.coverImage)}
-          className="w-full aspect-video md:aspect-21/8 rounded-3xl overflow-hidden mb-20 shadow-[0_0_100px_rgba(0,0,0,0.5)] relative group cursor-zoom-in"
+          className="w-full rounded-3xl overflow-hidden mb-20 shadow-[0_0_100px_rgba(0,0,0,0.5)] relative group cursor-zoom-in"
           style={{ border: "1px solid var(--alpha-light-10)" }}
         >
           {project.images[0]?.type === "video" ? (
             <video
               src={project.images[0].src}
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
               autoPlay
               muted
               loop
               playsInline
             />
           ) : (
-            <img src={project.coverImage} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 md:group-hover:scale-110" />
+            <img src={project.coverImage} alt={project.title} className="w-full h-auto transition-transform duration-1000 md:group-hover:scale-105" />
           )}
           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent md:opacity-60" />
           {project.images[0]?.type !== "video" && (

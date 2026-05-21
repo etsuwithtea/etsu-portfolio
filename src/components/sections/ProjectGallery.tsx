@@ -22,7 +22,7 @@ export function ProjectGallery({ images, onSelectImage }: ProjectGalleryProps) {
           <div
             key={idx}
             onClick={() => img.type !== "video" && onSelectImage(img.src)}
-            className="snap-start shrink-0 h-40 md:h-56 rounded-2xl overflow-hidden opacity-50 hover:opacity-100 transition-all hover:scale-[1.02] cursor-pointer relative group/gallery"
+            className="snap-start shrink-0 h-40 md:h-56 rounded-2xl overflow-hidden opacity-100 transition-all md:hover:scale-[1.02] cursor-pointer relative group/gallery"
             style={{
               border: "1px solid var(--alpha-light-10)",
               backgroundColor: "var(--alpha-dark-40)",
