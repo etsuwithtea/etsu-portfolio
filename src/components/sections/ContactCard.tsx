@@ -4,6 +4,7 @@ import { motion, type HTMLMotionProps, type Variants, AnimatePresence } from "fr
 import { cn } from "@/utils/cn";
 import { useScrollFocus } from "@/hooks/useScrollFocus";
 import { useState } from "react";
+import { useTranslation } from "@/context/LanguageContext";
 
 interface ContactCardProps extends HTMLMotionProps<"div"> {
   isActive?: boolean;
@@ -33,6 +34,7 @@ const fadeInUp: Variants = {
 export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
   const { cardRef } = useScrollFocus({ isActive });
   const [copied, setCopied] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const handleCopy = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
@@ -63,7 +65,9 @@ export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
     >
       <motion.div layout className="flex-1 flex flex-col relative z-10">
         <div className="flex flex-col gap-2">
-          <p className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-40">Get in touch</p>
+          <p className="text-[10px] uppercase tracking-[0.4em] font-bold opacity-40">
+            {t("common.getInTouch")}
+          </p>
           <motion.h2 
             layout
             className={cn(
@@ -71,7 +75,7 @@ export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
               isActive ? "text-6xl sm:text-7xl md:text-9xl lg:text-[12rem] mb-8" : "text-4xl sm:text-5xl md:text-6xl"
             )}
           >
-            Connect.
+            {t("common.connect")}
           </motion.h2>
         </div>
 
@@ -103,7 +107,7 @@ export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                         className="text-[10px] font-bold uppercase tracking-widest text-black"
                       >
-                        Copied
+                        {t("common.copied")}
                       </motion.div>
                     ) : (
                       <Copy size={14} className="opacity-20 group-hover/item:opacity-40 transition-opacity" />
@@ -111,7 +115,9 @@ export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
                   </AnimatePresence>
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest font-bold opacity-20 mb-1">Phone</p>
+                  <p className="text-[10px] uppercase tracking-widest font-bold opacity-20 mb-1">
+                    {t("common.phone")}
+                  </p>
                   <p className="text-xl font-bold tracking-tight">{contactInfo.phone}</p>
                 </div>
               </motion.div>
@@ -132,7 +138,9 @@ export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
                   <ArrowUpRight size={16} className="opacity-20 group-hover/item:opacity-40 transition-opacity" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest font-bold opacity-20 mb-1">Email</p>
+                  <p className="text-[10px] uppercase tracking-widest font-bold opacity-20 mb-1">
+                    {t("common.email")}
+                  </p>
                   <p className="text-lg md:text-xl font-bold tracking-tight break-all">{contactInfo.email}</p>
                 </div>
               </motion.div>
@@ -153,3 +161,4 @@ export function ContactCard({ isActive, onClick, ...props }: ContactCardProps) {
     </BentoCard>
   );
 }
+

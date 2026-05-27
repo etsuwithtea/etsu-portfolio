@@ -8,6 +8,7 @@ import { useScrollFocus } from "@/hooks/useScrollFocus";
 import { useState, useMemo } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { useTranslation } from "@/context/LanguageContext";
 
 interface WorkCardProps extends HTMLMotionProps<"div"> {
   isActive?: boolean;
@@ -29,6 +30,7 @@ const staggerContainer: Variants = {
 export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkCardProps) {
   const { cardRef } = useScrollFocus({ isActive });
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  const { t } = useTranslation();
 
   const categories = useMemo(() => {
     const cats = new Set(PROJECTS.map(p => p.category));
@@ -93,9 +95,9 @@ export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkC
             {/* Header Section */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <SectionHeader 
-                title="Selected" 
-                highlight="Works" 
-                subtitle={`${filteredProjects.length} Projects in ${activeCategory}`}
+                title={t("common.selected")} 
+                highlight={t("common.works")} 
+                subtitle={`${filteredProjects.length} ${t("common.projectsIn")} ${activeCategory === "All" ? t("common.all") : activeCategory}`}
                 className="mb-0 pt-8"
               />
 
@@ -112,7 +114,7 @@ export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkC
                         : "bg-black/5 text-black/40 border-black/10 hover:bg-black/10 hover:text-black"
                     )}
                   >
-                    {cat}
+                    {cat === "All" ? t("common.all") : cat}
                   </button>
                 ))}
               </div>
@@ -156,7 +158,7 @@ export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkC
           )}
           style={isActive ? {} : { color: "var(--color-surface)", filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))" }}
         >
-          {isActive ? "Close section" : "Projects"}
+          {isActive ? t("common.closeSection") : t("common.projects")}
         </h3>
         <div
           className="p-3 rounded-full backdrop-blur-md transition-all duration-300"
@@ -171,3 +173,4 @@ export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkC
     </BentoCard>
   );
 }
+

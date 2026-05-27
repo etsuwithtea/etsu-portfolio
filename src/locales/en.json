@@ -1,0 +1,470 @@
+{
+  "common": {
+    "portfolioOf": "Portfolio of",
+    "close": "Close",
+    "closeDetails": "Close details",
+    "specializedIn": "Specialized in",
+    "seeMore": "See More.",
+    "aboutMe": "About me",
+    "learnMoreAboutMe": "Learn more about me",
+    "hiIm": "Hi, I'm",
+    "creativeDeveloper": "Creative Developer",
+    "ageLabel": "Age",
+    "statusLabel": "Status",
+    "interestsLabel": "Interests",
+    "workExperience": "Work Experience",
+    "education": "Education",
+    "selected": "Selected",
+    "works": "Works",
+    "projectsIn": "Projects in",
+    "projects": "Projects",
+    "closeSection": "Close section",
+    "all": "All",
+    "getInTouch": "Get in touch",
+    "connect": "Connect.",
+    "phone": "Phone",
+    "email": "Email",
+    "copied": "Copied",
+    "backToGallery": "Back to Gallery",
+    "visitProject": "Visit Project",
+    "viewSource": "View Source",
+    "overview": "Overview",
+    "process": "Process",
+    "gallery": "Gallery",
+    "processTimeline": "Process Timeline",
+    "technologyStack": "Technology Stack",
+    "launchLiveSite": "Launch Live Site",
+    "credentials": "Credentials",
+    "certificates": "Certificates",
+    "andBadges": "& Badges"
+  },
+  "personal": {
+    "role": "Frontend Dev | UX/UI Design",
+    "bio": "CS Graduate & Frontend Developer specializing in TypeScript and User-Centric Design. Dedicated to transforming complex visual concepts into clean, functional, and high-performance web applications",
+    "age": "21 years old",
+    "status": "Fresh Graduate (Computer Science)",
+    "interests": "Modern Web Tech, Interactive Design, Creative Coding",
+    "quote": "I am dedicated to creating intuitive digital experiences that simplify life and empower users."
+  },
+  "education": [
+    {
+      "degree": "Computer Science",
+      "school": "Bangkok University",
+      "desc": "School of IT & Innovation"
+    }
+  ],
+  "experience": [
+    {
+      "company": "codehard.co.th",
+      "role": "Intern Web Developer",
+      "desc": "• Resolved bugs and optimized performance for the company's HR web management system.\n• Developed and integrated LINE Mini Apps to streamline business workflows and user interaction.\n• Collaborated on UX/UI design and prototyping to enhance the visual clarity and overall user experience."
+    }
+  ],
+  "certificates": [
+    {
+      "title": "AWS Academy Graduate - Cloud Foundations",
+      "desc": "AWS Academy - Nov 24, 2025 - 20 hours"
+    },
+    {
+      "title": "Customer Service with Python: Build a Chatbot using ChatGPT",
+      "desc": "Coursera Project Network - Apr 18, 2025"
+    },
+    {
+      "title": "Basic Cybersecurity",
+      "desc": "MOOC NCSA Thailand - Aug 31, 2024"
+    },
+    {
+      "title": "Cybersecurity Awareness",
+      "desc": "DGA & TDGA Thailand - Oct 20, 2023"
+    }
+  ],
+  "projects": {
+    "1": {
+      "title": "Game Career",
+      "desc": "A playful project for a game company career, designed for fun and developer practice. This project focuses on UI/UX prototyping and is not a production-ready application.",
+      "role": "Role : UX/UI Designer & Frontend Developer",
+      "process": [
+        {
+          "title": "Problem & Research",
+          "description": "Identified the need for an engaging career showcase for game companies. Researched modern game industry UI/UX trends, competitor portals, and user expectations for career platforms."
+        },
+        {
+          "title": "Define",
+          "description": "Defined project scope: create an attractive, interactive career page that reflects gaming aesthetics. Set goals for user engagement, portfolio display, and application process clarity."
+        },
+        {
+          "title": "Ideate",
+          "description": "Brainstormed vibrant design concepts with gaming elements. Sketched layout ideas combining playful interactions, hero sections, and career opportunity displays."
+        },
+        {
+          "title": "Design",
+          "description": "Created high-fidelity mockups in Figma with dynamic animations and responsive layouts. Developed component library and implemented frontend with HTML/CSS/JavaScript."
+        }
+      ]
+    },
+    "2": {
+      "title": "CupCraft",
+      "desc": "Front-end cafe management system for orders, sales, and analytics. Features admin login, order and inventory management, dashboard analytics, and sales records.",
+      "role": "Role : UX/UI Designer",
+      "process": [
+        {
+          "title": "Problem & Research",
+          "description": "Identified need for cafe management interface. Researched cafe workflows, POS systems, and inventory management practices. Analyzed user pain points in order processing and analytics."
+        },
+        {
+          "title": "Define",
+          "description": "Defined system requirements: admin login, order management, inventory tracking, and sales analytics. Set goals for user efficiency and data visualization clarity."
+        },
+        {
+          "title": "Ideate",
+          "description": "Sketched dashboard layouts combining order entry, inventory display, and analytics. Designed admin authentication flow and menu management interfaces."
+        },
+        {
+          "title": "Design",
+          "description": "Created high-fidelity Figma mockups with cafe branding. Implemented responsive Bootstrap layout with intuitive navigation and data visualization components."
+        }
+      ]
+    },
+    "3": {
+      "title": "ImMemmo",
+      "desc": "A note-taking web application built for practice and experimentation. This local storage-based app allows users to create, manage, and organize notes without requiring a database connection. Features a game-inspired design and user-friendly interface that makes note-taking enjoyable and efficient.",
+      "role": "Role : Developer",
+      "process": [
+        {
+          "title": "Planning & Setup",
+          "description": "Designed note-taking app concept with local storage approach. Planned feature set: create, read, update, delete notes. Set up ASP.NET project with HTML/CSS/JavaScript stack."
+        },
+        {
+          "title": "Core Development",
+          "description": "Implemented core CRUD operations for notes using browser localStorage API. Created responsive UI with game-inspired design aesthetics. Built note organization and search functionality."
+        },
+        {
+          "title": "Testing & Refinement",
+          "description": "Tested cross-browser compatibility and localStorage persistence. Refined UI/UX based on testing feedback. Optimized performance and fixed edge cases."
+        },
+        {
+          "title": "Deployment",
+          "description": "Deployed to GitHub Pages for public access. Documented usage and features. Prepared for potential enhancements and user feedback."
+        }
+      ]
+    },
+    "4": {
+      "title": "Eat Rai Dee",
+      "desc": "Eat Rai Dee is a UX/UI and development project aimed at helping users decide what to eat when they have no idea. Designed in Figma and developed in Java using Apache NetBeans, this was my first project where I learned and applied object-oriented programming. The application randomly suggests food options and displays the result on a kiosk screen.",
+      "role": "Role : UX/UI Designer & Main Developer (Java, Apache NetBeans)",
+      "process": [
+        {
+          "title": "Planning & Setup",
+          "description": "Conceptualized food suggestion system for indecisive users. Designed kiosk interface in Figma. Set up Apache NetBeans project to learn object-oriented programming principles."
+        },
+        {
+          "title": "Core Development",
+          "description": "Implemented random food suggestion algorithm in Java. Built GUI with user-friendly interface for kiosk display. Created classes for food data and suggestion logic."
+        },
+        {
+          "title": "Testing & Refinement",
+          "description": "Tested suggestion randomization and UI responsiveness. Debugged object-oriented code and optimized performance. Refined interface based on testing feedback."
+        },
+        {
+          "title": "Deployment",
+          "description": "Integrated system on kiosk hardware. Tested full workflow from startup to food suggestion display. Documented code and prepared user instructions."
+        }
+      ]
+    },
+    "5": {
+      "title": "Game Category",
+      "desc": "A web application for browsing and discovering video games. Built with React + Vite, featuring a game grid display, search functionality, sidebar filters, and a favorites system. Integrated with a game API to fetch real-time game data. Users can explore games by categories, view detailed information about each game, and save their favorite games to a favorites list.",
+      "role": "Role : Frontend Developer",
+      "process": [
+        {
+          "title": "Sprint 1: Project Setup & Core Features",
+          "description": "Initialized React + Vite project structure with TypeScript and Redux Toolkit. Set up API integration with game database. Implemented game grid display component and basic search functionality with real-time filtering."
+        },
+        {
+          "title": "Sprint 2: Advanced Filtering & UI Polish",
+          "description": "Developed sidebar filter system for game categories, ratings, and genres. Enhanced UI/UX with Tailwind CSS styling. Implemented game detail modal and category browsing navigation."
+        },
+        {
+          "title": "Sprint 3: Favorites System & Optimization",
+          "description": "Added persistent favorites system using Redux state management. Optimized API calls and component rendering. Implemented responsive design for mobile devices and final bug fixes."
+        }
+      ]
+    },
+    "6": {
+      "title": "HR Management",
+      "desc": "A comprehensive Human Resource Management System developed during an internship. The system streamlines employee lifecycle management, including personnel records, attendance tracking, and organizational reporting. It features a modern, enterprise-grade interface designed for efficiency and ease of use.",
+      "role": "Role : Full-stack Developer (Internship)",
+      "process": [
+        {
+          "title": "Planning & Architecture",
+          "description": "Analyzed HR requirements for employee lifecycle management. Designed Blazor-based architecture with PostgreSQL backend. Planned data model for personnel records, attendance, and reporting."
+        },
+        {
+          "title": "Frontend Development",
+          "description": "Built interactive Blazor components using Fluent UI design system. Implemented employee dashboard, attendance tracking interface, and reporting views with real-time updates."
+        },
+        {
+          "title": "Backend Development",
+          "description": "Developed .NET Core APIs with Entity Framework Core. Implemented business logic for employee management, attendance calculations, and report generation."
+        },
+        {
+          "title": "Integration & Testing",
+          "description": "Integrated frontend with backend services. Performed user acceptance testing with HR staff. Deployed to production with data migration support."
+        }
+      ]
+    },
+    "7": {
+      "title": "Farm2D Simulation Base",
+      "desc": "A 2D top-down pixel art farm simulation game built with Phaser.js and TypeScript. It features custom 8x8 sprite integration, player animations, environmental collisions, and dynamic camera controls. Includes interactive elements like a responsive HUD inventory and NPCs with a seed purchasing economy system.",
+      "role": "Role : Game Developer",
+      "process": [
+        {
+          "title": "Concept & Design",
+          "description": "Conceived farm simulation game with pixel art aesthetic. Designed game mechanics: planting, harvesting, NPC interaction. Created sprite sheets and tile-based world layout."
+        },
+        {
+          "title": "Development",
+          "description": "Set up Phaser.js engine with TypeScript and Vite. Implemented player movement, sprite animations, and collision detection. Built world state management and NPC systems."
+        },
+        {
+          "title": "Polish & Optimization",
+          "description": "Added inventory HUD with visual feedback. Implemented economy system for seed purchasing. Optimized rendering performance and asset loading."
+        },
+        {
+          "title": "Launch",
+          "description": "Tested gameplay mechanics and progression. Deployed to GitHub Pages. Added user documentation and controls guide."
+        }
+      ]
+    },
+    "8": {
+      "title": "Power Transformer Management for EGAT",
+      "desc": "Remade EGAT's power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from more than 100 MongoDB collections for centralized management. Optimized database queries for fast access and reliability to support thousands of transformer records, improving operational efficiency and reporting.",
+      "role": "Role : Fullstack Developer (Next.js, MongoDB)",
+      "process": [
+        {
+          "title": "Planning & Architecture",
+          "description": "Analyzed legacy system and EGAT requirements for transformer management. Designed Next.js architecture connecting to 100+ MongoDB collections. Planned data visualization strategy for transformer records."
+        },
+        {
+          "title": "Frontend Development",
+          "description": "Built modern React components with Next.js framework. Implemented responsive dashboard with transformer data visualization. Created search and filter interfaces for thousands of records."
+        },
+        {
+          "title": "Backend Development",
+          "description": "Optimized MongoDB queries for performance with large datasets. Developed Node.js APIs for data retrieval and management. Implemented caching strategies for faster access."
+        },
+        {
+          "title": "Integration & Testing",
+          "description": "Integrated frontend with optimized backend services. Performed load testing for 1000+ concurrent records. Deployed with data migration from legacy system."
+        }
+      ]
+    },
+    "9": {
+      "title": "PawSafe",
+      "desc": "Full-stack web app for pet adoption and lost/found tracking. Built with Vite + React + TypeScript on the frontend and Express + MongoDB on the backend. Supports posting and browsing pets, saving favorites, uploading images with Multer, and real-time chat/notifications via Socket.IO. Structured client/server codebases with environment templates and setup scripts for quick local runs.",
+      "role": "Role : Fullstack Developer (React, Express, MongoDB)",
+      "process": [
+        {
+          "title": "Planning & Architecture",
+          "description": "Designed pet adoption platform architecture with React frontend and Express backend. Planned MongoDB schema for pet records and user profiles. Outlined Socket.IO integration for real-time notifications."
+        },
+        {
+          "title": "Frontend Development",
+          "description": "Built React UI with Vite for pet browsing and posting. Implemented favorites system with Redux Toolkit. Created pet detail pages with image galleries."
+        },
+        {
+          "title": "Backend Development",
+          "description": "Developed Express APIs for pet CRUD operations. Implemented file upload with Multer for pet images. Built Socket.IO real-time chat system for pet inquiries."
+        },
+        {
+          "title": "Integration & Testing",
+          "description": "Integrated frontend with backend services and Socket.IO. Tested image upload and real-time notifications. Created setup scripts for quick local deployment."
+        }
+      ]
+    },
+    "10": {
+      "title": "GUI-based Python Project: I Have Tickets",
+      "desc": "A Python GUI project developed in my first year using the customtkinter library. The application features a simple ticket management interface with no API integration - everything is handled locally within the app.",
+      "role": "Role : Main Developer (Python, customtkinter)",
+      "process": [
+        {
+          "title": "Planning & Setup",
+          "description": "Designed ticket management system for local use. Planned GUI layout with customtkinter for modern appearance. Set up Python project structure with basic architecture."
+        },
+        {
+          "title": "Core Development",
+          "description": "Built GUI components using customtkinter library. Implemented ticket creation, editing, and deletion functionality. Added local data persistence with file storage."
+        },
+        {
+          "title": "Testing & Refinement",
+          "description": "Tested ticket operations and data integrity. Refined UI based on usability testing. Fixed edge cases in data handling."
+        },
+        {
+          "title": "Deployment",
+          "description": "Packaged Python application for distribution. Created user documentation. Prepared repository for sharing and feedback."
+        }
+      ]
+    },
+    "11": {
+      "title": "mini project xo game (tic tac toe)",
+      "desc": "Interactive XO (Tic Tac Toe) game with multiple board sizes (3x3, 4x4, 5x5) and language switching. Built with Vite + React + Tailwind CSS for a smooth and responsive experience.",
+      "role": "Role : Developer",
+      "process": [
+        {
+          "title": "Planning & Setup",
+          "description": "Designed Tic Tac Toe game with configurable board sizes. Planned game logic, win detection, and language support. Set up React + Vite project with Tailwind CSS."
+        },
+        {
+          "title": "Core Development",
+          "description": "Implemented game logic for 3x3, 4x4, 5x5 boards. Built React components for board, squares, and game state. Added player turn management and win detection algorithm."
+        },
+        {
+          "title": "Testing & Refinement",
+          "description": "Tested game mechanics across all board sizes. Verified win/draw conditions. Refined UI responsiveness and game flow."
+        },
+        {
+          "title": "Deployment",
+          "description": "Deployed to GitHub Pages. Added language switching feature. Created user instructions and README documentation."
+        }
+      ]
+    },
+    "12": {
+      "title": "BeyondHana",
+      "desc": "Visual novel game developed with .NET MAUI. Thai story, English interface, choice system, custom illustrations, and Android support.",
+      "role": "Role : Main Developer & UX/UI Designer",
+      "process": [
+        {
+          "title": "Concept & Design",
+          "description": "Conceived Thai-themed visual novel narrative. Designed UI mockups in Figma with bilingual interface support. Planned story branching system with choice mechanics."
+        },
+        {
+          "title": "Development",
+          "description": "Set up .NET MAUI project structure with C# and XAML. Implemented core game engine with choice system. Integrated custom illustrations and dialogue management."
+        },
+        {
+          "title": "Polish & Optimization",
+          "description": "Refined UI/UX for mobile experience. Optimized performance for Android devices. Added visual effects, animations, and audio integration."
+        },
+        {
+          "title": "Launch",
+          "description": "Tested across Android devices for compatibility. Published as an Android app. Gathered user feedback and prepared for updates."
+        }
+      ]
+    },
+    "13": {
+      "title": "DoodleRush",
+      "desc": "A modern 2D infinite runner and platformer game featuring procedurally generated levels and a bold Neo-brutalism aesthetic. It incorporates dynamic physics with double-jump mechanics and a session history system to track stars collected and time survived. Optimized for both desktop and mobile play.",
+      "role": "Role : Game Developer",
+      "process": [
+        {
+          "title": "Concept & Design",
+          "description": "Conceived infinite runner game with neo-brutalism aesthetic. Designed double-jump mechanics and procedural level generation. Planned session history system for score tracking."
+        },
+        {
+          "title": "Development",
+          "description": "Set up Next.js 15 with React 19. Implemented game physics engine with double-jump mechanics. Built procedural level generation algorithm for endless gameplay."
+        },
+        {
+          "title": "Polish & Optimization",
+          "description": "Created neo-brutalism UI with Tailwind CSS v4. Added Framer Motion animations for visual polish. Optimized performance for mobile devices with Zustand state management."
+        },
+        {
+          "title": "Launch",
+          "description": "Implemented session history system with star and time tracking. Tested across devices. Deployed to GitHub Pages with responsive design."
+        }
+      ]
+    },
+    "14": {
+      "title": "Travel Buddy",
+      "desc": "A travel companion application developed during an internship for the Tourism Authority of Thailand (TAT). The project features a Line Mini App for users and a comprehensive backoffice system for administrators, streamlining travel information and services.",
+      "role": "Role : Full-stack Developer (Internship)",
+      "process": [
+        {
+          "title": "Planning & Architecture",
+          "description": "Analyzed TAT requirements for travel information management. Designed system architecture with Line Mini App frontend and .NET Core backend. Planned database schema using PostgreSQL for tourism data."
+        },
+        {
+          "title": "Frontend Development",
+          "description": "Built Line Mini App interface with Nuxt.js and TypeScript. Implemented user features for browsing travel information, viewing recommendations, and booking management."
+        },
+        {
+          "title": "Backend Development",
+          "description": "Developed .NET Core API with Entity Framework Core for data management. Implemented authentication, travel information endpoints, and admin functionalities."
+        },
+        {
+          "title": "Integration & Testing",
+          "description": "Integrated Line Mini App with backend services. Performed comprehensive testing for user flows and admin operations. Deployed to production environment."
+        }
+      ]
+    },
+    "15": {
+      "title": "WhoCanEat",
+      "desc": "WhoCanEat is a B2B2C e-commerce platform connecting grocery stores with customers, focusing on health and well-being through modern technology. Mission: Develop technology that helps people facing health challenges. Product: A mobile application that saves customers time and money.",
+      "role": "Role : UX/UI Designer",
+      "process": [
+        {
+          "title": "Problem & Research",
+          "description": "Researched health-conscious consumers and grocery shopping behaviors. Identified pain points: time spent shopping, difficulty finding suitable products for health conditions. Analyzed competitor e-commerce solutions."
+        },
+        {
+          "title": "Define",
+          "description": "Defined product vision: B2B2C platform empowering people with health challenges. Set goals: product discoverability, time savings, affordability. Outlined user personas for customers and grocery partners."
+        },
+        {
+          "title": "Ideate",
+          "description": "Sketched platform flows for product browsing, health condition filtering, and store partnerships. Brainstormed features: health-based recommendations, easy checkout, store network visualization."
+        },
+        {
+          "title": "Design",
+          "description": "Created high-fidelity Figma prototypes for mobile app. Designed intuitive health filtering system and store locator. Built component library for consistent design system."
+        }
+      ]
+    },
+    "16": {
+      "title": "Cloth E-Commerce",
+      "desc": "My first UX/UI project - an e-commerce app prototype designed in Figma while learning the basics of user-centered design.",
+      "role": "Role : UX/UI Designer",
+      "process": [
+        {
+          "title": "Problem & Research",
+          "description": "Studied e-commerce best practices and mobile shopping patterns. Researched target audience preferences for clothing shopping. Analyzed competitor apps for inspiration."
+        },
+        {
+          "title": "Define",
+          "description": "Defined core requirements for clothing e-commerce app. Set goals: product discovery, shopping cart, checkout flow. Created wireframes for key user journeys."
+        },
+        {
+          "title": "Ideate",
+          "description": "Sketched multiple design directions for product browsing, filtering, and checkout. Explored visual styles and navigation patterns suitable for fashion products."
+        },
+        {
+          "title": "Design",
+          "description": "Created first Figma prototype with product grids, detail pages, and checkout flow. Designed visual branding for clothing store. Built reusable Figma components."
+        }
+      ]
+    },
+    "17": {
+      "title": "Eat Rai Dee (Mobile)",
+      "desc": "Eat Rai Dee (Mobile) is a Figma prototype for a mobile app version of the Eat Rai Dee project. The design emphasizes intuitive navigation, playful visuals, and quick interactions tailored for mobile users. Prototype only, no source code.",
+      "role": "Role : UX/UI Designer",
+      "process": [
+        {
+          "title": "Problem & Research",
+          "description": "Analyzed original Eat Rai Dee project for mobile adaptation. Researched mobile food suggestion apps and user behavior on small screens. Identified optimization opportunities for touch interaction."
+        },
+        {
+          "title": "Define",
+          "description": "Defined mobile-specific requirements: one-handed usage, quick decision-making. Set goals: simplified UI for kiosk experience on mobile. Planned gesture-based interactions."
+        },
+        {
+          "title": "Ideate",
+          "description": "Sketched mobile-optimized layouts for food suggestion. Designed playful animations for decision presentation. Brainstormed quick-action buttons and gesture controls."
+        },
+        {
+          "title": "Design",
+          "description": "Created high-fidelity Figma prototype for mobile screens. Designed interactive animations for food reveal. Optimized typography and spacing for mobile readability."
+        }
+      ]
+    }
+  }
+}

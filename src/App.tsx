@@ -10,6 +10,8 @@ import { SkillsDetailCard } from "@/components/sections/SkillsDetailCard";
 import { AnimatePresence } from "framer-motion";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { TimelineNav } from "@/components/ui/TimelineNav";
+import { LanguageToggle } from "@/components/ui/LanguageToggle";
+import { useTranslation } from "@/context/LanguageContext";
 import type { ProjectType } from "@/types";
 
 type CardId = "hero" | "work" | "about" | "contact" | "certificates" | null;
@@ -18,6 +20,7 @@ function App() {
   const [activeCard, setActiveCard] = useState<CardId>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
   const [showAllSkills, setShowAllSkills] = useState(false);
+  const { t } = useTranslation();
 
   // Toggle active card and reset related state
   const handleSetActiveCard = (card: CardId) => {
@@ -36,6 +39,7 @@ function App() {
       style={{ backgroundColor: "var(--color-bg)", color: "var(--color-fg)" }}
     >
       <GrainOverlay />
+      <LanguageToggle />
       
       {/* Timeline Navigation - Left sidebar on Desktop, Floating Drawer on Mobile */}
       <TimelineNav activeCard={activeCard} setActiveCard={handleSetActiveCard} />
@@ -43,7 +47,9 @@ function App() {
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-center">
-          <span className="text-[10px] font-bold tracking-[0.4em] block uppercase text-center mb-2 opacity-40 font-sans">Portfolio of</span>
+          <span className="text-[10px] font-bold tracking-[0.4em] block uppercase text-center mb-2 opacity-40 font-sans">
+            {t("common.portfolioOf")}
+          </span>
           ETSUWITHTEA
         </h1>
       </header>

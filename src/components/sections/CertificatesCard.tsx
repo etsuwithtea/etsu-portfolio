@@ -4,6 +4,7 @@ import { CERTIFICATES } from "@/data/certificates";
 import { motion, AnimatePresence, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { useScrollFocus } from "@/hooks/useScrollFocus";
+import { useTranslation } from "@/context/LanguageContext";
 
 interface CertificatesCardProps extends HTMLMotionProps<"div"> {
   isActive?: boolean;
@@ -12,6 +13,7 @@ interface CertificatesCardProps extends HTMLMotionProps<"div"> {
 
 export function CertificatesCard({ isActive, onClick, ...props }: CertificatesCardProps) {
   const { cardRef, scrollRef } = useScrollFocus({ isActive });
+  const { t } = useTranslation();
 
   return (
     <BentoCard
@@ -43,15 +45,15 @@ export function CertificatesCard({ isActive, onClick, ...props }: CertificatesCa
               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                 <div className="flex flex-col gap-2">
                   <h2 className="text-4xl md:text-5xl font-black font-display tracking-tight">
-                    Certificates
+                    {t("common.certificates")}
                   </h2>
                  </div>
                 
                 <button
                   onClick={onClick}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-xs font-bold uppercase tracking-widest"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-xs font-bold uppercase tracking-widest cursor-pointer"
                 >
-                  <X size={16} /> Close
+                  <X size={16} /> {t("common.close")}
                 </button>
               </div>
 
@@ -85,8 +87,12 @@ export function CertificatesCard({ isActive, onClick, ...props }: CertificatesCa
                       )}
                     </div>
                     <div className="p-6 flex flex-col gap-2">
-                      <h3 className="text-lg font-bold leading-tight">{cert.title}</h3>
-                      <p className="text-xs opacity-40 font-medium leading-relaxed">{cert.desc}</p>
+                      <h3 className="text-lg font-bold leading-tight">
+                        {t(`certificates.${index}.title`, cert.title)}
+                      </h3>
+                      <p className="text-xs opacity-40 font-medium leading-relaxed">
+                        {t(`certificates.${index}.desc`, cert.desc)}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -99,14 +105,14 @@ export function CertificatesCard({ isActive, onClick, ...props }: CertificatesCa
             >
               <div className="flex flex-col gap-2">
                 <h3 className="text-3xl font-black font-display leading-tight mt-2">
-                  Certificates <br /> 
-                  <span className="opacity-40">& Badges</span>
+                  {t("common.certificates")} <br /> 
+                  <span className="opacity-40">{t("common.andBadges")}</span>
                 </h3>
               </div>
 
               <div className="flex justify-between items-end">
                 <span className="text-[10px] font-bold opacity-30 tracking-widest uppercase">
-                  {CERTIFICATES.length} Credentials
+                  {CERTIFICATES.length} {t("common.credentials")}
                 </span>
                 <div className="p-2 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-white/40">
                   <Award size={20} />
@@ -119,3 +125,4 @@ export function CertificatesCard({ isActive, onClick, ...props }: CertificatesCa
     </BentoCard>
   );
 }
+

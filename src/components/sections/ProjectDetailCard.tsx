@@ -7,6 +7,7 @@ import type { ProjectType } from "@/types";
 import { SKILLS } from "@/data/skills";
 import { useScrollFocus } from "@/hooks/useScrollFocus";
 import { ProjectGallery } from "./ProjectGallery";
+import { useTranslation } from "@/context/LanguageContext";
 
 interface ProjectDetailCardProps extends Omit<HTMLMotionProps<"div">, "onClick"> {
   project: ProjectType;
@@ -36,6 +37,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
   const [hoveredAction, setHoveredAction] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"overview" | "process" | "gallery">("overview");
   const hasProcess = project.process && project.process.length > 0;
+  const { t } = useTranslation();
 
   return (
     <BentoCard
@@ -74,11 +76,11 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                 document.getElementById('work-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }, 50);
             }}
-            className="group flex items-center gap-3 px-6 py-3 rounded-full transition-all border border-white/10 bg-white/5 hover:bg-white/10"
+            className="group flex items-center gap-3 px-6 py-3 rounded-full transition-all border border-white/10 bg-white/5 hover:bg-white/10 cursor-pointer"
             style={{ color: "var(--alpha-light-80)" }}
           >
             <X size={20} className="group-hover:rotate-90 transition-transform" />
-            <span className="text-sm font-bold uppercase tracking-widest">Back to Gallery</span>
+            <span className="text-sm font-bold uppercase tracking-widest">{t("common.backToGallery")}</span>
           </button>
         </motion.div>
 
@@ -86,70 +88,70 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
         <motion.div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-16 items-end">
           <motion.div variants={fadeInUp} className="md:col-span-8">
             <h2 className="text-4xl sm:text-5xl md:text-8xl font-black font-display tracking-tighter leading-[0.85] mb-6">
-              {project.title}
+              {t(`projects.${project.id}.title`, project.title)}
             </h2>
             <div className="flex items-center gap-4">
               <div className="h-px w-12 bg-primary-glow" style={{ backgroundColor: "var(--color-primary-glow)" }} />
               <p className="text-xl md:text-2xl font-medium tracking-tight" style={{ color: "var(--color-primary-glow)" }}>
-                {project.role}
+                {t(`projects.${project.id}.role`, project.role)}
               </p>
             </div>
           </motion.div>
           
           <motion.div variants={fadeInUp} className="md:col-span-4 flex md:justify-end gap-3">
              {project.link && (
-               <div className="relative group/action-btn">
-                 <AnimatePresence>
-                   {hoveredAction === "visit" && (
-                     <motion.div
-                       initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                       animate={{ opacity: 1, y: -50, scale: 1 }}
-                       exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                       className="absolute left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-black text-xs font-bold rounded-md pointer-events-none z-20 whitespace-nowrap shadow-xl"
-                     >
-                       Visit Project
-                       <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45" />
-                     </motion.div>
-                   )}
-                 </AnimatePresence>
-                 <a
-                   href={project.link}
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   onMouseEnter={() => setHoveredAction("visit")}
-                   onMouseLeave={() => setHoveredAction(null)}
-                   className="flex p-4 rounded-full bg-white text-black hover:scale-110 transition-transform shadow-2xl"
-                 >
-                   <ExternalLink size={24} />
-                 </a>
-               </div>
+                <div className="relative group/action-btn">
+                  <AnimatePresence>
+                    {hoveredAction === "visit" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                        animate={{ opacity: 1, y: -50, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                        className="absolute left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-black text-xs font-bold rounded-md pointer-events-none z-20 whitespace-nowrap shadow-xl"
+                      >
+                        {t("common.visitProject")}
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseEnter={() => setHoveredAction("visit")}
+                    onMouseLeave={() => setHoveredAction(null)}
+                    className="flex p-4 rounded-full bg-white text-black hover:scale-110 transition-transform shadow-2xl"
+                  >
+                    <ExternalLink size={24} />
+                  </a>
+                </div>
              )}
              {project.github && (
-               <div className="relative group/action-btn">
-                 <AnimatePresence>
-                   {hoveredAction === "github" && (
-                     <motion.div
-                       initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                       animate={{ opacity: 1, y: -50, scale: 1 }}
-                       exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                       className="absolute left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-black text-xs font-bold rounded-md pointer-events-none z-20 whitespace-nowrap shadow-xl"
-                     >
-                       View Source
-                       <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45" />
-                     </motion.div>
-                   )}
-                 </AnimatePresence>
-                 <a
-                   href={project.github}
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   onMouseEnter={() => setHoveredAction("github")}
-                   onMouseLeave={() => setHoveredAction(null)}
-                   className="flex p-4 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors"
-                 >
-                   <Code size={24} />
-                 </a>
-               </div>
+                <div className="relative group/action-btn">
+                  <AnimatePresence>
+                    {hoveredAction === "github" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                        animate={{ opacity: 1, y: -50, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.8 }}
+                        className="absolute left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-black text-xs font-bold rounded-md pointer-events-none z-20 whitespace-nowrap shadow-xl"
+                      >
+                        {t("common.viewSource")}
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseEnter={() => setHoveredAction("github")}
+                    onMouseLeave={() => setHoveredAction(null)}
+                    className="flex p-4 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors"
+                  >
+                    <Code size={24} />
+                  </a>
+                </div>
              )}
           </motion.div>
         </motion.div>
@@ -190,11 +192,11 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
               <motion.div variants={fadeInUp} className="flex gap-2 border-b border-white/10 pb-4">
                 <button
                   onClick={() => setActiveTab("overview")}
-                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
+                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative cursor-pointer ${
                     activeTab === "overview" ? "opacity-100" : "opacity-40 hover:opacity-70"
                   }`}
                 >
-                  Overview
+                  {t("common.overview")}
                   {activeTab === "overview" && (
                     <motion.div
                       layoutId="tab-indicator"
@@ -205,11 +207,11 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                 </button>
                 <button
                   onClick={() => setActiveTab("process")}
-                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
+                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative cursor-pointer ${
                     activeTab === "process" ? "opacity-100" : "opacity-40 hover:opacity-70"
                   }`}
                 >
-                  Process
+                  {t("common.process")}
                   {activeTab === "process" && (
                     <motion.div
                       layoutId="tab-indicator"
@@ -221,11 +223,11 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                 {project.images.length > 0 && (
                   <button
                     onClick={() => setActiveTab("gallery")}
-                    className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
+                    className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative cursor-pointer ${
                       activeTab === "gallery" ? "opacity-100" : "opacity-40 hover:opacity-70"
                     }`}
                   >
-                    Gallery
+                    {t("common.gallery")}
                     {activeTab === "gallery" && (
                       <motion.div
                         layoutId="tab-indicator"
@@ -249,9 +251,9 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                   transition={{ duration: 0.3 }}
                   variants={fadeInUp}
                 >
-                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-6 opacity-30">Overview</h3>
+                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-6 opacity-30">{t("common.overview")}</h3>
                   <p className="text-xl md:text-2xl leading-relaxed font-light opacity-80 whitespace-pre-wrap">
-                    {project.desc}
+                    {t(`projects.${project.id}.desc`, project.desc)}
                   </p>
                 </motion.div>
               )}
@@ -265,7 +267,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                   transition={{ duration: 0.3 }}
                   className="space-y-8"
                 >
-                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold opacity-30">Process Timeline</h3>
+                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold opacity-30">{t("common.processTimeline")}</h3>
                   <div className="space-y-6">
                     {(project.process || []).map((step, idx) => (
                       <motion.div
@@ -296,8 +298,12 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                           )}
                         </div>
                         <div className="pt-2">
-                          <h4 className="font-bold text-lg mb-2 opacity-90">{step.title}</h4>
-                          <p className="text-base leading-relaxed" style={{ color: "var(--color-canvas-fg)", opacity: 0.85 }}>{step.description}</p>
+                          <h4 className="font-bold text-lg mb-2 opacity-90">
+                            {t(`projects.${project.id}.process.${idx}.title`, step.title)}
+                          </h4>
+                          <p className="text-base leading-relaxed" style={{ color: "var(--color-canvas-fg)", opacity: 0.85 }}>
+                            {t(`projects.${project.id}.process.${idx}.description`, step.description)}
+                          </p>
                         </div>
                       </motion.div>
                     ))}
@@ -330,7 +336,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
           {/* Sidebar */}
           <div className="md:col-span-4 space-y-12">
             <motion.div variants={fadeInUp}>
-              <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-8 opacity-30">Technology Stack</h3>
+              <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-8 opacity-30">{t("common.technologyStack")}</h3>
               <div className="flex flex-wrap gap-3">
                 {project.tools.map((tool, idx) => {
                   const skill = SKILLS.find(s => s.name.toLowerCase() === tool.toLowerCase());
@@ -370,7 +376,9 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                       borderColor: "rgba(var(--color-primary-glow-rgb), 0.2)"
                     }}
                  >
-                    <span className="font-bold uppercase tracking-widest text-sm" style={{ color: "var(--color-primary-glow)" }}>Launch Live Site</span>
+                    <span className="font-bold uppercase tracking-widest text-sm" style={{ color: "var(--color-primary-glow)" }}>
+                      {t("common.launchLiveSite")}
+                    </span>
                     <ExternalLink size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" style={{ color: "var(--color-primary-glow)" }} />
                  </a>
                </motion.div>
@@ -384,3 +392,4 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
     </BentoCard>
   );
 }
+

@@ -9,6 +9,7 @@ import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "../../utils/cn";
 import { SocialLinks } from "./SocialLinks";
 import { TechStackMarquee } from "./TechStackMarquee";
+import { useTranslation } from "../../context/LanguageContext";
 import heroImg from "../../assets/hero.jpg";
 
 const IconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
@@ -25,6 +26,7 @@ interface HeroCardProps extends HTMLMotionProps<"div"> {
 
 export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isActive) {
@@ -53,7 +55,7 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
     >
       <motion.div layout className="flex justify-between items-start z-10 relative">
         <h2 className="text-xl font-medium font-display">
-          {PERSONAL_INFO.name} <span className="opacity-75 font-sans">({PERSONAL_INFO.nickname})</span>
+          {PERSONAL_INFO.name} <span className="opacity-75 font-sans">({t("personal.nickname", PERSONAL_INFO.nickname)})</span>
         </h2>
         <div className="flex gap-2 items-center">
           {isActive && (
@@ -81,9 +83,9 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
               "text-white/80 font-medium block tracking-normal mb-2",
               isActive ? "text-2xl sm:text-3xl md:text-5xl" : "text-xl sm:text-2xl md:text-3xl"
             )}>
-              Specialized in
+              {t("common.specializedIn")}
             </span>
-            {PERSONAL_INFO.role}
+            {t("personal.role", PERSONAL_INFO.role)}
           </h1>
         </motion.div>
         
@@ -97,7 +99,9 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
       </div>
 
       <motion.div layout className="flex justify-between items-end z-10 relative mt-auto pt-4">
-        <p className="text-lg font-medium opacity-80">{isActive ? "Close details" : "See More."}</p>
+        <p className="text-lg font-medium opacity-80">
+          {isActive ? t("common.closeDetails") : t("common.seeMore")}
+        </p>
         <ArrowDownRight size={28} className={cn("transition-all duration-500", isActive && "rotate-180")} />
       </motion.div>
       
