@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 export const PERSONAL_INFO = {
   name: "etsuwithtea",
   nickname: "est",
-  role: "Frontend Dev | UX/UI Design",
+  role: "Full-Stack Dev | UX/UI Design",
   bio: "CS Graduate & Frontend Developer specializing in TypeScript and User-Centric Design. Dedicated to transforming complex visual concepts into clean, functional, and high-performance web applications",
   age: "21 years old",
   status: "Fresh Graduate (Computer Science)",
