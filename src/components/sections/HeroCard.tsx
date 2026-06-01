@@ -52,9 +52,9 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
       {...props}
     >
       <motion.div layout className="flex justify-between items-start z-10 relative">
-        <h2 className="text-xl font-medium font-display">
+        <p className="text-xl font-medium font-display">
           {PERSONAL_INFO.name} <span className="opacity-75 font-sans">({PERSONAL_INFO.nickname})</span>
-        </h2>
+        </p>
         <div className="flex gap-2 items-center">
           {isActive && (
             <SocialLinks socials={SOCIALS} iconMap={IconMap} className="mr-2" />
@@ -73,7 +73,7 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
 
       <div className="flex flex-col z-10 mt-12 md:mt-24">
         <motion.div layout className="relative w-full md:w-3/4">
-          <h1 className={cn(
+          <h2 className={cn(
             "font-display font-black tracking-tighter leading-[0.9] transition-all duration-500",
             isActive ? "text-4xl sm:text-5xl md:text-8xl" : "text-4xl sm:text-5xl md:text-7xl"
           )}>
@@ -84,7 +84,7 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
               Specialized in
             </span>
             {PERSONAL_INFO.role}
-          </h1>
+          </h2>
         </motion.div>
         
         {isActive && (
@@ -130,7 +130,7 @@ export function HeroCard({ isActive, onClick, onShowAllSkills, ...props }: HeroC
             : "right-[-20%] w-48 h-48 sm:right-[-10%] sm:w-64 sm:h-64 md:w-80 md:h-80 opacity-100 md:opacity-100 :group-hover:opacity-100 md:group-hover:scale-105"
         )}
       >
-        <img src={heroImg} alt="Hero" className="w-full h-full object-cover" />
+        <img src={heroImg} alt={`Portrait of ${PERSONAL_INFO.name}`} decoding="async" className="w-full h-full object-cover" />
       </motion.div>
     </BentoCard>
   );

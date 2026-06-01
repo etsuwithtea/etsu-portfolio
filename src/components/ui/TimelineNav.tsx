@@ -45,13 +45,14 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
       {/* ========================================================================= */}
       {/* DESKTOP SIDEBAR (md and up) */}
       {/* ========================================================================= */}
-      <motion.div
+      <motion.nav
+        aria-label="Section navigation"
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
           "fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center",
-          "bg-[#0A0A0A]/40 backdrop-blur-xl border border-white/5 shadow-[0_24px_80px_-20px_rgba(0,0,0,0.8)]",
+          "bg-card-dark/40 backdrop-blur-xl border border-white/5 shadow-[0_24px_80px_-20px_rgba(0,0,0,0.8)]",
           "rounded-[2.5rem] py-8 px-4 transition-all duration-500 ease-in-out select-none",
           isExpanded ? "w-56 items-start px-6" : "w-20"
         )}
@@ -111,9 +112,12 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
             const isActive = activeCard === section.id;
 
             return (
-              <div
+              <button
+                type="button"
                 key={section.id}
-                className="group relative flex items-center w-full cursor-pointer"
+                aria-label={section.label}
+                aria-current={isActive ? "true" : undefined}
+                className="group relative flex items-center w-full cursor-pointer bg-transparent border-0 p-0 text-left rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/60 focus-visible:ring-offset-2 focus-visible:ring-offset-card-dark"
                 onClick={() => handleNavClick(section.id)}
               >
                 {/* Timeline node node indicator / icon container */}
@@ -122,7 +126,7 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
                     "w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 border",
                     isActive
                       ? "bg-white text-black border-white shadow-[0_0_25px_rgba(255,255,255,0.2)]"
-                      : "bg-[#111111]/80 text-white/50 border-white/5 hover:text-white hover:border-white/20 hover:scale-105"
+                      : "bg-canvas/80 text-white/50 border-white/5 hover:text-white hover:border-white/20 hover:scale-105"
                   )}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -162,27 +166,30 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
                 {/* Collapsed Tooltip */}
                 {!isExpanded && (
                   <div className="absolute left-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0 z-50">
-                    <div className="bg-[#0A0A0A] border border-white/10 text-white text-xs font-semibold px-4 py-2 rounded-xl shadow-2xl whitespace-nowrap font-sans">
+                    <div className="bg-card-dark border border-white/10 text-white text-xs font-semibold px-4 py-2 rounded-xl shadow-2xl whitespace-nowrap font-sans">
                       {section.label}
                     </div>
                   </div>
                 )}
-              </div>
+              </button>
             );
           })}
         </div>
 
         {/* Expand / Collapse Toggle Button at bottom */}
         <button
+          type="button"
           onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
+          aria-label={isExpanded ? "Collapse navigation" : "Expand navigation"}
           className={cn(
-            "mt-8 p-3 rounded-2xl bg-white/5 border border-white/5 text-white/50 hover:text-white hover:bg-white/10 hover:border-white/10 transition-all z-10",
+            "mt-8 p-3 rounded-2xl bg-white/5 border border-white/5 text-white/60 hover:text-white hover:bg-white/10 hover:border-white/10 transition-all z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/60",
             isExpanded ? "self-end" : "self-center"
           )}
         >
           {isExpanded ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
         </button>
-      </motion.div>
+      </motion.nav>
 
       {/* ========================================================================= */}
       {/* MOBILE TRIGGER & FLOATING INTERFACE */}
@@ -190,12 +197,16 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
       {/* Floating Menu Button for Mobile */}
       <div className="fixed bottom-6 left-6 z-50 md:hidden">
         <motion.button
+          type="button"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
+          aria-label={isMobileOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMobileOpen}
+          aria-controls="mobile-nav-drawer"
           className={cn(
-            "w-14 h-14 rounded-full flex items-center justify-center shadow-[0_12px_40px_rgba(0,0,0,0.5)] border transition-all duration-300 backdrop-blur-md",
-            isMobileOpen 
+            "w-14 h-14 rounded-full flex items-center justify-center shadow-[0_12px_40px_rgba(0,0,0,0.5)] border transition-all duration-300 backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/60 focus-visible:ring-offset-2 focus-visible:ring-offset-base",
+            isMobileOpen
               ? "bg-white text-black border-white"
-              : "bg-[#0A0A0A]/85 text-white border-white/10"
+              : "bg-card-dark/85 text-white border-white/10"
           )}
           whileTap={{ scale: 0.9 }}
         >
@@ -243,11 +254,15 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
 
             {/* Slide-out Mobile Timeline Navigation Drawer */}
             <motion.div
+              id="mobile-nav-drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Section navigation"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 left-0 w-[280px] bg-[#0A0A0A]/95 border-r border-white/10 backdrop-blur-2xl z-50 p-8 flex flex-col justify-between md:hidden"
+              className="fixed inset-y-0 left-0 w-[280px] bg-card-dark/95 border-r border-white/10 backdrop-blur-2xl z-50 p-8 flex flex-col justify-between md:hidden"
             >
               <div className="absolute inset-0 bg-[radial-gradient(var(--alpha-light-5)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
 
@@ -279,10 +294,13 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
                     const isActive = activeCard === section.id;
 
                     return (
-                      <div
+                      <button
+                        type="button"
                         key={section.id}
                         onClick={() => handleNavClick(section.id)}
-                        className="flex items-center gap-5 cursor-pointer group"
+                        aria-label={section.label}
+                        aria-current={isActive ? "true" : undefined}
+                        className="flex items-center gap-5 cursor-pointer group w-full text-left bg-transparent border-0 p-0 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/60 focus-visible:ring-offset-2 focus-visible:ring-offset-card-dark"
                       >
                         {/* Timeline Node */}
                         <div
@@ -290,7 +308,7 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
                             "w-8 h-8 rounded-xl flex items-center justify-center z-10 transition-all border",
                             isActive
                               ? "bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-                              : "bg-[#111111] text-white/50 border-white/5"
+                              : "bg-canvas text-white/50 border-white/5"
                           )}
                         >
                           <Icon size={14} />
@@ -300,12 +318,12 @@ export function TimelineNav({ activeCard, setActiveCard }: TimelineNavProps) {
                         <span
                           className={cn(
                             "text-base font-semibold tracking-tight transition-colors",
-                            isActive ? "text-white" : "text-white/60"
+                            isActive ? "text-white" : "text-white/70"
                           )}
                         >
                           {section.label}
                         </span>
-                      </div>
+                      </button>
                     );
                   })}
                 </div>

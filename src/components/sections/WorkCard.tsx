@@ -59,7 +59,7 @@ export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkC
     >
       {/* Background Image Marquee when inactive */}
       {!isActive && (
-        <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
           <div
             className="flex w-max animate-marquee h-full opacity-60 md:opacity-30 md:group-hover:opacity-60 md:group-hover:paused transition-all duration-700"
             style={{ animationDuration: "60s" }}
@@ -68,7 +68,9 @@ export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkC
               <img
                 key={`${project.id}-${index}`}
                 src={project.coverImage}
-                alt={project.title}
+                alt=""
+                loading="lazy"
+                decoding="async"
                 className="h-full object-cover min-w-[300px] flex-shrink-0 -mr-[1px]"
               />
             ))}
@@ -103,13 +105,15 @@ export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkC
               <div className="flex flex-wrap gap-2 md:justify-end max-w-xl mb-12">
                 {categories.map((cat) => (
                   <button
+                    type="button"
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
+                    aria-pressed={activeCategory === cat}
                     className={cn(
-                      "px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 border",
+                      "inline-flex items-center min-h-[44px] px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
                       activeCategory === cat
                         ? "bg-black text-white border-black shadow-xl scale-105"
-                        : "bg-black/5 text-black/40 border-black/10 hover:bg-black/10 hover:text-black"
+                        : "bg-black/5 text-black/60 border-black/10 hover:bg-black/10 hover:text-black"
                     )}
                   >
                     {cat}
@@ -152,7 +156,7 @@ export function WorkCard({ isActive, onClick, onSelectProject, ...props }: WorkC
         <h3
           className={cn(
             "font-display font-bold transition-all duration-500",
-            isActive ? "text-2xl opacity-40 uppercase tracking-[0.2em]" : "text-2xl"
+            isActive ? "text-2xl opacity-60 uppercase tracking-[0.2em]" : "text-2xl"
           )}
           style={isActive ? {} : { color: "var(--color-surface)", filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))" }}
         >

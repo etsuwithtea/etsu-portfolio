@@ -16,16 +16,17 @@ export const BentoCard = forwardRef<HTMLDivElement, BentoCardProps>(
         ref={ref}
         layout
         layoutId={layoutId}
-        tabIndex={0}
+        tabIndex={onClick ? 0 : -1}
+        role={onClick ? "button" : undefined}
         whileHover={onClick ? { scale: 0.98 } : undefined}
         whileTap={onClick ? { scale: 0.95 } : undefined}
         onClick={onClick}
-        onKeyDown={(e) => {
+        onKeyDown={onClick ? (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            onClick?.();
+            onClick();
           }
-        }}
+        } : undefined}
         className={cn(
           "relative overflow-hidden rounded-[var(--radius-bento)] p-6 md:p-8 transition-all duration-500 outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/30 focus-visible:ring-offset-4 focus-visible:ring-offset-base",
           onClick && "cursor-pointer hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]",

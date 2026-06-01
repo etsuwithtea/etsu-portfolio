@@ -66,17 +66,20 @@ export function CertificatesCard({ isActive, onClick, ...props }: CertificatesCa
                     className="flex flex-col bg-white/[0.03] rounded-[1.5rem] overflow-hidden border border-white/5 group/cert transition-colors hover:bg-white/[0.05]"
                   >
                     <div className="aspect-[16/10] overflow-hidden relative">
-                      <img 
-                        src={cert.image} 
-                        alt={cert.title} 
-                        className="w-full h-full object-cover md:grayscale md:opacity-80 md:group-hover/cert:grayscale-0 md:group-hover/cert:opacity-100 transition-all duration-700" 
+                      <img
+                        src={cert.image}
+                        alt={cert.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover md:grayscale md:opacity-80 md:group-hover/cert:grayscale-0 md:group-hover/cert:opacity-100 transition-all duration-700"
                       />
                       {cert.link && (
-                        <a 
-                          href={cert.link} 
-                          target="_blank" 
+                        <a
+                          href={cert.link}
+                          target="_blank"
                           rel="noopener noreferrer"
-                          className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/cert:opacity-100 transition-opacity backdrop-blur-[2px]"
+                          aria-label={`View certificate: ${cert.title} (opens in a new tab)`}
+                          className="absolute inset-0 flex items-center justify-center bg-black/55 opacity-0 group-hover/cert:opacity-100 focus-visible:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-glow/60"
                         >
                           <div className="p-3 bg-white text-black rounded-full">
                             <ExternalLink size={18} />
@@ -86,7 +89,7 @@ export function CertificatesCard({ isActive, onClick, ...props }: CertificatesCa
                     </div>
                     <div className="p-6 flex flex-col gap-2">
                       <h3 className="text-lg font-bold leading-tight">{cert.title}</h3>
-                      <p className="text-xs opacity-40 font-medium leading-relaxed">{cert.desc}</p>
+                      <p className="text-xs opacity-65 font-medium leading-relaxed">{cert.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -98,14 +101,14 @@ export function CertificatesCard({ isActive, onClick, ...props }: CertificatesCa
               className="flex flex-col justify-between h-full"
             >
               <div className="flex flex-col gap-2">
-                <h3 className="text-3xl font-black font-display leading-tight mt-2">
-                  Certificates <br /> 
-                  <span className="opacity-40">& Badges</span>
-                </h3>
+                <h2 className="text-3xl font-black font-display leading-tight mt-2">
+                  Certificates <br />
+                  <span className="opacity-50">& Badges</span>
+                </h2>
               </div>
 
               <div className="flex justify-between items-end">
-                <span className="text-[10px] font-bold opacity-30 tracking-widest uppercase">
+                <span className="text-[10px] font-bold opacity-60 tracking-widest uppercase">
                   {CERTIFICATES.length} Credentials
                 </span>
                 <div className="p-2 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-white/40">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X, ExternalLink, Code, ZoomIn } from "lucide-react";
 import { BentoCard } from "@/components/ui/BentoCard";
 import { ImageLightbox } from "@/components/ui/ImageLightbox";
-import { motion, type HTMLMotionProps, type Variants, AnimatePresence } from "framer-motion";
+import { motion, type HTMLMotionProps, type Variants, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { ProjectType } from "@/types";
 import { SKILLS } from "@/data/skills";
 import { useScrollFocus } from "@/hooks/useScrollFocus";
@@ -32,6 +32,7 @@ const fadeInUp: Variants = {
 
 export function ProjectDetailCard({ project, onClose, onClick, ...props }: ProjectDetailCardProps) {
   const { cardRef, scrollRef } = useScrollFocus({ dependencies: [project.id] });
+  const shouldReduceMotion = useReducedMotion();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [hoveredAction, setHoveredAction] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"overview" | "process" | "gallery">("overview");
@@ -165,17 +166,18 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
             <video
               src={project.images[0].src}
               className="w-full h-auto"
-              autoPlay
+              autoPlay={!shouldReduceMotion}
+              controls={!!shouldReduceMotion}
               muted
               loop
               playsInline
             />
           ) : (
-            <img src={project.coverImage} alt={project.title} className="w-full h-auto transition-transform duration-1000 md:group-hover:scale-105" />
+            <img src={project.coverImage} alt={project.title} loading="lazy" decoding="async" className="w-full h-auto transition-transform duration-1000 md:group-hover:scale-105" />
           )}
           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent md:opacity-60" />
           {project.images[0]?.type !== "video" && (
-            <div className="absolute top-8 right-8 p-4 rounded-full bg-black/40 backdrop-blur-xl border border-white/20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0">
+            <div className="absolute top-8 right-8 p-4 rounded-full bg-black/60 border border-white/20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0">
               <ZoomIn size={28} />
             </div>
           )}
@@ -190,8 +192,8 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
               <motion.div variants={fadeInUp} className="flex gap-2 border-b border-white/10 pb-4">
                 <button
                   onClick={() => setActiveTab("overview")}
-                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
-                    activeTab === "overview" ? "opacity-100" : "opacity-40 hover:opacity-70"
+                  className={`inline-flex items-center min-h-[44px] px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/50 ${
+                    activeTab === "overview" ? "opacity-100" : "opacity-60 hover:opacity-90"
                   }`}
                 >
                   Overview
@@ -205,8 +207,8 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                 </button>
                 <button
                   onClick={() => setActiveTab("process")}
-                  className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
-                    activeTab === "process" ? "opacity-100" : "opacity-40 hover:opacity-70"
+                  className={`inline-flex items-center min-h-[44px] px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/50 ${
+                    activeTab === "process" ? "opacity-100" : "opacity-60 hover:opacity-90"
                   }`}
                 >
                   Process
@@ -221,8 +223,8 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                 {project.images.length > 0 && (
                   <button
                     onClick={() => setActiveTab("gallery")}
-                    className={`px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative ${
-                      activeTab === "gallery" ? "opacity-100" : "opacity-40 hover:opacity-70"
+                    className={`inline-flex items-center min-h-[44px] px-4 py-2 text-sm font-bold uppercase tracking-widest transition-all relative rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/50 ${
+                      activeTab === "gallery" ? "opacity-100" : "opacity-60 hover:opacity-90"
                     }`}
                   >
                     Gallery
@@ -249,7 +251,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                   transition={{ duration: 0.3 }}
                   variants={fadeInUp}
                 >
-                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-6 opacity-30">Overview</h3>
+                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-6 opacity-60">Overview</h3>
                   <p className="text-xl md:text-2xl leading-relaxed font-light opacity-80 whitespace-pre-wrap">
                     {project.desc}
                   </p>
@@ -265,7 +267,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
                   transition={{ duration: 0.3 }}
                   className="space-y-8"
                 >
-                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold opacity-30">Process Timeline</h3>
+                  <h3 className="text-xs uppercase tracking-[0.4em] font-bold opacity-60">Process Timeline</h3>
                   <div className="space-y-6">
                     {(project.process || []).map((step, idx) => (
                       <motion.div
@@ -330,7 +332,7 @@ export function ProjectDetailCard({ project, onClose, onClick, ...props }: Proje
           {/* Sidebar */}
           <div className="md:col-span-4 space-y-12">
             <motion.div variants={fadeInUp}>
-              <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-8 opacity-30">Technology Stack</h3>
+              <h3 className="text-xs uppercase tracking-[0.4em] font-bold mb-8 opacity-60">Technology Stack</h3>
               <div className="flex flex-wrap gap-3">
                 {project.tools.map((tool, idx) => {
                   const skill = SKILLS.find(s => s.name.toLowerCase() === tool.toLowerCase());

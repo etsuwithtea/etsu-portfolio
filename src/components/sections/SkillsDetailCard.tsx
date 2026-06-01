@@ -27,12 +27,8 @@ export function SkillsDetailCard({ onClose }: SkillsDetailCardProps) {
         {/* Simple Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16 md:mb-24">
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2 text-primary-glow">
-              <Sparkles size={14} />
-              <span className="text-[10px] uppercase tracking-[0.4em] font-bold">Expertise</span>
-            </div>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-display tracking-tighter leading-none">
-              Technical <span className="opacity-20 italic">Stack.</span>
+              Technical <span className="opacity-45 italic">Stack.</span>
             </h2>
           </div>
           
@@ -61,7 +57,7 @@ export function SkillsDetailCard({ onClose }: SkillsDetailCardProps) {
               >
                 <div className="flex items-center gap-4">
                   <div className="h-px flex-1 bg-white/10" />
-                  <h3 className="text-[10px] font-black font-display tracking-[0.3em] uppercase opacity-30 whitespace-nowrap">
+                  <h3 className="text-[10px] font-black font-display tracking-[0.3em] uppercase opacity-60 whitespace-nowrap">
                     {category}
                   </h3>
                 </div>

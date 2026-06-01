@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-01T00:00:00.000Z",
+  "title": "Design System: etsuwithtea Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Electric Ultramarine",
+        "canonical": "oklch(0.45 0.31 268)",
+        "tonalRamp": [
+          "oklch(0.18 0.13 268)",
+          "oklch(0.26 0.19 268)",
+          "oklch(0.34 0.25 268)",
+          "oklch(0.45 0.31 268)",
+          "oklch(0.56 0.27 268)",
+          "oklch(0.68 0.20 268)",
+          "oklch(0.80 0.12 268)",
+          "oklch(0.92 0.05 268)"
+        ]
+      },
+      "primary-glow": {
+        "role": "primary",
+        "displayName": "Glow Blue",
+        "canonical": "oklch(0.72 0.15 256)",
+        "tonalRamp": [
+          "oklch(0.30 0.10 256)",
+          "oklch(0.40 0.13 256)",
+          "oklch(0.50 0.15 256)",
+          "oklch(0.60 0.16 256)",
+          "oklch(0.72 0.15 256)",
+          "oklch(0.82 0.11 256)",
+          "oklch(0.90 0.07 256)",
+          "oklch(0.96 0.03 256)"
+        ]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Pale Lemon",
+        "canonical": "oklch(0.95 0.12 103)",
+        "tonalRamp": [
+          "oklch(0.45 0.10 103)",
+          "oklch(0.56 0.12 103)",
+          "oklch(0.67 0.14 103)",
+          "oklch(0.78 0.15 103)",
+          "oklch(0.86 0.14 103)",
+          "oklch(0.92 0.13 103)",
+          "oklch(0.95 0.12 103)",
+          "oklch(0.98 0.06 103)"
+        ]
+      },
+      "base": {
+        "role": "neutral",
+        "displayName": "Black Stage",
+        "canonical": "oklch(0 0 0)",
+        "tonalRamp": [
+          "oklch(0.00 0 0)",
+          "oklch(0.04 0 0)",
+          "oklch(0.07 0 0)",
+          "oklch(0.12 0 0)",
+          "oklch(0.20 0 0)",
+          "oklch(0.40 0 0)",
+          "oklch(0.62 0 0)",
+          "oklch(0.85 0 0)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "oklch(1 0 0)",
+        "tonalRamp": [
+          "oklch(0.20 0 0)",
+          "oklch(0.34 0 0)",
+          "oklch(0.50 0 0)",
+          "oklch(0.66 0 0)",
+          "oklch(0.78 0 0)",
+          "oklch(0.88 0 0)",
+          "oklch(0.95 0 0)",
+          "oklch(1.00 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero and section statements in Bricolage Grotesque black. Loudest element on any tile." },
+      "headline": { "displayName": "Headline", "purpose": "Collapsed card titles." },
+      "title": { "displayName": "Title", "purpose": "Sub-headings, names, project titles." },
+      "body": { "displayName": "Body", "purpose": "Bios and project copy in Instrument Sans. Cap measure 65-75ch." },
+      "label": { "displayName": "Kicker / Label", "purpose": "Uppercase 0.3em tracked kickers and metadata tags. <=4 words, used sparingly." },
+      "mono": { "displayName": "Mono Meta", "purpose": "System monospace for dates, periods, and footer only." }
+    },
+    "shadows": [
+      { "name": "card-lift", "value": "0 20px 50px rgba(0,0,0,0.3)", "purpose": "Hover lift on an interactive tile. Pairs with a scale-to-0.98 press." },
+      { "name": "floating-nav", "value": "0 24px 80px -20px rgba(0,0,0,0.8)", "purpose": "Persistent lift on the glass timeline sidebar." },
+      { "name": "node-glow", "value": "0 0 25px rgba(255,255,255,0.2)", "purpose": "White halo around the active nav node. A status light, not a drop shadow." },
+      { "name": "pill-lift", "value": "0 10px 15px -3px rgba(0,0,0,0.1)", "purpose": "Slight lift on white tech-stack pills over the blue Hero fill." }
+    ],
+    "motion": [
+      { "name": "ease-out-quint", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Default content reveal (fadeInUp). Exponential ease-out, no bounce." },
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Larger entrances (nav slide-in)." },
+      { "name": "press", "value": "whileHover scale 0.98, whileTap scale 0.95", "purpose": "Tactile press feedback on every clickable card. The 'playable' signature." },
+      { "name": "marquee", "value": "30s linear infinite (rows offset +5s, alternating direction)", "purpose": "Tech-stack and Work background marquees. Pausable. Needs a reduced-motion stop." },
+      { "name": "layout-shared", "value": "Framer Motion layout / layoutId", "purpose": "Shared-layout card expand/collapse. The core 'operate the interface' interaction." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hero Bento Card (primary skin)",
+      "kind": "card",
+      "refersTo": "bento-card-primary",
+      "description": "The signature primitive: a tactile, click-to-expand color tile. Presses inward on tap, lifts on hover.",
+      "html": "<div class=\"ds-bento ds-bento-primary\" tabindex=\"0\"><div class=\"ds-bento-top\"><span class=\"ds-bento-name\">etsuwithtea <em>(est)</em></span><span class=\"ds-bento-icon\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"/></svg></span></div><h2 class=\"ds-bento-display\"><span class=\"ds-bento-kicker\">Specialized in</span>Full-Stack Dev | UX/UI Design</h2><div class=\"ds-bento-foot\"><span>See More.</span></div></div>",
+      "css": ".ds-bento{position:relative;overflow:hidden;border-radius:2.5rem;padding:2rem;min-height:320px;display:flex;flex-direction:column;justify-content:space-between;outline:none;transition:transform .25s cubic-bezier(0.23,1,0.32,1),box-shadow .3s ease;cursor:pointer}.ds-bento-primary{background:#2512F5;color:#fff}.ds-bento:hover{transform:scale(0.98);box-shadow:0 20px 50px rgba(0,0,0,0.3)}.ds-bento:active{transform:scale(0.95)}.ds-bento:focus-visible{box-shadow:0 0 0 4px #000,0 0 0 6px rgba(96,165,250,0.3)}.ds-bento-top{display:flex;justify-content:space-between;align-items:flex-start}.ds-bento-name{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:500;font-size:1.25rem}.ds-bento-name em{opacity:.75;font-style:normal;font-family:'Instrument Sans',system-ui,sans-serif}.ds-bento-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:9999px;background:#fff;color:#000;box-shadow:0 10px 20px rgba(0,0,0,0.2)}.ds-bento-display{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:900;font-size:clamp(2.5rem,5vw,3.5rem);line-height:.9;letter-spacing:-0.05em;margin:0}.ds-bento-kicker{display:block;font-weight:500;letter-spacing:normal;font-size:clamp(1.25rem,2.5vw,1.75rem);color:rgba(255,255,255,0.8);margin-bottom:.5rem}.ds-bento-foot{display:flex;justify-content:space-between;align-items:flex-end;font-weight:500;opacity:.8}"
+    },
+    {
+      "name": "Category Filter Pill",
+      "kind": "chip",
+      "refersTo": "filter-pill",
+      "description": "Pill filter on a white surface. Solid-black when active, faint when inactive.",
+      "html": "<div class=\"ds-filter-row\"><button class=\"ds-filter is-active\">All</button><button class=\"ds-filter\">Fullstack</button><button class=\"ds-filter\">Design</button><button class=\"ds-filter\">Game</button></div>",
+      "css": ".ds-filter-row{display:flex;flex-wrap:wrap;gap:.5rem}.ds-filter{font-family:'Instrument Sans',system-ui,sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:.5rem 1.25rem;border-radius:9999px;border:1px solid rgba(0,0,0,0.1);background:rgba(0,0,0,0.05);color:rgba(0,0,0,0.4);cursor:pointer;transition:all .3s cubic-bezier(0.23,1,0.32,1)}.ds-filter:hover{background:rgba(0,0,0,0.1);color:#000}.ds-filter.is-active{background:#000;color:#fff;border-color:#000;transform:scale(1.05);box-shadow:0 12px 24px rgba(0,0,0,0.2)}.ds-filter:focus-visible{outline:2px solid #2512F5;outline-offset:2px}"
+    },
+    {
+      "name": "Tech-Stack Pill",
+      "kind": "chip",
+      "refersTo": "tech-pill",
+      "description": "Solid-white pill with a brand-colored icon and bold label. Lives in the Hero marquee.",
+      "html": "<span class=\"ds-tech\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"#2512F5\"><path d=\"M12 2 2 7l10 5 10-5-10-5Zm0 7.5L4.5 6 12 9.5 19.5 6 12 9.5Z\"/></svg><span>TypeScript</span></span>",
+      "css": ".ds-tech{display:inline-flex;align-items:center;gap:.75rem;padding:.75rem 1.5rem;border-radius:9999px;background:#fff;box-shadow:0 10px 15px -3px rgba(0,0,0,0.1);transition:transform .3s ease}.ds-tech:hover{transform:scale(1.05)}.ds-tech span{font-family:'Instrument Sans',system-ui,sans-serif;font-weight:700;font-size:1rem;color:#000;white-space:nowrap}"
+    },
+    {
+      "name": "Project Tile",
+      "kind": "card",
+      "refersTo": "project-tile",
+      "description": "Full-bleed cover image with a bottom-up gradient reveal on hover and a resting glass category tag.",
+      "html": "<div class=\"ds-tile\"><img alt=\"Project cover\" src=\"https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80\"/><span class=\"ds-tile-tag\">Fullstack</span><div class=\"ds-tile-overlay\"><p class=\"ds-tile-cat\">Fullstack</p><h5 class=\"ds-tile-title\">Travel Buddy</h5><span class=\"ds-tile-cta\">View Project</span></div></div>",
+      "css": ".ds-tile{position:relative;overflow:hidden;border-radius:2rem;cursor:pointer;border:1px solid rgba(255,255,255,0.1);box-shadow:0 25px 50px -12px rgba(0,0,0,0.5)}.ds-tile img{display:block;width:100%;height:auto;transition:transform .7s cubic-bezier(0.23,1,0.32,1)}.ds-tile:hover img{transform:scale(1.1)}.ds-tile-tag{position:absolute;top:1.25rem;right:1.25rem;padding:.25rem .75rem;border-radius:9999px;background:rgba(0,0,0,0.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);font-family:'Instrument Sans',system-ui,sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,0.6)}.ds-tile-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0.2),transparent);opacity:0;transition:opacity .5s ease}.ds-tile:hover .ds-tile-overlay{opacity:1}.ds-tile-cat{font-size:10px;text-transform:uppercase;letter-spacing:.3em;font-weight:700;color:rgba(255,255,255,0.6);margin:0 0 .5rem}.ds-tile-title{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:900;font-size:1.5rem;line-height:1;color:#fff;margin:0 0 1rem}.ds-tile-cta{align-self:flex-start;padding:.5rem 1rem;border-radius:9999px;background:#fff;color:#000;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}"
+    },
+    {
+      "name": "Timeline Nav Node (active)",
+      "kind": "nav",
+      "refersTo": "nav-node-active",
+      "description": "A single node in the floating timeline rail. Active state: white fill, black icon, white glow.",
+      "html": "<div class=\"ds-nav\"><div class=\"ds-node is-active\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg></div><div class=\"ds-node\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v4M12 18v4M2 12h4M18 12h4\"/></svg></div></div>",
+      "css": ".ds-nav{display:inline-flex;flex-direction:column;gap:1rem;padding:1rem;border-radius:2.5rem;background:rgba(10,10,10,0.4);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.05);box-shadow:0 24px 80px -20px rgba(0,0,0,0.8)}.ds-node{display:grid;place-items:center;width:48px;height:48px;border-radius:1rem;border:1px solid rgba(255,255,255,0.05);background:rgba(17,17,17,0.8);color:rgba(255,255,255,0.5);cursor:pointer;transition:all .3s ease}.ds-node:hover{color:#fff;border-color:rgba(255,255,255,0.2);transform:scale(1.05)}.ds-node.is-active{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 25px rgba(255,255,255,0.2)}"
+    },
+    {
+      "name": "Contact Method Tile",
+      "kind": "custom",
+      "refersTo": "contact-method",
+      "description": "Copy-to-clipboard action tile on the Lemon Contact card. Translucent black fill, black ink.",
+      "html": "<div class=\"ds-contact\"><div class=\"ds-contact-top\"><span class=\"ds-contact-ic\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 4h16v16H4z\" opacity=\"0\"/><path d=\"M22 16.92V21a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 6.18 2 2 0 0 1 5 4h4.09a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L9.91 12a16 16 0 0 0 6 6l1.36-1.36a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z\"/></svg></span></div><div><p class=\"ds-contact-label\">Phone</p><p class=\"ds-contact-value\">096-015-9077</p></div></div>",
+      "css": ".ds-contact{display:flex;flex-direction:column;justify-content:space-between;min-height:160px;padding:2rem;border-radius:1.5rem;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.05);color:#000;cursor:pointer;transition:background .25s ease}.ds-contact:hover{background:rgba(0,0,0,0.08)}.ds-contact-ic{display:grid;place-items:center;width:40px;height:40px;border-radius:.75rem;background:rgba(0,0,0,0.05);color:rgba(0,0,0,0.6)}.ds-contact-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;opacity:.4;margin:0 0 .25rem}.ds-contact-value{font-family:'Instrument Sans',system-ui,sans-serif;font-size:1.25rem;font-weight:700;letter-spacing:-0.01em;margin:0}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Playable Portfolio",
+    "overview": "This is not a page you read; it is an interface you operate. The whole system is a dark canvas holding a grid of saturated, solid-color tiles, and every tile is a control: click one and it expands in place, revealing the content within. The playfulness is structural, not cosmetic. The personality is playful, energetic, and human, carried by oversized Bricolage Grotesque headlines, a small set of committed high-saturation card colors against pure black, and a constant film-grain texture. Depth is deliberately understated: tiles sit flat at rest and only lift, glow, or shadow in response to interaction. What this system rejects is overdesigned, gimmicky decoration; the line to hold is playful, never gimmicky.",
+    "keyCharacteristics": [
+      "A dark stage (pure black #000000) holding a bento grid of committed-color tiles.",
+      "One signature primitive, the tactile click-to-expand BentoCard, reused as the whole architecture.",
+      "Oversized grotesque display type as the loudest voice; color second; motion third.",
+      "Flat surfaces; depth appears only on interaction (hover-lift, glow halo, grain).",
+      "A balanced dev-and-designer identity, shown through range, not asserted in copy."
+    ],
+    "rules": [
+      { "name": "The One Loud Blue Rule", "body": "Electric Ultramarine (#2512F5) appears as a fill, never as a hairline or tiny accent. Glow Blue (#60A5FA) is the only blue allowed to act as a thin accent or glow; keep the two roles distinct.", "section": "colors" },
+      { "name": "The Black-Ink-on-Lemon Rule", "body": "Text on the Pale Lemon tile is always pure black (#000000). Never grey text on the yellow; it washes out and fails contrast.", "section": "colors" },
+      { "name": "The Loud-Display Rule", "body": "Headlines are the loudest element on any tile: black weight, tight tracking, set big. Hierarchy comes from scale and weight contrast, not color shifts or underlines.", "section": "typography" },
+      { "name": "The Flat-At-Rest Rule", "body": "Nothing carries a shadow until it is touched, active, or floating above the grid. Depth is feedback, not decoration.", "section": "elevation" },
+      { "name": "The Grain Rule", "body": "The 3% film-grain overlay is non-negotiable and global. It keeps flat saturated color from looking like a default Tailwind block.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep depth as feedback: flat at rest, shadow/glow only on hover, active, or float.",
+      "Do keep the global 3% film grain on every screen; it's what makes flat color feel made, not defaulted.",
+      "Do let one Electric Ultramarine fill (#2512F5) dominate and keep Glow Blue (#60A5FA) as the only thin/glow blue.",
+      "Do set black text on the Pale Lemon tile, always.",
+      "Do drive hierarchy with scale + weight contrast in Bricolage Grotesque, not with extra color or ornament.",
+      "Do keep whileTap/whileHover press feedback on anything clickable; the tactility is the brand's playable promise.",
+      "Do keep body text on dark tiles at #D1D5DB or brighter, and verify 4.5:1; bump toward white before going fainter.",
+      "Do give every animation a prefers-reduced-motion: reduce fallback; the marquee, rotating Hero shapes, and layout transitions currently lack one."
+    ],
+    "donts": [
+      "Don't add overdesigned, gimmicky decoration. No effect for its own sake; if a flourish doesn't clarify or delight in service of the work, cut it. Playful, never gimmicky.",
+      "Don't stack a tiny uppercase tracked kicker above every section; treat it as an occasional accent, not default scaffolding.",
+      "Don't give tiles a resting shadow or ambient glow; depth that isn't a response to interaction is wrong here.",
+      "Don't use grey or low-opacity text on the Lemon or Ultramarine fills; use black, white, or a transparency of the foreground color.",
+      "Don't introduce a fourth display typeface or a second sans. Bricolage + Instrument + system mono is the cap.",
+      "Don't let oversized headlines overflow their tile on tablet/mobile; test real copy at every breakpoint and reduce the clamp before it clips.",
+      "Don't use background-clip:text gradient headings, glassmorphism beyond the one floating nav, or border-left colored stripes."
+    ]
+  }
+}

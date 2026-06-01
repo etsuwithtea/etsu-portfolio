@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Maximize2 } from "lucide-react";
+import { Maximize2, Pause, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import type { SkillType } from "@/types";
@@ -21,19 +21,16 @@ export function TechStackMarquee({ skills, onShowAllSkills, className }: TechSta
       className={cn("mt-10 flex flex-col h-full gap-8", className)}
     >
       <div
-        className="flex flex-col gap-4 w-[calc(100vw-4rem)] md:w-[700px] overflow-hidden relative group cursor-pointer"
+        className="flex flex-col gap-4 w-[calc(100vw-4rem)] md:w-[700px] overflow-hidden relative group"
         style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
-        onClick={(e) => {
-          e.stopPropagation();
-          setIsPaused(!isPaused);
-        }}
       >
         {/* Header */}
         <div className="flex items-center gap-2 pl-4 mb-2">
           <div className="w-8 h-[1px] bg-white/30" />
-          <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white/60">Tech Stack</h3>
+          <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white/80">Tech Stack</h3>
           {onShowAllSkills && (
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 onShowAllSkills();
@@ -59,9 +56,19 @@ export function TechStackMarquee({ skills, onShowAllSkills, className }: TechSta
               View All
             </button>
           )}
-          <span className="text-[10px] text-white/40 uppercase tracking-widest ml-auto pr-8 opacity-0 group-hover:opacity-100 transition-opacity font-medium">
-            {isPaused ? "click to resume" : "click to pause"}
-          </span>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsPaused(!isPaused);
+            }}
+            aria-pressed={isPaused}
+            aria-label={isPaused ? "Resume tech stack animation" : "Pause tech stack animation"}
+            className="ml-auto mr-2 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-white/70 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/60"
+          >
+            {isPaused ? <Play size={11} /> : <Pause size={11} />}
+            {isPaused ? "Resume" : "Pause"}
+          </button>
         </div>
 
         {/* Marquee rows */}

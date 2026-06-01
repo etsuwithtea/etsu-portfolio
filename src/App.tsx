@@ -43,7 +43,7 @@ function App() {
       {/* Header */}
       <header className="mb-12">
         <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-center">
-          <span className="text-[10px] font-bold tracking-[0.4em] block uppercase text-center mb-2 opacity-40 font-sans">Portfolio of</span>
+          <span className="text-[11px] font-bold tracking-[0.4em] block uppercase text-center mb-2 opacity-60 font-sans">Portfolio of</span>
           ETSUWITHTEA
         </h1>
       </header>

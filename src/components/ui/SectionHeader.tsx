@@ -20,20 +20,20 @@ export function SectionHeader({ title, subtitle, highlight, className, align = "
       {subtitle && (
         <motion.p
           initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 0.4, y: 0 }}
+          animate={{ opacity: 0.65, y: 0 }}
           className="text-sm uppercase tracking-[0.3em] font-bold"
         >
           {subtitle}
         </motion.p>
       )}
-      <motion.h4
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
         className="text-5xl md:text-8xl font-black tracking-tighter leading-none"
       >
-        {title} {highlight && <><br /> <span className="opacity-40">{highlight}.</span></>}
-      </motion.h4>
+        {title} {highlight && <><br /> <span className="opacity-55">{highlight}.</span></>}
+      </motion.h2>
     </div>
   );
 }

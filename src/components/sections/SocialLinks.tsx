@@ -47,10 +47,11 @@ export function SocialLinks({ socials, iconMap, className }: SocialLinksProps) {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${social.name} (opens in a new tab)`}
               onClick={(e) => e.stopPropagation()}
               onMouseEnter={() => setHoveredSocial(social.name)}
               onMouseLeave={() => setHoveredSocial(null)}
-              className="flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg"
+              className="flex items-center justify-center w-11 h-11 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-glow/60 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
               style={{
                 backgroundColor: "var(--color-surface)",
                 color: "var(--color-base)",
