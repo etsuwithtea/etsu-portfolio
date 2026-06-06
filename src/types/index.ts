@@ -37,7 +37,7 @@ export interface SkillType {
   name: string;
   icon?: IconComponent;
   color?: string;
-  category?: 'Frontend' | 'Backend' | 'Design' | 'AI' | 'Tools' | 'Languages';
+  category?: 'Frontend' | 'Backend' | 'DevOps' | 'Design' | 'AI' | 'Tools' | 'Languages';
 }
 
 export interface SocialInfo {

@@ -144,7 +144,7 @@ export const PROJECTS: ProjectType[] = [
     ],
     desc: 'A comprehensive Human Resource Management System developed during an internship. The system streamlines employee lifecycle management, including personnel records, attendance tracking, and organizational reporting. It features a modern, enterprise-grade interface designed for efficiency and ease of use.',
     role: 'Role : Full-stack Developer (Internship)',
-    tools: ['.NET Blazor', 'PostgreSQL', 'Entity Framework Core', '.NET Backend', 'C#', 'Fluent UI'],
+    tools: ['.NET Blazor', 'PostgreSQL', 'Entity Framework Core', '.NET Backend', 'C#', 'Fluent UI', 'Temporal.io', 'Apache Kafka', 'Kubernetes', 'Kong API Gateway', 'Cloudflare'],
     category: 'Fullstack',
     process: [
       {
@@ -378,7 +378,7 @@ export const PROJECTS: ProjectType[] = [
     desc: "Remade EGAT's power transformer management web application with a modern UI/UX using Next.js and MongoDB. Integrated and visualized data from more than 100 MongoDB collections for centralized management. Optimized database queries for fast access and reliability to support thousands of transformer records, improving operational efficiency and reporting.",
     role: 'Role : Fullstack Developer (Next.js, MongoDB)',
     tools: [
-      'Next.js', 'GitHub Copilot', 'MongoDB', 'React', 'JavaScript', 'Node.js', 'CSS', 'HTML', 'Visual Studio Code', 'Git', 'Tailwind CSS'
+      'Next.js', 'GitHub Copilot', 'MongoDB', 'React', 'JavaScript', 'Node.js', 'NestJS', 'CSS', 'HTML', 'Visual Studio Code', 'Git', 'Tailwind CSS', 'Apache Kafka', 'Temporal.io', 'Kubernetes', 'Kong API Gateway', 'Cloudflare'
     ],
     category: 'Fullstack',
     process: [

@@ -6,7 +6,8 @@ import {
   SiPostgresql, SiLine, SiGoogle, SiPython, SiApachenetbeanside,
   SiJavascript, SiAndroidstudio, SiJetbrains, SiVite, SiRedux,
   SiExpress, SiBootstrap, SiSocketdotio, SiGithubpages, SiHtml5,
-  SiFramer
+  SiFramer, SiNestjs, SiApachekafka, SiTemporal, SiKubernetes,
+  SiKong, SiCloudflare
 } from "react-icons/si";
 import { FiDatabase } from "react-icons/fi";
 import { FaJava, FaCss3 } from "react-icons/fa";
@@ -40,6 +41,13 @@ export const SKILLS: SkillType[] = [
   { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1", category: "Backend" },
   { name: "Express", icon: SiExpress, color: "#000000", category: "Backend" },
   { name: "Socket.IO", icon: SiSocketdotio, color: "#010101", category: "Backend" },
+  { name: "NestJS", icon: SiNestjs, color: "#E0234E", category: "Backend" },
+  { name: "Apache Kafka", icon: SiApachekafka, color: "#231F20", category: "Backend" },
+  { name: "Temporal.io", icon: SiTemporal, color: "#141414", category: "Backend" },
+  // DevOps
+  { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5", category: "DevOps" },
+  { name: "Kong API Gateway", icon: SiKong, color: "#169FCC", category: "DevOps" },
+  { name: "Cloudflare", icon: SiCloudflare, color: "#F38020", category: "DevOps" },
   // Design
   { name: "Figma", icon: SiFigma, color: "#F24E1E", category: "Design" },
   { name: "Figma Make", icon: SiFigma, color: "#EA312B", category: "Design" },

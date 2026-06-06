@@ -9,7 +9,7 @@ interface SkillsDetailCardProps {
   onClose: () => void;
 }
 
-const SKILL_CATEGORIES: SkillType["category"][] = ["Languages", "Frontend", "Backend", "Design", "AI", "Tools"];
+const SKILL_CATEGORIES: SkillType["category"][] = ["Languages", "Frontend", "Backend", "DevOps", "Design", "AI", "Tools"];
 
 export function SkillsDetailCard({ onClose }: SkillsDetailCardProps) {
   const { cardRef, scrollRef } = useScrollFocus();
